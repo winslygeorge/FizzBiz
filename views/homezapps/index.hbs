@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Categories</title>
+
+            <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
+
+    <link rel="stylesheet" href="./../css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    
+    <script src="./../js/main.js"></script>
+
+    <script src="./../js/categoryApps.js"></script>
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
+    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+</head>
+<body>
+    
+    
+    <header class="headerContainer">
+        <div class="container1">
+             <div class="icon" >
+
+                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
+            </div>
+        <div class="appbar">
+           
+            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+        </div>
+
+          
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;"/>
+            
+        </div>
+        <div class="profileIcon" style="order: 3; padding: 2%;">
+            <img src="./../images/user.svg" class="menuIcon" style="width: 40px;"/>
+        </div>
+    </div>
+                
+    <div class="menuList">
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;"/>
+            
+        </div>
+     
+        </div>
+
+
+       
+       
+    </header>
+     <div class="slideExplorenav">
+
+        <div class="sliden">
+            <div class="slidemenu">
+                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
+               
+            </div>
+
+            <div class="slidenHead">
+                <h2>FizzBizNet</h2>
+            </div>
+           
+        </div>
+
+        <a href="/suscription/page" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
+{{#if loggedUser}}
+        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{else}}
+
+        <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{/if}}
+
+        <a href="/apps/all"> <img  class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
+        <a href="./../logout" class="menuitem"><img   src="./../images/log-out.svg" alt="" srcset="" width="40px" style=""> <h4>SignOut </h4></a>
+
+        <a id="share" onclick="openShare()" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+    </div>
+   
+    <div class="body">
+                <div class="sharethis-inline-share-buttons hsharereviews" id="hsharereviewsDiv" ></div>
+
+        <div class="bodyMain">
+      
+
+        
+
+        <div class="main">
+
+            <div class="levelHead">
+              <div class="searchbox">
+
+                <input type="search" name="search" id="searchbox" placeholder="Search...">
+                <img src="./../images/magnifying-glass.svg" alt="" srcset="" width="30" class="searchBox">
+
+              </div>
+              <div class="profileMe">
+                  {{#if loggedUser}}
+           <a href="/profile/{{{loggedUser.username}}}" style="text-decoration: none;">     <h4 style="color: aqua;">{{{loggedUser.username}}} </h4> </a>
+                               <img src="./../images/{{{loggedUser.profileimage}}}" alt="" srcset="" height="40px" width="40px" style="border-radius: 100%;">
+
+                 {{else}}
+                <h4>Guest</h4>
+                                <img src="./../images/user.svg" alt="" srcset="" width="40px">
+
+                {{/if}}
+              </div>
+            </div>
+   <div class="intro"><b>Business Presentations </b></div>
+   {{#each appscat }}
+   {{#if this}}
+
+    <div class="bidcat">
+        {{#if appscat.subtitle}}
+   <div class="subHead"><h3>{{subtitle}}</h3></div> 
+
+        {{else}}
+   <div class="subHead"><h3>{{@key}}</h3></div> 
+   {{/if}}
+   
+   <div class="category" >
+               {{#each this}}
+                <div class="specificApp">
+                    <div class="details">
+                        <img src="./../images/{{{BRANDICON}}}" alt="" srcset="" class="imgIconCompany" height="40px">
+                        <div class="headingIcon"><h3>{{{BUSINESSNAME}}}</h3></div>
+                    </div>
+
+                    <div class="aLink">
+                    <a href="/app/{{{BUSINESSNAME}}}">  
+                       <img src="./../images/view.svg" alt="" srcset=""> <h3>View</h3>
+                    </a> </div>
+                    <img class="appbrandimg" src="./../images/{{{BRANDICON}}}" alt="" srcset="">
+                    <div class="decApp">
+                        <h4 class="shortDescTitle">{{{SHORTTOPIC}}}</h4>
+                        <p>{{{SHORTINTRO}}}</p>
+                    </div>
+                    <div class="likes">
+                        <div class="views">
+                            <div class="view"><img src="./../images/view.svg" alt="" srcset=""  ></div>
+                            <h5>{{{views}}} views</h5>
+                        </div>
+
+                        <div class="views">
+                           <div class="like"><img  id="like{{{ID}}}" src="./../images/like.svg" alt="" srcset="" onclick="handleLike( {{{ID}}}, '{{{BUSINESSNAME}}}', '{{{BRANDICON}}}')"></div> 
+                            <h5>{{{likes}}} likes</h5>
+                        </div>
+                    </div>
+                </div>
+{{/each}}
+         
+
+  
+            </div>
+
+         
+
+        </div>
+           {{/if}}
+    {{/each}}
+
+        </div>
+
+    </div>
+  
+
+<footer style="color: aquamarine;">
+    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
+        <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
+            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
+                        style="width: 20px;"></a></td>
+            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
+                        alt="" style="width: 20px;"></a></td>
+            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
+                        style="width: 20px;"></a></td>
+            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
+                        style="width: 20px;"></a></td>
+        </tr>
+    </table>
+</footer>
+    </div>
+
+    <script>
+
+
+var x = 0;
+function scrollNextOnServices(){
+
+
+    console.log($('button').attr('id'));
+
+    x = (x < $('.category').width()-$(document).width()) ? (x+ 200): 0;
+
+    $('.category').css('left', -x+"px");
+    $('.category').css('transition-duration', "1s");
+
+    console.log(x);
+
+
+}
+    </script>
+    </body>
+    </html>

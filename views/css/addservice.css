@@ -1,0 +1,362 @@
+
+
+
+form{
+
+    width: 100%;
+   
+}
+
+.form{
+
+width: 80%;
+height: fit-content;
+margin: auto;
+overflow: hidden;
+
+}
+.addService{
+
+  width: 80%;
+ 
+margin: auto;
+
+  height: 100vh;
+  
+margin-bottom: 4%;
+  background-color:white;
+  
+border-radius: 10px;
+  padding: 4%;
+  
+    justify-content: center;
+
+    overflow: scroll;
+
+    display: none;
+    
+}
+
+.inp{
+
+    color: aqua;
+    margin: 4%;
+}
+
+h2{
+    color:purple;
+}
+
+.inp img{
+
+    width: 100%;
+    border-radius: 8px;
+}
+
+label{
+
+    color: grey;
+    font-size: 1.2rem;
+    
+   
+}
+
+ h3{
+
+    color: rgb(175, 9, 64);
+
+    padding: 4%;
+}
+
+input{
+
+    width: 90%;
+    height: 34px ;
+
+    color: rgb(150, 70, 5);
+
+    font-size: 1rem;
+    border: 2px solid rgb(255, 255, 255);
+
+    font-style: oblique;
+
+
+    border-bottom: 2px solid rgb(152, 153, 151);
+}
+
+input:focus{
+
+    border: 2px solid rgba(71, 134, 9, 0.521);
+
+}
+
+select{
+
+    width: 90%;
+    height: 34px;
+    background-color: rgb(212, 105, 4);
+    border: 2px solid grey;
+    color: blanchedalmond;
+
+    border-radius: 7px;   
+    font-size: 1rem;
+}
+
+.next{
+
+    background-color: rgb(0, 130, 252);
+    width: 100px;
+    
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+    color: black;
+    position: relative;
+   float: right;
+    margin: 0%;
+    font-weight: bold;
+    
+}
+
+.next:hover{
+
+    box-shadow: 2px 2px 2px grey;
+
+}
+
+.btnNext{
+
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#basicPrevious {
+
+    float: left;
+    background-color: antiquewhite;
+    font-weight: bold;
+   
+}
+
+#locationPrevious {
+
+    float: left;
+    background-color: antiquewhite;
+    font-weight: bold;
+
+   color:  rgb(0, 130, 252);
+    
+
+}
+
+#servicePrevious{
+    float: left;
+    background-color: antiquewhite;
+    font-weight: bold;
+}
+
+#basicPrevious .btnNext{
+
+    color: rgb(0, 130, 252);
+}
+
+#locationPrevious .btnNext{
+
+    color: rgb(0, 130, 252);
+}
+#servicePrevious .btnNext{
+
+    color: rgb(0, 130, 252);
+}
+
+#galleryPrevious{
+
+    float: left;
+    background-color: antiquewhite;
+    font-weight: bold;
+}
+
+#reelPrevious{
+
+    float: left;
+    background-color: antiquewhite;
+    font-weight: bold;
+}
+
+#galleryPrevious .btnNext{
+
+    color: rgb(0, 130, 252);
+}
+
+#reelPrevious .btnNext{
+
+    color: rgb(0, 130, 252);
+}
+
+#submit{
+
+    background-color: lawngreen;
+
+}
+#submit input{
+
+    background-color: rgb(70, 141, 3);
+    border: 2px solid white;
+
+    border-radius: 4px;
+}
+#reset{
+
+    background-color: rgb(252, 0, 0);
+    float: left;
+
+}
+#reset input{
+
+    background-color: rgb(141, 3, 3);
+    border: 2px solid white;
+
+    border-radius: 4px;
+}
+#addS{
+
+    
+
+    background-color: rgb(4, 209, 14);
+    width: 100px;
+    
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    position: relative;
+  
+    margin-bottom: 2%;
+    font-weight: bold;
+
+}
+
+#addVideo{
+
+
+    background-color: rgb(4, 209, 14);
+    width: 100px;
+    
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    position: relative;
+  
+    margin-bottom: 2%;
+    font-weight: bold;
+
+}
+
+#addL{
+
+    background-color: rgb(4, 209, 14);
+    width: fit-content;
+    
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    position: relative;
+  
+    margin-bottom: 2%;
+    font-weight: bold;
+}
+
+#addImg{
+
+
+    background-color: rgb(4, 209, 14);
+    width: fit-content;
+    
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    position: relative;
+  
+    margin-bottom: 2%;
+    font-weight: bold;
+}
+.classSection{
+
+margin: 1%;
+border-radius: 10px;
+
+box-shadow: 3px 3px 3px grey;
+}
+
+.branchLocation{
+    margin: 2%;
+    padding: 2%;
+border-radius: 10px;
+
+box-shadow: 3px 3px 3px grey;
+}
+
+.serviceInt{
+
+    color: gray;
+    padding: 2%;
+}
+
+.rangeIntro{
+
+    color: gray;
+    padding: 2%;
+}
+
+.removeSer{
+
+    background-color: rgb(211, 6, 6);
+    width: fit-content;
+    
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    position: relative;
+ 
+    margin-bottom: 2%;
+    font-weight: bold;
+
+}
+
+@media screen and (min-width: 770px) {
+
+    .inp img{
+
+        width: 30%;
+    }
+
+    .inp{
+
+        margin: 1%;
+    }
+
+  
+
+    .imageThumbnails{
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .imgThumb{
+
+        width: 320px;
+        box-shadow: 2px 2px 2px grey;
+        border-radius: 10px;
+        
+    }
+
+}
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email</title>
+    <link rel="stylesheet" href="./../css/style.css">
+   
+    <script src="./../js/jquery.js"></script>
+    <script src="./../js/main.js"></script>
+
+    <link rel="stylesheet" href="./../css/addservice.css">
+    <script src="./../js/addservice.js"></script>
+</head>
+<body>
+<header class="headerContainer">
+    <div class="container1">
+        <div class="icon">
+
+        </div>
+        <div class="appbar">
+
+            <div class="appname">
+                <h1 class="bizTitle"><em>{{{row.BUSINESSNAME}}}</em></h1>
+            </div>
+        </div>
+
+
+        <div class="menu">
+
+            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
+
+        </div>
+        <div class="profileIcon" style="order: 3; padding: 2%;">
+            {{#if loggedUser}}
+            <a href="/profile/{{{loggedUser.username}}}"> <img src="./../images/{{{loggedUser.profileimage}}}"
+                    class="loggeduserIcon" style="width: 40px;" /></a>
+
+            {{else}}
+            <a href="/login"> <img src="./../images/user.svg" class="menuIcon" style="width: 40px;" /></a>
+
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="menuList">
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
+
+        </div>
+
+        <a href="/" class="menuitem"> <img src="./../images/home.svg" alt="" srcset="" width="30px" style="">
+            <h4>Home</h4>
+        </a>
+
+        <a class="menuitem" id="showToolbar" href="/apps/all"> <img src="./../images/customer.svg" alt="" srcset=""
+                width="30px" style="">
+            <h4> Product&Services</h4>
+        </a>
+        <a href="/#howItWork" class="menuitem"> <img src="./../images/team.svg" alt="" srcset="" width="30px" style="">
+            <h4>About</h4>
+        </a>
+        {{#if loggedUser}}
+        <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt="" srcset=""
+                width="30px" style="">
+            <h4> My Profile</h4>
+        </a>
+        {{else}}
+        <a href="/Register" class="menuitem"> <img src="./../images/add (1).svg" alt="" srcset="" width="30px" style="">
+            <h4> Register</h4>
+        </a>
+        <a href="/login" class="menuitem"> <img src="./../images/log-in.svg" alt="" srcset="" width="30px" style="">
+            <h4> SignIn </h4>
+        </a>
+        {{/if}}
+        <a href="/logout" class="menuitem"><img src="./../images/log-out.svg" alt="" srcset="" width="30px" style="">
+            <h4>SignOut </h4>
+        </a>
+
+
+    </div>
+
+
+
+
+</header>
+
+      
+    <menu type="toolbar" class="toolbarList">
+
+       
+        <div class="toolbar-sub-1" id="searchbar">
+            <input type="search" name="searchForService" id="">
+        </div>
+            <div class="toolbar-sub-1" id="wholesalemenu">WholeSales/Retails <div class="sub-wholesale-menu">
+                <a href="/apps/101" >Online Stores</a>
+                <a href="/apps/102" >Shopping Centers</a>
+            </div></div>
+            <div class="toolbar-sub-1" id="lifestylemenu">Life Style
+                <div class="sub-lifestyle-menu">
+                    <a href="/apps/201" >Photography</a>
+                   <a href="/apps/202"  >Hotel/Lounge</a>
+                   <a href="/apps/203" >Bars/Liquor Stores</a>
+                    <div id="beautymenu" >Beauty
+                        <div class="sub-beauty-menu">
+                            <a href="/apps/301" >MakeUp Artist</a>
+                           <a href="/apps/302" >Saloon/Kinyozi</a>
+                            <a href="/apps/303" >Accessories</a>
+                           
+                                <a href="/apps/304">Clothlines/Shoes</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="toolbar-sub-1" id="technologymenu">Technology
+                <div class="sub-technology-menu">
+                  <a href="/apps/401">Tech Stores</a>
+                   <a href="/apps/402">Web Development</a>
+                   <a href="/apps/403">Logo Design</a>
+                  <a href="/apps/404">Graphic Design</a>
+                  <a href="/apps/405">App Development</a>
+                   <a href="/apps/406">Game Development</a>
+                    <a href="/apps/407">Video Editing</a>
+                </div>
+            </div>
+            <div class="toolbar-sub-1" id="educationmenu">Education
+                <div class="sub-education-menu">
+                    <a href="/apps/501">Schools</a>
+                    <a href="/apps/502">Tuitors</a>
+                </div>
+            </div>
+            <div class="toolbar-sub-1" id="consultantmenu">Consult/advisor
+                <div class="sub-consultant-menu">
+                    <a href="/apps/601">Health</a>
+                    <a href="/apps/602">Imformation Technology(IT)</a>
+                    <a href="/apps/603">Law</a>
+                    <a href="/apps/604">Engineering</a>
+                   <a href="/apps/605">Architect&Design</a>
+                    <a href="/apps/606">Others</a>
+                </div>
+           
+            
+        </div>
+    </menu>
+    
+
+
+    <div class="body">
+
+        <form action="/verifyemail" method="post">
+
+<div class="form">
+
+   
+
+
+    <div class="addService" id="socialMedia"  style="height: fit-content; display: block;">
+
+
+        <div class="basicInfo">
+            <caption> <h2>Verification</h2></caption>
+            <div class="serviceInt">
+
+                Verify Your Email code here...
+                <p style="color: red;">The details should be accurate and correct.</p>  
+                   </div>
+       <section>
+
+
+        <div class="inp">
+            <label for="companyName">Username</label>
+            <br>
+            <input type="text" name="username" id="" class="inputText" required>
+        </div>
+
+        <div class="inp">
+            <label for="companyName">Verification Code</label>
+            <br>
+            <input type="text" name="code" id="" class="inputText" required>
+        </div>
+    
+      <div class="regQuiz">
+    <p style="color: grey;">If you don't have an account with us please <a href="/Register"> click here </a>to register</p>
+</div>
+           </section>
+         
+    
+        <div class="next" id="submit">
+            <input type="submit" value="Submit" class="btnNext">
+        </div>
+        </div>
+    </div>
+
+</div>
+        </form>
+    <footer style="color: aquamarine;">
+        <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
+            <tr>
+                <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
+                <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
+                            style="width: 20px;"></a></td>
+                <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
+                            alt="" style="width: 20px;"></a></td>
+                <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
+                            style="width: 20px;"></a></td>
+                <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
+                            style="width: 20px;"></a></td>
+            </tr>
+        </table>
+    </footer>
+    </div>
+
+    
+
+</body>
+</html>

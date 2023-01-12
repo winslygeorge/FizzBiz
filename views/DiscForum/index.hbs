@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Hustle Competition</title>
+
+            <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
+
+    <link rel="stylesheet" href="./../css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    
+    <script src="./../js/main.js"></script>
+   
+
+    <script src="./../js/categoryApps.js"></script>
+
+    <script src="./../js/comp.js"></script>
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
+    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../comp/comp.css">
+    <style>
+        body{
+            background-color: white;
+        }
+        .body{
+
+            background-color: white;
+            padding: 0%;
+            margin: 0px;
+            color: rgb(70, 70, 73);
+        }
+        #contDiasc{
+
+            overflow: scroll;
+            height: 90vh;
+            border: 2px solid gray;
+        }
+
+
+  #showMainDiscs {
+
+    display: block;
+   
+  }
+
+  #hideSubDiscs{
+      display: none;
+  }
+
+  #hideMainDiscs{
+
+    display: none;
+  }
+
+  #showSubDiscs {
+
+    display: block;
+   
+  }
+    </style>
+</head>
+<body>
+    
+    <!-- 0733732838 -->
+    <header class="headerContainer">
+        <div class="container1">
+             <div class="icon" >
+
+                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
+            </div>
+        <div class="appbar">
+           
+            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+        </div>
+
+          
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;"/>
+            
+        </div>
+        <div class="profileIcon" style="order: 3; padding: 2%;">
+            <img src="./../images/user.svg" class="menuIcon" style="width: 40px;"/>
+        </div>
+    </div>
+                
+    <div class="menuList">
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;"/>
+            
+        </div>
+     
+        </div>
+
+
+       
+       
+    </header>
+     <div class="slideExplorenav">
+
+        <div class="sliden">
+            <div class="slidemenu">
+                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
+               
+            </div>
+
+            <div class="slidenHead">
+                <h2>FizzBizNet</h2>
+            </div>
+           
+        </div>
+
+        <a href="/AddService" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
+{{#if loggedUser}}
+        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{else}}
+
+        <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{/if}}
+
+        <a href="/apps/all"> <img  class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
+        <a href="./../logout" class="menuitem"><img   src="./../images/log-out.svg" alt="" srcset="" width="40px" style=""> <h4>SignOut </h4></a>
+
+        <a id="share" onclick="openShare()" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+    </div>
+    <div class="body">
+      
+        <div class="Comp" id="tabView">
+           
+            <a  class="tItem" onclick="showLeader()">Leaderboard</a>
+                <a href="#reqComp" class="tItem" onclick="hideLeader()">Requirements</a>
+                <a href="#rulesComp" class="tItem" onclick="hideLeader()">Rules</a>
+                <a href="#schedComp" class="tItem" onclick="hideLeader()">Schedule</a>
+                <a href="#prizesComp" class="tItem" onclick="hideLeader()">Prizes</a>
+                
+            
+        </div>
+
+        <div class="searchDiv">
+
+        </div>
+        {{#if isLoggedin}}
+        <div class="contDisc" id="mainform">
+            <form onsubmit="event.preventDefault(); handleDiscSubmission();" method="post">
+                <label for="">Topic : </label>
+                <input type="text" name="subject" id = "subject" placeholder="Topic..."> <br>
+                <label for="">Comment: </label>
+                <textarea name="content" id="content" cols="30" rows="10"></textarea> <br>
+                <input type="hidden" name="username" value="{{{user.username}}}" id="username">
+                <input type="hidden" name="userimage" value="{{{user.userimage}}}" id = "userimage">
+                <input type="hidden" id="competition_name" value="young hustle competition">
+                <input type="submit" value="submit">
+            </form>
+        </div>
+
+        {{/if}}
+        <div class="contDisc" style="height: 100vh;" id="showMainDiscs">
+
+          
+       
+        <div class="discussionContainer" id ="contDiasc">
+            {{#if discussions}}
+
+            {{#each discussions}}
+            <div class="discBox" style="display: flex;">
+                <div class="discContent">
+            <img src="./../images/{{{this.USERIMAGE}}}" alt="" srcset="" style="width: 60px; height: 60px; border-radius: 10%;">
+        </div>
+                <div class="discContent" id="dcontp">
+                    <h5 style="color: purple;">{{{this.USERNAME}}}</h5>
+
+                    <h6 style="margin-top: 2px;">{{{this.SUBJECT}}}</h6>
+
+                    <p class="discPara" style="white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;" >
+                       {{{this.CONTENT}}}
+                    </p>
+                    <h6> <a href ="#showSubDiscs" onclick="event.preventDefault(); handleViewThread({{{this.ID}}}, `{{{this.USERNAME}}}`, `{{{this.USERIMAGE}}}`, `{{{this.CONTENT}}}`, `{{{this.age}}}`, {{{this.replies}}}, `{{{this.SUBJECT}}}`)"> view more... </a></h6>
+                    <span style="font-size: smaller;"><span class="time">{{{this.age}}}</span>  ago</span> <span style="font-size: smaller; text-align: right; margin-left: 40%;"><span >{{{this.replies}}} </span> replies</span>
+                </div>
+            </div>
+
+            {{/each}}
+            {{else}}
+            <div class="discBox">
+                <h5>There are no discussions on this competition...</h5>
+            </div>
+            {{/if}}
+        </div>
+
+
+        </div>
+
+       <div class="contDisc" style="height: 100vh; margin:5px" id="hideSubDiscs">
+
+            <div class="discussionContainer" id ="contDiasc" style="overflow: hidden;">
+              
+                <div class="discBox" id="fst" style="display: flex; box-shadow: 1px 1px 1px 1px silver; border: 2px solid whitesmoke; border-radius: 10px;">
+                 
+                </div>
+                <h5 style="padding: 2%;">Comments...</h5>
+                   {{#if isLoggedin}}
+        <div  id="commentForm" >
+           
+        </div>
+
+        {{/if}}
+                <div class="subComments" id ="sb" style="height:55vh; overflow:scroll;">
+       
+            
+            </div>
+    
+    
+            </div>
+    </div>
+    </body>
+    </html>

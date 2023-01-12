@@ -1,0 +1,34 @@
+
+.ordertable{
+
+    border-collapse: collapse;
+    
+}
+
+.tablerow{
+
+    background-color: white;
+    color: rgb(78, 76, 76);
+}
+
+thead{
+
+    background-color: grey;
+    color: white;
+
+    font-style: oblique;
+
+    font: bolder;
+
+    font-size: small;
+
+    font-weight: bolder;
+}
+
+
+
+.tablecell{
+
+margin: 0%;
+padding: 2%;
+}

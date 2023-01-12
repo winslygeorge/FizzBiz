@@ -1,0 +1,63 @@
+.cartOrders{
+
+    width: 100%;
+   
+
+}
+
+.orderCard{
+
+    width: 90%; 
+  
+    margin: 2%;
+    padding: 2%;
+    background-color: whitesmoke;
+
+}
+
+.detailsclass{
+
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+  
+}
+
+.orderImg {
+
+    width: 20%;
+    height: 100%;
+}
+.orderImg img{
+
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.priceBtn{
+
+    display: flex;
+    justify-content: space-between;
+    margin: 4%;
+}
+
+.orderDetails{
+
+   margin-left: 10%;
+}
+
+
+@media screen and (min-width: 770px) {
+
+.cartOrders{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.orderCard{
+
+    width: 40%;
+}
+}

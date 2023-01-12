@@ -1,0 +1,702 @@
+*{
+margin: 0px;
+padding: 0px;
+text-decoration: none;
+font-size: small;
+
+    }
+
+    body{
+
+        background-color: #333232;
+    }
+.body{
+ 
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #333232;
+    overflow:hidden;    
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    z-index: 1;
+}
+
+
+
+body{
+  width: 100%;
+
+    height: 100%;
+
+}
+
+.getStartedLink{
+
+    border: 2px outset white;
+
+    color: whitesmoke;
+
+    border-radius: 10px;
+
+    padding: 10px;
+
+    padding-top: px;
+
+    text-decoration: none;
+
+    background-color: brown;
+
+    text-align: center;
+
+
+    width: 30%;
+    height: 4%;
+
+    position: absolute;
+
+    top: 87%;
+
+    left: 34%;
+
+    z-index: 0;
+
+}
+
+.itwork{
+
+    margin: 4px;
+
+   color: grey;
+
+
+
+    padding: 10px;
+}
+
+.itwork h2{
+
+    text-align: center;
+    color: whitesmoke;
+    padding: 10px;
+    border-radius: 4%;
+    background-color: #492904;
+}
+
+
+
+.introImage{
+    width: 100%;
+    height: 87vh;
+}
+
+.introText{
+
+    position: relative;
+    top: 40%;
+    left: 0%;
+text-align: center;
+    color: rgb(199, 6, 96);
+    font-size: 1.5rem;
+    opacity: 1;
+}
+.userguide{
+
+    z-index: 0;
+}
+
+.slideProgressdot{
+position: relative;
+
+top: 60%;
+left: 44%;
+    display: flex;
+}
+.currentSlide{
+
+    background-color: white;
+    width: 20px;
+    height: fit-content;
+align-content: center;
+}
+.otherSlides{
+
+    width: 20px;
+    height: fit-content;
+align-content: center;
+}
+.userguide h3{
+
+   
+    text-shadow: #dfd7d7;
+
+font-weight: bold;
+
+    text-align: start;
+    padding-left: 10%;
+    padding: 2%;
+    position: relative;
+    font-size: 1.7rem;
+
+    animation-name: slideRight;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  
+}
+
+
+#showToolbar:hover  .toolbarList{
+
+    display: block;
+}
+
+.bussImg h3{
+    color: rgb(54, 24, 24);
+    position: relative;
+    top: 40%;
+    display: none;
+}
+
+
+.custImg h3{
+    color: rgb(236, 138, 138);
+    position: relative;
+    top: 40%;
+    display: none;
+}
+
+.custImg:hover, .bussImg:hover{
+
+    height: 400px;
+    transition-duration: 1s;
+}
+
+
+.custImg:hover h3, .bussImg:hover h3{
+
+   display: block;
+}
+.userguide p{
+
+    text-align: start;
+
+    background-color: #666262;
+    color: rgb(243, 212, 212);
+
+    padding: 2%;
+
+    position: relative;
+    animation-name: slideLeft;
+    animation-duration: 3s;
+    transition: ease-in;
+    animation-fill-mode: forwards;
+    }
+
+.imgCas{
+width: inherit;
+height: inherit;
+background-position: center;
+
+}
+
+.corosalNext{
+
+    opacity: 0.7;
+    width: 10%;
+    height: 8%;
+
+
+}
+
+#imgNext{
+
+  position: relative;
+  color: gray;
+background-color: white;
+font-size: 2rem;
+opacity: 0.7;
+border-radius: 7px;
+width: 80px;
+height: 40px;
+float: right;
+    
+}
+
+#imgBack{
+
+   
+  position: relative;
+    background-color: white;
+    color: grey;
+    font-size: 2rem;
+    opacity: 0.7;
+    border-radius: 7px;
+    width: 80px;
+    height: 40px;
+        left: 0%;
+    
+}
+#handShake{
+
+    background-size:cover;
+background-repeat: no-repeat;
+   background-image: url("./../images/Betting-Business-Scientific-Games-2018-Notes-Redemption-696x465.jpg");
+
+}
+
+#techLight{
+
+    background-size:cover;
+background-repeat: no-repeat;
+   background-image: url("./../images/DeepinScreenshot_dde-desktop_20201127221240.png");
+
+}
+
+#mTechImg{
+
+    background-size:cover;
+background-repeat: no-repeat;
+   background-image: url("./../images/charles-forerunner-3fPXt37X6UQ-unsplash.jpg");
+
+}
+
+#iconImgBack{
+
+    background-size:cover;
+background-repeat: no-repeat;
+   background-image: url("./../images/sean-pollock-PhYq704ffdA-unsplash.jpg");
+
+}
+
+.custImg{
+    width: 100%;
+    text-align: center;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./../images/hunters-race-MYbhN8KaaEc-unsplash\ \(1\).jpg');
+}
+
+.bussImg{
+
+    width: 100%;
+    height: 200px;  width: 100%;
+    height: 200px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./../images/businessgazzete.png.jpg');
+}
+.menuList, .revMenuList{
+
+    position: absolute;
+    height: 100vh;
+    width: fit-content;
+
+    background-color: #05243f;
+    opacity: 1;
+
+    z-index: 1;
+
+   
+    border: 2px outset #0E4A7E ;
+
+    display: none;
+    left:  -80%;
+
+    overflow-y: auto;
+
+    
+}
+
+.menuList a, .revMenuList a{
+
+    text-decoration: none;
+    border-bottom: 2px solid #05323d;
+    padding: 20px;
+    background-color: #052038;
+    margin: auto;
+    color: aqua;
+    display: flex;
+    flex-direction: row;
+    text-align: start;
+    border-radius: 10px;
+    
+}
+
+.menuList a:hover, .revMenuList a:hover{
+
+    background-color: #0E4A7E;
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+
+.menuList h4, .revMenuList h4{
+
+    padding: 4%;
+   
+}
+
+a{
+
+    text-decoration: none;
+}
+
+
+
+.menuitem{
+    display: block;
+}
+
+
+
+
+.toolbarList{
+
+    position: sticky;
+    height: fit-content;
+    width: 100%;
+
+    top: 0%;
+    background-color: #05243f;
+    opacity: 1;
+
+    z-index: 1;
+
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px outset #0E4A7E ;
+    left: 40.3%;
+
+    display: flex;
+
+    flex-direction: row;
+
+  scroll-behavior: smooth;
+   
+}
+
+.sub-technology-menu, .sub-consultant-menu, .sub-beauty-menu, .sub-wholesale-menu, .sub-education-menu, .sub-lifestyle-menu{
+
+    display: none;
+  
+}
+
+
+.toolbar-sub-1{
+
+
+    text-decoration: none;
+    border-bottom: 2px solid #05323d;
+    padding: 20px;
+    background-color: #052038;
+    margin: auto;
+    color: aqua;
+    text-align: start;
+    height: auto;
+    
+    align-content: space-between;
+}
+
+
+.sub-beauty-menu a{
+
+  
+}
+
+
+.sub-technology-menu a, .sub-consultant-menu a, .sub-beauty-menu a, .sub-wholesale-menu a, .sub-education-menu a, .sub-lifestyle-menu a{
+
+    
+    text-decoration: none;
+    border-bottom: 2px solid #05323d;
+    padding: 20px;
+    background-color: #052038;
+    margin: auto;
+    color: aqua;
+    text-align: start;
+    display: block;
+  
+}
+
+.appbar{
+
+    width: 30%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+img{
+    display: inline;
+}
+
+header{
+
+    position: sticky;
+    top: 0px;
+z-index: 2;
+font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 8%;
+    color: whitesmoke;
+    background-color: #05243f;
+align-content: center;
+   display: flex;
+   flex-direction: column;
+}
+
+
+
+.container1{
+    
+    display: flex;
+    justify-content: space-between;
+}
+.menu{
+
+    padding: 8px;
+    order: 1;
+    flex:1;
+}
+
+.appbar{
+    order: 2;
+    flex:2;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+  
+
+    text-align: center;
+}
+
+.appname {
+
+    padding: 1%;
+
+   
+ 
+   align-content: center;
+
+   position: relative;
+ 
+    order: 1;
+}
+
+
+
+.profileIcon{
+
+padding: 1%;
+margin-top: 2px;
+margin-right: 0px;
+
+}
+
+
+@keyframes slideLeft{
+
+    from {left: -180%;}
+    to {left: 0%;}
+}
+
+@keyframes slideRight{
+
+    from {right: -100%;}
+    to {right: 0%;}
+}
+
+footer{
+
+    background-color: rgb(19, 18, 18);
+
+    width: inherit;
+    height: fit-content;
+    padding: 4%;
+}
+
+@media(max-width: 480px){
+
+    .toolbarList,.sub-technology-menu, .sub-consultant-menu, .sub-beauty-menu, .sub-wholesale-menu, .sub-education-menu, .sub-lifestyle-menu{
+
+    
+        display: none;
+      
+    }
+
+    .toolbarList{
+
+        position: fixed;
+        height: fit-content;
+        width: fit-content;
+    
+        top: 0%;
+        background-color: #05243f;
+        opacity: 1;
+    
+        z-index: 1;
+    
+        border: 2px outset #0E4A7E ;
+        left: 40.3%;
+    
+      scroll-behavior: smooth;
+       
+    }
+
+ 
+   
+}
+
+
+
+
+
+@media screen and (max-width: 991px) {
+    /* start of large tablet styles */
+ 
+
+    }
+    
+
+  .icon{
+    
+    padding-left: 20%;
+    margin-top: 1%;
+    padding-right: 10%;
+    order:2;
+        display: flex;
+    }
+
+    @media screen and (min-width: 770px) {
+
+    }
+
+    @media screen and (max-width: 770px) {
+    /* start of medium tablet styles */
+
+    .toolbarList{
+
+        position: fixed;
+        height: fit-content;
+        width: fit-content;
+    
+        top: 0%;
+        background-color: #05243f;
+        opacity: 1;
+    
+        z-index: 1;
+    
+        border: 2px outset #0E4A7E ;
+        left: 40.3%;
+
+        display: none;
+      scroll-behavior: smooth;
+       
+    }
+
+    .icon{
+        display: none;
+    }
+    
+  
+    }
+
+   .starErr{
+
+    color: red;
+   }
+
+   .sharethis-inline-share-buttons{
+
+    background-color: black;
+    width: 90%;
+    opacity: 0.4;
+    margin: auto;
+    justify-content: center;
+    padding: 2%;
+    display: none;
+   }
+
+   .loggeduserIcon{
+
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+   }
+
+   #commentForm{
+
+    width: 80%;
+    height: fit-content;
+    margin:auto;
+    padding: 0%;
+    border: 2px solid black;
+   }
+
+   .menuIcon{
+
+    width: 30px;
+   }
+
+   #serviceSection{
+
+    background-color: whitesmoke;
+    border-radius: 20px;
+    color: grey;
+   }
+   #shead{
+
+    color: grey;
+    padding: 1%;
+   }
+
+   #tabView{
+
+    display: flex;
+    border-bottom: 2px solid whitesmoke ;
+   
+}
+.tItem{
+
+    flex-direction: column;
+    margin: auto;
+    font-weight: bolder;
+    text-decoration: none;
+    color: wheat;
+    padding: 1%;
+   
+}
+
+.tItem:hover{
+
+    background-color: rgb(47, 174, 224);
+    color: rgb(233, 223, 223);
+    border-radius: 10px;
+}
+
+#hsharereviewsDiv{
+
+    display: none;
+
+}
+#sharereviewsDiv{
+
+    display: block;
+}
+
+#hmain, #hgallery, #hreel, #hcontact{
+
+    display: none;
+}
+
+#main, #gallery, #reel, #contact{
+
+    display:relative;
+    float: left;
+}

@@ -1,0 +1,332 @@
+.body{
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.headComp{
+
+}
+
+.requirementsComp{
+
+
+}
+
+.descriptionComp{
+
+}
+
+.rules{
+
+
+}
+
+.schedule{
+
+
+}
+
+.firstSelection{
+
+
+}
+
+.entrance{
+
+
+}
+.secondSelection{
+
+
+}
+
+.lastRound{
+
+}
+.winPrices{
+
+
+}
+
+.Comp{
+    width: 90%;
+    height: fit-content;
+    padding: 2%;
+    margin: auto;
+}
+
+h3{
+
+    color:rgb(31, 4, 56);
+    margin: 10px;
+    padding: 2%;
+background-color: rgb(215, 238, 247);
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+p{
+
+    padding: 2%;
+}
+
+ul{
+
+    list-style-type: none;
+    padding: 2%;
+    
+}
+
+li{
+
+    margin-bottom: 2%;
+    
+}
+
+#introCompone{
+
+height: fit-content;
+    
+}
+.Introimage{
+    background-image: url('./boutique.jpg');
+    height: 200px;
+ 
+
+  /* Full height */
+  
+  
+ 
+
+  filter: blur(1.5px);
+  -webkit-filter: blur(1.5px);
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.dets{
+
+    display: flex;
+  width: 90%;
+  
+
+}
+
+.detsItem{
+
+    flex-direction: column;
+    margin: auto;
+    background-color: rgb(44, 3, 3);
+    opacity: 0.85;
+    padding: 4px;
+    border-radius: 4px;
+
+}
+.contIntro{
+
+    position: absolute;
+    top: 12%;
+  
+    color: rgb(233, 223, 230);
+    
+    font-size:large;
+}
+
+#joinBtn{
+    background-color: rgb(2, 151, 2);
+    color: white;
+  
+    width: 60px;    
+    text-align: center;
+    font-weight: bolder;
+}
+
+button#joinBtn2{
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: green;
+    font-weight: bolder;
+    color: whitesmoke;
+}
+
+#tabView{
+
+    display: flex;
+   
+}
+.tItem{
+
+    flex-direction: column;
+    margin: auto;
+    font-weight: bolder;
+    text-decoration: none;
+    color: brown;
+    padding: 2%;
+    border-bottom: 2px solid grey ;
+}
+
+.tItem:hover{
+
+    background-color: rgb(47, 174, 224);
+    color: rgb(233, 223, 223);
+    border-radius: 10px;
+}
+.joinDiv{
+
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    background-color: grey;
+    top: 10%;
+    left: 20%;
+    margin: auto;
+    z-index: 2;
+    justify-content: center;
+    display: none;
+    opacity: 0.9;
+}
+.joinDiv2{
+    display: block;
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    background-color: grey;
+    top: 10%;
+    left: 20%;
+    margin: auto;
+    z-index: 2;
+    justify-content: center;
+    opacity: 0.9;
+}
+#mainform{
+
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    margin-top: 70px;
+}
+
+#subform{
+
+}
+#joinBtn3{
+
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: green;
+    font-weight: bolder;
+    color: whitesmoke;
+}
+
+.leaderDiv{
+
+    padding: 2%;
+}
+
+
+table{
+
+    text-align: left;
+    background-color: white;
+     width: 90%;
+     margin: auto;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid grey;
+    
+  }
+  tr{
+  
+  }
+
+  thead{
+
+    color: purple;
+  }
+
+  #ldiv{
+
+    display: none;
+  }
+
+  #sldiv, #dbody{
+
+    display: block;
+  }
+  .discussionContainer{
+      width: 80%;
+      margin: auto;
+    box-shadow: 0px 1px 0px 0px grey;
+  }
+  .discBox{
+      display: flex;
+      padding: 2%;
+      box-sizing: border-box;
+  }
+  #dcontp{
+      width: 80%;
+    
+  }
+  #hdbody{
+
+    display: none;
+  }
+
+  .discContent{
+    
+    padding: 2%;
+  }
+  .subdiscContent{
+   font-size: x-small;
+   padding: 0px;
+   margin: 0px;
+  }
+  .discPara{
+
+    font-size: small;
+  }
+  .susDiv{
+
+    width: 300px;
+    height: 70%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2%;
+    
+    
+  }
+
+  .susButton{
+    width: 100px;
+    padding: 4%;
+    border-radius: 40%;
+    position: relative;
+    top:30%;
+    background-color: green;
+    color: white;
+    font-weight: bolder;
+  }
+
+  #hidemainform{
+
+    display: none;
+  }
+
+  #sb{
+
+
+  }
+

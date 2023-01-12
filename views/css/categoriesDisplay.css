@@ -1,0 +1,530 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.body{
+
+    display: flex;
+    flex-direction: column;
+
+}
+.bodyMain{
+
+    display: flex;
+    flex-direction: row;
+    
+}
+.category{
+
+    position: relative;
+
+    width: fit-content;
+    left: 0%;
+    
+display: flex;
+
+overflow: hidden;
+}
+
+
+
+.main{
+
+width: 100%;
+
+margin-left: 1%;
+
+display: flex;
+flex-direction: column;
+    
+}
+
+
+
+.specificApp{
+
+
+    width: 240px;
+   
+ 
+    margin: 0.4%;
+
+    background-color: #ffffff;
+
+    overflow: hidden;
+
+
+    border-radius: 4%;
+    
+
+}
+
+.levelHead{
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.profileMe{
+
+    flex: 1;
+    padding: 0%;
+    color: aqua;
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profileMe h4{
+
+    padding: 3%;
+}
+
+.searchbox{
+
+    padding: 2%;
+
+    flex: 7;
+}
+
+.intro{
+
+    position: relative;
+    padding: 2%;
+    color: whitesmoke;
+    left: -70%;
+    font-size: 2rem;
+}
+
+
+
+#searchbox{
+
+    width: 70%;
+    height: 40px;
+    background-color: rgb(155, 153, 153);
+    padding: 2%;
+    border-radius: 4px;
+    color: white;
+    font-size: large;
+    margin: 0px;
+
+    border: 2px solid rgb(189, 230, 152);
+
+    overflow: hidden;
+  
+}
+
+#searchbox:focus{
+
+
+    border: 2px solid rgb(242, 247, 239);
+
+}
+
+.searchBox{
+
+    margin: 0px;
+
+    margin-top: 0px;
+
+    position: absolute;
+    
+
+border-radius: 4px;
+    width: 40px;
+
+    height: 40px;
+
+    background-color: gray;
+}
+
+
+.profileMe img{
+
+    width: 40px;
+
+    border: 2px solid white;
+    background-color: #ffffff;
+    border-radius: 80px;
+
+  display: none;
+
+}
+.specificApp:hover {
+
+    position: relative;
+
+    box-shadow: 3px 4px 4px grey;
+    width: 300px;
+   
+    z-index: 3;
+    transition: 0.7s;
+}
+
+
+
+
+.specificApp img{
+
+    width: 100%;
+
+   
+
+    border-radius: 80%  0%  0% 80% ;
+}
+
+
+
+.details{
+
+ 
+
+    background-color: white;
+
+    padding: 4%;
+  
+
+    opacity: 0.8;
+
+    position: relative;
+
+
+    border-radius: 4%;
+    
+    display: flex;
+
+    overflow: hidden;
+
+    flex-direction: row;
+}
+
+.headingIcon{
+
+ text-align:start;
+
+
+
+ color: purple;
+   
+}
+
+.details img{
+
+border-radius: 100%;
+
+width: 55px;
+} 
+
+.likes{
+
+    display: flex;
+    flex-direction: row;
+
+    height: 30px;
+
+    padding: 4%;
+
+    justify-content: space-around;
+
+    border-radius: 4px;
+
+    background-color: aliceblue;
+    opacity: 0.7;
+}
+
+.views{
+
+
+    display: flex;
+    flex-direction: row;
+}
+.views img{
+
+    width: 20px;
+  
+}
+
+.decApp{
+
+    margin: 8px;
+   
+padding: 2%;
+border: 2px solid grey;
+border-radius: 2%;
+background-color: rgba(36, 35, 35, 0.904);
+display: none;
+    border-left: 4px solid  grey;
+}
+
+.specificApp:hover .decApp{
+
+    display: block;
+   
+
+}
+
+.decApp p {
+
+    
+    color: rgb(240, 149, 12);
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.decApp h4{
+
+    color: rgb(248, 247, 248);
+    padding: 2%;
+    font-size: large;
+}
+
+.like{
+
+    margin-right: 4px;
+}
+
+.view{
+
+    margin-right: 4px;
+}
+.scrollNext{
+
+  position: absolute;
+    z-index: 1;
+
+    left: 90%;
+    top: 200px;
+    width: 40px;
+
+    height: 80px;
+background-color: rgba(255, 130, 47, 0.247);
+
+}
+
+.subHead{
+
+    position: relative;
+    color: orange;
+
+    right: -70%;
+
+    padding: 2%;
+}
+
+.bidcat{
+
+ width: 100%;
+
+ display: block;
+
+    overflow: scroll;
+
+}
+
+.aLink{
+
+    background-color: rgba(0, 0, 0, 0.877);
+    width:fit-content;
+    padding: 3%;
+    border-radius: 4px;
+    box-shadow: 3px 3px 3px grey;
+    opacity: 0.9;
+    text-align: center;
+    margin: 1%;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.aLink{
+
+    display: none;
+}
+
+.specificApp:hover .aLink{
+
+    display: block;
+   
+}
+
+.aLink img{
+
+    width: 20px;
+  
+    
+}
+
+.aLink a{
+display: flex;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    color: aqua;
+    text-decoration: none;
+}
+
+.aLink h3{
+
+  padding-top: 4px;
+  padding-right: 4px;
+  font-size: medium;
+    color: rgb(153, 51, 4);
+}
+
+/*
+Side nav bar
+*/
+
+.slideExplorenav{
+
+
+    position: fixed;
+    height: 100%;
+
+    top: 0%;
+    width: 70%;
+
+    background-color: #05243f;
+    opacity: 1;
+
+    z-index: 2;
+
+    border: 2px outset #0E4A7E ;
+
+    display: flex;
+    flex-direction: column;
+    left:  -70%;
+
+}
+
+.sliden{
+
+    display: flex;
+    flex-direction: row;
+align-items: center;
+color: whitesmoke;
+justify-content: space-between;
+border-bottom: 2px solid #05323d;
+
+background-color: #05243f ;
+
+padding: 2%;
+text-align: center;
+}
+
+.slideExplorenav a{
+
+   width: 98%;
+    text-decoration: none;
+    border-bottom: 2px solid #05323d;
+    height: 49px;
+
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+  
+    background-color: #052038;
+    margin: 4px;
+    color: aqua;
+    text-align: start;
+}
+
+.slideExplorenav h4{
+
+    padding: 4%;
+   
+}
+
+
+
+.iconsI{
+
+   
+    padding: 1%; 
+    background-color: whitesmoke;
+    border-radius: 10%;
+    width: 40px;
+  
+  
+}
+
+#addService{
+
+    width: 90%;
+    color: white;
+    padding: 2%;
+    text-align: center;
+
+    border-radius:20px;
+
+    
+
+    background-color: grey;
+}
+
+#addService h4{
+
+    padding-top: 7%;
+}
+
+.slideExplorenav a:hover{
+
+    background-color: #0E4A7E;
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+
+#addService:hover{
+
+    background-color: wheat;
+    font-size: medium;
+    color: #052038;
+    box-shadow: 1px 1px 3px gray;
+}
+
+@media screen and (min-width: 770px) {
+
+body{
+  
+    display: flex;
+    flex-direction: row;
+}
+    header{
+
+        display: none;
+    }
+
+    .slideExplorenav{
+
+       position: sticky;
+        height: 100vh;
+    padding: 0.2%;
+        display: block;
+        width: fit-content;
+        left: 0%;
+        
+    }
+
+.slidemenu{
+
+    display: none;
+}    
+
+.slidenHead{
+
+    padding: 2%;
+    width: 240px;
+}
+
+.profileMe img{
+
+    display: inline;
+}
+}
+
+.appbrandimg{
+
+    height: 180px;
+}

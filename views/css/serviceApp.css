@@ -1,0 +1,555 @@
+
+
+.column1{
+
+    
+    margin-bottom: 2%;
+   
+}
+
+#clientHeading{
+
+    background-color: #492904;
+   text-shadow: 1px 1px 2px whitesmoke;
+   text-align: start;
+    padding: 10px;
+}
+.sub-column-1{
+
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-column-2{
+
+    padding: 4%;
+    border-bottom: 2px inset grey;
+  
+}
+
+
+#location, #range{
+
+    color: aliceblue;
+    padding: 20px;
+
+}
+
+#team{
+
+    color: aliceblue;
+
+ 
+}
+
+li{
+ 
+    list-style-type: none;
+    color: antiquewhite;
+}
+
+
+.sub-column-2 img{
+    width: 100%;
+    position: relative;
+   
+    left: 0%;
+}
+
+
+#reviewsPage{
+
+    width: 100%;
+
+    height: 400px;
+
+    overflow: auto;
+    scroll-behavior: smooth;
+    background-color: white;
+
+    border-radius: 2%;
+}
+#review{
+
+    width: 100%;
+    
+}
+.clientDetail{
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.review img{
+
+    width: 60px;
+    border-radius: 100px;
+    
+}
+
+.review p{
+
+    color: rgb(62, 80, 97);
+}
+
+.profileImg{
+
+    padding: 10px;
+}
+.review .profilename{
+
+ padding: 10px;
+ padding-top: 30px;
+ color: purple;
+}
+
+.imagesIng{
+
+    width: 100%;
+   height: 40%;
+   display: block;
+  
+}
+.addReview{
+
+    width: 100%;
+    
+}
+.videos{
+
+    overflow: hidden;
+    padding: 2%;
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+}
+.video{
+
+    
+    width: 100%;
+    height: 240px;
+    margin-bottom: 10px;
+    
+}
+label{
+
+    width: 100%;
+    text-align: center;
+    background-color: aqua;
+    color: rgb(95, 58, 58);
+    padding: 10px;
+}
+
+#comment{
+
+    width: 100%;
+    height: 40px;
+    font-size: 1rem;
+    color: rgb(62, 80, 97);
+    box-sizing: border-box;
+    border: 1px inset white;
+    box-shadow: 2px 3px 4px grey;
+}
+h3{
+
+    margin-bottom: 20px;
+    width: 100%;
+    color: aqua;
+    padding: 10px;
+
+   
+
+    background-color: rgb(32, 28, 28);
+   box-shadow: 2px 2px 2px  rgb(151, 148, 148);
+}
+
+h4{
+    color: burlywood;
+}
+h2{
+
+    font-size: 1.7rem;
+   color: antiquewhite;
+    text-align: center;
+  width: 100%;
+
+}
+
+p{
+    color: aliceblue;
+    padding: 20px;
+}
+
+#companyIcon img{
+
+    width: 100%;
+    height: 300px;
+    border-radius: 4px;
+    box-sizing: border-box;
+ 
+}
+
+#related{
+
+    width: 100%;
+
+    overflow-x: scroll;
+
+    scroll-behavior: smooth;
+
+  scroll-margin: 0px;
+
+   
+}
+
+#related h2{
+
+
+    position: absolute;
+  top: auto;
+  z-index: 1;
+    
+}
+.relatedApp{
+    width: fit-content;
+    display: flex;
+flex-direction: row;
+    align-content: space-between;
+    margin-top: 40px;
+   
+}
+
+
+
+.relateddiv{
+
+    position: relative;
+
+    margin-right: 4%;
+
+    width: 250px;
+    float: left;
+
+}
+.relateddiv img{
+
+    width: 100%;
+    border-radius: 4%;
+    height: 140px;
+}
+
+.relatedname{
+
+    text-align: center;
+
+    padding-top: 40%;
+
+    opacity: 0.9;
+
+    font-size: 1.2rem;
+
+    font-style: oblique;
+
+    color: aqua;
+    position: absolute;
+
+    background-color: black;
+
+    width: 100%;
+    height: 34px;
+    top: 0%;
+    left: 0%;
+
+    display: none;
+}
+
+
+
+.relateddiv:hover .relatedname{
+
+    display: block;
+    transition-duration: 1s;
+}
+
+#addorder {
+
+    width: 70px;
+    background-color: lawngreen;
+    font-size: medium;
+
+    color: white;
+    padding: 1%;
+
+    border-radius: 4px;
+
+position: relative;
+
+float: right;
+
+
+}
+
+
+#subrateBtn {
+
+    background-color: skyblue;
+    font-size: small;
+
+    color: white;
+    padding: 4%;
+
+    border-radius: 4px;
+
+}
+#lable{
+
+    color: grey;
+    font-size: 1.2rem;
+    
+   
+}
+
+input{
+
+    width: 90%;
+    height: 34px ;
+
+    color: rgb(150, 70, 5);
+
+    font-size: 1rem;
+    border: 2px solid rgb(255, 255, 255);
+
+    font-style: oblique;
+
+
+    border-bottom: 2px solid rgb(152, 153, 151);
+}
+
+#rateBtn {
+
+    background-color: lawngreen;
+    font-size: small;
+
+    color: white;
+    padding: 4%;
+
+    border-radius: 4px;
+
+position: relative;
+
+float: right;
+
+
+}
+
+#rateBtn:hover{
+
+    box-shadow: 2px 2px 2px wheat;
+}
+
+#ratediv{
+
+    display: none;
+}
+
+.galleryImages{
+
+    display: inline-block;
+    align-content: space-between;
+    border-radius: 2%;
+    margin: 1%;
+    width: 30%;
+
+}
+
+
+@media screen and (min-width: 770px) {
+
+   #main{
+
+        
+        display: flex;
+        flex-direction: row;
+       align-content: space-between;
+    }
+
+  
+    #columnLocation{
+
+flex: 1;
+background-color: #666262;
+border-radius: 10px;
+
+    }
+
+    #serviceSection{
+
+        flex: 2;
+    
+    }
+
+
+    #missionSection{
+     
+flex: 1;
+background-color: #666262;
+border-radius: 10px;
+
+    }
+
+    h3{
+
+        width: 97%;
+margin: 0%;
+align-content: flex-start;
+    }
+
+    #gallerycarosol{
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+
+        justify-items: flex-start;
+
+        flex-wrap: wrap;
+        
+  
+    }
+
+    .imagesIng{
+
+    width: 200px;
+
+   height: 300px;
+
+   margin: auto;
+
+
+}
+    #imgNext, #imgBack{
+
+        display: none;
+    }
+ 
+    .videos{
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+    .video{
+
+        width: 40%;
+        margin: 3%;
+    }
+}
+
+.next{
+
+    background-color: rgb(0, 130, 252);
+    width: 100px;
+    
+    padding: 3%;
+    text-align: center;
+    border-radius: 7px;
+    color: black;
+    position: relative;
+   float: left;
+    margin: auto;
+    font-weight: bold;
+    
+}
+
+.next:hover{
+
+    box-shadow: 2px 2px 2px grey;
+
+}
+
+#submit input{
+
+    background-color: lawngreen;
+
+    color: white;
+    border: 2px solid white;
+
+    border-radius: 4px;
+}
+#reset{
+
+    background-color: rgb(252, 0, 0);
+
+    color: white;
+    float: left;
+
+}
+#reset input{
+
+    background-color: rgb(141, 3, 3);
+    border: 2px solid white;
+
+    border-radius: 4px;
+}
+
+form{
+
+    width: 100%;
+   
+}
+
+.form{
+
+width: 100%;
+
+overflow: scroll;
+
+}
+.inp{
+
+    color: aqua;
+    margin: 4%;
+}
+
+.editBtn{
+
+    background-color: white;
+    padding: 2%;
+
+    color: blue;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+.hideDiv{
+
+    display: none;
+}
+
+#hmain, #hgallery, #hreel, #hcontact{
+
+    display: none;
+}
+
+
+
+.serDivs{
+
+    width: 45%;
+
+ 
+    
+    margin: auto;
+
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+
+.servicesCol{
+    display: flex;
+}

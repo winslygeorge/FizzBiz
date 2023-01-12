@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
+
+    <link rel="stylesheet" href="./../css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    
+    <script src="./../js/main.js"></script>
+
+    <script src="./../js/categoryApps.js"></script>
+
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
+    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../css/profile.css">
+    <script src="./../js/profile.js"></script>
+    <style>
+        body{
+
+            background-color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+    <header class="headerContainer">
+        <div class="container1">
+             <div class="icon" >
+
+                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
+            </div>
+        <div class="appbar">
+           
+            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+        </div>
+
+          
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;"/>
+            
+        </div>
+        <div class="profileIcon" style="order: 3; padding: 2%;">
+            <img src="./../images/user.svg" class="menuIcon" style="width: 40px;"/>
+        </div>
+    </div>
+                
+    <div class="menuList">
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;"/>
+            
+        </div>
+     
+        </div>
+
+
+       
+       
+    </header>
+
+
+   
+     <div class="slideExplorenav">
+
+        <div class="sliden">
+            <div class="slidemenu">
+                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
+               
+            </div>
+
+            <div class="slidenHead">
+                <h2>FizzBizNet</h2>
+            </div>
+           
+        </div>
+
+        <a href="/AddService" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
+{{#if loggedUser}}
+        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{else}}
+
+        <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{/if}}
+
+        <a href="/apps/all"> <img  class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
+        <a href="./../logout" class="menuitem"><img   src="./../images/log-out.svg" alt="" srcset="" width="40px" style=""> <h4>SignOut </h4></a>
+
+        <a id="share" onclick="openShare()" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+    </div>
+   
+    <div class="body">
+
+        <div class="sharethis-inline-share-buttons" ></div>
+        <div class="bodyMain">
+      
+
+
+        
+
+        <div class="main">
+
+            <div class="levelHead">
+              <div class="searchbox">
+
+                <input type="search" name="search" id="searchbox" placeholder="Search...">
+                <img src="./../images/magnifying-glass.svg" alt="" srcset="" width="30" class="searchBox">
+
+              </div>
+              <div class="profileMe">
+                  {{#if loggedUser}}
+                <h4>{{{loggedUser.username}}}</h4>
+                <img src="./../images/{{{loggedUser.profileimage}}}" alt="" srcset="" width="40px"  height="40px" style="border-radius: 100%;">
+                {{else}}
+ <h4>Guest</h4>
+                <img src="./../images/user.svg" alt="" srcset="" width="40px">
+                {{/if}}
+              </div>
+            </div>
+        </div>
+
+  
+
+        </div>
+
+
+        <div class="Comp" id="tabView" style="margin: 2%;">
+           
+            <a  class="tItem" href="/friendlist/{{{row.USERNAME}}}">Friends {{{friends}}}</a>
+            {{!-- <a href="/user/gallery/{{{row.USERNAME}}}" class="tItem" >Gallery 2</a>
+                <a href="#reel" class="tItem" onclick="handleUserVideos();">Videos 3</a>
+                <a href="#rulesComp" class="tItem" >Blogs 10</a>
+                <a href="#contact" class="tItem" onclick="handleUserContact();">Contact</a> --}}
+                {{!-- <a href="" class="tItem" >Explore</a> --}}
+                
+            
+        </div>
+
+        <divv class="bodyMainColumns" id="main">
+        <div id="mainSections" class="columns">
+<h2>Profile</h2>
+            <div class="profileDetails">
+
+                <div class="sub-column-2"  id="profileIcon">
+                    <img src="./../images/{{{row.PROFILEIMAGE}}}" alt="profile Image" srcset="" >
+
+                    <h2>{{{row.USERNAME}}}<span>{{{hob}}}</span> </h2> 
+                </div>
+
+                 <div class="sub-column-2" id="mission">
+                    <h3 class="subTitle">Friends</h3>
+                    <button disabled="disabled"
+                            style="background-color: white; padding:1%;  border : 2px solid white; border-radius: 4px;">
+                            <img src="./../images/user.svg" alt="" srcset="" style="width: 10px;">
+                            {{{friends}}}
+                            friends</button>
+                    {{#if isOwner}}
+
+                    {{else}}
+
+                         {{#if isAcceptRequest}}
+
+                     <p id="friendsAB"><button onclick="handleAcceptFriend(`{{{row.USERNAME}}}`, `{{{row.PROFILEIMAGE}}}`, {{{friendrequestid}}}, {{{friend_id}}});"
+                            style="background-color: orangered; color: white; padding:2%; border: 2px solid orangered; border-radius:4px; font-weight: bolder;">
+                            Accept Friend Request</button></p>
+
+                    {{else}}
+                    {{#if isMyFriend}}
+<p id="wfriends">
+                    <button onclick="handleCancelFriend(`{{{row.USERNAME}}}`, {{{friend_id}}}, `{{{row.PROFILEIMAGE}}}`);"
+            style="background-color: green; color: white; padding:2%; border: 2px solid green; border-radius:4px; font-weight: bolder;">
+            Friends</button>
+            </p>
+
+                    {{else}}
+                    <p id="friendsB"><button onclick="handleBeFriend(`{{{row.USERNAME}}}`, `{{{row.PROFILEIMAGE}}}`);"
+                            style="background-color: blueviolet; color: white; padding:2%; border: 2px solid blueviolet; border-radius:4px; font-weight: bolder;">
+                            Be Friend +</button></p>
+{{/if}}
+{{/if}}
+                    {{/if}}
+               
+                </div>
+
+                <div class="sub-column-2" id="mission">
+                    <h3 class="subTitle">My Orders</h3>
+                    <p><a href="/usersorders/{{{row.USERNAME}}}"> <button
+                            style="background-color: orange; color: white; padding:2%; border: 2px solid orange; border-radius:4px;">Pending
+                            Orders</button> </a></p>
+                </div>
+
+                <div  class="sub-column-2" id="mission">
+                    <h3 class="subTitle">First Name</h3>
+                    <p>{{{row.FIRSTNAME}}}</p>
+                </div>
+                <div  class="sub-column-2" id="mission">
+                    <h3 class="subTitle">Last Name</h3>
+                    <p>{{{row.LASTNAME}}}</p>
+                </div>
+                <div  class="sub-column-2" id="mission">
+                    <h3 class="subTitle">Location</h3>
+                    <p>{{{row.CONTINENT}}}, {{{row.COUNTRY}}}, {{{row.TOWNCITY}}}</p>
+                </div>
+            
+                <div  class="sub-column-2" id="mission">
+                    <h3 class="subTitle">Social Media</h3>
+                    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
+                        <tr>
+                        <td><a href={{{row.TWITTER}}}><img src="./../images/twitter.svg" alt="" style="width: 20px;"></a></td>
+                            <td><a href={{{row.YOUTUBE}}}><img src="./../images/youtube.svg" alt="" style="width: 20px;"></a></td>
+                            <td><a href={{{row.INSTAGRAM}}}><img src="./../images/instagram.svg" alt="" style="width: 20px;"></a></td>
+                            <td> <a href={{{row.FACEBOOK}}}><img src="./../images/facebook.svg" alt="" style="width: 20px;"></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+            <div id="likeSection" class="columns">
+                <h2>Liked</h2>
+                <p>These are the business profile that you have Liked</p>
+                <div  class="sub-column-2" id="mission">
+                    {{#if likes}}
+                    {{#each likes}}
+                    <div class="details">
+                        <img src="./../images/{{{APPIMAGE}}}" alt="" srcset="" class="imgIconCompany" height="40px">
+                        <div class="headingIcon">{{{APPNAME}}} <a href="/app/{{{APPNAME}}}"> <span class="followBtn">  visit</span></a></div>
+                    </div>
+                    {{/each}}
+                    {{else}}
+
+<p style="color: antiquewhite;">You have not liked any business app yet...</p>
+                    {{/if}}
+                   
+                </div>
+              
+
+               
+            </div>
+
+            <div id="viewedSection" class="columns">
+
+                <h2>Visited</h2>
+                <p>These are the business profile that you have Visited</p>
+                <div  class="sub-column-2" id="mission">
+                    {{#if views}}
+                    {{#each views}}
+                    <div class="details">
+                        <img src="./../images/{{{APPIMAGE}}}" alt="" srcset="" class="imgIconCompany" height="40px">
+                        <div class="headingIcon">{{{APPNAME}}}  <a href="/app/{{{APPNAME}}}"> <span class="followBtn">visit</span></a></div>
+                    </div>
+                    {{/each}}
+                    {{else}}
+
+<p style="color: antiquewhite;">You have not viewed any business app yet</p>
+
+
+                    {{/if}}
+                   
+                </div>
+           
+            </div>
+        </divv>
+
+        <div id="hgallery">
+            hello
+        </div>
+        <div id="hreel">
+            video
+        </div>
+        <div id="hcontact">
+            contact
+        </div>
+    <footer style="color: aquamarine;">
+        <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
+            <tr>
+                <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
+                <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
+                            style="width: 20px;"></a></td>
+                <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
+                            alt="" style="width: 20px;"></a></td>
+                <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
+                            style="width: 20px;"></a></td>
+                <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
+                            style="width: 20px;"></a></td>
+            </tr>
+        </table>
+    </footer>
+    
+        </div>
+  
+</body>
+</html>

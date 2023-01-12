@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage App</title>
+    <link rel="stylesheet" href="./../css/style.css">
+
+    <style>
+
+        .editBtn{
+
+    background-color: white;
+    padding: 2%;
+
+    color: blue;
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+.appdet{
+
+    color: white;
+    padding: 2%;
+    margin: 2%;
+    width: 100%;
+    
+}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+
+    <script src="./../js/main.js"></script>
+
+
+    <script src="./../js/deleteapps.js"></script>
+
+    <script src="./../js/categoryApps.js"></script>
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
+    <link rel="stylesheet" href="./../css/businessorders.css">
+    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+
+    <script src="./../js/handlebusinessorder.js"></script>
+    <script type="text/javascript"
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons"
+        async="async"></script>
+
+</head>
+
+<body>
+
+
+    <header class="headerContainer">
+        <div class="container1">
+            <div class="icon">
+
+                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
+            </div>
+            <div class="appbar">
+
+                <div class="appname">
+                    <h1 class="bizTitle">FIZZBIZNET</h1>
+                </div>
+            </div>
+
+
+            <div class="menu">
+                <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;" />
+
+            </div>
+            <div class="profileIcon" style="order: 3; padding: 2%;">
+                <img src="./../images/user.svg" class="menuIcon" style="width: 40px;" />
+            </div>
+        </div>
+
+        <div class="menuList">
+            <div class="menu">
+                <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
+
+            </div>
+
+        </div>
+
+
+
+
+    </header>
+
+
+    <div class="slideExplorenav">
+
+        <div class="sliden">
+            <div class="slidemenu">
+                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;" />
+
+            </div>
+
+            <div class="slidenHead">
+                <h2>FizzBizNet</h2>
+            </div>
+
+        </div>
+
+        <a href="/AddService" id="addService"><img src="./../images/add.svg" alt="" srcset="" width="40px" style="">
+            <h4>New Service</h4>
+        </a>
+        {{#if loggedUser}}
+        <a href="/profile/{{{loggedUser.username}}}"> <img class="iconsI" src="./../images/customer.svg" alt=""
+                srcset="" width="40px" style="">
+            <h4>My Page</h4>
+        </a>
+        {{else}}
+
+        <a href="/login"> <img class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style="">
+            <h4>My Page</h4>
+        </a>
+        {{/if}}
+
+        <a href="/apps/all"> <img class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style="">
+            <h4>Home</h4>
+        </a>
+        <a href="./../logout" class="menuitem"><img src="./../images/log-out.svg" alt="" srcset="" width="40px"
+                style="">
+            <h4>SignOut </h4>
+        </a>
+
+        <a id="share" onclick="openShare()"> <img class="iconsI" src="./../images/share (1).svg" alt="" srcset=""
+                width="40px" style="">
+            <h4>Share</h4>
+        </a>
+    </div>
+
+    <div class="body">
+
+        <div class="sharethis-inline-share-buttons"></div>
+        <div class="bodyMain">
+
+
+
+
+            <div class="main">
+
+        <div class="levelHead">
+            <div class="searchbox">
+        
+                <input type="search" name="search" id="searchbox" placeholder="Search...">
+                <img src="./../images/magnifying-glass.svg" alt="" srcset="" width="30" class="searchBox">
+        
+            </div>
+            <div class="profileMe">
+                {{#if loggedUser}}
+                <a href="/profile/{{{loggedUser.username}}}">
+                    <h4 style="text-decoration: none; color :aqua">{{{loggedUser.username}}} </h4>
+                </a>
+                <img src="./../images/{{{loggedUser.profileimage}}}" alt="" srcset="" width="40px" height="40px">
+        
+                {{else}}
+                <h4>Guest</h4>
+                <img src="./../images/user.svg" alt="" srcset="" width="40px">
+        
+                {{/if}}
+            </div>
+        </div>
+
+    <div class="cartOrders" style="margin: 0%; padding: 0%;">
+    
+        <div style="color: gold; margin:2%">
+            <h4>{{{app.BUSINESSNAME}}} Details</h4>
+        </div>
+    
+        <div class="appdet">
+            <h4> Short Topic :  <span id="apptopic"> {{{app.SHORTTOPIC}}}</span> <button class="editBtn" onclick="updateAppTopic({{{app.ID}}})">edit</button></h4>
+        </div>
+        <div  class="appdet">
+            <h4> HQ Continent : <span id="appcontinent"> {{{app.CONTINENT}}}</span> <span><button class="editBtn" onclick="updateAppContinent({{{app.ID}}})">edit</button></span></h4>
+        </div>
+        <div  class="appdet">
+            <h4>HQ Country : <span id="appcountry"> {{{app.COUNTRY}}}</span> <span><button class="editBtn" onclick="updateAppCountry({{{app.ID}}})">edit</button></span></h4>
+        </div>
+        <div  class="appdet">
+            <h4> HQ Town/city : <span id="apptown"> {{{app.TOWNCITY}}}</span><span><button class="editBtn" onclick="updateAppTown({{{app.ID}}})">edit</button></span></h4>
+        </div>
+        <div  class="appdet">
+            <h4>HQ Address : <span id="appaddress"> {{{app.ADDRESS}}}</span><span><button class="editBtn" onclick="updateAppAddress({{{app.ID}}})">edit</button></span></h4>
+        </div>
+        <div class="appdet">
+            <h4> Facebook : <span id="appfacebook"> {{{app.FACEBOOK}}}</span><span><button class="editBtn"
+                        onclick="updateAppFacebook({{{app.ID}}})">edit</button></span></h4>
+        </div>
+  
+        <div class="appdet">
+            <h4> Instagram : <span id="appinstagram"> {{{app.INSTAGRAM}}}</span><span><button class="editBtn"
+                        onclick="updateAppInstagram({{{app.ID}}})">edit</button></span></h4>
+        </div>
+            <div class="appdet">
+                <h4> Twitter : <span id="apptwitter"> {{{app.TWITTER}}}</span><span><button class="editBtn"
+                            onclick="updateAppTwitter({{{app.ID}}})">edit</button></span></h4>
+            </div>
+
+                <div class="appdet">
+                    <h4> Youtube channel link : <span id="appyoutube"> {{{app.YOUTUBE}}}</span><span><button class="editBtn"
+                                onclick="updateAppYoutube({{{app.ID}}})">edit</button></span></h4>
+                </div>
+                    <div class="appdet">
+                        <h4> Github : <span id="appgithub"> {{{app.GITHUB}}}</span><span><button class="editBtn"
+                                    onclick="updateAppGithub({{{app.ID}}})">edit</button></span></h4>
+                    </div>
+    </div>
+
+                <div class="cartOrders" style="margin: 0%; padding: 0%;">
+
+                    <div style="color: gold; margin:2%">
+                        <h4> Services</h4>
+                    </div>
+
+                    <table class="ordertable" style="padding: 4%; width: 100%;">
+                        <thead class="thead">
+
+                            <td class="tablecell">
+                                SERVICE ICON
+                            </td>
+                            <td class="tablecell">
+                                SERVICE NAME
+                            </td>
+                            <td class="tablecell">
+                                PRICE
+                            </td>
+
+                        </thead>
+                        <tbody class="tablebody">
+                            {{#if services}}
+                            {{#each services}}
+                            <tr class="tablerow" id="id{{{ID}}}">
+                                <td class="tablecell">
+                                    <img src="./../images/{{{SERVICEICON}}}" alt="" srcset="" width="40px" height="40px"
+                                        style="border-radius: 4px;">
+                                </td>
+                                <td class="tablecell">
+                                    {{{SERVICENAME}}}
+                                </td>
+                                <td class="tablecell">
+
+                                    {{{PRICE}}}
+                                </td>
+
+                                <td class="tablecell">
+                                    <button onclick="handleremoveservice({{{ID}}})"
+                                        style="background-color: grey; border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;">
+                                        <img src="./../images/delete.svg" alt="" srcset="" style="width: 24px;"> <span
+                                            style="padding: 4%;"> Remove</span></button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="cartOrders" style="margin: 0%; padding: 0%;">
+
+                    <div style="color: gold; margin:2%">
+                        <h4> Branch Locations</h4>
+                    </div>
+
+                    <table class="ordertable" style="padding: 4%; width: 100%;">
+                        <thead class="thead">
+
+                            <td class="tablecell">
+                                CONTINENT
+                            </td>
+                            <td class="tablecell">
+                                COUNTRY
+                            </td>
+                            <td class="tablecell">
+                                TOWN/CITY
+                            </td>
+
+                            <td class="tablecell">
+                                ADRESS
+                            </td>
+
+                        </thead>
+                        <tbody class="tablebody">
+                            {{#if locations}}
+                            {{#each locations}}
+                            <tr class="tablerow" id="id{{{ID}}}">
+                                <td class="tablecell">
+                                    {{{CONTINENT}}}
+                                </td>
+                                <td class="tablecell">
+                                    {{{COUNTRY}}}
+                                </td>
+                                <td class="tablecell">
+
+                                    {{{TOWNCITY}}}
+                                </td>
+
+                                <td class="tablecell">
+
+                                    {{{ADDRESS}}}
+                                </td>
+
+                                <td class="tablecell">
+                                    <button onclick="handleremovelocation({{{ID}}})"
+                                        style="background-color: grey; border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;">
+                                        <img src="./../images/delete.svg" alt="" srcset="" style="width: 24px;"> <span
+                                            style="padding: 4%;"> Remove</span></button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cartOrders" style="margin: 0%; padding: 0%;">
+
+                    <div style="color: gold; margin:2%">
+                        <h4> Images</h4>
+                    </div>
+
+                    <table class="ordertable" style="padding: 4%; width: 100%;">
+                        <thead class="thead">
+
+                            <td class="tablecell">
+                                IMAGE ICON
+                            </td>
+
+
+                        </thead>
+                        <tbody class="tablebody">
+                            {{#if images}}
+                            {{#each images}}
+                            <tr class="tablerow" id="id{{{ID}}}">
+                                <td class="tablecell">
+                                    <img src="./../images/{{{IMAGELINK}}}" alt="" srcset="" width="40px" height="40px"
+                                        style="border-radius: 4px;">
+                                </td>
+
+                                <td class="tablecell">
+                                    <button onclick="handleremoveimage({{{ID}}})"
+                                        style="background-color: grey; border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;">
+                                        <img src="./../images/delete.svg" alt="" srcset="" style="width: 24px;"> <span
+                                            style="padding: 4%;"> Remove</span></button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="cartOrders" style="margin: 0%; padding: 0%;">
+
+                    <div style="color: gold; margin:2%">
+                        <h4> Videos</h4>
+                    </div>
+
+                    <table class="ordertable" style="padding: 4%; width: 100%;">
+                        <thead class="thead">
+
+                            <td class="tablecell">
+                                Youtube Video
+                            </td>
+
+
+                        </thead>
+                        <tbody class="tablebody">
+                            {{#if videos}}
+                            {{#each videos}}
+                            <tr class="tablerow" id="id{{{ID}}}">
+                                <td class="tablecell">
+                                    <iframe width="200" height="100"
+                                        src="https://www.youtube.com/embed/{{{BUSINESSVIDEOLINK}}}" class="video">
+
+                                    </iframe>
+                                </td>
+
+                                <td class="tablecell">
+                                    <button onclick="handleremovevideo({{{ID}}})"
+                                        style="background-color: grey; border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;">
+                                        <img src="./../images/delete.svg" alt="" srcset="" style="width: 24px;"> <span
+                                            style="padding: 4%;"> Remove</span></button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+
+<footer style="color: aquamarine;">
+    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
+        <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
+            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
+                        style="width: 20px;"></a></td>
+            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
+                        alt="" style="width: 20px;"></a></td>
+            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
+                        style="width: 20px;"></a></td>
+            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
+                        style="width: 20px;"></a></td>
+        </tr>
+    </table>
+</footer>
+    </div>
+
+    <script>
+
+
+        var x = 0;
+        function scrollNextOnServices() {
+
+
+            console.log($('button').attr('id'));
+
+            x = (x < $('.category').width() - $(document).width()) ? (x + 200) : 0;
+
+            $('.category').css('left', -x + "px");
+            $('.category').css('transition-duration', "1s");
+
+            console.log(x);
+
+
+        }
+    </script>
+</body>
+
+</html>

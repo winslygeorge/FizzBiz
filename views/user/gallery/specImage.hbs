@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Categories</title>
+
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
+
+    <link rel="stylesheet" type="text/css" href="./../../css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    
+    <script src="./../../js/main.js"></script>
+
+    <script src="./../../js/categoryApps.js"></script>
+    <script src="./../../js/handleservicebtns.js"></script>
+    <script src="./../../js/userdets.js"></script>
+    <link rel="stylesheet" href="./../../css/categoriesDisplay.css">
+    <link rel="shortcut icon" href="./../../images/networking-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../../comp/comp.css">
+    <style>
+        .inputTxt{
+
+            padding: 2%;
+            margin: auto;
+            color : orangered;
+            font-style: italic;
+            width: 80%;
+            font-weight: bold;
+        }
+        .body{
+
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <header class="headerContainer">
+        <div class="container1">
+             <div class="icon" >
+
+                <img src="./../../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
+            </div>
+        <div class="appbar">
+           
+            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+        </div>
+
+          
+        <div class="menu">
+            <img src="./../../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;"/>
+            
+        </div>
+        <div class="profileIcon" style="order: 3; padding: 2%;">
+            <img src="./../../images/user.svg" class="menuIcon" style="width: 40px;"/>
+        </div>
+    </div>
+                
+    <div class="menuList">
+        <div class="menu">
+            <img src="./../../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;"/>
+            
+        </div>
+     
+        </div>
+
+
+       
+       
+    </header>
+     <div class="slideExplorenav">
+
+        <div class="sliden">
+            <div class="slidemenu">
+                <img src="./../../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
+               
+            </div>
+
+            <div class="slidenHead">
+                <h2>FizzBizNet</h2>
+            </div>
+           
+        </div>
+
+        <a href="/suscription/page" id="addService"><img   src="./../../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
+{{#if loggedUser}}
+        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{else}}
+
+        <a href="/login"> <img  class="iconsI" src="./../../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{/if}}
+
+        <a href="/apps/all"> <img  class="iconsI" src="./../../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
+        <a href="./../logout" class="menuitem"><img   src="./../../images/log-out.svg" alt="" srcset="" width="40px" style=""> <h4>SignOut </h4></a>
+
+        <a id="share" onclick="openShare()" > <img  class="iconsI" src="./../../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+    </div>
+   
+    <div class="body">
+                <div class="sharethis-inline-share-buttons hsharereviews" id="hsharereviewsDiv" ></div>
+
+                 
+
+ <div class="contDisc" style="height: 150vh;" id="hideSubDiscs">
+
+            <div class="discussionContainer" id ="contDiasc" style="overflow: hidden;">
+              
+                <div class="discBox" id="fst" style="display: flex; box-shadow: 1px 1px 1px 1px silver; border: 2px solid whitesmoke; border-radius: 10px;">
+                 
+                    <div class="discContent">
+                        <img src="./../../images/{{{image.USERIMAGE}}}" alt="" srcset="" style="width: 60px; height: 40px; border-radius: 100%;">
+                    </div>
+                            <div class="discContent" id="dcontp">
+                                <h5 style="color: purple;">{{{image.USERNAME}}}</h5>
+
+                
+                                <p class="discPara" >
+                                    <img src="./../../images/{{{this.IMAGEURL}}}" style="width: 80%;" alt="">
+
+                                </p>
+
+                                <p class="discPara">
+
+                                    {{{this.IMAGEDETAILS}}}
+                                </p>
+                              
+                                <span style="font-size: smaller;"><span>{{{likes}}} likes</span>  ago</span> <span style="font-size: smaller; text-align: right; margin-left: 40%;"><span>{{{comments}}} comment</span> replies</span>
+                            </div>
+
+                </div>
+                <h5 style="padding: 2%;">Comments...</h5>
+                   {{#if isLoggedin}}
+        <div  id="commentForm" >
+            <form onsubmit="event.preventDefault(); handleSubDiscSubmission();" method="post">
+            
+                <textarea name="content" id="comment" cols="30" rows="3" ></textarea> <br>
+                <input type="hidden" id="discMain_id" value=${id}>
+                <input type="submit" value="submit">
+            </form>
+        </div>
+
+        {{/if}}
+                <div class="subComments" id ="sb" style="height:55vh; overflow:scroll;">
+       
+
+{{#if comments}}
+
+{{#each comments}}
+                    <div class="discBox commentsDiv" style="display: flex;" >
+                       
+                        <div class="discContent">
+                            <img src="./../images/{{{this.USERIMAGE}}}" alt="" srcset="" style="width: 50px; height: 50px; border-radius: 100%;">
+                        </div>
+                                <div class="discContent" id="dcontp">
+                                    <h5 style="color: purple;">{{{this.USERNAME}}}</h5>
+                        
+                                    <p class="discPara"  >
+                                       ${data.subss.content}
+                                     
+                                    </p>             
+                                  
+                                    <span style="font-size: smaller;"><span class="time">Just Now</span> </span>
+                                </div>
+        
+                    </div>
+
+                    {{/each}}
+                    {{/if}}
+            
+            </div>
+    
+    
+            </div>
+    </div>
+        
+    </div>
+</body>
+</html>
