@@ -31,7 +31,7 @@
             <div class="appbar">
 
                 <div class="appname">
-                    <h2 class="bizTitle"><em>{{{row.BUSINESSNAME}}}</em></h2>
+                    <h2 class="bizTitle" style="background-color: none;">{{{row.BUSINESSNAME}}}</h2>
                 </div>
             </div>
 
@@ -193,11 +193,11 @@
                     <p>
 
                         <button
-                            style="background-color: white; padding:1%;  border : 2px solid white; border-radius: 4px;"
+                            style="background-color: white; padding:1%;  border : 2px solid white; border-radius: 4px; box-shadow: 1px 1px 1px 1px grey;"
                             onclick="handleLike( {{{row.ID}}}, '{{{row.BUSINESSNAME}}}', '{{{row.BRANDICON}}}')"> <img
                                 src="./../images/like (1).svg" alt="" srcset="" style="width: 10px;"> + LIke</button>
                         <button onclick="handleFollow( {{{row.ID}}}, '{{{row.BUSINESSNAME}}}', '{{{row.BRANDICON}}}')"
-                            style="background-color: white; padding:1%;  border : 2px solid white; border-radius: 4px;">
+                            style="background-color: white; padding:1%;  border : 2px solid white; border-radius: 4px; box-shadow: 1px 1px 1px 1px grey;">
                             <img src="./../images/customer.svg" alt="" srcset="" style="width: 10px;"> + Follow</button>
 
 
@@ -265,9 +265,9 @@
                 </div>
             </div>
             <div class="sub-column-1" id="serviceSection"
-                style="scroll-behavior: smooth; overflow:auto; max-height: 240vh;">
+                style="scroll-behavior: smooth; overflow:auto; max-height: 200vh;">
 
-                <h2 class="subTitle" id ="shead">Serices/Products</h2>
+                <h2 class="subTitle" >Serices/Products</h2>
 
                 <p>
                     {{#if isowner}}
@@ -301,14 +301,14 @@
                     {{#each services}}
                     <div  class="serDivs" id="service{{{SERVICEID}}}" >
                         <h3>{{{SERVICENAME}}}</h3>
-                        <img src="./../images/{{{SERVICEICON}}}" alt="" srcset="" height="250px" style="width: 100%;">
-                        <p style="color: rgb(39, 38, 38);">
-                            <strong>Description:</strong><br>
+                        <img src="./../images/{{{SERVICEICON}}}" alt="" srcset=""style="width: 80%; margin:5px; border-radius: 5px; box-shadow: 2px 2px 2px 2px grey;">
+                        <p>
+                            <strong>Description:</strong><br><br>
                             {{{SERVICEDESC}}} </p>
 
                         <br>
-                        <p style="color: rgb(46, 44, 44);">
-                            <b>{{{PRICE}}} <button id="addorder" onclick="handleorderbtn({{{ID}}});">+</button></b></p>
+                        <p >
+                            <b>{{{PRICE}}} .ksh <button id="addorder" onclick="handleorderbtn({{{ID}}});">+</button></b></p>
 
                     </div>
         
@@ -433,7 +433,7 @@
                                 <label for="comment">Comment</label>
                                 <p>
 
-                                    <input type="text" name="comment" id="comment">
+                                    <textarea type="text" name="comment" id="comment" >Comment...</textarea>
 
                                     <input type="button" value="submit" id="commentBtn"
                                         onclick="handlecommentbtn({{{row.ID}}}, '{{{loggedUser.username}}}', '{{{loggedUser.profileimage}}}');">

@@ -2,20 +2,15 @@
 margin: 0px;
 padding: 0px;
 text-decoration: none;
-font-size: small;
 
-    }
 
-    body{
-
-        background-color: #333232;
     }
 .body{
  
     margin: 0px;
     width: 100%;
     height: 100%;
-    background-color: #333232;
+    
     overflow:hidden;    
     display: flex;
     flex-direction: column;
@@ -99,7 +94,6 @@ body{
     left: 0%;
 text-align: center;
     color: rgb(199, 6, 96);
-    font-size: 1.5rem;
     opacity: 1;
 }
 .userguide{
@@ -138,7 +132,6 @@ font-weight: bold;
     padding-left: 10%;
     padding: 2%;
     position: relative;
-    font-size: 1.7rem;
 
     animation-name: slideRight;
     animation-duration: 2s;
@@ -668,7 +661,7 @@ footer{
     margin: auto;
     font-weight: bolder;
     text-decoration: none;
-    color: wheat;
+    color: orangered;
     padding: 1%;
    
 }

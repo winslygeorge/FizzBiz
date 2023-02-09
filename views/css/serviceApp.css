@@ -24,21 +24,21 @@
 .sub-column-2{
 
     padding: 4%;
-    border-bottom: 2px inset grey;
+    margin: 5px;
   
 }
 
 
 #location, #range{
 
-    color: aliceblue;
+    color: grey;
     padding: 20px;
 
 }
 
 #team{
 
-    color: aliceblue;
+    color: grey;
 
  
 }
@@ -46,7 +46,7 @@
 li{
  
     list-style-type: none;
-    color: antiquewhite;
+    color: grey;
 }
 
 
@@ -61,8 +61,7 @@ li{
 #reviewsPage{
 
     width: 100%;
-
-    height: 400px;
+    height: 100%;
 
     overflow: auto;
     scroll-behavior: smooth;
@@ -86,7 +85,7 @@ li{
 .review img{
 
     width: 60px;
-    border-radius: 100px;
+    border-radius: 100%;
     
 }
 
@@ -124,7 +123,7 @@ li{
     padding: 2%;
     width: 100%;
     padding: 10px;
-    background-color: black;
+    background-color: silver;
 }
 .video{
 
@@ -145,25 +144,30 @@ label{
 
 #comment{
 
+    
+    height: 150px;
+    padding: 12px 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+
     width: 100%;
-    height: 40px;
     font-size: 1rem;
     color: rgb(62, 80, 97);
     box-sizing: border-box;
-    border: 1px inset white;
     box-shadow: 2px 3px 4px grey;
 }
 h3{
 
     margin-bottom: 20px;
     width: 100%;
-    color: aqua;
+    color:rgb(90, 6, 226);
     padding: 10px;
-
-   
-
-    background-color: rgb(32, 28, 28);
-   box-shadow: 2px 2px 2px  rgb(151, 148, 148);
+    border-radius: 4px;
+    background-color: whitesmoke;
+   box-shadow: 1px 1px 1px  rgb(151, 148, 148);
 }
 
 h4{
@@ -171,15 +175,20 @@ h4{
 }
 h2{
 
-    font-size: 1.7rem;
-   color: antiquewhite;
+
+   color: white;
     text-align: center;
-  width: 100%;
+  width: 95%;
+  /* margin:auto; */
+  margin-bottom:2px;
+  padding:10px;
+  border-radius: 5px;
+  background-color:grey;
 
 }
 
 p{
-    color: aliceblue;
+    color: grey;
     padding: 20px;
 }
 
@@ -379,24 +388,28 @@ float: right;
   
     #columnLocation{
 
-flex: 1;
-background-color: #666262;
-border-radius: 10px;
+        flex: 1;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px silver;
+       
 
     }
 
     #serviceSection{
 
         flex: 2;
+      
     
     }
 
 
     #missionSection{
+        flex: 1;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px silver;
      
-flex: 1;
-background-color: #666262;
-border-radius: 10px;
 
     }
 
@@ -524,6 +537,7 @@ overflow: scroll;
     color: blue;
     border: 2px solid white;
     border-radius: 4px;
+    box-shadow: 1px 1px 1px 1px grey;
 }
 
 .hideDiv{
@@ -540,16 +554,32 @@ overflow: scroll;
 
 .serDivs{
 
-    width: 45%;
+    width: 80%;
 
  
     
     margin: auto;
-
+    padding: 5px;
+    margin-bottom: 10px;
     box-sizing: border-box;
-    box-shadow: 1px 1px 1px 1px grey;
+    border-radius: 5px;
+    background-color:white
 }
 
 .servicesCol{
-    display: flex;
+    
+
+    
+}
+
+#commentBtn{
+
+    text-decoration: none;
+    color:white;
+    background:grey;
+    border-radius: 4px;
+    margin: 5px;
+    width: 100px;
+    font-weight: bold;
+
 }

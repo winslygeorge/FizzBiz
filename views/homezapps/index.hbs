@@ -33,7 +33,7 @@
 
           
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;"/>
+            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 40px;"/>
             
         </div>
         <div class="profileIcon" style="order: 3; padding: 2%;">
@@ -43,7 +43,7 @@
                 
     <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;"/>
+            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 40px;"/>
             
         </div>
      
@@ -57,7 +57,7 @@
 
         <div class="sliden">
             <div class="slidemenu">
-                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
+                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 40px;"/>
                
             </div>
 
@@ -100,7 +100,7 @@
               </div>
               <div class="profileMe">
                   {{#if loggedUser}}
-           <a href="/profile/{{{loggedUser.username}}}" style="text-decoration: none;">     <h4 style="color: aqua;">{{{loggedUser.username}}} </h4> </a>
+           <a href="/profile/{{{loggedUser.username}}}" style="text-decoration: none;">     <h4 style="color: purple;">{{{loggedUser.username}}} </h4> </a>
                                <img src="./../images/{{{loggedUser.profileimage}}}" alt="" srcset="" height="40px" width="40px" style="border-radius: 100%;">
 
                  {{else}}
@@ -116,10 +116,10 @@
 
     <div class="bidcat">
         {{#if appscat.subtitle}}
-   <div class="subHead"><h3>{{subtitle}}</h3></div> 
+   <div class="subHead"><h4>{{subtitle}}</h4></div> 
 
         {{else}}
-   <div class="subHead"><h3>{{@key}}</h3></div> 
+   <div class="subHead"><h4>{{@key}}</h4></div> 
    {{/if}}
    
    <div class="category" >
@@ -127,17 +127,17 @@
                 <div class="specificApp">
                     <div class="details">
                         <img src="./../images/{{{BRANDICON}}}" alt="" srcset="" class="imgIconCompany" height="40px">
-                        <div class="headingIcon"><h3>{{{BUSINESSNAME}}}</h3></div>
+                        <div class="headingIcon"><h5>{{{BUSINESSNAME}}}</h5></div>
                     </div>
 
                     <div class="aLink">
                     <a href="/app/{{{BUSINESSNAME}}}">  
-                       <img src="./../images/view.svg" alt="" srcset=""> <h3>View</h3>
+                       <img src="./../images/view.svg" alt="" srcset=""> <h5 style="color:purple">View</h5>
                     </a> </div>
                     <img class="appbrandimg" src="./../images/{{{BRANDICON}}}" alt="" srcset="">
                     <div class="decApp">
-                        <h4 class="shortDescTitle">{{{SHORTTOPIC}}}</h4>
-                        <p>{{{SHORTINTRO}}}</p>
+                        <h5 class="shortDescTitle" style="color: orange;">{{{SHORTTOPIC}}}</h5>
+                        <h6 style="color: white;">{{{SHORTINTRO}}}</h6>
                     </div>
                     <div class="likes">
                         <div class="views">
