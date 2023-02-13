@@ -10,21 +10,23 @@ h3{
 
     margin-bottom: 20px;
     width: 100%;
-    color: aqua;
+    color:rgb(90, 6, 226);
     padding: 10px;
-
-   
-
-    background-color: rgb(32, 28, 28);
-   box-shadow: 2px 2px 2px  rgb(151, 148, 148);
+    border-radius: 4px;
+    background-color: whitesmoke;
+   box-shadow: 1px 1px 1px  rgb(151, 148, 148);
 }
 
 h2{
 
-    font-size: 1.7rem;
-   color: antiquewhite;
-padding: 4%;
-  width: 100%;
+    color: white;
+    text-align: center;
+  width: 95%;
+  /* margin:auto; */
+  margin-bottom:2px;
+  padding:10px;
+  border-radius: 5px;
+  background-color:grey;
 
 }
 
@@ -63,7 +65,7 @@ padding: 4%;
 }
 
 p{
-    color: aliceblue;
+    color: grey;
     padding: 20px;
 }
 #profileIcon{
@@ -112,15 +114,13 @@ box-sizing: border-box;
 
 #edit{
 
-    
+    background-color: white;
+    padding: 2%;
 
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    float: right;
+    color: blue;
+    border: 2px solid white;
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px 1px grey;
 }
 
 #edit a{

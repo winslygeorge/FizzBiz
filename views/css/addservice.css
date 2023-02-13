@@ -8,16 +8,15 @@ form{
 }
 
 .form{
-
-width: 80%;
+padding:1%;
 height: fit-content;
 margin: auto;
 overflow: hidden;
 
 }
 .addService{
-
-  width: 80%;
+/* 
+  width: 80%; */
  
 margin: auto;
 
@@ -27,7 +26,7 @@ margin-bottom: 4%;
   background-color:white;
   
 border-radius: 10px;
-  padding: 4%;
+  padding: 1%;
   
     justify-content: center;
 
@@ -39,7 +38,7 @@ border-radius: 10px;
 
 .inp{
 
-    color: aqua;
+    color: purple;
     margin: 4%;
 }
 
@@ -71,6 +70,7 @@ label{
 input{
 
     width: 90%;
+    margin:auto;
     height: 34px ;
 
     color: rgb(150, 70, 5);

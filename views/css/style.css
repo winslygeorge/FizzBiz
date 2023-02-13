@@ -508,8 +508,11 @@ margin-right: 0px;
 footer{
 
     background-color: rgb(19, 18, 18);
+    position: fixed;
+    bottom: 0;
 
-    width: inherit;
+    width: 100%;
+
     height: fit-content;
     padding: 4%;
 }
