@@ -135,9 +135,9 @@
                         style="position: absolute; width: 80%; background-color: black; padding: 4%; z-index: 2; opacity: 0.9; display: none;">
                         <p style="color: grey;"> Change Your Brand Icon Image</p>
                         <form action="/updateiconimage" method="POST" enctype="multipart/form-data">
-                            <input type="file" id="iconImgcng" name="profileImage" style="background-color: white;">
-                            <input type="hidden" name="appname" value="{{{row.BUSINESSNAME}}}">
-                            <input type="hidden" name="appid" value="{{{row.ID}}}">
+                            <input type="file" id="iconImgcng" name="profileImage" style="background-color: white;" required>
+                            <input type="hidden" name="appname" value="{{{row.BUSINESSNAME}}}" required>
+                            <input type="hidden" name="appid" value="{{{row.ID}}}" required>
                             <input type="submit" value="submit"
                                 style="width: fit-content; color: white; background-color: green; border: 2px solid green; border-radius: 4px; padding: 2%; margin: 2%; text-decoration: none;">
                         </form>
@@ -497,7 +497,7 @@
                 style="position: absolute; width: 80%; background-color: black; padding: 4%; z-index: 2; opacity: 0.9; display: none;">
                 <p style="color: grey;"> Add Image</p>
                 <form action="/updateaddimage" method="POST" enctype="multipart/form-data">
-                    <input type="file" id="iconImgcng" name="img" style="background-color: white;">
+                    <input type="file" id="iconImgcng" name="img" style="background-color: white;" required>
                     <input type="hidden" name="appname" value="{{{row.BUSINESSNAME}}}">
                     <input type="hidden" name="appid" value="{{{row.ID}}}">
                     <input type="submit" value="submit"
@@ -590,7 +590,7 @@
                             <div class="inp">
                                 <div class="lable" for="companyName">Content Body : </div>
                                 <br>
-                                <textarea name="content" id="content" cols="30" rows="10" style="width: 90%;"
+                                <textarea class="emailContentCls" name="content" id="content" cols="30" rows="10" style="width: 90%;"
                                     required></textarea>
                             </div>
 

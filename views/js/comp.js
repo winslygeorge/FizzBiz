@@ -154,16 +154,16 @@ function handleJoinReq(){
 
 function handleSus(){
 
-   window.open("http://localhost:8087/AddService?suscription=gold")
+   window.open("/AddService?suscription=gold")
 }
 
 function handleBasic(){
 
-    window.open("http://localhost:8087/AddService?suscription=basic")
+    window.open("/AddService?suscription=basic")
  }
  function handlePrenium(){
 
-    window.open("http://localhost:8087/AddService?suscription=prenium")
+    window.open("/AddService?suscription=prenium")
  }
 
  function handleDiscSubmission(){

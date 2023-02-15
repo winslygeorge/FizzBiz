@@ -49,7 +49,7 @@ const isAuth = (req, res, next) => {
   }
 };
 
-route.post("/addService", (req, res) => {
+route.post("/addService", isAuth, (req, res) => {
   console.log(req.body);
 
   var form = new formidable.IncomingForm();
@@ -87,33 +87,33 @@ route.post("/addService", (req, res) => {
     if (!err) {
       //business name
 
-      if (fields.businessName.match(/^[a-zA-Z0-9.\\\s]+$/)) {
+      if (fields.businessName.match(/^[a-zA-Z0-9.,!?-_\\\s]+$/)) {
         businessName = clean.CleanData(fields.businessName);
       } else {
-        businessNameErr = "required letters and numbers only, no space";
+        businessNameErr = "required letters and numbers only";
       }
 
       //business mission
 
-      if (fields.businessMission.match(/^[a-zA-Z0-9.\\\s]+$/)) {
+      if (fields.businessMission.match(/^[a-zA-Z0-9\.\,\!\?\-\_\\\s]+$/)) {
         bizMission = clean.CleanData(fields.businessMission);
       } else {
-        bizMissionErr = "required letters and numbers only, no space";
+        bizMissionErr = "required letters and numbers only";
       }
 
       //business introduction
 
-      if (fields.businessIntro.match(/^[a-zA-Z0-9.\\\s]+$/)) {
+      if (fields.businessIntro.match(/^[a-zA-Z0-9\.\,\!\?\-\_\\\s]+$/)) {
         bizIntro = clean.CleanData(fields.businessIntro);
       } else {
-        bizIntroErr = "required letters and numbers only, no space";
+        bizIntroErr = "required letters and numbers only";
       }
       //business topic validation
 
-      if (fields.businessTopic.match(/^[a-zA-Z0-9.\\\s]+$/)) {
+      if (fields.businessTopic.match(/^[a-zA-Z0-9\.\,\!\?\-\_\\\s]+$/)) {
         bizTopic = clean.CleanData(fields.businessTopic);
       } else {
-        bizTopicErr = "required letters and numbers only, no space";
+        bizTopicErr = "required letters and numbers only";
       }
 
       //business category validation
@@ -121,7 +121,7 @@ route.post("/addService", (req, res) => {
       if (fields.category.match(/^[0-9]{3}/)) {
         bizCat = fields.category;
       } else {
-        bizCatErr = "required letters and numbers only, no space";
+        bizCatErr = "required letters and numbers only";
       }
 
       //business email validation
@@ -134,7 +134,7 @@ route.post("/addService", (req, res) => {
         fields.continent.match(/^[a-zA-Z0-9\s]+$/) &&
         fields.HQcountry.match(/^[a-zA-Z0-9\s]+$/) &&
         fields.HQcity.match(/^[a-zA-Z0-9\s]+$/) &&
-        fields.range.match(/^[a-zA-Z0-9\s]+$/)
+        fields.range.match(/^[a-zA-Z0-9\.\,\!\?\-\_\s]+$/)
       ) {
         hqContinent = clean.CleanData(fields.continent);
         hqCountry = clean.CleanData(fields.HQcountry);
