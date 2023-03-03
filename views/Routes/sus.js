@@ -58,6 +58,11 @@ route.get('/suscription/page', isAuth, (req, res)=>{
     
 })
 
+route.get("/termsandconditions", (req, res) =>{
+
+  res.render('termsandconditions/terms')
+})
+
 route.post("/post/discussion", isAuth, (req, res) => {
   var commment = {
     id: new Date() * Math.round(Math.random() * 30),
