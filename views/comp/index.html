@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Hustle Competition</title>
+
+        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
+
+<link rel="stylesheet" href="./../css/style.css">
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    
+    
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
+    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../comp/comp.css">
+
+    <script src="./../js/main.js"></script>
+   
+
+    <script src="./../js/categoryApps.js"></script>
+
+    <script src="./../js/comp.js"></script>
+    <style>
+        .body{
+
+            background-color: white;
+            padding: 0%;
+            margin: 0px;
+            color: rgb(70, 70, 73);
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <header class="headerContainer">
+        <div class="container1">
+           
+        <div class="appbar">
+           
+            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+        </div>
+
+          
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" />
+            
+        </div>
+        <div class="profileIcon" style="order: 3; padding: 1%;">
+            <img src="./../images/user.svg" class="menuIcon" />
+        </div>
+    </div>
+                
+    <div class="menuList">
+        <div class="menu">
+            <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
+            
+        </div>
+     
+        </div>
+
+
+       
+       
+    </header>
+     <div class="slideExplorenav">
+
+        <div class="sliden">
+            <div class="slidemenu">
+                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
+               
+            </div>
+
+            <div class="slidenHead">
+                <h2>FizzBizNet</h2>
+            </div>
+           
+        </div>
+
+        <a href="/AddService" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
+{{#if loggedUser}}
+        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{else}}
+
+        <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+{{/if}}
+
+        <a href="/apps/all"> <img  class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
+        <a href="./../logout" class="menuitem"><img   src="./../images/log-out.svg" alt="" srcset="" width="40px" style=""> <h4>SignOut </h4></a>
+
+        <a id="share" onclick="openShare()" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+    </div>
+<div class="body">
+    <div class="Comp" id="introCompone">
+        <div class="Introimage">
+
+        </div>
+        <div class="contIntro">
+            <h2 style="color: aliceblue;">Young Hustle Competition: </h2>
+            <p style="color: aliceblue; padding:10px">The competition is aimed at empowering competitors to be innovative, test and improve their marketing skills and managerial skills.</p>
+            <div class="dets">
+                <div class="detsItem">
+                    <h5>Prizes</h5>
+                    <h6>
+                       <strong> ksh. 200,000</strong>
+                    </h6>
+                </div>
+                <div class="detsItem">
+                    <h5>Duration</h5>
+                    <h6>
+                       <strong>6 Months</strong>
+                    </h6>
+                </div>
+                <div class="detsItem">
+                    <h5>Participants</h5>
+                    <h6>
+                       <strong>
+                           <span id="patsNO">2000</span> Active
+                       </strong>
+                    </h6>
+                </div>
+                <div class="detsItem">
+                    <h5>Location</h5>
+                    <h6>
+                       <strong>Kenya</strong>
+                    </h6>
+                </div>
+                <button class="detsItem" id="joinBtn" onclick="callJoinDiv({{{auth}}})">Join +</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="Comp" id="tabView">
+       
+        <button class="tItem"  onclick="showLeader()">Leaderboard</button>
+            <a href="#reqComp" class="tItem" onclick="hideLeader()">Requirements</a>
+            <a href="#rulesComp" class="tItem" onclick="hideLeader()">Rules</a>
+            <a href="#schedComp" class="tItem" onclick="hideLeader()">Schedule</a>
+            <a href="#prizesComp" class="tItem" onclick="hideLeader()">Prizes</a>
+            
+        
+    </div>
+    <div id="dbody">
+    <div class="Comp" id="descriptionComp">
+        <h3>Description {{{auth}}}</h3>
+        <p>
+            Young Hustle Competition is the first Fizzbiz network Competition ever. This competition is for those with small businesses who are 
+            aspiring to grow their business. The competition is aimed at empowering competitors to be innovative, test and improve 
+            their marketing skills and managerial skills. 
+        </p>
+        <p>
+            During the competition, you will be required to grow your business followers, likes , orders and increase the interactions between your services and 
+            products with your customers. The competitors with most followers, likes, orders  and interactions according to the competition phases rules will be 
+            declared winners.
+            Read more about the competition <a href="">here</a> 
+        </p>
+    </div>
+    <div class="Comp" id="reqComp">
+        <h3>Requirements</h3>
+        <ul>
+            <li>
+                Located in Kenya.
+            </li>
+            <li>
+                Photo copy of National Identification Card (ID) or Driving Lincense or Password.
+            </li>
+            <li>
+                Have a Fizzbiz account.
+            </li>
+        </ul>
+        <p>
+            <strong> <em >Note: </em></strong> We encourage competitors to follow and be active in our social media platforms to earn extra points.
+        </p>
+    </div>
+    <div class="Comp" id="rulesComp">
+        <h3>Rules</h3>
+        <ul class="rulesList">
+            <li class="itemList">
+                A competitor can only register one business account for the competition.
+            </li>
+            <li class="itemList">
+                A business account can only be registered by one competitor.
+            </li>
+            <li class="itemList">
+                The competition will count for real active followers and likes only. Detection of any fraud and illegal ways of gaining followers, likes and orders
+                will lead to immediate elimination from the competition.
+            </li>
+            <li class="itemList">
+                Detection of false orders and checkout will also lead to immediate elimination from the competiton.
+            </li>
+        </ul>
+        <strong style="padding: 2%;"><em>Note: </em></strong> We encourage competitors to be honest.
+    </div>
+    <div class="Comp" id="schedComp">
+        <h3>Schedule</h3>
+        <div>
+            <ul class="rulesList">
+                <li class="itemList">
+                    Entrance/ Registration Phase - <strong>July 1<sup>st</sup> 2022 </strong> to <strong>September 30<sup>th</sup> 2022 </strong>
+                </li>
+                <li class="itemList">
+                    First Selection Phase - <strong>October 1<sup>st</sup> 2022 </strong> to <strong>October 30<sup>th</sup> 2022 </strong>
+
+                </li>
+                <li class="itemList">
+                    Selection Phase - <strong>November 1<sup>st</sup> 2022 </strong> to <strong>November 30<sup>th</sup> 2022 </strong>
+
+                </li>
+                <li class="itemList">
+                    Winners Declaration Phase - <strong>December 1<sup>st</sup> 2022 </strong>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="Comp">
+            <h4 class="scheduleH">
+                Entrance Phase Description
+            </h4>
+            <p class="scheduleP">
+                In this phase we allow everyone who has a business account with Fizzbiz network to join the competition. There is no age limitation to join.
+                After being entered to the competition we encourage the competitors to gather and gain more followers, like and try to have many orders as possible 
+                as these are the criterial that we will be using to move forward the successful competitors.
+                <br> This can be achieved as Fizzbiz network allows business owners to share their profiles with their social media links.
+            </p>
+        </div>
+        <div class="CompSched">
+            <h4 class="scheduleH">
+                First selection Phase Description
+            </h4>
+            <p class="scheduleP">
+                To be selected for the first selection, any competitors who would have gained <strong>1000 Followers, 500 Likes </strong> and had received and checked out at least <strong>20 orders</strong>
+                will be moved forward with the competition. Your Fizzbiz business account should also have an active platform.
+            </p>
+        </div>
+        <div class="CompSched">
+            <h4 class="scheduleH">
+                Second Selection  Phase Description
+            </h4>
+            <p class="scheduleP">
+                To be selected for the second selection, any competitors who would have gained <strong>2000 Followers, 1000 Likes </strong> and had received and checked out at least <strong>30 orders</strong>
+                will be moved forward with the competition. Your Fizzbiz business account should also have an active platform.
+            </p>
+        </div>
+        <div class="CompSched">
+            <h4 class="scheduleH">
+                Winners and Prizes 
+            </h4>
+            <p class="scheduleP">
+                To be selected for the second selection, any competitors who would have gained <strong>2000 Followers, 1000 Likes </strong> and had received and checked out at least <strong>30 orders</strong>
+                will be moved forward with the competition. Your Fizzbiz business account should also have an active platform.
+            </p>
+        </div>
+    </div>
+    <div class="Comp" id="prizescomp">
+
+
+    </div>
+  <a href="#introCompone"> <button id="joinBtn2" class="joinbtn" onclick="callJoinDiv()">Join +</button></a> 
+</div>
+<!----place div here-->
+<div class="leaderDiv" id="ldiv">
+    <h3>Competition Leader board</h3>
+    <table>
+        <thead>
+            <th>RANK</th>
+            <th>USER</th>
+            <th>FOLLOWERS</th>
+            <th>LIKES</th>
+            <th>ORDERS</th>
+            <th>ACTIVE</th>
+            <th>SCORE</th>
+        </thead>
+        <tbody id="contTd">
+            <tr >
+                <td id="rank">1</td>
+                <td id ="users" >
+                    <a href="http://"  style="display: flex;">
+                    <img src="./../images/levin_1652444974867_517011107.jpg" alt="" style="width: 40px; height: 40px; border-radius: 100px">
+                    <span style="color: orangered; font-weight: bolder;">Winwings</span>
+                </a>
+                </td>
+                <td id="followers">
+                    1000
+                </td>
+                <td id="likes">
+                    500
+                </td>
+                <td id="order">
+                    30
+                </td>
+                <td id="activity">
+                    3.7890
+                </td>
+                <td id="score">
+                    4.000
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!---->
+</div>
+<div class="joinDiv">
+    <h3>choose Business Application: </h3>
+    <form onsubmit="event.preventDefault(); handleJoinReq();" method="post">
+       
+        <select name="businessAppId" id="businessAppId" style=" border-radius:10px; padding: 5px;width: 100%; background-color: orange; color:green; font-weight: bolder;">
+           {{#each apps}}
+            <option value="{{{this.ID}}}">{{{this.BUSINESSNAME}}}</option>
+            {{/each}}
+        </select>
+        <input type="hidden" name="" id="compname" value="young hustle competition">
+        <input type="submit" value="submit" id="joinBtn3" >
+    </form>
+    <button id="joinBtn2" class="joinbtn" onclick="hideJoinDiv()" style="background-color: orangered;">close</button>
+
+</div>
+
+
+<script>
+
+   
+
+</script>
+   
+</body>
+</html>
+
+ 
