@@ -52,7 +52,7 @@ const isAuth = (req, res, next) => {
         next()
     } else {
 
-        res.redirect('/login')
+        res.render('/login')
     }
 }
 

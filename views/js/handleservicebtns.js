@@ -3,7 +3,6 @@ $(document).ready(function (e) {
 });
 
 function handleorderbtn(id) {
-  alert(id);
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -11,10 +10,15 @@ function handleorderbtn(id) {
       var result = JSON.parse(this.responseText);
 
       if (result.code == 200) {
-        alert("You have successfully placed a sevice order...");
-      } else {
+        alert("You have successfully placed an order...");
+      } else if(result.code == 309){
+        window.location.replace("https://www.fizzbiznet.com/login");
+      }else {
         alert("An Error occurred when placing the order");
       }
+    }else{
+
+      window.location.replace("https://www.fizzbiznet.com/login");
     }
   };
   xhttp.open("POST", "/placeorder", true);
@@ -34,7 +38,7 @@ function handleSubRateBtn(loggeduser, id) {
     if ($(".starCheck").hasOwnProperty(key)) {
       const element = $(".starCheck")[key];
 
-      if (element.src == "http://localhost:8087/images/star.svg") {
+      if (element.src == "https://www.fizzbiznet.com/images/star.svg") {
         starRateNo = starRateNo + 1;
       }
     }
@@ -65,8 +69,10 @@ function handleSubRateBtn(loggeduser, id) {
         
 
         document.getElementById("starRate").innerHTML = innert;
-      } else {
-        console.log("error occurred...");
+      } else if(resq.code == 309){
+        window.location.replace("https://www.fizzbiznet.com/login");
+      }else {
+        alert("error occurred...");
       }
 
       $("#ratediv").fadeToggle();
@@ -83,8 +89,6 @@ function handleSubRateBtn(loggeduser, id) {
   );
 }
 function startClicked(no) {
-  alert(no);
-
   if (
     document.getElementById(no).getAttribute("src") ==
     "./../images/star (1).svg"
@@ -97,8 +101,6 @@ function startClicked(no) {
 
 function handlecommentbtn(id, username, profileimage) {
   var comment = $("#comment").val();
-
-  alert(comment + " : " + id + " : " + username);
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -136,8 +138,10 @@ function handlecommentbtn(id, username, profileimage) {
         }
 
         document.getElementById("reviewsSection").innerHTML = innert;
-      } else {
-        console.log(resq.result);
+      } else if(resq.code == 309){
+        window.location.replace("https://www.fizzbiznet.com/login");
+      }else {
+        alert(resq.result);
       }
     }
   };
@@ -175,6 +179,8 @@ function handleEmailBtn(appemail, useremail, username, appname, appid) {
 
       if (resq.code == 200) {
         alert("Email was posted successfully");
+      }else if(resq.code == 309){
+        window.location.replace("https://www.fizzbiznet.com/login");
       } else if (resq.code == 402) {
         
         alert("You currently have no followers to communicate to...");
@@ -207,9 +213,23 @@ function handleEmailBtn(appemail, useremail, username, appname, appid) {
 
 function handleLike(id, appname, appimage) {
   var xhttp = new XMLHttpRequest();
+
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      alert("You have successfully liked the app");
+
+      var resq = JSON.parse(this.responseText);
+
+      if(resq.code == 200){
+        alert("You have successfully liked the app");
+
+      }else if(resq.code == 309){
+        window.location.replace("https://www.fizzbiznet.com/login");
+      }else{
+
+        alert(resq.result)
+      }
+
+      
     }
   };
   xhttp.open("POST", "/postlike", true);
@@ -221,7 +241,19 @@ function handleFollow(id, appname, appimage) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      alert("You have successfully followed the app");
+
+      var resq = JSON.parse(this.responseText);
+
+      if(resq.code == 200){
+        alert("You have successfully followed the app");
+
+      }else if(resq.code == 309){
+        window.location.replace("https://www.fizzbiznet.com/login");
+      }else{
+
+        alert(resq.result)
+      }
+    
     }
   };
   xhttp.open("POST", "/postfollow", true);

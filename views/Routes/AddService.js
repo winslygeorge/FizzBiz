@@ -45,7 +45,23 @@ const isAuth = (req, res, next) => {
   if (req.session.isAuth) {
     next();
   } else {
-    res.redirect("/login");
+    try{
+
+      var appid = parseInt(req.body.appid);
+
+      if(appid){
+
+        res.send({code: 309, result:"You are not logged in.."})
+      }
+
+    }catch(e){
+
+      res.redirect('/login')
+    }finally{
+
+      res.redirect('/login')
+    }
+ 
   }
 };
 
@@ -720,7 +736,7 @@ route.post("/updateapprate", (req, res) => {
   }
 });
 
-route.post("/placeorder", (req, res) => {
+route.post("/placeorder", isAuth, (req, res) => {
   var order = {
     id: new Date() * Math.round(Math.random() * 8),
 
@@ -794,7 +810,7 @@ route.post("/placeorder", (req, res) => {
   });
 });
 
-route.post("/updateorder", (req, res) => {
+route.post("/updateorder",isAuth, (req, res) => {
   var option = clean.CleanData(req.body.option);
 
   var quantity = parseInt(req.body.quantity);
@@ -830,7 +846,7 @@ route.post("/updateorder", (req, res) => {
   }
 });
 
-route.post("/checkoutorder", (req, res) => {
+route.post("/checkoutorder", isAuth, (req, res) => {
   var orderid = clean.CleanData(req.body.orderid);
 
   console.log(orderid);
@@ -856,7 +872,7 @@ route.post("/checkoutorder", (req, res) => {
   }
 });
 
-route.post("/deleteorder", (req, res) => {
+route.post("/deleteorder",isAuth, (req, res) => {
   var orderid = clean.CleanData(req.body.orderid);
 
   console.log(orderid);
@@ -879,7 +895,7 @@ route.post("/deleteorder", (req, res) => {
   }
 });
 
-route.post("/deletecartorder", (req, res) => {
+route.post("/deletecartorder", isAuth, (req, res) => {
   var orderid = clean.CleanData(req.body.orderid);
 
   console.log(orderid);
@@ -1279,7 +1295,7 @@ route.post("/postlike", isAuth, (req, res) => {
       }
     });
   } else {
-    res.send({ code: 101, result: "error" });
+    res.send({ code: 101, result: "Error occured" });
   }
 });
 
