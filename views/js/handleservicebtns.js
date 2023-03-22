@@ -16,9 +16,6 @@ function handleorderbtn(id) {
       }else {
         alert("An Error occurred when placing the order");
       }
-    }else{
-
-      window.location.replace("https://www.fizzbiznet.com/login");
     }
   };
   xhttp.open("POST", "/placeorder", true);
