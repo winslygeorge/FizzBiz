@@ -195,9 +195,9 @@ function onSignIn(googleUser) {
       
     }
   };
-  xhttp.open("POST", "/googleLoginUser", true);
+  xhttp.open("GET", "/googleLoginUser?userName= "+ profile.getEmail, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("userName=" + profile.getEmail);
+  xhttp.send();
 }
     </script>
 
