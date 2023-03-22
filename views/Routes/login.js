@@ -135,8 +135,9 @@ route.get('/googleLoginUser', (req, res)=>{
         if (feedback.code == 200) {
             
             if (feedback.result.rows.length == 0) {
+
+                res.send({code: 309})
     
-                res.redirect('/login')
                 
             }else{
     
@@ -148,13 +149,14 @@ route.get('/googleLoginUser', (req, res)=>{
                 console.log(isverified)
                 
                 if (isverified == 1) {
-                    
-    
-                    res.redirect("/apps/all");
+
+                    res.send({code: 200})
     
                 } else {
+
+                    res.send({code: 308})
                     
-                    res.redirect("/emailverification")
+                   
                 }
     
     
@@ -169,7 +171,7 @@ route.get('/googleLoginUser', (req, res)=>{
     
             console.log(feedback.code)
     
-            res.redirect('/login')
+            res.send({code : 101})
         }
     })
     
