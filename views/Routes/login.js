@@ -91,11 +91,90 @@ db.run( userCredidentials).then(function(feedback){
 
         console.log(feedback.code)
 
-        res.redirect('login')
+        res.redirect('/login')
     }
 })
 
 
 })
+
+route.get('/googleLoginUser', (req, res)=>{
+    let db =  new oracledb()
+    var userCredidentials;
+    if(req.query.userName.indexOf('@') != -1){
+    
+    
+        userCredidentials = {
+    
+            tablename : "users",
+        
+            operation : "select",
+        
+            fields : [],
+            wfield : ["email"],
+            wvalue : [Clean.CleanData(req.query.userName)]
+        }
+     
+    }else{
+    
+        userCredidentials = {
+    
+            tablename : "users",
+        
+            operation : "select",
+        
+            fields : [],
+            wfield : ["username"],
+            wvalue : [req.query.userName]
+        }
+    
+    }
+    
+    db.run( userCredidentials).then(function(feedback){
+    
+        if (feedback.code == 200) {
+            
+            if (feedback.result.rows.length == 0) {
+    
+                res.redirect('/login')
+                
+            }else{
+    
+    
+                let passd = feedback.result.rows[0].PASSWORD
+    
+                var isverified = feedback.result.rows[0].ISVERIFIED
+    
+                console.log(isverified)
+                
+                if (isverified == 1) {
+                    
+    
+                    res.redirect("/apps/all");
+    
+                } else {
+                    
+                    res.redirect("/emailverification")
+                }
+    
+    
+           
+          
+            }
+    
+           
+    
+         
+        }else{
+    
+            console.log(feedback.code)
+    
+            res.redirect('/login')
+        }
+    })
+    
+    
+    })
+    
 
 module.exports = route
