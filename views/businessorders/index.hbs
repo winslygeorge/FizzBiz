@@ -126,6 +126,12 @@
                 <td class="tablecell">
                     SERVICE ID
                 </td>
+                 <td class="tablecell">
+                    SERVICE NAME
+                </td>
+                 <td class="tablecell">
+                    SERVICE IMAGE
+                </td>
                 <td class="tablecell">
                     HANDLEORDER
                 </td>
@@ -144,6 +150,12 @@
                 </td>
                 <td class="tablecell">
                     <a href="/app/{{{appname}}}#service{{{SERVICEID}}}" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICEID}}}</a>
+                </td>
+                <td class="tablecell">
+                    <a href="/app/{{{appname}}}#service{{{SERVICEID}}}" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICENAME}}}</a>
+                </td>
+                   <td class="tablecell">
+                  <img src="./../images/{{{SERVICEIMAGE}}}" alt="" width="60px" height="60px">
                 </td>
                 <td class="tablecell">
                     <button  onclick="handlecheckout({{{ID}}}, {{{BUSINESSAPPID}}}, '{{{USERNAME}}}', {{{SERVICEID}}})" style="background-color: green; border-radius: 3%; border: 2px solid green; color: white; padding: 1%;"> <img src="./../images/shopping-cart.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;">Checkout</span></button>

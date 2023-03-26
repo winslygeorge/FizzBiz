@@ -287,10 +287,13 @@ route.post('/updateaddservice', (req, res) => {
             }
 
 
+            if(serviceIcon != null){
+
+            
 
             let newservice = {
 
-                id: new Date() * Math.round(Math.random() / Math.random()) * 10,
+                id: new Date()  * 100,
 
                 servicename: clean.CleanData(fields.serviceName),
                 serviceicon: serviceIcon,
@@ -303,6 +306,8 @@ route.post('/updateaddservice', (req, res) => {
 
                 operation: "insert"
             }
+
+            
 
             var profileIg = newservice.servicename + '_' + Date.now() + '_' + Math.round(Math.random() * 1E9) + '.' + newservice.serviceicon.split('.')[1]
 
@@ -419,12 +424,12 @@ route.post('/updateaddservice', (req, res) => {
                             }
                         })
 
-                        setTimeout(function () {
-                            res.redirect('/app/' + fields.appname)
-                        }, 7000);
+                        // setTimeout(function () {
+                        //     res.redirect('/app/' + fields.appname)
+                        // }, 7000);
                     
                 
-                
+                    
 
 
                         
@@ -435,7 +440,11 @@ route.post('/updateaddservice', (req, res) => {
                         res.send({code : 101, error : 'error adding service...'})
 
                     }
+                
                 })
+
+            }
+        
             } else {
 
                 res.send({ code: 101, error: 'error adding service...' })
