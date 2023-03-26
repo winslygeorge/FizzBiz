@@ -573,7 +573,7 @@ route.post('/post/cancelfriend', isAuth, (req, res)=>{
 route.get('/friendlist/:user', isAuth, (req, res)=>{
 var friendList = []
 
-var crossFriends = []
+var crossFriendsList = []
   var selectFriends = {
     operation: 'select',
     tablename : 'friends',
@@ -607,20 +607,27 @@ var crossFriends = []
 
           if(feedback.result.rows.length > 0){
 
-            crossFriends = feedback.result.rows
+            crossFriendsList = feedback.result.rows
 
-            res.render('followers/index', {mefriend: friendList, hefriend: crossFriends, loggedUser: req.session.userDetails})
+            
+
+
+            res.render('followers/index', {mefriend: friendList, hefriend: crossFriendsList, loggedUser: req.session.userDetails})
           }else{
-            res.render('followers/index', {mefriend: friendList, hefriend: crossFriends, loggedUser: req.session.userDetails})
+
+            res.render('followers/index', {mefriend: friendList, hefriend: crossFriendsList, loggedUser: req.session.userDetails})
           }
         }else{
 
-          res.render('followers/index', {mefriend: friendList, hefriend: crossFriends})
+          
+
+          res.render('followers/index', {mefriend: friendList, hefriend: crossFriendsList})
         }
       })
     }else{
 
-      res.render('followers/index', {mefriend: friendList, hefriend: crossFriends})
+
+      res.render('followers/index', {mefriend: friendList, hefriend: crossFriendsList})
     }
   })
 })

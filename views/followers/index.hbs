@@ -190,10 +190,12 @@
         <divv class="bodyMainColum">
 
           <h2>Friends...</h2>
+        
             
           <div class="friendsDiv">
 
                 {{#if hefriend}}
+
 
                 {{#each hefriend}}
             <div class="friend">
@@ -208,16 +210,18 @@
 
             {{#if mefriend}}
 
+            
+
             {{else}}
 
-            <p>There are no friends added yet, <a href="/users/all" style="color: wheat;">click here</a> to explore for new friend suggestions...<p>
+            <p>There are no friends added yet...<p>
 
             {{/if}}
             {{/if}}
 
             {{#if mefriend}}
 
-          
+        
 
             {{#each mefriend}}
             <div class="friend">
@@ -235,7 +239,7 @@
 
             {{else}}
 
-            <p>There are no friends added yet, <a href="/users/all" style="color: wheat;">click here</a> to explore for new friend suggestions...<p>
+            <p>There are no friends added yet...<p>
 
             {{/if}}
             {{/if}}

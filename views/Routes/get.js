@@ -15,7 +15,7 @@ const isbizSet = (req, res, next) => {
   ) {
     next();
   } else {
-    res.redirect("/AddService");
+    res.redirect("/suscription/page")
   }
 };
 
@@ -107,7 +107,7 @@ route.get("/", (req, res) => {
   res.render("home/index", { loggedUser: req.session.userDetails });
 });
 route.get("/login", (req, res) => {
-  res.render("login/index", { name: "winslow" });
+  res.render("login/index");
 });
 
 route.get("/sdetailsa", isbizSet, (req, res) => {

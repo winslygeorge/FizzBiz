@@ -107,7 +107,7 @@ uname = newUser.username
 
     //work tel input validation
 
-    if(newUser.workTel.match(/^[+]?[0-9]/) && newUser.workTel.length >= 9 && newUser.workTel.length <= 14){
+    if(newUser.workTel.match(/^[+]?[0-9]{1,3}?[0-9]{3}?[0-9]{4,6}/) && newUser.workTel.length >= 9 && newUser.workTel.length <= 14){
 
 
         wokTel = newUser.workTel
@@ -122,7 +122,7 @@ uname = newUser.username
 
     // mobile tel validation
 
-    if(newUser.mobileTel.match(/^[+]?[0-9]/) && newUser.mobileTel.length >= 9 && newUser.mobileTel.length <= 14){
+    if(newUser.mobileTel.match(/^[+]?[0-9]{1,3}?[0-9]{3}?[0-9]{4,6}/) && newUser.mobileTel.length >= 9 && newUser.mobileTel.length <= 14){
 
                mobTel = newUser.mobileTel       
 
@@ -236,7 +236,7 @@ address = newUser.address
 
 //submit validation
 
-if(fname!=null && lname!=null && uname!=null && email!=null && mobTel !=null && continent!=null && country!=null && town!=null && address!=null && passwd !=null && dob !=null && profileImg !=null ){
+if(fname!=null && lname!=null && uname!=null && email!=null && mobTel !=null  && passwd !=null && dob !=null && profileImg !=null ){
 
 
   
@@ -252,10 +252,10 @@ var profileIg = uname+'_'+Date.now()+'_'+Math.round(Math.random()* 1E9)+'.'+prof
         mobileTel : mobTel,
         workTel : wokTel,
         profileImage :profileIg,
-        continent : continent,
-        country : country,
-        townCity : town,
-        address : address,
+        continent : "",
+        country : "",
+        townCity : "",
+        address : "",
         DOB : dob,
         facebook : facebook,
         instagram : instagram,

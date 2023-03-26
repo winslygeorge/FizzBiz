@@ -49,7 +49,7 @@ function handleGetLeaderBoard(){
          }
    
          }     }
-    xmlHttp.open("GET", "http://localhost:8087/leaderboard", true); // true for asynchronous 
+    xmlHttp.open("GET", "https://www.fizzbiznet.com/leaderboard", true); // true for asynchronous 
     xmlHttp.send(null);
     
     
@@ -66,7 +66,7 @@ function callJoinDiv(auth){
 
     try{
 
-        window.open('http://localhost:8087/login/')
+        window.open('https://www.fizzbiznet.com/login/')
 
     }catch(e){
 console.log(e)
@@ -133,7 +133,7 @@ function handleJoinReq(){
 
     var appid = document.getElementById('businessAppId').value
     var compname = document.getElementById('compname').value
-    $.post('http://localhost:8087/post/competitors', {
+    $.post('https://www.fizzbiznet.com/post/competitors', {
         appid : parseInt(appid),
         compname : compname
     }, (data, status)=>{
@@ -178,7 +178,7 @@ function handleBasic(){
 
         if(username != "guest"){
 
-        $.post('http://localhost:8087/post/disc', {
+        $.post('https://www.fizzbiznet.com/post/disc', {
         content : content,
         username : username,
         userimage : userimage,
@@ -224,7 +224,7 @@ function handleBasic(){
             var proceed = confirm("PLease LOGIN to engage in the discussion forum...")
             if(proceed){
 
-                window.open("http://localhost:8087/AddService?suscription=prenium")
+                window.open("https://www.fizzbiznet.com/AddService?suscription=prenium")
             }
         }
     }
@@ -291,7 +291,7 @@ function handleSubDiscSubmission(){
             var proceed = confirm("PLease LOGIN to engage in the discussion forum...")
             if(proceed){
 
-                window.open("http://localhost:8087/AddService?suscription=prenium")
+                window.open("https://www.fizzbiznet.com/AddService?suscription=prenium")
             }
         }
     }
@@ -391,7 +391,7 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
              }
    
              }     }
-        xmlHttp.open("GET", "http://localhost:8087/competition/discussions_subs?disc_id="+id, true); // true for asynchronous 
+        xmlHttp.open("GET", "https://www.fizzbiznet.com/competition/discussions_subs?disc_id="+id, true); // true for asynchronous 
         xmlHttp.send(null);
 
 

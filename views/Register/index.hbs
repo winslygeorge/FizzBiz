@@ -200,9 +200,9 @@
     <br><br>
     <input type="password" name="conUserPasswd" id="" class="inputText"  required="true">
 </div>
-<div class="branchLocation">
+<div class="branchLocation" style="display: none;">
 
-    <h3>Location Information</h3>
+    <h3>Location Information (Optional)</h3>
               <p style="color: red;">{{contErr}}</p>
 
     <div class="inp">
@@ -223,17 +223,17 @@
     <div class="inp">
 
         <label for="companyCountry"> Country Location <span class="starErr">*</span></label>
-        <input type="text" name="country" id="" class="input"  required="true" value="{{country}}">
+        <input type="text" name="country" id="" class="input"   value="{{country}}">
     </div>
 
     <div class="inp">
         <label for="companyCountry">Town/City Location <span class="starErr">*</span></label>
-        <input type="text" name="city" id="" class="input"  required="true" value="{{townCity}}">
+        <input type="text" name="city" id="" class="input"   value="{{townCity}}">
     </div>
 
     <div class="inp">
         <label for="companyCountry">Address <span class="starErr">*</span></label>
-        <input type="text" name="address" id="" class="input"  required="true" value="{{address}}"> 
+        <input type="text" name="address" id="" class="input"  value="{{address}}"> 
     </div>
 </div>
 
@@ -248,7 +248,7 @@
     </div>
     <div class="inp">
         <p style="color: red;">{{wokrTelErr}}</p>
-        <label for="companyCountry">Work Telephone Number</label>
+        <label for="companyCountry">Work Telephone Number (Optional)</label>
         <input type="tel" name="worktelno" id="" class="input" value="{{wokyTel}}" >
     </div>
 </div>
@@ -257,10 +257,10 @@
 
         </div>
 
-        <caption> <h2>Social Media Information</h2></caption>
+        {{!-- <caption> <h2>Social Media Information(Optional)</h2></caption> --}}
 
        
-        <div class="social">
+        <div class="social" style="display:none;">
 
             <div class="inp">
                 <label for="companyCountry">Facebook Link</label>

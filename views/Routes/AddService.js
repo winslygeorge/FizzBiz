@@ -29,8 +29,10 @@ const isbizSet = (req, res, next) => {
   ) {
     next();
   } else {
-    res.redirect("/AddService");
-  }
+
+
+      res.redirect("/suscription/page")
+    }
 };
 
 const isAppID = (req, res, next) => {
