@@ -172,7 +172,8 @@ route.post('/post/like/user/image', isAuth, (req, res)=>{
     id : new Date() * Math.random()* 1000,
     imageid : req.body.image_id,
     username : req.session.userDetails.username,
-    userimage : req.session.userDetails.profileimage
+    userimage : req.session.userDetails.profileimage,
+    create_at : new Date()
   }
 
   dbcon.run(postLike).then((feedback)=>{

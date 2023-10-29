@@ -7,7 +7,7 @@ var y = 0;
 var  imgElement;
 $(document).ready(function(){
 
-    console.log('hello body readdyt')
+  
    
 
 
@@ -244,12 +244,12 @@ function handleVideoChange(cnt){
 
 function handleRecoverPassword() {
     
-    alert("Are you sure this is your account")
 
     var recoveryemail = prompt("Enter your account's Email.\n You will receive a password change link email in your email after some few minutes...", '')
 
     if (recoveryemail != null && recoveryemail != undefined && recoveryemail != '') {
 
+        document.getElementById('loader').style.display ="block"
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -259,17 +259,24 @@ function handleRecoverPassword() {
 
                 if (result.code == 200) {
 
+
                     alert('Recovery Email sent...')
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else if (result.code == 400) { 
 
 
                     alert("No account is registered with the provided account.")
+                    document.getElementById('loader').style.display ="none"
+
 
                 }else{
 
 
-                    alert("Error Requesting password change... please try again...")
+                    // alert("Error Requesting password change... please try again...")
+                    // document.getElementById('loader').style.display ="none"
+
                 }
             }
         };

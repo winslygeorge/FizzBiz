@@ -63,7 +63,7 @@ route.post('/updateiconimage', isAuth, (req, res) => {
 
         var profileImg = null, profileImgErr = null
 
-        var appname = fields.appname, appid = parseInt(fields.appid)
+        var appname = fields.appname, appid = parseInt(fields.appid), cat = parseInt(fields.cat)
         if (!err) {
             
             if (handleImageUpload(files)) {
@@ -119,7 +119,7 @@ route.post('/updateiconimage', isAuth, (req, res) => {
                         console.log("operation was successfull")
                         
 
-                        res.redirect('/app/' + appname)
+                        res.redirect(`/app/${appname}?id=${appid}&cat=${cat}`)
 
 
                         
@@ -127,7 +127,7 @@ route.post('/updateiconimage', isAuth, (req, res) => {
 
                         console.log(results.result)
                         
-                        res.redirect('/app/' + appname)
+                        res.redirect(`/app/${appname}?id=${appid}&cat=${cat}`)
 
 
                     }
@@ -137,7 +137,7 @@ route.post('/updateiconimage', isAuth, (req, res) => {
 
                 console.log("null empty fields..")
                 
-                res.redirect('/app/'+appname)
+                res.redirect(`/app/${appname}?id=${appid}&cat=${cat}`)
             }
 
         } else {
@@ -292,6 +292,7 @@ route.post('/updateaddservice', (req, res) => {
             
 
             let newservice = {
+                
 
                 id: new Date()  * 100,
 
@@ -302,6 +303,8 @@ route.post('/updateaddservice', (req, res) => {
                 price: parseFloat(fields.servicePrice),
 
                 businessid: fields.appid,
+                created_at: new Date(),
+                type : clean.CleanData(fields.type),
                 tablename: "services",
 
                 operation: "insert"
@@ -323,7 +326,10 @@ route.post('/updateaddservice', (req, res) => {
 
                     if (results.code == 200) {
 
-
+                        res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+                       
+                           
+                     
                         var oldPath = files.serviceIcon.path
 
                         var newPath = path.join(__dirname, './../images') + '/' + profileIg
@@ -360,7 +366,8 @@ route.post('/updateaddservice', (req, res) => {
                                 console.log(followers.length);
 
                                 if (followers.length == 0) {
-                                    return res.redirect('/app/' + fields.appname)
+                                    res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
                                 }
                                 followers.forEach((follower) => {
                                     var getEmail = follower.USEREMAIL;
@@ -424,20 +431,12 @@ route.post('/updateaddservice', (req, res) => {
                             }
                         })
 
-                        // setTimeout(function () {
-                        //     res.redirect('/app/' + fields.appname)
-                        // }, 7000);
-                    
-                
-                    
-
-
                         
                     } else {
 
                         console.log(results.result)
 
-                        res.send({code : 101, error : 'error adding service...'})
+                        res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
 
                     }
                 
@@ -447,7 +446,7 @@ route.post('/updateaddservice', (req, res) => {
         
             } else {
 
-                res.send({ code: 101, error: 'error adding service...' })
+                res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
 
             }
 
@@ -498,25 +497,29 @@ route.post('/updateaddlocation', isAuth, (req, res) => {
 
                     if (results.code == 200) {
 
-                        res.redirect('/app/' + fields.appname)
+                        res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
                     } else {
 
                         console.log(results.result)
 
-                        res.redirect('/app/' + fields.appname)
+                        res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
                     }
                 }, function (err) { })
 
             } else {
 
-                res.redirect('/app/' + fields.appname)
+                res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
             }
 
         } else {
 
-            res.redirect('/app/' + fields.appname)
+            res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
         }
     })
@@ -587,12 +590,14 @@ route.post('/updateaddimage', isAuth, (req, res) => {
                         })
 
 
-                        res.redirect('/app/' + fields.appname)
+                        res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
                     } else {
 
                         console.log(results.result)
-                        res.redirect('/app/' + fields.appname)
+                        res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
 
                     }
@@ -601,7 +606,8 @@ route.post('/updateaddimage', isAuth, (req, res) => {
 
         } else {
 
-            res.redirect('/app/' + fields.appname)
+            res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
         }
     })
@@ -609,6 +615,8 @@ route.post('/updateaddimage', isAuth, (req, res) => {
 
 
 route.post('/updateaddvideo', isAuth, (req, res) => {
+
+
 
 
         let form = new formidable.IncomingForm()
@@ -663,13 +671,15 @@ route.post('/updateaddvideo', isAuth, (req, res) => {
                         if (results.code == 200) {
 
 
-                            res.redirect('/app/' + fields.appname)
+                            res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
                         } else {
 
                             console.log(results.result)
 
-                            res.redirect('/app/' + fields.appname)
+                            res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
 
                         }
@@ -677,13 +687,15 @@ route.post('/updateaddvideo', isAuth, (req, res) => {
 
                 } else {
 
-                    res.redirect('/app/' + fields.appname)
+                    res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
                 }
 
             } else {
 
-                res.redirect('/app/' + fields.appname)
+                res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
+
 
             }
         })
@@ -821,6 +833,7 @@ route.post('/adduserimage', isAuth, (req, res) => {
                     imagetag : fields.tag,
 
                     userimage: req.session.userDetails.profileimage,
+                    created_at : new Date(),
 
                     tablename: "userimages",
 

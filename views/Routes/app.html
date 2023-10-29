@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Interactive Table</h2>
+
+<table id="data-table">
+    <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Row 1, Column 1</td>
+            <td>Row 1, Column 2</td>
+            <td>Row 1, Column 3</td>
+            <td>Row 1, Column 4</td>
+        </tr>
+        <tr>
+            <td>Row 2, Column 1</td>
+            <td>Row 2, Column 2</td>
+            <td>Row 2, Column 3</td>
+            <td>Row 2, Column 4</td>
+        </tr>
+        <!-- Add more rows here -->
+    </tbody>
+</table>
+
+<div>
+    <label for="hide-columns">Hide Columns:</label>
+    <select id="hide-columns">
+        <option value="0">Column 1</option>
+        <option value="1">Column 2</option>
+        <option value="2">Column 3</option>
+        <option value="3">Column 4</option>
+    </select>
+</div>
+
+<div>
+    <button id="prev-page">Previous Page</button>
+    <button id="next-page">Next Page</button>
+</div>
+
+<script>
+    const table = document.getElementById('data-table');
+    const hideColumnsDropdown = document.getElementById('hide-columns');
+    const prevPageButton = document.getElementById('prev-page');
+    const nextPageButton = document.getElementById('next-page');
+    
+    let currentPage = 0;
+    const rowsPerPage = 2;
+    
+    function updateTableVisibility() {
+        const columnIndexToHide = parseInt(hideColumnsDropdown.value);
+        const rows = table.querySelectorAll('tbody tr');
+        
+        for (const row of rows) {
+            const cells = row.getElementsByTagName('td');
+            for (let i = 0; i < cells.length; i++) {
+                if (i === columnIndexToHide) {
+                    cells[i].classList.add('hidden');
+                } else {
+                    cells[i].classList.remove('hidden');
+                }
+            }
+        }
+    }
+    
+    function updatePaginationButtons() {
+        const rows = table.querySelectorAll('tbody tr');
+        const totalPages = Math.ceil(rows.length / rowsPerPage);
+        
+        prevPageButton.disabled = currentPage === 0;
+        nextPageButton.disabled = currentPage === totalPages - 1;
+    }
+    
+    function updateDisplayedRows() {
+        const rows = table.querySelectorAll('tbody tr');
+        const startIndex = currentPage * rowsPerPage;
+        const endIndex = startIndex + rowsPerPage;
+        
+        rows.forEach((row, index) => {
+            if (index >= startIndex && index < endIndex) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    
+    hideColumnsDropdown.addEventListener('change', () => {
+        updateTableVisibility();
+    });
+    
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 0) {
+            currentPage--;
+            updateDisplayedRows();
+            updatePaginationButtons();
+        }
+    });
+    
+    nextPageButton.addEventListener('click', () => {
+        const rows = table.querySelectorAll('tbody tr');
+        const totalPages = Math.ceil(rows.length / rowsPerPage);
+        
+        if (currentPage < totalPages - 1) {
+            currentPage++;
+            updateDisplayedRows();
+            updatePaginationButtons();
+        }
+    });
+    
+    // Initial setup
+    updateTableVisibility();
+    updateDisplayedRows();
+    updatePaginationButtons();
+</script>
+
+</body>
+</html>

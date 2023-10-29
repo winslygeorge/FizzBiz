@@ -97,8 +97,8 @@ height: fit-content;
   
  
 
-  filter: blur(1.5px);
-  -webkit-filter: blur(1.5px);
+  /* filter: blur(1.5px); */
+  /* -webkit-filter: blur(1.5px); */
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -126,7 +126,7 @@ height: fit-content;
 }
 .contIntro{
 
-    position: absolute;
+    position: relative;
     top: 12%;
   
     color: rgb(233, 223, 230);

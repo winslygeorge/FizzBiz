@@ -16,6 +16,9 @@ const path = require("path");
 
 const fs = require("fs");
 const { cleanData } = require("jquery");
+const { formatDate } = require("../components/dateFormat");
+const { use } = require("./get");
+const { user } = require("../../oracleDBManager/dbconfig");
 
 const dbcon = new db();
 
@@ -44,25 +47,13 @@ const isAppID = (req, res, next) => {
 };
 
 const isAuth = (req, res, next) => {
-  if (req.session.isAuth) {
+  console.log(req.session)
+  if (req?.session?.isAuth === true) {
+    console.error('auth succeded')
     next();
+
   } else {
-    try{
-
-      var appid = parseInt(req.body.appid);
-
-      if(appid){
-
-        res.send({code: 309, result:"You are not logged in.."})
-      }
-
-    }catch(e){
-
-      res.redirect('/login')
-    }finally{
-
-      res.redirect('/login')
-    }
+    res.redirect('/login')
  
   }
 };
@@ -213,6 +204,7 @@ route.post("/addService", isAuth, (req, res) => {
         github: social.github,
         owner : req.session.userDetails.username,
         suscription: fields.suscription,
+        created_at : new Date(),
         operation: "insert",
 
         tablename: "BUSINESSAPP",
@@ -387,15 +379,18 @@ route.post("/saddservice", isbizSet, (req, res) => {
       }
 
       let newservice = {
+
+        created_at : new Date().toISOString(),
         id: new Date() * Math.round(Math.random() / Math.random()) * 10,
 
         servicename: clean.CleanData(fields.serviceName),
         serviceicon: serviceIcon,
 
         servicedesc: clean.CleanData(fields.serviceDesc),
-        price: fields.servicePrice,
+        price: (+fields.servicePrice),
 
         businessid: req.session.appid,
+        
         tablename: "services",
 
         operation: "insert",
@@ -411,15 +406,16 @@ route.post("/saddservice", isbizSet, (req, res) => {
         newservice.serviceicon.split(".")[1];
 
       newservice.serviceicon = profileIg;
+      newservice.created_at = new Date();
 
-      console.log(newservice);
+      // console.log(newservice);
 
       if (
         newservice.id != null &&
         newservice.servicedesc != null &&
         newservice.servicename != null &&
         newservice.price != null &&
-        newservice.serviceicon != null
+        newservice.serviceicon != null && newservice.created_at != null
       ) {
         dbcon.run(newservice).then(function (results) {
           if (results.code == 200) {
@@ -561,6 +557,8 @@ route.post("/addserviceimage", (req, res) => {
 
           imagelink: profileIg,
 
+          created_at : new Date(),
+
           tablename: "businessimages",
 
           operation: "insert",
@@ -627,6 +625,8 @@ route.post("/addservicevideo", isbizSet, (req, res) => {
 
         businessappid: req.session.appid,
 
+        created_at : new Date(),
+
         tablename: "businessvideos",
 
         operation: "insert",
@@ -679,6 +679,8 @@ route.post("/updateapprate", (req, res) => {
     businessappid: parseInt(clean.CleanData(req.body.appid)),
 
     ratingno: parseInt(clean.CleanData(req.body.starno)),
+
+    created_at : new Date(),
 
     tablename: "ratings",
 
@@ -738,16 +740,26 @@ route.post("/updateapprate", (req, res) => {
   }
 });
 
-route.post("/placeorder", isAuth, (req, res) => {
+route.post("/placeorder", (req, res) => {
+
+  console.log(req.body)
+
+  if (req?.session?.isAuth === true) {
   var order = {
     id: new Date() * Math.round(Math.random() * 8),
 
     username: req.session.userDetails.username,
     serviceid: parseInt(clean.CleanData(req.body.serviceid)),
-
+  
     quantity: 1,
 
     checkedout: 0,
+
+    created_at : new Date(),
+
+    type : clean.CleanData(req.body.type),
+
+    status : 1,
 
     tablename: "bookings",
 
@@ -772,7 +784,7 @@ route.post("/placeorder", isAuth, (req, res) => {
       var ordersdet = {
         id: new Date() * Math.round(Math.random() * 8),
 
-        username: req.session.userDetails.username,
+        username: req?.session?.userDetails?.username,
         serviceid: parseInt(clean.CleanData(req.body.serviceid)),
 
         quantity: 1,
@@ -780,6 +792,13 @@ route.post("/placeorder", isAuth, (req, res) => {
         checkedout: 0,
 
         businessappid: appid,
+
+        created_at : new Date(),
+
+        type : clean.CleanData(req.body.type),
+
+
+    status : 1,
 
         tablename: "bookings",
 
@@ -810,6 +829,11 @@ route.post("/placeorder", isAuth, (req, res) => {
       res.send({ code: 102, error: "service id doesnt exist" });
     }
   });
+}else{
+
+  res.send({ code: 309, result: "Please Login to continue" });
+
+}
 });
 
 route.post("/updateorder",isAuth, (req, res) => {
@@ -882,9 +906,10 @@ route.post("/deleteorder",isAuth, (req, res) => {
   if (orderid != null && orderid != undefined) {
     var deleteOrder = {
       tablename: "bookings",
-      operation: "delete",
-      wfield: "id",
-      wvalue: parseInt(orderid),
+      operation: "update",
+      satatus : 0,
+      where: "id",
+      val: parseInt(orderid),
     };
 
     dbcon.run(deleteOrder).then(function (results) {
@@ -899,20 +924,157 @@ route.post("/deleteorder",isAuth, (req, res) => {
 
 route.post("/deletecartorder", isAuth, (req, res) => {
   var orderid = clean.CleanData(req.body.orderid);
+  var useremail = clean.CleanData(req.body.email);
+  var username = clean.CleanData(req.body.username)
+  var businessname = clean.CleanData(req.body.businessname)
+  var servicename = clean.CleanData(req.body.servicename)
 
-  console.log(orderid);
 
   if (orderid != null && orderid != undefined) {
     var deleteOrder = {
       tablename: "ordercart",
-      operation: "delete",
-      wfield: "orderid",
-      wvalue: parseInt(orderid),
+      operation: "update",
+      status : 'cancelled',
+      where: "orderid",
+      val: parseInt(orderid),
     };
 
     dbcon.run(deleteOrder).then(function (results) {
       if (results.code == 200) {
-        res.send({ code: 200 });
+        var email = {
+          from: `Fizzbiznet  <fizzbiznet@gmail.com>`,
+          to: useremail,
+          subject: `Your Order or Service for ${servicename} by ${businessname} has been Cancelled`,
+          template: "orderTemp",
+          context: {
+            name: username,
+
+            appname: businessname,
+
+            replyto: 'fizzbiznet@gmail.com',
+
+            content: `Your Order or Service for ${servicename} by ${businessname} has been Cancelled. \n`,
+
+            title: "Order or Service Cancelled",
+          },
+
+          attachments: [
+            {
+              filename: "FizzBizNet.png",
+              path: path.join(
+                __dirname,
+                "./../../email/views/images/FizzBizNet.png"
+              ),
+              cid: "logoimg", //same cid value as in the html img src
+            },
+          ],
+        };
+
+        gen
+          .sendMail(
+            options.generateEmailOpt(
+              email.from,
+              email.to,
+              email.subject,
+              email.template,
+              email.context,
+              email.attachments
+            )
+          )
+          .then(
+            function (result) {
+              res.send({ code: 200, result: "result" });
+              console.log(result);
+            },
+            function (error) {
+              console.log(error);
+            }
+          );
+
+      } else {
+        res.send({ code: 101 });
+      }
+    });
+  }
+});
+
+route.post("/completecartorder", isAuth, (req, res) => {
+  var orderid = clean.CleanData(req.body.orderid);
+  var useremail = clean.CleanData(req.body.email);
+  var username = clean.CleanData(req.body.username)
+  var businessname = clean.CleanData(req.body.businessname)
+  var servicename = clean.CleanData(req.body.servicename)
+
+
+
+  console.log(orderid, " : ", useremail , " : ", username, " : ", businessname, " : ", servicename);
+
+  if (orderid != null && orderid != undefined) {
+    var deleteOrder = {
+      tablename: "ordercart",
+      operation: "update",
+      status : 'completed',
+      where: "orderid",
+      val: parseInt(orderid),
+    };
+
+    dbcon.run(deleteOrder).then(function (results) {
+      if (results.code == 200) {
+        // res.send({ code: 200 });
+
+        var email = {
+          from: `Fizzbiznet  <fizzbiznet@gmail.com>`,
+          to: useremail,
+          subject: `Your Order or Service for ${servicename} by ${businessname} has been successfully completed`,
+          template: "orderTemp",
+          context: {
+            name: username,
+
+            appname: businessname,
+
+            replyto: 'fizzbiznet@gmail.com',
+
+            content: `Your Order or Service for ${servicename} by ${businessname} has been successfully completed. \n If you have 
+            not received the order or service please contact us.`,
+
+            title: "Order or Service Completed",
+          },
+
+          attachments: [
+            {
+              filename: "FizzBizNet.png",
+              path: path.join(
+                __dirname,
+                "./../../email/views/images/FizzBizNet.png"
+              ),
+              cid: "logoimg", //same cid value as in the html img src
+            },
+          ],
+        };
+
+        gen
+          .sendMail(
+            options.generateEmailOpt(
+              email.from,
+              email.to,
+              email.subject,
+              email.template,
+              email.context,
+              email.attachments
+            )
+          )
+          .then(
+            function (result) {
+              res.send({ code: 200, result: "result" });
+              console.log(result);
+            },
+            function (error) {
+              console.log(error);
+            }
+          );
+
+
+        ////...................
       } else {
         res.send({ code: 101 });
       }
@@ -931,6 +1093,8 @@ route.post("/postcomment", isAuth, (req, res) => {
     businessappid: parseInt(req.body.appid),
 
     profileimage: clean.CleanData(req.body.profileimage),
+
+    created_at : new Date(),
 
     tablename: "businessreviews",
 
@@ -1047,7 +1211,7 @@ route.post("/postemail", isAuth, (req, res) => {
               if (followers.length == 0) {
                 return res.send({ code: 402 });
               }
-              followers.forEach((follower) => {
+              followers.map((follower) => {
                 var getEmail = follower.USEREMAIL;
 
                 var getUsername = follower.USERNAME;
@@ -1268,49 +1432,55 @@ route.post("/postemail", isAuth, (req, res) => {
   }
 });
 
-route.post("/postlike", isAuth, (req, res) => {
+route.post("/postlike", (req, res) => {
   var appid = parseInt(req.body.appid);
+  var appcat = parseInt(req.body.cat);
+
 
   var newLike = {
     id: new Date() * Math.round(Math.random() * 17),
-    username: req.session.userDetails.username,
+    username: req?.session?.userDetails?.username,
     businessappid: appid,
     appname: clean.CleanData(req.body.appname),
     appimage: req.body.appimage,
+    created_at : new Date(),
+    category : appcat,
     tablename: "applikes",
     operation: "insert",
   };
 
-  if (
-    newLike.id != null &&
-    newLike.id != undefined &&
-    newLike.username != null &&
-    newLike.username != undefined &&
-    newLike.businessappid != null &&
-    newLike.businessappid != undefined
-  ) {
+    if (req?.session?.isAuth === true) {
     dbcon.run(newLike).then(function (results) {
+      console.log(results.result)
       if (results.code == 200) {
+        
         res.send({ code: 200, result: "Like successful" });
       } else {
         res.send({ code: 101, result: "already liked" });
       }
     });
-  } else {
-    res.send({ code: 101, result: "Error occured" });
+
+  }else{
+
+    res.send({ code: 101, result: "Please Login to continue" });
+
   }
+  
 });
 
-route.post("/postfollow", isAuth, (req, res) => {
+route.post("/postfollow", (req, res) => {
   var appid = parseInt(req.body.appid);
+
+  if (req?.session?.isAuth === true) {
 
   var newLike = {
     id: new Date() * Math.round(Math.random() * 17),
-    username: req.session.userDetails.username,
+    username: req?.session?.userDetails?.username,
     businessappid: appid,
     appname: clean.CleanData(req.body.appname),
     appimage: req.body.appimage,
     useremail: req.session.userDetails.email,
+    created_at : new Date(),
     tablename: "followers",
     operation: "insert",
   };
@@ -1325,17 +1495,24 @@ route.post("/postfollow", isAuth, (req, res) => {
   ) {
     dbcon.run(newLike).then(function (results) {
       if (results.code == 200) {
-        res.send({ code: 200, result: "Like successful" });
+        res.send({ code: 200, result: "Followed successfully" });
       } else {
-        res.send({ code: 101, result: "already liked" });
+        res.send({ code: 101, result: "Already Following." });
       }
     });
   } else {
-    res.send({ code: 101, result: "error" });
+    res.send({ code: 101, result: "Error Following" });
   }
+}else{
+
+  res.send({ code: 101, result: "Please Login to continue" });
+
+}
 });
 
 route.post("/handleorder", isAuth, (req, res) => {
+
+  console.log('triggered')
   var orderdetails = {
     orderid: parseInt(clean.CleanData(req.body.orderid)),
 
@@ -1345,181 +1522,161 @@ route.post("/handleorder", isAuth, (req, res) => {
     serviceid: parseInt(clean.CleanData(req.body.serviceid)),
     venue: clean.CleanData(req.body.venueorder),
     datetimeorder: clean.CleanData(req.body.datetime),
+    created_at : new Date(),
+    status : 'pending',
+    type: clean.CleanData(req.body.type),
+    id: new Date() * Math.round(Math.random() * 13),
+
 
     operation: "insert",
     tablename: "ordercart",
   };
 
-  var appname,
-    appemail,
-    servicename,
-    serviceImage,
-    useremail = null;
+  dbcon.run(orderdetails).then((result)=>{
 
-  var selectUseremail = {
-    operation: "select",
-    tablename: "users",
-    fields: ["email"],
-    wfield: ["username"],
-    wvalue: [orderdetails.username],
-  };
 
-  dbcon.run(selectUseremail).then(function (results) {
-    if (results.code == 200) {
-      useremail = results.result.rows[0].EMAIL;
+    if(result.code === 200){
 
-      if (useremail != null && useremail != undefined) {
-        var selectAppemail = {
-          operation: "select",
-          tablename: "businessapp",
-          fields: [],
-          wfield: ["id"],
-          wvalue: [orderdetails.appid],
-        };
-
-        dbcon.run(selectAppemail).then(function (results) {
-          if (results.code == 200) {
-            appemail = results.result.rows[0].BUSINESSEMAIL;
-
-            appname = results.result.rows[0].BUSINESSNAME;
-
-            var selectServicename = {
-              operation: "select",
-              tablename: "services",
-              fields: [],
-              wfield: ["id"],
-              wvalue: [orderdetails.serviceid],
-            };
-
-            dbcon.run(selectServicename).then(function (results) {
-              if (results.code == 200) {
-                servicename = results.result.rows[0].SERVICENAME;
-
-                serviceImage = results.result.rows[0].SERVICEICON;
-
-                var newemail = {
-                  useremail: useremail,
-
-                  serviceicon: serviceImage,
-
-                  topic: "Your Order service details",
-
-                  username: orderdetails.username,
-
-                  appemail: appemail,
-
-                  appname: appname,
-                };
-
-                var checkifnull = false;
-                for (const key in newemail) {
-                  if (newemail.hasOwnProperty(key)) {
-                    const element = newemail[key];
-
-                    if (element == null || element == undefined) {
-                      checkifnull = true;
+      var appname = clean.CleanData(req.body.businessname),
+      appemail = clean.CleanData(req.body.businessemail),
+      servicename = clean.CleanData(req.body.servicename),
+      serviceImage = clean.CleanData(req.body.serviceimage),
+      useremail = clean.CleanData(req.body.email);
+  
+  
+                  var newemail = {
+                    useremail: useremail,
+  
+                    serviceicon: serviceImage,
+  
+                    topic: "Your Order service details",
+  
+                    username: orderdetails.username,
+  
+                    appemail: appemail,
+  
+                    appname: appname,
+                  };
+  
+                  var checkifnull = false;
+                  for (const key in newemail) {
+                    if (newemail.hasOwnProperty(key)) {
+                      const element = newemail[key];
+  
+                      if (element == null || element == undefined) {
+                        checkifnull = true;
+                      }
                     }
                   }
-                }
-
-                if (checkifnull) {
-                  res.send({ code: 101, result: "Empty Field" });
-                } else {
-                  var email = {
-                    from: `${newemail.appname}  <fizzbiznet@gmail.com>`,
-                    to: newemail.useremail,
-                    subject: newemail.topic,
-                    template: "orderemail",
-                    context: {
-                      username: newemail.username,
-                      appname: newemail.appname,
-                    servicename : servicename,
-                      title: "Order Details Email",
-                      datetime: orderdetails.datetimeorder,
-                      venue: orderdetails.venue,
-                    },
-
-                    attachments: [
-                      {
-                        filename: "FizzBizNet.png",
-                        path: path.join(
-                          __dirname,
-                          "./../../email/views/images/FizzBizNet.png"
-                        ),
-                        cid: "logoimg", //same cid value as in the html img src
+  
+                  if (checkifnull) {
+                    res.send({ code: 101, result: "Empty Field" });
+                  } else {
+                    var email = {
+                      from: `${newemail.appname}  <fizzbiznet@gmail.com>`,
+                      to: newemail.useremail,
+                      subject: newemail.topic,
+                      template: "orderemail",
+                      context: {
+                        username: newemail.username,
+                        appname: newemail.appname,
+                      servicename : servicename,
+                        title: "Order Details Email",
+                        datetime: orderdetails.datetimeorder,
+                        venue: orderdetails.venue,
                       },
-                      {
-                        filename: newemail.serviceicon,
-                        path: path.join(
-                          __dirname,
-                          "./../images/" + newemail.serviceicon
-                        ),
-                        cid: "serviceicon", //same cid value as in the html img src
-                      },
-                    ],
-                  };
-
-                  gen
-                    .sendMail(
-                      options.generateEmailOpt(
-                        email.from,
-                        email.to,
-                        email.subject,
-                        email.template,
-                        email.context,
-                        email.attachments
+  
+                      attachments: [
+                        {
+                          filename: "FizzBizNet.png",
+                          path: path.join(
+                            __dirname,
+                            "./../../email/views/images/FizzBizNet.png"
+                          ),
+                          cid: "logoimg", //same cid value as in the html img src
+                        },
+                        {
+                          filename: newemail.serviceicon,
+                          path: path.join(
+                            __dirname,
+                            "./../images/" + newemail.serviceicon
+                          ),
+                          cid: "serviceicon", //same cid value as in the html img src
+                        },
+                      ],
+                    };
+  
+                    gen
+                      .sendMail(
+                        options.generateEmailOpt(
+                          email.from,
+                          email.to,
+                          email.subject,
+                          email.template,
+                          email.context,
+                          email.attachments
+                        )
                       )
-                    )
-                    .then(
-                      function (result) {
-                        var delOrder = {
-                          operation: "delete",
-                          tablename: "bookings",
-                          wfield: "id",
-                          wvalue: orderdetails.orderid,
-                        };
+                      .then(
+                        function (result) {
+                          var delOrder = {
+                            operation: "update",
+                            tablename: "bookings",
+                            checkedout : 1,
+                            satatus : 0,
+                            where: "id",
+                            val: orderdetails.orderid,
+                          };
+  
+                          dbcon.run(delOrder).then(function (results) {
+                            if (results.code == 200) {
+                              // dbcon.run(orderdetails).then(function (results) {  
+                              //   if (results.code == 200) {
+                              //     res.send({ code: 200, result: "result" });
+                              //   } else {
+                              //     console.log("Error updating bookings : ", results.result);
+                              //     res.send({
+                              //       code: 108,
+                              //       error: "Error handling insertion to cart...",
+                              //     });
+                              //   }
+                              // });
+                              res.send({ code: 200, result: "result" });
+                            }else {
+                              console.log("Error deleting order", results.result);
+                              res.send({
+                                code: 107,
+                                error: "Error handling delete order",
+                              });
+                            }
+                          });
+                        },
+                        function (error) {
+                          console.log(error);
+  
+                          res.send({ code: 101, error: "error" });
+                        }
+                      );
+                  }
+  
 
-                        dbcon.run(delOrder).then(function (results) {
-                          if (results.code == 200) {
-                            dbcon.run(orderdetails).then(function (results) {
-                              if (results.code == 200) {
-                                res.send({ code: 200, result: "result" });
-                              } else {
-                                res.send({
-                                  code: 108,
-                                  error: "Error handling insertion to cart...",
-                                });
-                              }
-                            });
-                          } else {
-                            res.send({
-                              code: 107,
-                              error: "Error handling delete order",
-                            });
-                          }
-                        });
-                        console.log(result);
-                      },
-                      function (error) {
-                        console.log(error);
 
-                        res.send({ code: 101, error: "error" });
-                      }
-                    );
-                }
-              } else {
-                res.send({ code: 101, error: "Error fetch Service name..." });
-              }
-            });
-          } else {
-            res.send({ code: 100, error: "Error fetching Company Email..." });
-          }
-        });
-      }
-    } else {
-      res.send({ code: 100, error: "Error fetching user email..." });
+    }else{
+
+      res.send({ code: 101, error: "error" });
+
+
     }
-  });
+
+              }).catch(error=>{
+
+                console.log(error)
+
+                res.send({ code: 101, error: "error" });
+
+
+              })
+          
 });
 
 module.exports = route;

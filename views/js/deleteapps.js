@@ -2,11 +2,11 @@
 
 function handleremoveservice(SERVICEID) {
     
-    alert(SERVICEID)
-
+    document.getElementById('loader').style.display ="block"
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
@@ -15,12 +15,19 @@ function handleremoveservice(SERVICEID) {
 
                     alert('service was successfully removed...')
                     document.getElementById('id' + SERVICEID).remove()
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error deleting service... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+                // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/deleteappservice", true);
@@ -31,11 +38,12 @@ function handleremoveservice(SERVICEID) {
 
 function handleremoveimage(id) {
 
-
+    document.getElementById('loader').style.display ="block"
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+
 
             var result = JSON.parse(this.responseText)
 
@@ -44,12 +52,19 @@ function handleremoveimage(id) {
 
                 alert('Image was successfully removed...')
                 document.getElementById('id' + id).remove()
+                document.getElementById('loader').style.display ="none"
+
 
             } else {
 
 
                 alert("Error deleting Image... please try again...")
+                document.getElementById('loader').style.display ="none"
+
             }
+        }else{
+
+            // document.getElementById('loader').style.display ="none"
         }
     };
     xhttp.open("POST", "/deleteappimage", true);
@@ -60,6 +75,7 @@ function handleremoveimage(id) {
 function handleremovevideo(id) {
 
 
+    document.getElementById('loader').style.display ="block"
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
@@ -72,12 +88,19 @@ function handleremovevideo(id) {
 
                 alert('Video was successfully removed...')
                 document.getElementById('id' + id).remove()
+                document.getElementById('loader').style.display ="none"
+
 
             } else {
 
 
                 alert("Error deleting video... please try again...")
+                document.getElementById('loader').style.display ="none"
+
             }
+        }else{
+
+            // document.getElementById('loader').style.display ="none"
         }
     };
     xhttp.open("POST", "/deleteappvideo", true);
@@ -88,11 +111,12 @@ function handleremovevideo(id) {
 
 function handleremovelocation(id) {
 
-
+    document.getElementById('loader').style.display ="block"
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+
 
             var result = JSON.parse(this.responseText)
 
@@ -101,12 +125,19 @@ function handleremovelocation(id) {
 
                 alert('Location was successfully removed...')
                 document.getElementById('id' + id).remove()
+                document.getElementById('loader').style.display ="none"
+
 
             } else {
 
 
                 alert("Error deleting location... please try again...")
+                document.getElementById('loader').style.display ="none"
+
             }
+        }else{
+
+            // document.getElementById('loader').style.display ="none"
         }
     };
     xhttp.open("POST", "/deleteapplocation", true);
@@ -120,22 +151,32 @@ function updateAppname(id){
     var appname = prompt("Enter new app name? ", null)
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
+
+        document.getElementById('loader').style.display ="block"
         
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
                 if (result.code == 200) {
 
                     document.getElementById('appname').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing app name... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+                // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updateappname", true);
@@ -157,21 +198,31 @@ function updateAppTopic(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
                 if (result.code == 200) {
 
                     document.getElementById('apptopic').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Topic... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+                // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updatetopic", true);
@@ -192,21 +243,31 @@ function updateAppContinent(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
                 if (result.code == 200) {
 
                     document.getElementById('appcontinent').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Continent... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+                // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updatecontinent", true);
@@ -228,21 +289,31 @@ function updateAppCountry(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
                 if (result.code == 200) {
 
                     document.getElementById('appcountry').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Country... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+                // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updatecountry", true);
@@ -264,21 +335,31 @@ function updateAppTown(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
                 if (result.code == 200) {
 
                     document.getElementById('apptown').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Town/city... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+                // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updatetown", true);
@@ -299,21 +380,31 @@ function updateAppAddress(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
                 if (result.code == 200) {
 
                     document.getElementById('appaddress').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Address... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+                // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updateaddress", true);
@@ -336,6 +427,8 @@ function updateAppFacebook(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -345,12 +438,19 @@ function updateAppFacebook(id) {
                 if (result.code == 200) {
 
                     document.getElementById('appfacebook').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Facebook link... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+        // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updatefacebook", true);
@@ -372,6 +472,8 @@ function updateAppInstagram(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -381,12 +483,19 @@ function updateAppInstagram(id) {
                 if (result.code == 200) {
 
                     document.getElementById('appinstagram').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Instagram... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+        // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updateinstagram", true);
@@ -407,21 +516,31 @@ function updateAppTwitter(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
 
                 var result = JSON.parse(this.responseText)
 
                 if (result.code == 200) {
 
                     document.getElementById('apptwitter').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Twitter... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+        // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updatetwitter", true);
@@ -443,6 +562,8 @@ function updateAppYoutube(id) {
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
 
+        document.getElementById('loader').style.display ="block"
+
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -452,12 +573,19 @@ function updateAppYoutube(id) {
                 if (result.code == 200) {
 
                     document.getElementById('appyoutube').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Youtube... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+        // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updateyoutube", true);
@@ -478,6 +606,7 @@ function updateAppGithub(id) {
     var appname = prompt("Enter new Github Link  ? ", null)
 
     if (appname != undefined && appname != null && !appname.match("null") && appname != '') {
+        document.getElementById('loader').style.display ="block"
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -488,12 +617,19 @@ function updateAppGithub(id) {
                 if (result.code == 200) {
 
                     document.getElementById('appgithub').innerText = result.result
+                    document.getElementById('loader').style.display ="none"
+
 
                 } else {
 
 
                     alert("Error changing Github... please try again...")
+                    document.getElementById('loader').style.display ="none"
+
                 }
+            }else{
+
+        // document.getElementById('loader').style.display ="none"
             }
         };
         xhttp.open("POST", "/updategithub", true);

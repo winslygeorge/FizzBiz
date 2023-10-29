@@ -1,7 +1,7 @@
 Wallet Expiry Date
 -----------------------
-This wallet was downloaded on 2022-05-05 11:54:40.444 UTC.
-The SSL certificates provided in this wallet will expire on 2027-05-04 10:40:30.922 UTC.
+This wallet was downloaded on 2023-07-09 14:32:10.483845 UTC.
+The SSL certificates provided in this wallet will expire on 2028-07-07 14:23:51.25434 UTC.
 In order to avoid any service interruptions due to an expired SSL certificate, you must re-download the wallet before this date.
 
 Autonomous Database Tools and Resources
@@ -28,26 +28,12 @@ Access Link:
 
 https://VCDX1S8GELEZFAS-FIZZBIZNETDB.adb.us-ashburn-1.oraclecloudapps.com/ords/apex
 
-Oracle Machine Learning User Management
----------------------------------------
-Create new Oracle Machine Learning user accounts and manage the credentials for existing Oracle Machine Learning users. 
-Access Link:
-
-https://VCDX1S8GELEZFAS-FIZZBIZNETDB.adb.us-ashburn-1.oraclecloudapps.com/omlusers/
-
-Oracle Machine Learning User Notebooks
+Oracle Machine Learning User Interface
 --------------------------------------
-Oracle Machine Learning notebooks provide easy access to Oracle's parallelized, scalable in-database implementations of a library of Oracle Advanced Analytics' machine learning algorithms (classification, regression, anomaly detection, clustering, associations, attribute importance, feature extraction, times series, etc.), SQL, PL/SQL and Oracle's statistical and analytical SQL functions. 
+The Oracle Machine Learning User Interface provides immediate access to the Oracle Machine Learning components and functionality on Autonomous Database, including OML Notebooks, OML AutoML UI, OML Models, and template example notebooks. Through OML Notebooks, users can develop notebooks comprised of SQL, PL/SQL, R, Python, and markdown paragraphs and use OML4SQL, OML4R, and OML4Py APIs.These APIs provide access to over 30 parallelized, scalable in-database machine learningalgorithms, supporting classification, regression, anomaly detection, clustering, associations, attribute importance, feature extraction, and times series forecasting, among others. Through OML4Py and OML4R, users can invoke user-defined Python and R functions in engines spawned and controlled by the database environment, with optional data-parallel and task-parallel invocation, as well as deploy those user-defined functions from SQL and REST APIs.
 Access Link:
 
 https://VCDX1S8GELEZFAS-FIZZBIZNETDB.adb.us-ashburn-1.oraclecloudapps.com/oml/
-
-Service Console
----------------
-Monitor real-time and historical information about the utilization of the service, perform administrative operations or access to developer tools. 
-Access Link:
-
-https://adb.us-ashburn-1.oraclecloud.com/console/index.html?tenant_name=OCID1.TENANCY.OC1..AAAAAAAACPNXV6MZEF7QWGD6DU2E55VWXLTBS6XWBTCFX5RPZJFOJRUJIWBA&database_name=FIZZBIZNETDB&service_type=ATP
 
 SODA Drivers
 ------------

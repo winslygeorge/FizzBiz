@@ -36,8 +36,6 @@ function handleUserGallery(){
 
 
 function handleUserVideos(){
-
-    alert('videos')
     var galDiv = document.getElementById('hreel')
 
     if(galDiv != null){
@@ -56,11 +54,12 @@ function handleUserVideos(){
 
 function handleBeFriend(username, userimage){
 
-    alert(`${username} : ${userimage}`)
-
     if(username != null || username != undefined){
 
-        $.post('http://localhost:8087/post/friendRequest', {
+        document.getElementById('loader').style.display ="block"
+
+
+        $.post('/post/friendRequest', {
         receivername : username,
         receiverimage: userimage
 
@@ -73,8 +72,13 @@ function handleBeFriend(username, userimage){
             style="background-color: lawngreen; color: white; padding:2%; border: 2px solid lawngreen; border-radius:4px; font-weight: bolder;">
             Sent Friend Request</button>`
 
+            document.getElementById('loader').style.display ="none"
+
+
         }else{
             alert(`Could not sent Friend request. Please try again later...`)
+            document.getElementById('loader').style.display ="none"
+
         }
     })
 
@@ -83,11 +87,13 @@ function handleBeFriend(username, userimage){
 
 function handleAcceptFriend(username, userimage, id, friend_id){
 
-    alert(`${username} : ${userimage} : ${id}`)
 
     if(username != null || username != undefined){
 
-        $.post('http://localhost:8087/post/acceptfriendRequest', {
+        document.getElementById('loader').style.display ="block"
+
+
+        $.post('/post/acceptfriendRequest', {
         receivername : username,
         receiverimage: userimage,
         requestid : id
@@ -100,9 +106,13 @@ function handleAcceptFriend(username, userimage, id, friend_id){
             document.getElementById('friendsAB').innerHTML = `<button onclick="handleCancelFriend(${username}, ${friend_id});"
             style="background-color: green; color: white; padding:2%; border: 2px solid green; border-radius:4px; font-weight: bolder;">
             Friends</button>`
+            document.getElementById('loader').style.display ="none"
+
 
         }else{
             alert(`Could not Accept Friend request. Please try again later...`)
+            document.getElementById('loader').style.display ="none"
+
         }
     })
 
@@ -122,11 +132,15 @@ function handleCancelFriend(username, friend_id, userimage){
 
     if(username != null || username != undefined){
 
-        $.post('http://localhost:8087/post/cancelfriend', {
+        document.getElementById('loader').style.display ="block"
+
+
+        $.post('/post/cancelfriend', {
         receivername : username,
         friend_id : friend_id
 
     }, (data, status)=>{
+
 
 
         if(data.code == 200){
@@ -135,13 +149,49 @@ function handleCancelFriend(username, friend_id, userimage){
             style="background-color: blueviolet; color: white; padding:2%; border: 2px solid blueviolet; border-radius:4px; font-weight: bolder;">
             Be Friend +</button>`
 
+            document.getElementById('loader').style.display ="none"
+
+
         }else{
             alert(`Could not Delete Friend. Please try again later...`)
+            document.getElementById('loader').style.display ="none"
+
         }
     })
 
     }
 }
+
+
+}
+
+function getUserApps(username) {
+    
+    document.getElementById('loader').style.display = "block"
+    
+
+      $.post('/users/apps', {
+        receivername : username,
+        receiverimage: userimage,
+        requestid : id
+
+    }, (data, status)=>{
+
+
+        if(data.code == 200){
+
+            document.getElementById('friendsAB').innerHTML = `<button onclick="handleCancelFriend(${username}, ${friend_id});"
+            style="background-color: green; color: white; padding:2%; border: 2px solid green; border-radius:4px; font-weight: bolder;">
+            Friends</button>`
+            document.getElementById('loader').style.display ="none"
+
+
+        }else{
+            alert(`${data.code}`)
+            document.getElementById('loader').style.display ="none"
+
+        }
+    })
 
 
 }
