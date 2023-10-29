@@ -16,9 +16,13 @@
     <script src="./../js/categoryApps.js"></script>
     <link rel="stylesheet" href="./../css/categoriesDisplay.css">
     <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <style>
+
+      
+    </style>
 </head>
 <body>
-    
+   
     
     <header class="headerContainer">
         <div class="container1">
@@ -68,8 +72,11 @@
         </div>
 
         <a href="/suscription/page" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
-{{#if loggedUser}}
+{{#if loggedUser.username}}
         <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+         <a href="http://localhost:3000/?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
+                  <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
+
 {{else}}
 
         <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
@@ -111,6 +118,13 @@
               </div>
             </div>
    <div class="intro"><b>Business Presentations </b></div>
+
+
+ <div id="loader" class="loader-container">
+
+        <div class="loader"></div>
+    </div>
+
    {{#each appscat }}
    {{#if this}}
 
@@ -131,7 +145,7 @@
                     </div>
 
                     <div class="aLink">
-                    <a href="/app/{{{BUSINESSNAME}}}">  
+                    <a href="/app/{{{BUSINESSNAME}}}?id={{{ID}}}&cat={{{BUSINESSCATEGORY}}}">  
                        <img src="./../images/view.svg" alt="" srcset=""> <h5 style="color:purple">View</h5>
                     </a> </div>
                     <img class="appbrandimg" src="./../images/{{{BRANDICON}}}" alt="" srcset="">
@@ -142,12 +156,12 @@
                     <div class="likes">
                         <div class="views">
                             <div class="view"><img src="./../images/view.svg" alt="" srcset=""  ></div>
-                            <h5>{{{views}}} views</h5>
+                            <h5>{{{VIEWS_COUNT}}} views</h5>
                         </div>
 
                         <div class="views">
-                           <div class="like"><img  id="like{{{ID}}}" src="./../images/like.svg" alt="" srcset="" onclick="handleLike( {{{ID}}}, '{{{BUSINESSNAME}}}', '{{{BRANDICON}}}')"></div> 
-                            <h5>{{{likes}}} likes</h5>
+                           <div class="like"><img  id="like{{{ID}}}" src="./../images/like.svg" alt="" srcset="" onclick="handleLike( {{{ID}}}, '{{{BUSINESSNAME}}}', '{{{BRANDICON}}}', {{{BUSINESSCATEGORY}}})"></div> 
+                            <h5>{{{LIKE_COUNT}}} likes</h5>
                         </div>
                     </div>
                 </div>

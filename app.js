@@ -61,6 +61,14 @@ async function setSessionStore(){
     let connect  =  await dbconnect
     var oracleStore  = new Store({options}, connect)
 
+    app.use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        res.setHeader('Access-Control-Allow-Credentials', true);
+        next();
+      });
+
     app.use(session({
 
         secret: "winslowgeorgos",
@@ -68,6 +76,8 @@ async function setSessionStore(){
         saveUninitialized: false,
         store: oracleStore
     }))
+
+
 
 app.use('/', postRoute)
 app.use('/', getRoute)
@@ -82,6 +92,8 @@ app.use('/', require('./views/logout'))
     app.use('/', require('./views/Routes/deletappscomp'))
     app.use('/', require('./views/Routes/compDiscSus'))
     app.use('/', require('./views/Routes/userDets'))
+    app.use('/', require('./views/Routes/scheduler'))
+
     app.use('/', susRoute)
 
 app.get('/home', isAuth, (req, res )=>{

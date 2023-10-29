@@ -73,12 +73,20 @@
                     style="">
                 <h4>About</h4>
             </a>
-            {{#if loggedUser}}
-            <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt=""
-                    srcset="" width="30px" style="">
-                <h4> My Profile</h4>
-            </a>
-            {{else}}
+            {{#if loggedUser.username}}
+        <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt="" srcset=""
+                width="30px" style="">
+            <h4> My Profile</h4>
+        </a>
+        <a href='http://localhost:3000/?username={{{loggedUser.username}}}' class="menuitem"> <img src="./../images/schedule.png" alt="" srcset=""
+                width="30px" style="">
+            <h4>Calender&Schedules</h4>
+        </a>
+             <a href='/competition/all' class="menuitem"> <img src="./../images/mission.png" alt="" srcset=""
+                width="30px" style="">
+            <h4>Competitions&Event</h4>
+        </a>
+        {{else}}
             <a href="/Register" class="menuitem"> <img src="./../images/add (1).svg" alt="" srcset="" width="30px"
                     style="">
                 <h4> Register</h4>

@@ -16,7 +16,7 @@ const isAuth = (req, res, next) => {
     }
   };
 
-  route.get("/competition/page", (req, res) => {
+  route.get("/competition/page", isAuth, (req, res) => {
       if(req.session.userDetails != undefined || req.session.userDetails != null){
 
       
@@ -35,7 +35,7 @@ const isAuth = (req, res, next) => {
 
             
 
-            res.render("comp/index", {auth: req.session.isAuth, apps : feedback.result.rows });
+            res.render("comp/index", {auth: req.session.isAuth, apps : feedback.result.rows , loggedUser: req.session.userDetails});
         }else{
 
             res.render("comp/index", {auth: req.session.isAuth });
@@ -51,6 +51,42 @@ const isAuth = (req, res, next) => {
   
   });
 
+
+  route.get("/competition/all", isAuth, (req, res) => {
+    if(req.session.userDetails != undefined || req.session.userDetails != null){
+
+    
+        var sComApps = {
+
+            operation : "select",
+            tablename : "competition",
+            fields : [],
+            wfield : ['competition_name'],
+            wvalue : ['young hustle competition']
+        }
+
+  dbcon.run(sComApps).then((feedback)=>{
+
+      if(feedback.code == 200){
+
+          
+
+          res.render("allcompetitions/index", {auth: req.session.isAuth, apps : feedback.result.rows, loggedUser: req.session.userDetails });
+      }else{
+
+          res.render("allcompetitions/index", {auth: req.session.isAuth });
+
+      }
+  })
+
+}else{
+
+  res.render("allcompetitions/index", {auth: false });
+
+}
+
+});
+
   route.post("/post/competitors", isAuth, (req, res)=>{
 
     console.log(req.body.appid)
@@ -63,6 +99,7 @@ const isAuth = (req, res, next) => {
         businessappid: parseInt(req.body.appid),
         competition_name : req.body.compname,
         username : req.session.userDetails.username,
+        created_at : new Date()
 
     }
 
@@ -79,7 +116,10 @@ const isAuth = (req, res, next) => {
     })
   })
 
-  route.get('/leaderboard', (req, res)=>{
+
+
+
+    route.get('/leaderboard', (req, res)=>{
 
     var leaders = []
     var sComApps = {
@@ -99,15 +139,11 @@ const isAuth = (req, res, next) => {
 
             if(compRows.length >= 0){
 
-                var leaderboad = {
-                    followers : 0,
-                    likes : 0,
-                    orders : 0
-                }
+             
 
                 var counter = 0;
 
-                compRows.forEach(row => {
+                compRows.map( async (row) => {
 
                     counter = counter + 1;
                     
@@ -115,134 +151,55 @@ const isAuth = (req, res, next) => {
 
                     var username = row.USERNAME
 
-                    // SELECTING FOLLOWERS.......................................................-----------------------
+                 // SELECTING business.......................................................-----------------------
     
-                    var selectFollowers = {
+                    var selectBusinesses = {
 
                         operation: 'select',
-                        tablename : 'followers',
+                        tablename : 'businessappstats',
                         fields: [],
-                        wfield: ['businessappid'],
+                        wfield: ['id'],
                         wvalue : [compId]
                       }
 
-                      dbcon.run(selectFollowers).then(function(results){
+                     await dbcon.run(selectBusinesses).then(async function(results){
 
                         if (results.code == 200){
 
-                          let followerscount =  results
-                            .result.rows.length;
+                            let businessesComp = results
+                                .result.rows;
+                            
+                            
+                           await businessesComp?.map(async (element) => {
+                                
 
-                          console.log(followerscount)
+                                        let total = (parseInt(element['FOLLOWER_COUNT']) * 0.6 + parseInt(element['LIKE_COUNT']) * 0.15 + parseInt(element['ORDER_COUNT']) * 0.25)
 
-                          leaderboad.followers = followerscount
+                                        element['points_active'] =  (total > 0) ?  (total / 3) : 0
 
-                          // ......................selecting likes ......................//
+                               element['score'] = element['points_active'] * 100;
+                               
+                                                          await leaders.push(element)
 
-                          var likequery = {
-                            tablename: "applikes",
-                            operation: "select",
-
-                            fields: [],
-
-                            wfield: ["businessappid"],
-
-                            wvalue: [row.BUSINESSAPPID],
-                          };
-
-                          dbcon
-                            .run(likequery)
-                            .then(async function (results) {
-                              if (results.code == 200) {
-                                let likescount = await results
-                                  .result.rows.length;
-
-                                leaderboad.likes = likescount
-
-                                var orderS = {
-
-                                    operation : "select",
-                                    tablename : "ordercart",
-                                    fields : [],
-                                    wfield : ['appid'],
-                                    wvalue : [row.BUSINESSAPPID]
-                                }
-
-                                dbcon.run(orderS).then(async(feedback)=>{
-
-                                    if(feedback.code == 200){
-
-                                        let ordercount = await results
-                                        .result.rows.length;
-
-                                        leaderboad.orders = ordercount
-
-                                      
-                                       
-
-                                        leaderboad.active = (leaderboad.followers * 0.6 + leaderboad.likes * 0.15 + leaderboad.orders * 0.25) / 3
-
-                                        leaderboad.score = leaderboad.active * 100;
-                                        leaderboad.username = username
-
-                                        var userImg = {
-
-                                            operation : "select",
-                                            tablename : "users",
-                                            fields : ["profileimage"],
-                                            wfield : ['username'],
-                                            wvalue : [username]
-                                        }
-
-                                        dbcon.run(userImg).then((feedback)=>{
-
-                                            if(feedback.code == 200){
-                                                var img = feedback.result.rows[0].PROFILEIMAGE
-                                                console.log(img)
-                                                leaderboad.userimg = img
-
-                                                leaders.push(leaderboad)
-
-                                                if(counter == compRows.length){
-
-                                                    res.send({code : 200, competitors : leaders})
-                                                }
-
-                                            }else{
-
-                                                res.send(leaderboad)
-                                            }
-                                        })
-
-                                        
-
-                                    }else{
-
-                                        res.send({code : 101})
-                                    }
-                                })
-
-                              }else{
-
-                                res.send({code : 101})
-                              }
 
                             })
-                         
-                        }else{
 
-                            res.send({code : 101})
+                                      
+
                         }
 
                     })
-                    console.log(compId)
                 });
 
                 console.log(leaders)
-                if(leaders.length > 0){
+               
 
-                    res.send({code : 200, competitors : leaders})
-                }
+                setTimeout(() => {
+                    
+                                        res.send({code : 200, competitors : leaders})
+
+                }, 6000)
+                
                
 
             }else{

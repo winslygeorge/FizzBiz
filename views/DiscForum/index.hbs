@@ -21,6 +21,7 @@
     <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
     <link rel="stylesheet" href="./../comp/comp.css">
     <style>
+
         body{
             background-color: white;
         }
@@ -33,9 +34,9 @@
         }
         #contDiasc{
 
-            overflow: scroll;
+            overflow: auto;
             height: 90vh;
-            border: 2px solid gray;
+           box-shadow: 1px 1px 1px 1px silver; border: 2px solid whitesmoke;
         }
 
 
@@ -59,6 +60,118 @@
     display: block;
    
   }
+
+.frame {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    position: relative;
+    background-color: #1b1212;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: auto;
+    opacity: calc(0.92);
+}
+
+.frame .text-wrapper {
+    position: relative;
+    align-self: stretch;
+
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: bold;
+    color: #808080;
+
+}
+
+.frame .go-fro-home-to-buck-wrapper {
+
+    padding: 8px;
+    background-color: #7a7777;
+    border-radius: 5px;
+       flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 95%;
+    font-family: "Inter-Regular", Helvetica;
+    color: #fff9f9;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.frame .go-fro-home-to-buck {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+ 
+}
+
+.frame .div-wrapper {
+    margin: 10px;
+    
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3px;
+    background-color: #f6f8f4;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  
+    width: 95%;
+    height: 100px;
+
+    font-family: "Inter-Regular", Helvetica;
+    font-size: medium;
+   
+ 
+ color: #9d5f02;
+}
+
+.frame .div {
+    position: relative;
+    flex: 1;
+    margin-top: -1px;
+    font-family: "Inter-Regular", Helvetica;
+ 
+    color: #9d5f02;
+
+
+
+}
+
+.submit-post-wrapper {
+    padding: 10px;
+width: 95%;
+
+
+position: relative;
+
+
+border-radius: 2px;
+transform: rotate(0.04deg);
+box-shadow: 0px 4px 4px #00000040;
+display: flex;
+align-items:center;
+}
+.submit-post {
+    padding: 10px;
+
+    background-color: #026e19cf;
+    border-radius: 10px;
+position: relative;
+width: fit-content;
+font-family: "Keania One-Regular", Helvetica;
+color: #fffbfb;
+font-weight: bold;
+text-align: center;
+
+}
+
+
     </style>
 </head>
 <body>
@@ -112,8 +225,12 @@
         </div>
 
         <a href="/suscription/page" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
-{{#if loggedUser}}
+
+{{#if loggedUser.username}}
         <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+        <a href="http://localhost:3000/?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
+                  <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
+
 {{else}}
 
         <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
@@ -125,34 +242,57 @@
         <a id="share" onclick="openShare()" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
     </div>
     <div class="body">
-      
-        <div class="Comp" id="tabView">
+
+                        <div class="sharethis-inline-share-buttons hsharereviews" id="hsharereviewsDiv" ></div>
+
+
+         <div id="loader" class="loader-container">
+
+        <div class="loader"></div>
+      </div>
+        {{!-- <div class="Comp" id="tabView">
            
             <a  class="tItem" onclick="showLeader()">Leaderboard</a>
-                <a href="#reqComp" class="tItem" onclick="hideLeader()">Requirements</a>
-                <a href="#rulesComp" class="tItem" onclick="hideLeader()">Rules</a>
-                <a href="#schedComp" class="tItem" onclick="hideLeader()">Schedule</a>
-                <a href="#prizesComp" class="tItem" onclick="hideLeader()">Prizes</a>
+                <a href="/competition/page" class="tItem" onclick="hideLeader()">Requirements</a>
+                <a href="/competition/page" class="tItem" onclick="hideLeader()">Rules</a>
+                <a href="/competition/page" class="tItem" onclick="hideLeader()">Schedule</a>
+                <a href="/competition/discussions" class="tItem" onclick="hideLeader()">Discussions</a>
+                <a href="/competition/page" class="tItem" onclick="hideLeader()">Prizes</a>
                 
             
-        </div>
-
+        </div> --}}
+{{!-- 
         <div class="searchDiv">
 
-        </div>
+        </div> --}}
+        
         {{#if isLoggedin}}
-        <div class="contDisc" id="mainform">
-            <form onsubmit="event.preventDefault(); handleDiscSubmission();" method="post">
-                <label for="">Topic : </label>
-                <input type="text" name="subject" id = "subject" placeholder="Topic..."> <br>
-                <label for="">Comment: </label>
-                <textarea name="content" id="content" cols="30" rows="10"></textarea> <br>
-                <input type="hidden" name="username" value="{{{user.username}}}" id="username">
-                <input type="hidden" name="userimage" value="{{{user.userimage}}}" id = "userimage">
-                <input type="hidden" id="competition_name" value="young hustle competition">
-                <input type="submit" value="submit">
-            </form>
+   
+<div class="contDisc" id="mainform" style="width: 90%;">
+        <form  onsubmit="event.preventDefault(); handleDiscSubmission();" method="post">
+
+        <div class="frame">
+           
+
+            <div class="text-wrapper">Topic :</div>
+         
+                <input required name="subject" id="subject" type="text"  class="go-fro-home-to-buck-wrapper" placeholder="Topic here... " />           
+            
+
+            <textarea required name="content" id="content" class="div-wrapper"   placeholder="Comment Here..."> Comment Here...</textarea>
+            <input type="hidden" name="username" value="{{{user.username}}}" id="username">
+            <input type="hidden" name="userimage" value="{{{user.userimage}}}" id = "userimage">
+            <input type="hidden" id="competition_name" value="young hustle competition">
+         
+            <div class="submit-post-wrapper"><input type="submit" class="submit-post"></div>
+
+
         </div>
+
+
+    </form>
+      </div> 
+
 
         {{/if}}
         <div class="contDisc" style="height: 100vh;" id="showMainDiscs">
@@ -163,7 +303,7 @@
             {{#if discussions}}
 
             {{#each discussions}}
-            <div class="discBox" style="display: flex;">
+            <div class="discBox" style="display: flex;box-shadow: 1px 1px 1px 1px silver; border: 2px solid whitesmoke;">
                 <div class="discContent">
             <img src="./../images/{{{this.USERIMAGE}}}" alt="" srcset="" style="width: 60px; height: 60px; border-radius: 10%;">
         </div>
@@ -193,7 +333,7 @@
 
         </div>
 
-       <div class="contDisc" style="height: 100vh; margin:5px" id="hideSubDiscs">
+       <div class="contDisc" style="height: 100vh; margin:5px;" id="hideSubDiscs">
 
             <div class="discussionContainer" id ="contDiasc" style="overflow: hidden;">
               
@@ -207,7 +347,7 @@
         </div>
 
         {{/if}}
-                <div class="subComments" id ="sb" style="height:55vh; overflow:scroll;">
+                <div class="subComments" id ="sb" style="height:55vh; overflow:auto;">
        
             
             </div>
@@ -215,5 +355,6 @@
     
             </div>
     </div>
+    
     </body>
     </html>

@@ -72,8 +72,11 @@
         </div>
 
         <a href="/suscription/page" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
-{{#if loggedUser}}
+{{#if loggedUser.username}}
         <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
+        <a href="http://localhost:3000/?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
+                  <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
+
 {{else}}
 
         <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
@@ -120,31 +123,47 @@
          
 <div class="intro">Orders</div>
 
-<div class="cartOrders" style="margin: 0%; padding: 0%;">
+  <div id="loader" class="loader-container">
 
-    <table class="ordertable" style="padding: 4%; width: 100%;" >
+        <div class="loader"></div>
+    </div>
+
+<div class="cartOrders table-container" style="margin: 1%; padding: 1%;">
+
+   
+
+    <table class="ordertable" >
         <thead class="thead" >
             
-                <td class="tablecell">
+                <td >
                     ORDER ID
                 </td>
-                <td class="tablecell">
+                <td >
                     USERNAME
                 </td>
-                <td class="tablecell">
+                      <td >
+                     PHONE NUMBER
+                </td>
+                      <td >
+                     EMAIL
+                </td>
+                <td >
                     SERVICE ID
                 </td>
-                  <td class="tablecell">
+                  <td >
                     SERVICE NAME
                 </td>
-                  <td class="tablecell">
+                  <td >
                     SERVICE IMAGE
                 </td>
-                 <td class="tablecell">
+                 <td >
                      VENUE
                 </td>
-                   <td class="tablecell">
+                   <td >
                      DATE/TIME
+                </td>
+                      <td >
+                     CREATE AT
                 </td>
                       
         </thead>
@@ -152,30 +171,43 @@
             {{#if orders}}
 {{#each orders}}
             <tr class="tablerow" id="id{{{ORDERID}}}">
-                <td class="tablecell">
+                <td >
                     {{{ORDERID}}} 
                 </td>
-                <td class="tablecell">
+                <td >
                    <a href="/profile/{{{USERNAME}}}" style="text-decoration: none; color: rgb(78, 76, 76);"> {{{USERNAME}}} </a>
                 </td>
-                <td class="tablecell">
-                    <a href="/app/{{{appname}}}#service{{{SERVICEID}}}" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICEID}}}</a>
+
+                    <td >
+                   <a href="/profile/{{{USERNAME}}}" style="text-decoration: none; color: rgb(78, 76, 76);"> {{{PHONENUMBER}}} </a>
                 </td>
-                    <td class="tablecell">
-                    <a href="/app/{{{appname}}}#service{{{SERVICEID}}}" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICENAME}}}</a>
+                  <td >
+                   <a href="/profile/{{{USERNAME}}}" style="text-decoration: none; color: rgb(78, 76, 76);"> {{{EMAIL}}} </a>
                 </td>
-                    <td class="tablecell">
-                   <img src="./../images/{{{SERVICEIMAGE}}}" width="70px" height="70px"/>
+              
+                <td>
+                    <a href="#" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICEID}}}</a>
                 </td>
-                   <td class="tablecell">
+                    <td >
+                    <a href="#" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICENAME}}}</a>
+                </td>
+                    <td >
+                   <img src="./../images/{{{IMAGE}}}" width="70px" height="70px"/>
+                </td>
+                   <td >
                       {{{VENUE}}}
                 </td>
-                    <td class="tablecell">
+                    <td >
                       {{{DATETIMEORDER}}}
                 </td>
-               
-                  <td class="tablecell">
-               <button onclick="handleremoveorder({{{ORDERID}}})" style="background-color: grey; border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;"> <img src="./../images/delete.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;"> Remove</span></button>
+                   <td >
+                      {{{CREATEDAT}}}
+                </td>
+                  <td >
+               <button onclick="handlecompleteorder({{{ORDERID}}}, '{{{USERNAME}}}', '{{{EMAIL}}}', '{{{SERVICENAME}}}', '{{{BUSINESSNAME}}}')" style="background-color: rgb(8, 125, 35); border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;"> <img src="./../images/shopping-cart.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;"> Complete</span></button>
+                </td>
+                  <td >
+               <button onclick="handleremoveorder({{{ORDERID}}}, '{{{USERNAME}}}', '{{{EMAIL}}}', '{{{SERVICENAME}}}', '{{{BUSINESSNAME}}}')" style="background-color: rgb(133, 5, 5); border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;"> <img src="./../images/delete.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;"> Cancell</span></button>
                 </td>
             </tr>
             {{/each}}

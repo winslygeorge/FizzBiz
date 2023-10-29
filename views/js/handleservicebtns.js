@@ -2,7 +2,9 @@ $(document).ready(function (e) {
   e.preventDefault();
 });
 
-function handleorderbtn(id) {
+function handleorderbtn(id, type){
+
+  document.getElementById('loader').style.display ="block"
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -11,16 +13,26 @@ function handleorderbtn(id) {
 
       if (result.code == 200) {
         alert("You have successfully placed an order...");
+        document.getElementById('loader').style.display ="none"
+
       } else if(result.code == 309){
-        window.location.replace("https://www.fizzbiznet.com/login");
+        alert(result.result)
+        document.getElementById('loader').style.display ="none"
+
       }else {
         alert("An Error occurred when placing the order");
+        document.getElementById('loader').style.display ="none"
+
       }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
     }
   };
   xhttp.open("POST", "/placeorder", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("serviceid=" + id);
+  xhttp.send("serviceid=" + id+"&type=" + type);
 }
 
 function handleRateBtn() {
@@ -31,27 +43,29 @@ function handleSubRateBtn(loggeduser, id) {
   
 
   var starRateNo = 0;
-  for (const key in $(".starCheck")) {
-    if ($(".starCheck").hasOwnProperty(key)) {
-      const element = $(".starCheck")[key];
 
-      if (element.src == "https://www.fizzbiznet.com/images/star.svg") {
-        starRateNo = starRateNo + 1;
-      }
+  // Use jQuery to select all elements with the class "starCheck"
+  $(".starCheck").each(function(index, element) {
+    // Get the src attribute of the current element
+    var src = $(element).attr("src");
+  
+    // Check if the src attribute matches the desired value
+    if (src === "./../images/star.svg") {
+      starRateNo++;
     }
-  }
-
+  });
+  
   console.log(starRateNo);
+
+  document.getElementById('loader').style.display ="block"
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var resp = JSON.parse(this.responseText);
 
-      console.log(resp.code);
-
       if (resp.code == 200) {
-        console.log("working");
+ 
 
         var startcounter = 0;
         var innert = "";
@@ -66,15 +80,21 @@ function handleSubRateBtn(loggeduser, id) {
         
 
         document.getElementById("starRate").innerHTML = innert;
-      } else if(resq.code == 309){
+        document.getElementById('loader').style.display ="none"
+
+      } else if(resp.code == 309){
         window.location.replace("https://www.fizzbiznet.com/login");
       }else {
         alert("error occurred...");
+        document.getElementById('loader').style.display ="none"
+
       }
 
       $("#ratediv").fadeToggle();
     } else {
       $("#ratediv").fadeToggle();
+      // document.getElementById('loader').style.display ="none"
+
     }
   };
 
@@ -99,13 +119,15 @@ function startClicked(no) {
 function handlecommentbtn(id, username, profileimage) {
   var comment = $("#comment").val();
 
+  document.getElementById('loader').style.display ="block"
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var resq = JSON.parse(this.responseText);
 
       if (resq.code == 200) {
-        console.log(resq.result);
+    
 
         var jsonres = resq.result;
 
@@ -135,11 +157,22 @@ function handlecommentbtn(id, username, profileimage) {
         }
 
         document.getElementById("reviewsSection").innerHTML = innert;
+        document.getElementById('loader').style.display ="none"
+
       } else if(resq.code == 309){
         window.location.replace("https://www.fizzbiznet.com/login");
       }else {
-        alert(resq.result);
+        alert("Error occured...");
+
+        document.getElementById('loader').style.display ="none"
+
       }
+    }else{
+
+      // alert("Error occured...");
+
+
+      //   document.getElementById('loader').style.display ="none"
     }
   };
   xhttp.open("POST", "/postcomment", true);
@@ -169,6 +202,7 @@ function handleEmailBtn(appemail, useremail, username, appname, appid) {
     email = $("#email").val();
   }
 
+  document.getElementById('loader').style.display ="block"
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -176,16 +210,25 @@ function handleEmailBtn(appemail, useremail, username, appname, appid) {
 
       if (resq.code == 200) {
         alert("Email was posted successfully");
+        document.getElementById('loader').style.display ="none"
+
       }else if(resq.code == 309){
         window.location.replace("https://www.fizzbiznet.com/login");
       } else if (resq.code == 402) {
         
         alert("You currently have no followers to communicate to...");
+        document.getElementById('loader').style.display ="none"
+
 
       } else {
         alert("Error submitting email...\n please try again");
-        console.log(resq.result);
+        document.getElementById('loader').style.display ="none"
+
       }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
     }
   };
   xhttp.open("POST", "/postemail", true);
@@ -208,7 +251,10 @@ function handleEmailBtn(appemail, useremail, username, appname, appid) {
   );
 }
 
-function handleLike(id, appname, appimage) {
+function handleLike(id, appname, appimage, cat) {
+
+  document.getElementById('loader').style.display ="block"
+
   var xhttp = new XMLHttpRequest();
 
   xhttp.onreadystatechange = function () {
@@ -218,23 +264,38 @@ function handleLike(id, appname, appimage) {
 
       if(resq.code == 200){
         alert("You have successfully liked the app");
+        document.getElementById('loader').style.display ="none"
+
 
       }else if(resq.code == 309){
         window.location.replace("https://www.fizzbiznet.com/login");
       }else{
 
-        alert(resq.result)
+        alert("Error occured...");
+
+        document.getElementById('loader').style.display ="none"
+
       }
 
       
+    }else{
+
+      // alert("Error occured...");
+
+
+      //   document.getElementById('loader').style.display ="none"
     }
   };
   xhttp.open("POST", "/postlike", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("appid=" + id + "&appname=" + appname + "&appimage=" + appimage);
+  xhttp.send("appid=" + id + "&appname=" + appname + "&appimage=" + appimage + "&cat=" + cat);
 }
 
 function handleFollow(id, appname, appimage) {
+
+
+  document.getElementById('loader').style.display ="block"
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -243,14 +304,25 @@ function handleFollow(id, appname, appimage) {
 
       if(resq.code == 200){
         alert("You have successfully followed the app");
+        document.getElementById('loader').style.display ="none"
+
 
       }else if(resq.code == 309){
         window.location.replace("https://www.fizzbiznet.com/login");
       }else{
 
-        alert(resq.result)
+        alert("Error occured...");
+
+
+        document.getElementById('loader').style.display ="none"
+
       }
     
+    }else{
+      // alert("Error occured...");
+
+
+      //   document.getElementById('loader').style.display ="none"
     }
   };
   xhttp.open("POST", "/postfollow", true);
@@ -262,14 +334,27 @@ function handleUpdatemission(id) {
   var mission = prompt("Enter new Mission...", null);
 
   if (mission != null && mission != "") {
+
+    document.getElementById('loader').style.display ="block"
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+
         if (JSON.parse(this.responseText).code == 200) {
           alert("You have successfully changed the apps mission");
+          document.getElementById('loader').style.display ="none"
+
         } else {
           alert("Error occured...");
+          document.getElementById('loader').style.display ="none"
+
         }
+      }else{
+
+
+        // alert("Error occured...");
+
+        // document.getElementById('loader').style.display ="none"
       }
     };
     xhttp.open("POST", "/updatemission", true);
@@ -288,14 +373,26 @@ function handleUpdateEmail(id) {
   var mission = prompt("Enter new Email...", null);
 
   if (mission != null && mission != "") {
+
+    document.getElementById('loader').style.display ="block"
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
         if (JSON.parse(this.responseText).code == 200) {
           alert("You have successfully changed the apps Email");
+          document.getElementById('loader').style.display ="none"
+
         } else {
           alert("Error occured...");
+          document.getElementById('loader').style.display ="none"
+
         }
+      }else{
+        // alert("Error occured...");
+
+
+        // document.getElementById('loader').style.display ="none"
       }
     };
     xhttp.open("POST", "/updateEmail", true);
@@ -310,14 +407,27 @@ function handleUpdateIntro(id) {
   var mission = prompt("Enter new Short Intro...", null);
 
   if (mission != null && mission != "") {
+    document.getElementById('loader').style.display ="block"
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+
         if (JSON.parse(this.responseText).code == 200) {
           alert("You have successfully changed the apps Intro");
+          document.getElementById('loader').style.display ="none"
+
         } else {
           alert("Error occured...");
+          document.getElementById('loader').style.display ="none"
+
         }
+      }else{
+
+        // alert("Error occured...");
+
+        // document.getElementById('loader').style.display ="none"
+
       }
     };
     xhttp.open("POST", "/updateIntro", true);
@@ -332,14 +442,27 @@ function handleUpdateRange(id) {
   var mission = prompt("Enter new Business Range...", null);
 
   if (mission != null && mission != "") {
+    document.getElementById('loader').style.display ="block"
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
+
         if (JSON.parse(this.responseText).code == 200) {
           alert("You have successfully changed the apps Range");
+          document.getElementById('loader').style.display ="none"
+
         } else {
           alert("Error occured...");
+          document.getElementById('loader').style.display ="none"
+
         }
+      }else{
+
+        // alert("Error occured...");
+
+        // document.getElementById('loader').style.display ="none"
+
       }
     };
     xhttp.open("POST", "/updaterange", true);
@@ -372,4 +495,9 @@ function handleFileChange(e) {
   if (!e.target.files.length) return (imgElement.src = "");
 
   return (imgElement.src = URL.createObjectURL(e.target.files.item(0)));
+}
+
+function handleLoader(){
+
+  document.getElementById('loader').style.display = 'block'
 }

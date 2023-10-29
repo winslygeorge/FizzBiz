@@ -7,15 +7,18 @@
 function handleGetLeaderBoard(){
    
    
-
+    document.getElementById('loader').style.display ="block"
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
 
-        
          var leaders = JSON.parse("["+xmlHttp.responseText+"]")[0].competitors
 
-         console.log(leaders)
+
+            let sorted = []
+
+            leaders.sort((a, b) => b.score - a.score);
+
 
          var tablettd = document.getElementById("contTd");
          for(var x = 0; x < leaders.length; x++){
@@ -23,36 +26,41 @@ function handleGetLeaderBoard(){
              let leader = leaders[x]
 
             tablettd.innerHTML += `<tr class="compDets" >
-             <td id="rank">${x}</td>
+             <td id="rank">${x + 1}</td>
              <td id ="users" >
                  <a href="http://"  style="display: flex;">
-                 <img src="./../images/${leader.userimg}" alt="" style="width: 40px; height: 40px; border-radius: 100px">
-                 <span style="color: orangered; font-weight: bolder;">${leader.username}</span>
+                 <img src="./../images/${leader.BRANDICON}" alt="" style="width: 40px; height: 40px; border-radius: 100px">
+                 <span style="color: orangered; font-weight: bolder;">${leader.BUSINESSNAME}</span>
              </a>
              </td>
              <td id="followers">
-                 ${leader.followers}
+                 ${leader.FOLLOWER_COUNT}
              </td>
              <td id="likes">
-                 ${leader.likes}
+                 ${leader.LIKE_COUNT}
              </td>
              <td id="order">
-                 ${leader.orders}
+                 ${leader.ORDER_COUNT}
              </td>
              <td id="activity">
-                 ${leader.active}
+                 ${leader.points_active}
              </td>
              <td id="score">
                  ${leader.score}
              </td>
          </tr>`
          }
+
+         document.getElementById('loader').style.display ="none"
+
    
+         }
+         else{
+
+            // document.getElementById('loader').style.display ="none"
          }     }
-    xmlHttp.open("GET", "https://www.fizzbiznet.com/leaderboard", true); // true for asynchronous 
+    xmlHttp.open("GET", "/leaderboard", true); // true for asynchronous 
     xmlHttp.send(null);
-    
-    
 }
 
 function callJoinDiv(auth){
@@ -83,12 +91,14 @@ function hideJoinDiv(){
 
 function showLeader(){
 
-if(document.getElementById("dbody") != null){
+    if (document.getElementById("dbody") != null) {
+    
+        handleGetLeaderBoard()
 
     document.getElementById("dbody").setAttribute("id", "hdbody")
     document.getElementById("ldiv").setAttribute("id", "sldiv")
 
-    handleGetLeaderBoard()
+    
    
 }else{
 
@@ -131,22 +141,25 @@ function hideLeader(){
 
 function handleJoinReq(){
 
+    document.getElementById('loader').style.display ="block"
     var appid = document.getElementById('businessAppId').value
     var compname = document.getElementById('compname').value
-    $.post('https://www.fizzbiznet.com/post/competitors', {
+    $.post('/post/competitors', {
         appid : parseInt(appid),
         compname : compname
     }, (data, status)=>{
 
-        alert(status)
-
         if(data.code == 200){
 
             alert("You have successfully joined the competion /n Best of luck!!")
+            document.getElementById('loader').style.display ="none"
+
         }else{
 
             alert(data.error)
             alert("Error occured please try again... /n make sure you are logged in.")
+            document.getElementById('loader').style.display ="none"
+
 
         }
     })
@@ -168,6 +181,8 @@ function handleBasic(){
 
  function handleDiscSubmission(){
 
+    document.getElementById('loader').style.display ="block"
+
     var username = document.getElementById("username").value
     var userimage = document.getElementById("userimage").value
     var competition_name = document.getElementById("competition_name").value
@@ -178,7 +193,7 @@ function handleBasic(){
 
         if(username != "guest"){
 
-        $.post('https://www.fizzbiznet.com/post/disc', {
+        $.post('/post/disc', {
         content : content,
         username : username,
         userimage : userimage,
@@ -186,8 +201,6 @@ function handleBasic(){
         subject: subject
 
     }, (data, status)=>{
-
-        alert(status)
 
         if(data.code == 200){
 
@@ -210,10 +223,12 @@ function handleBasic(){
             </div>
         </div>`
             alert("You have successfully joined the competion /n Best of luck!!")
-        }else{
+            document.getElementById('loader').style.display ="none"
 
-            alert(data.error)
+        }else{
             alert("Error occured please try again... /n make sure you are logged in.")
+            document.getElementById('loader').style.display ="none"
+
 
         }
     })
@@ -222,6 +237,8 @@ function handleBasic(){
         }else{
 
             var proceed = confirm("PLease LOGIN to engage in the discussion forum...")
+            // document.getElementById('loader').style.display ="none"
+
             if(proceed){
 
                 window.open("https://www.fizzbiznet.com/AddService?suscription=prenium")
@@ -235,7 +252,7 @@ function handleBasic(){
 
 function handleSubDiscSubmission(){
 
-
+    document.getElementById('loader').style.display ="block"
 
     var discmain_id = document.getElementById("discMain_id").value
     var comment = document.getElementById("comment").value
@@ -251,7 +268,6 @@ function handleSubDiscSubmission(){
 
     }, (data, status)=>{
 
-        alert(status)
 
         if(data.code == 200){
 
@@ -277,10 +293,14 @@ function handleSubDiscSubmission(){
    
                </div>`
             alert("You have successfully joined the competion /n Best of luck!!")
+        document.getElementById('loader').style.display ="none"
+
         }else{
 
             alert(data.error)
             alert("Error occured please try again... /n make sure you are logged in.")
+        document.getElementById('loader').style.display ="none"
+
 
         }
     })
@@ -288,7 +308,10 @@ function handleSubDiscSubmission(){
 
         }else{
 
+
             var proceed = confirm("PLease LOGIN to engage in the discussion forum...")
+            // document.getElementById('loader').style.display ="none"
+
             if(proceed){
 
                 window.open("https://www.fizzbiznet.com/AddService?suscription=prenium")
@@ -304,6 +327,7 @@ function handleSubDiscSubmission(){
 
 function handleViewThread(id, username, userimage, content, age , replies, subject){
 
+    document.getElementById('loader').style.display ="block"
     if(document.getElementById("showMainDiscs") != null){
         console.log("hide main")
         document.getElementById("showMainDiscs").setAttribute("id", "hideMainDiscs")
@@ -315,9 +339,33 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
 
         document.getElementById("commentForm").innerHTML = ` <form onsubmit="event.preventDefault(); handleSubDiscSubmission();" method="post">
             
-        <textarea name="content" id="comment" cols="30" rows="3" ></textarea> <br>
+        <textarea required name="content" id="comment" class="div-wrapper" style=" margin: 10px;
+    
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 3px;
+        background-color: #f6f8f4;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        position: relative;
+      
+        width: 95%;
+        height: 100px;
+    
+        font-family: "Inter-Regular", Helvetica;
+        font-size: medium;
+       
+     
+     color: #9d5f02;"  placeholder="Comment Here..."> Comment Here...</textarea>
+        <input type="hidden" name="username" value="{{{user.username}}}" id="username">
+        <input type="hidden" name="userimage" value="{{{user.userimage}}}" id = "userimage">
+        <input type="hidden" id="competition_name" value="young hustle competition">
+     
+       
+
         <input type="hidden" id="discMain_id" value=${id}>
-        <input type="submit" value="submit">
+        <div ><input type="submit" class="submit-post"></div>
     </form>`
 
     }
@@ -326,7 +374,7 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
 
     if( id != null || id != undefined){
 
-        document.getElementById('fst').innerHTML = `<div class="discContent">
+        document.getElementById('fst').innerHTML = `<div class="discContent" style="">
         <img src="./../images/${userimage} alt="" srcset="" style="width: 60px; height: 40px; border-radius: 100%;">
     </div>
             <div class="discContent" id="dcontp">
@@ -342,11 +390,11 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
             </div>`
 
 
+
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() { 
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
     
-            
              var results = JSON.parse("["+xmlHttp.responseText+"]")[0]
 
              console.log(results)
@@ -359,7 +407,7 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
        
                     let leader = results.subDisc[x]
        
-                   tablettd.innerHTML += ` <div class="discBox commentsDiv subdiscContent" id="subdiscContent" style="display: flex;" >
+                   tablettd.innerHTML += ` <div class="discBox commentsDiv subdiscContent" id="subdiscContent" style="display: flex;box-shadow: 1px 1px 1px 1px silver; border: 2px solid whitesmoke;" >
                        
                    <div class="discContent">
                        <img src="./../comp//boutique.jpg" alt="" srcset="" style="width: 40px; height: 40px; border-radius: 100%;">
@@ -378,6 +426,9 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
                </div>`
                 }
 
+                document.getElementById('loader').style.display ="none"
+
+
 
              }else{
 
@@ -387,11 +438,16 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
                 <h5>There are no discussions on this competition...</h5>
             </div>`
 
+            document.getElementById('loader').style.display ="none"
+
 
              }
    
-             }     }
-        xmlHttp.open("GET", "https://www.fizzbiznet.com/competition/discussions_subs?disc_id="+id, true); // true for asynchronous 
+             } else{
+
+                // document.getElementById('loader').style.display ="none"
+             }    }
+        xmlHttp.open("GET", "/competition/discussions_subs?disc_id="+id, true); // true for asynchronous 
         xmlHttp.send(null);
 
 

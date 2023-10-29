@@ -61,10 +61,18 @@
         <a href="/#howItWork" class="menuitem"> <img src="./../images/team.svg" alt="" srcset="" width="30px" style="">
             <h4>About</h4>
         </a>
-        {{#if loggedUser}}
+         {{#if loggedUser.username}}
         <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt="" srcset=""
                 width="30px" style="">
             <h4> My Profile</h4>
+        </a>
+        <a href='http://localhost:3000/?username={{{loggedUser.username}}}' class="menuitem"> <img src="./../images/schedule.png" alt="" srcset=""
+                width="30px" style="">
+            <h4>Calender&Schedules</h4>
+        </a>
+             <a href='/competition/all' class="menuitem"> <img src="./../images/mission.png" alt="" srcset=""
+                width="30px" style="">
+            <h4>Copetitions&Event</h4>
         </a>
         {{else}}
         <a href="/login" class="menuitem"> <img src="./../images/log-in.svg" alt="" srcset="" width="30px" style="">

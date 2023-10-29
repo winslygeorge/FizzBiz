@@ -19,16 +19,29 @@ class QueryGenerator{
 
     var wfield =  reqQuery.wfield
 
-    var wvalue =  reqQuery.wvalue
+     var wvalue = reqQuery.wvalue
+     
+     var orderBy = reqQuery?.orderBy
+     var orderByDirection = reqQuery?.orderByDirection
 
     if(operation.match("select")){
 
 
         if(wfield == undefined && wvalue == undefined ){
 
-            if(fields.length == 0){
+            if (fields.length == 0) {
+                
+                if (orderBy) {
+                    
+                                    return `SELECT * FROM ${tablename} ORDER BY ${orderBy} ${orderByDirection}`
 
-                return `SELECT * FROM ${tablename}`
+
+                } else {
+                    
+                                    return `SELECT * FROM ${tablename}`
+
+                }
+
             }
 
             var x = 0
@@ -42,8 +55,15 @@ class QueryGenerator{
              x= x + 1
             }
  
+            if (orderBy) {
+                
+                return  `SELECT ${queryFormated} from ${tablename} ORDER BY ${orderBy} ${orderByDirection}`
+            }else{
+
+                return  `SELECT ${queryFormated} from ${tablename} `
+            }
                    
-            return  `SELECT ${queryFormated} from ${tablename}`
+            
 
         }else{
 
@@ -71,12 +91,31 @@ class QueryGenerator{
                 k = k + 1
             }
  
-            if(fields.length == 0){
+            if (fields.length == 0) {
+                
+                if (orderBy) {
+                   
+                                    return [`SELECT * FROM ${tablename} ${whereclause} ORDER BY ${orderBy} ${orderByDirection}`, wvalues]
 
-                return [`SELECT * FROM ${tablename} ${whereclause}`, wvalues]
+
+                } else {
+                    
+                                    return [`SELECT * FROM ${tablename} ${whereclause}`, wvalues]
+
+                }
+
             }
             
-            return  [`SELECT ${queryFormated} FROM ${tablename} ${whereclause}`, wvalues]
+            if (orderBy) {
+                
+            return  [`SELECT ${queryFormated} FROM ${tablename} ${whereclause} ORDER BY ${orderBy} ${orderByDirection}`, wvalues]
+
+            } else {
+                
+                            return  [`SELECT ${queryFormated} FROM ${tablename} ${whereclause}`, wvalues]
+
+            }
+
     }
 
     }else if(operation.match("delete")){

@@ -173,11 +173,13 @@ route.get('/competition/discussions', (req, res)=>{
     operation:"select",
     fields : [],
     wfield: ["competition_name"],
-    wvalue:["young hustle competition"]
+    wvalue: ["young hustle competition"],
+    orderBy: 'id',
+    orderByDirection : 'DESC'
   }
 
 
-  dbcon.run(discs).then((feedback)=>{
+  dbcon.run(discs).then(async(feedback)=>{
     var discDate = null
 
     if(feedback.code == 200){
@@ -189,7 +191,7 @@ route.get('/competition/discussions', (req, res)=>{
       
 
 
-        result.forEach(discc => {
+       await result.map( async discc => {
 
           discDate = discc.TIME
           var discReplies = {
@@ -198,62 +200,68 @@ route.get('/competition/discussions', (req, res)=>{
             operation:"select",
             fields : [],
             wfield: ["disc_id"],
-            wvalue:[result.ID]
+            wvalue:[discc.ID]
           }
         
           var repliesCount = 0;
-          var currentDate = new Date();
           
         
-          dbcon.run(discReplies).then(async(feedback)=>{
+        await  dbcon.run(discReplies).then((feedback)=>{
         
         
             if(feedback.code == 200){
         
-              repliesCount = feedback.result.rows.length;
+             repliesCount = feedback.result.rows.length;
 
-             
+             console.log("rep counts :", repliesCount)
         
             }
           })
   
-          var timeDisc = null;
+
+          const startDate = discDate
+const endDate = new Date()
+const duration = getDuration(startDate, endDate);
+console.log(duration); // Output: "1 years, 9 months, 3 weeks, 4 days, 0 hours, 0 minutes, 0 seconds"
+
+          // var diff =  Math.abs(new Date().getTime() - discDate.getTime())
+          // var year = Math.ceil(diff / (1000 * 3600 * 24 * 30 * 12))
+          // var months = Math.ceil(diff / (1000 * 3600 * 24 * 30))
+          // var weeks = Math.ceil(diff / (1000 * 3600 * 24 *7))
+          // var days = Math.ceil(diff / (1000 * 3600 * 24))
+          // var hours = Math.ceil(diff / (1000 * 3600))
+          // var minutes = Math.ceil(diff / (1000 * 60))
+          // var seconds = Math.ceil(diff / (1000))
+
+          // if(months >= 12 ){
+
+          //   timeDisc = year + " years "
+          // }else if(days >= 30){
+
+          //   timeDisc = months + " months "
+          // }else if(days >= 7){
+
+          //   timeDisc = weeks + " weeks "
+          // }else if(hours >= 24){
+
+          //   timeDisc = days + " days "
+          // }else if(minutes >= 60){
+
+          //   timeDisc = hours + " hours"
+          // }else if(seconds >= 60){
+
+          //   timeDisc = minutes + " minutes"
+          // }else{
+          //   timeDisc = seconds + " seconds "
+          // }
+
+          discc.age = duration
           discc.replies = repliesCount;
 
-          var diff =  Math.abs(new Date().getTime() - discDate.getTime())
-          var year = Math.ceil(diff / (1000 * 3600 * 24 * 30 * 12))
-          var months = Math.ceil(diff / (1000 * 3600 * 24 * 30))
-          var weeks = Math.ceil(diff / (1000 * 3600 * 24 *7))
-          var days = Math.ceil(diff / (1000 * 3600 * 24))
-          var hours = Math.ceil(diff / (1000 * 3600))
-          var minutes = Math.ceil(diff / (1000 * 60))
-          var seconds = Math.ceil(diff / (1000))
+          console.log(repliesCount)
 
-          if(months >= 12 ){
 
-            timeDisc = year + " years "
-          }else if(days >= 30){
-
-            timeDisc = months + " months "
-          }else if(days >= 7){
-
-            timeDisc = weeks + " weeks "
-          }else if(hours >= 24){
-
-            timeDisc = days + " days "
-          }else if(minutes >= 60){
-
-            timeDisc = hours + " hours"
-          }else if(seconds >= 60){
-
-            timeDisc = minutes + " minutes"
-          }else{
-            timeDisc = seconds + " seconds "
-          }
-
-          discc.age = timeDisc
-
-          console.log(" sec :"+ seconds + " min : " + minutes + " hours : "+ hours +" days : "+ days + " months : "+ months+ " years : "+ year)
+          // console.log(" sec :"+ seconds + " min : " + minutes + " hours : "+ hours +" days : "+ days + " months : "+ months+ " years : "+ year)
 
           discArray.push(discc)
           
@@ -275,23 +283,39 @@ route.get('/competition/discussions', (req, res)=>{
       userimage : userimage
     }
 
-    res.render("DiscForum/index", {user : user, isLoggedin: req.session.userDetails.username, discussions: discArray})
+    setTimeout(() => {
+          res.render("DiscForum/index", {user : user, isLoggedin: req.session.userDetails.username, discussions: discArray})
 
-  }else{
+    }, 3000)
 
+  } else {
+    
+      setTimeout(() => {
     res.render("DiscForum/index", {discussions: discArray})
+
+    }, 3000)
+
 
   }
 
-      }else{
-
+      } else {
+        
+        
+           setTimeout(() => {
         res.render("DiscForum/index", {user : user, isLoggedin: req.session.userDetails.username, discussions: discArray})
+
+    }, 3000)
+
 
       }
 
-    }else{
-
+    } else {
+      
+         setTimeout(() => {
       res.render("DiscForum/index", {user : user, isLoggedin: req.session.userDetails.username, discussions: discArray})
+
+    }, 3000)
+
 
     }
 
@@ -316,7 +340,9 @@ route.get('/competition/discussions_subs', (req, res)=>{
             operation:"select",
             fields : [],
             wfield: ["disc_id"],
-            wvalue:[req.query.disc_id]
+            wvalue: [req.query.disc_id],
+             orderBy: 'time',
+    orderByDirection : 'DESC'
           }
               
         
@@ -336,42 +362,52 @@ route.get('/competition/discussions_subs', (req, res)=>{
                 var timeDisc = null;
                 
                 discDate = element.TIME
-                var diff =  Math.abs(new Date().getTime() - discDate.getTime())
-                var year = Math.ceil(diff / (1000 * 3600 * 24 * 30 * 12))
-                var months = Math.ceil(diff / (1000 * 3600 * 24 * 30))
-                var days = Math.ceil(diff / (1000 * 3600 * 24 *7))
-                var days = Math.ceil(diff / (1000 * 3600 * 24))
-                var hours = Math.ceil(diff / (1000 * 3600))
-                var minutes = Math.ceil(diff / (1000 * 60))
-                var seconds = Math.ceil(diff / (1000))
+
+                  const startDate = discDate
+const endDate = new Date()
+const duration = getDuration(startDate, endDate);
+console.log(duration);
+                // var diff =  Math.abs(new Date().getTime() - discDate.getTime())
+                // var year = Math.ceil(diff / (1000 * 3600 * 24 * 30 * 12))
+                // var months = Math.ceil(diff / (1000 * 3600 * 24 * 30))
+                // var days = Math.ceil(diff / (1000 * 3600 * 24 *7))
+                // var days = Math.ceil(diff / (1000 * 3600 * 24))
+                // var hours = Math.ceil(diff / (1000 * 3600))
+                // var minutes = Math.ceil(diff / (1000 * 60))
+                // var seconds = Math.ceil(diff / (1000))
       
-                if(months >= 12 ){
+                // if(months >= 12 ){
       
-                  timeDisc = year + " years "
-                }else if(days >= 30){
+                //   timeDisc = year + " years "
+                // }else if(days >= 30){
       
-                  timeDisc = months + " months "
-                }else if(days >= 7){
+                //   timeDisc = months + " months "
+                // }else if(days >= 7){
       
-                  timeDisc = weeks + " weeks "
-                }else if(hours >= 24){
+                //   timeDisc = weeks + " weeks "
+                // }else if(hours >= 24){
       
-                  timeDisc = days + " days "
-                }else if(minutes >= 60){
+                //   timeDisc = days + " days "
+                // }else if(minutes >= 60){
       
-                  timeDisc = hours + " hours"
-                }else if(seconds >= 60){
+                //   timeDisc = hours + " hours"
+                // }else if(seconds >= 60){
       
-                  timeDisc = minutes + " minutes"
-                }else{
-                  timeDisc = seconds + " seconds "
-                }
+                //   timeDisc = minutes + " minutes"
+                // }else{
+                //   timeDisc = seconds + " seconds "
+                // }
       
-                element.age = timeDisc
+                element.age = duration
+                element.replies = repliesCount
     
               });
-
+               
+                     setTimeout(() => {
               res.send({code: 200, subDisc : subs})
+
+    }, 3000)
+
 
              }else{
 
@@ -476,7 +512,8 @@ route.post('/post/friendRequest', isAuth, (req, res)=>{
     id : new Date() * Math.random()*1000,
     sender : req.session.userDetails.username,
     receiver : req.body.receivername,
-    userimage : req.body.receiverimage
+    userimage : req.body.receiverimage,
+    created_at : new Date()
   }
 
   dbcon.run(fr).then((feedback)=>{
@@ -504,7 +541,8 @@ route.post('/post/acceptfriendRequest', isAuth, (req, res)=>{
     id : new Date() * Math.random()*1000,
     username : req.session.userDetails.username,
     friend : req.body.receivername,
-    userimage : req.body.receiverimage
+    userimage : req.body.receiverimage,
+    created_at : new Date()
   }
 
   dbcon.run(fr).then((feedback)=>{
@@ -632,6 +670,60 @@ var crossFriendsList = []
   })
 })
 
+
+function getDuration(startDate, endDate) {
+  // Calculate the duration in milliseconds
+  const durationInMilliseconds = endDate - startDate;
+
+  // Calculate years and months
+  const years = Math.floor(durationInMilliseconds / (1000 * 60 * 60 * 24 * 365.25));
+  const months = Math.floor((durationInMilliseconds % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+
+  // Calculate weeks and days
+  const weeks = Math.floor((durationInMilliseconds % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24 * 7))
+  const days = Math.floor((durationInMilliseconds % (1000 * 60 * 60 * 24 * 7) / (1000 * 60 * 60 * 24)));
+
+  // Calculate hours, minutes, and seconds
+  const hours = Math.floor((durationInMilliseconds % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+  const minutes = Math.floor((durationInMilliseconds % (1000 * 60 * 60) / (1000 * 60)));
+  const seconds = Math.floor((durationInMilliseconds % (1000 * 60) / 1000));
+
+  let durationString = ''
+
+  if (years !== 0) {
+   
+    durationString = ` ${years} years `;
+  } else if (months !== 0) {
+    durationString = ` ${months} months `;
+
+  } else if (weeks !== 0) {
+    
+    durationString = ` ${weeks} weeks `;
+
+  } else if (days !== 0) {
+      durationString = ` ${days} days `;
+
+  } else if (hours !== 0) {
+    
+      durationString = ` ${hours} hours `;
+
+  } else if (minutes) {
+    
+      durationString = ` ${minutes} minutes `;
+
+  } else if (seconds !== 0) {
+    
+      durationString = ` ${seconds} seconds `;
+
+  } else {
+    
+    durationString = ` just now `
+  }
+
+  // Create a formatted string
+
+  return durationString;
+}
 
 
 
