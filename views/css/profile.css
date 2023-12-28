@@ -131,26 +131,146 @@ font-size: 0.9rem;
 
 }
 
+#viewedSection {
+
+    display: none;
+}
+
+#likeSection {
+
+    display: none;
+}
+
+#mainSections {
+
+    display: block;
+}
+
+#hmainSections {
+
+    display: none;
+}
+
+#hviewedSection {
+
+    display: block;
+}
+
+ #followSection {
+
+     display: block;
+ }
+
+  #hfollowSection {
+
+      display: none;
+  }
+
+#slike {
+
+    display: block;
+}
+
+#hcontact {
+
+    display: none;
+}
+
+#contact {
+
+    display: block;
+}
+
+#eploreTItem , #contactTItem{
+
+    display: block;
+}
+
+#visitedTItem, #viewedTItem, #likeTItem, #followedTItem{
+
+    display: block;
+
+}
+
 @media screen and (min-width: 770px) {
 
     .bodyMainColumns{
 
         display: flex;
         flex-direction: row;
+
+        flex-wrap: wrap;
      
         justify-content: space-evenly;
 
+        overflow: auto;
+
     }
+
+        #visitedTItem,
+        #viewedTItem,
+        #likeTItem,
+        #followedTItem {
+    
+            display: none;
+    
+        }
 
     .columns{
 
-        width: 30%;
+        width: 380px;
         height: 80vh;
         overflow-y: auto;
         overflow-x: hidden;
         background-color: whitesmoke;
 
         border-radius: 10px;
+
         
+        
+
     }
+
+    /* #tabView{
+
+        display: none;
+    } */
+
+        #viewedSection {
+    
+            display: block;
+        }
+    
+        #likeSection {
+    
+            display: block;
+        }
+
+                #mainSections {
+        
+                    display: block;
+                }
+        
+                #hmainSections {
+        
+                    display: block;
+                }
+        
+                #hviewedSection {
+        
+                    display: block;
+                }
+        
+                #slike {
+        
+                    display: block;
+                }
+
+                                #hfollowSection {
+                
+                                    display: block;
+                                }
 }
+
+
+

@@ -92,6 +92,8 @@ app.use('/', require('./views/logout'))
     app.use('/', require('./views/Routes/deletappscomp'))
     app.use('/', require('./views/Routes/compDiscSus'))
     app.use('/', require('./views/Routes/userDets'))
+    app.use('/', require('./views/Routes/search'))
+
     app.use('/', require('./views/Routes/scheduler'))
 
     app.use('/', susRoute)

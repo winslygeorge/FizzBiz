@@ -1432,6 +1432,99 @@ route.post("/postemail", isAuth, (req, res) => {
   }
 });
 
+
+route.post("/post/private/email", isAuth, (req, res) => {
+  var newemail = {
+    content: clean.CleanData(req?.body?.content),
+
+    email: clean.CleanData(req?.body?.email),
+
+
+    topic: clean.CleanData(req?.body?.topic),
+
+    username: clean.CleanData(req?.body?.username),
+
+    senderemail: req?.session?.userDetails?.email,
+
+    sendername: req?.session?.userDetails?.username,
+  };
+
+  console.log(newemail)
+
+  var checkifnull = false;
+  for (const key in newemail) {
+    if (newemail.hasOwnProperty(key)) {
+      const element = newemail[key];
+
+      if (element == null || element == undefined) {
+        checkifnull = true;
+      }
+    }
+  }
+
+  if (checkifnull) {
+    res.send({ code: 101, result: "Empty Field" });
+  } else {
+  
+                var email = {
+                  from: `Fizzbiznet  <fizzbiznet@gmail.com>`,
+                  to: newemail.email,
+                  subject: newemail.topic,
+                  template: "privateChat",
+                  context: {
+                    sendername: newemail.sendername,
+
+                    receivername: newemail.username,
+
+                    replyto: newemail.senderemail,
+
+                    content: newemail.content,
+
+                    title: "Private Chat Log",
+                  },
+
+                  attachments: [
+                    {
+                      filename: "FizzBizNet.png",
+                      path: path.join(
+                        __dirname,
+                        "./../../email/views/images/FizzBizNet.png"
+                      ),
+                      cid: "logoimg", //same cid value as in the html img src
+                    },
+                  ],
+                };
+
+                gen
+                  .sendMail(
+                    options.generateEmailOpt(
+                      email.from,
+                      email.to,
+                      email.subject,
+                      email.template,
+                      email.context,
+                      email.attachments
+                    )
+                  )
+                  .then(
+                    function (result) {
+                      console.log(result);
+                    },
+                    function (error) {
+                      console.log(error);
+                    }
+                  );
+
+                setTimeout(function () {
+                  res.send({
+                    code: 200,
+                    result: "sending message successfull",
+                  });
+                }, 1500);
+  }
+  }
+);
+
 route.post("/postlike", (req, res) => {
   var appid = parseInt(req.body.appid);
   var appcat = parseInt(req.body.cat);
