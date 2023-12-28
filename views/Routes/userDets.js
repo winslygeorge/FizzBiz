@@ -18,7 +18,7 @@ const path = require("path");
 
 const fs = require("fs");
 const { cleanData } = require("jquery");
-const { time } = require("console");
+const { time, error } = require("console");
 const { clearInterval } = require("timers");
 
 const dbcon = new db();
@@ -295,6 +295,44 @@ route.get('/user/reels/video/page/:id', (req, res)=>{
   
 
   res.render('user/gallery/videos')
+
+})
+
+route.get('/user/businessapps', (req, res)=>{
+
+  var usern = req.query.loggedUsername
+  console.log(usern)
+  var selectUserApps ={
+
+                      operation: 'select',
+                      tablename: 'businessapp',
+                      fields: [],
+                      wfield: ['owner'],
+                      wvalue: [req?.session?.userDetails?.username]
+  }
+
+  if (usern === req?.session?.userDetails?.username) {
+
+    dbcon.run(selectUserApps).then((feedback) => {
+      
+      if (feedback.code === 200) {
+        
+        let result = feedback.result.rows
+
+        res.send({code: 200, result})
+      } else {
+        
+        res.send({code: 101, error : "Error fetching business apps"})
+      }
+
+    })
+    
+
+  } else {
+    
+    res.send({code: 101, result : "Not owner"})
+  }
+  
 
 })
 module.exports = route

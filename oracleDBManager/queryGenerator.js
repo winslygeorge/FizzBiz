@@ -10,7 +10,8 @@ class QueryGenerator{
 
    var wvalues = []
 
-   var whereclause =  ""
+     var whereclause = ""
+      var searchclause =  ""
     
 
     var tablename = reqQuery.tablename
@@ -24,23 +25,64 @@ class QueryGenerator{
      var orderBy = reqQuery?.orderBy
      var orderByDirection = reqQuery?.orderByDirection
 
-    if(operation.match("select")){
+     var searchFields = reqQuery?.searchFields ?? null
+     var searchVal  = reqQuery?.searchValue ?? null
 
+     if (operation.match("select")) {
+        
+        
+         
+         if (searchFields && searchVal) {
+             
+            searchclause =  ` where UPPER(${searchFields[0]}) LIKE UPPER(:${searchFields[0]})`
+
+            var k =  1;
+            while(k < searchFields.length){
+
+                searchclause  = searchclause  + ` OR UPPER(${searchFields[k]}) LIKE UPPER(:${searchFields[k]})`
+                k = k + 1
+            }
+         }
+
+          console.log(searchFields, searchVal, searchclause)
 
         if(wfield == undefined && wvalue == undefined ){
 
             if (fields.length == 0) {
-                
-                if (orderBy) {
+
+                if(searchclause === ''){
+
+                    if (orderBy) {
                     
-                                    return `SELECT * FROM ${tablename} ORDER BY ${orderBy} ${orderByDirection}`
-
-
-                } else {
                     
-                                    return `SELECT * FROM ${tablename}`
+                    
+                        return `SELECT * FROM ${tablename} ORDER BY ${orderBy} ${orderByDirection}`
 
+
+    } else {
+        
+                        return `SELECT * FROM ${tablename}`
+
+    }
+
+
+                }else{
+
+                    if (orderBy) {
+                    
+                    
+                    
+                        return [`SELECT * FROM ${tablename} ${searchclause} ORDER BY ${orderBy} ${orderByDirection}`, searchVal]
+
+
+    } else {
+        
+                        return [`SELECT * FROM ${tablename} ${searchclause}`, searchVal]
+
+    }
                 }
+                
+               
 
             }
 
@@ -57,10 +99,10 @@ class QueryGenerator{
  
             if (orderBy) {
                 
-                return  `SELECT ${queryFormated} from ${tablename} ORDER BY ${orderBy} ${orderByDirection}`
+                return  [`SELECT ${queryFormated} from ${tablename} ORDER BY ${orderBy} ${orderByDirection}`, searchVal]
             }else{
 
-                return  `SELECT ${queryFormated} from ${tablename} `
+                return  [`SELECT ${queryFormated} from ${tablename} `, searchVal]
             }
                    
             

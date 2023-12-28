@@ -11,6 +11,7 @@
     ></script>
 
     <link rel="stylesheet" href="./../css/style.css" />
+    <link rel="stylesheet" href="./../css/serviceApp.css" />
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
@@ -189,7 +190,7 @@
         <h4>Share</h4></a>
     </div>
 
-    <div class="body">
+    <div class="body" style="height: 90%, overflow:auto;">
       <div
         id="loader"
         class="loader-container"
@@ -199,7 +200,7 @@
         <div class="loader"></div>
       </div>
 
-      <div class="sharethis-inline-share-buttons"></div>
+      <div class="sharethis-inline-share-buttons" style="display: none;"></div>
       <div class="bodyMain">
 
         <div class="main">
@@ -245,21 +246,47 @@
 
       <div class="Comp" id="tabView" style="margin: 2%;">
 
-        <a class="tItem" href="/friendlist/{{{row.USERNAME}}}">Friends
-          {{{friends}}}</a>
-        <a href="/user/gallery/{{{row.USERNAME}}}" class="tItem">Gallery 2</a>
-        <a href="#reel" class="tItem" onclick="handleUserVideos();">Videos 3</a>
-        <a href="#rulesComp" class="tItem">Blogs 10</a>
+        <a class="tItem" onclick="handleUserBack()">
+          <img
+            src="./../images/back.png"
+            alt=""
+            srcset=""
+            width="20px"
+            height="20px"
+          />
+        </a>
+        {{!-- <a href="/user/gallery/{{{row.USERNAME}}}" class="tItem">Gallery 2</a> --}}
+        {{! <a href="#reel" class="tItem" onclick="handleUserVideos();">Videos 3</a> }}
         <a
+          id="likeTItem"
+          href="#likeSection"
+          onclick="handleUserLikes()"
+          class="tItem"
+        >Liked Apps</a>
+        <a
+          id="followedTItem"
+          href="#viewedSection"
+          onclick="handleUserFollows()"
+          class="tItem"
+        >Apps you Follow</a>
+        <a
+          id="visitedTItem"
+          href="#viewedSection"
+          onclick="handleUserViewed()"
+          class="tItem"
+        >Visited Apps</a>
+
+        <a
+          id="contactTItem"
           href="#contact"
           class="tItem"
           onclick="handleUserContact();"
         >Contact</a>
-        <a href="" class="tItem">Explore</a>
+        <a id="eploreTItem" href="/apps/all" class="tItem">Explore</a>
 
       </div>
 
-      <divv class="bodyMainColumns" id="main">
+      <div class="bodyMainColumns" id="main">
         <div id="mainSections" class="columns">
           <h2>Profile</h2>
           <div class="profileDetails">
@@ -274,7 +301,7 @@
               <h2>{{{row.USERNAME}}}<span>{{{hob}}}</span> </h2>
             </div>
 
-            <div class="sub-column-2" id="mission">
+            {{!-- <div class="sub-column-2" id="mission">
               <h3 class="subTitle">Friends</h3>
               <button
                 disabled="disabled"
@@ -318,7 +345,22 @@
                 {{/if}}
               {{/if}}
 
-            </div>
+            </div> --}}
+            {{#if loggedUser}}
+              <div class="sub-column-2" id="mission">
+                <h3 class="subTitle">My Apps</h3>
+
+                <button
+                  id="fetchAppsBtn"
+                  onclick="getUserApps('{{{loggedUser.username}}}')"
+                  style="background-color: rgb(187, 97, 7); color: white; padding:2%; border: 2px solid rgb(187, 97, 7); border-radius:4px;"
+                >
+                  View my apps
+                </button>
+                <div id="displayAppsIcon"></div>
+
+              </div>
+            {{/if}}
 
             <div class="sub-column-2" id="mission">
               <h3 class="subTitle">My Orders</h3>
@@ -439,7 +481,39 @@
           </div>
 
         </div>
-      </divv>
+
+        <div id="hfollowSection" class="columns">
+
+          <h2>Apps you Follow</h2>
+          <p>These are the business profile that you are Following</p>
+          <div class="sub-column-2" id="mission">
+            {{#if follows}}
+              {{#each follows}}
+                <div class="details">
+                  <img
+                    src="./../images/{{{APPIMAGE}}}"
+                    alt=""
+                    srcset=""
+                    class="imgIconCompany"
+                    height="40px"
+                  />
+                  <div class="headingIcon">{{{APPNAME}}}
+                    <a
+                      href="/app/{{{APPNAME}}}?id={{{BUSINESSAPPID}}}&cat={{{CATEGORY}}}"
+                    > <span class="followBtn">visit</span></a></div>
+                </div>
+              {{/each}}
+            {{else}}
+
+              <p style="color: orange;">You have not Followed any business app
+                yet</p>
+
+            {{/if}}
+
+          </div>
+
+        </div>
+      </div>
 
       <div id="hgallery">
         hello
@@ -448,7 +522,85 @@
         video
       </div>
       <div id="hcontact">
-        contact
+
+        <h2>
+          Contact</h2>
+
+        <a
+          id="contactTItem"
+          href="#contact"
+          class="tItem"
+          onclick="handleUserContact();"
+        >
+          <img
+            src="./../images/back.png"
+            alt=""
+            srcset=""
+            width="20px"
+            height="20px"
+          />
+        </a>
+
+        <div class="form">
+
+          <div class="addService" id="socialMedia" style="height: fit-content;">
+
+            <div class="basicInfo">
+
+              <section>
+
+                <div class="inp">
+                  <div class="lable" for="companyName"> Email : ?optional</div>
+                  <br />
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="inputText"
+                  />
+                </div>
+
+                <div class="inp">
+                  <div class="lable" for="companyName"> Topic : </div>
+                  <br />
+                  <input
+                    type="text"
+                    name="topic"
+                    id="topic"
+                    class="inputText"
+                    required
+                  />
+                </div>
+                <div class="inp">
+                  <div class="lable" for="companyName">Content Body : </div>
+                  <br />
+                  <textarea
+                    class="emailContentCls"
+                    name="content"
+                    id="content"
+                    cols="30"
+                    rows="10"
+                    style="width: 90%;"
+                    required
+                  ></textarea>
+                </div>
+
+              </section>
+
+              <div class="next" id="submit">
+
+                <input
+                  type="button"
+                  value="Submit"
+                  class="btnNext"
+                  onclick="handleEmailBtn('{{{row.EMAIL}}}', '{{{row.USERNAME}}}')"
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
       <footer style="color: aquamarine;">
         <table

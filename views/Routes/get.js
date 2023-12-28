@@ -169,6 +169,8 @@ route.get("/profile/:id", isAuth, (req, res) => {
   var isOwner = null
   var friendrequestid = null;
 
+  let folRes = null;
+
   var getFriendid = null;
   var checkFriendship = {
     operation : 'select',
@@ -287,70 +289,94 @@ var isAcceptRequest = null;
                 var profileviews = results.result.rows;
 
 
-                var myfriends = {
-
-                  operation : 'select',
-                  tablename : 'friends',
+                var selectFollows = {
+                  operation: "select",
+                  tablename: "followers",
                   fields: [],
-                  wfield : ['username'],
+                  wfield: ["username"],
+                  wvalue: [profile.USERNAME],
+                };
+                
+                dbcon.run(selectFollows).then(resultss => {
+                  
+                 
 
-                  wvalue: [req.params.id]
+                  if (resultss.code === 200) {
 
-                }
-
-                var friends = 0;
-
-                dbcon.run(myfriends).then((feedback)=>{
-
-                  if(feedback.code == 200){
+                    folRes = resultss.result.rows
 
 
-                    friends += feedback.result.rows.length
+                    var myfriends = {
 
-                    var hefriends = {
-
-                      operation : 'select',
-                      tablename : 'friends',
+                      operation: 'select',
+                      tablename: 'friends',
                       fields: [],
-                      wfield : ['friend'],
-                      wvalue : [req.params.id]
+                      wfield: ['username'],
+
+                      wvalue: [req.params.id]
+
                     }
 
-                    dbcon.run(hefriends).then((feedback)=>{
+                    var friends = 0;
 
-                      if(feedback.code == 200){
+                    dbcon.run(myfriends).then((feedback) => {
 
-                        friends += feedback.result.rows.length 
+                      if (feedback.code == 200) {
 
-                        console.log(`friends : ${friends}`)
 
-                        if(friends >= 1000){
+                        friends += feedback.result.rows.length
 
-                          friends = (friends/1000) + "k";
-                        }else if(friends >= 1000000){
-        
-                          friends = (friends/1000000) + "m"
-        
+                        var hefriends = {
+
+                          operation: 'select',
+                          tablename: 'friends',
+                          fields: [],
+                          wfield: ['friend'],
+                          wvalue: [req.params.id]
                         }
-                       
-                        res.render("profile/index", {
-                          views: profileviews,
-                          likes: profilelikes,
-                          row: profile,
-                          loggedUser: req.session.userDetails,
-                          isOwner : isOwner,
-                          isAcceptRequest : isAcceptRequest,
-                          friendrequestid: friendrequestid,
-                          isMyFriend : isMyFriend,
-                          friends : friends,
-                          friend_id : getFriendid
-                        });
+
+                        dbcon.run(hefriends).then((feedback) => {
+
+                          if (feedback.code == 200) {
+
+                            friends += feedback.result.rows.length
+
+                            console.log(`friends : ${friends}`)
+
+                            if (friends >= 1000) {
+
+                              friends = (friends / 1000) + "k";
+                            } else if (friends >= 1000000) {
+        
+                              friends = (friends / 1000000) + "m"
+        
+                            }
+                                           console.log("follows : ", folRes)
+
+                            res.render("profile/index", {
+                              views: profileviews,
+                              likes: profilelikes,
+                              row: profile,
+                              loggedUser: req.session.userDetails,
+                              isOwner: isOwner,
+                              isAcceptRequest: isAcceptRequest,
+                              friendrequestid: friendrequestid,
+                              isMyFriend: isMyFriend,
+                              friends: friends,
+                              friend_id: getFriendid,
+                              follows: folRes
+                            });
+                          }
+                        })
                       }
                     })
-                  }
-                })
+                    
+                  } else {
+                    
 
-              
+                  }
+
+              })
               } else {
                 console.log(results.result);
                 res.render("profile/index", {
@@ -362,7 +388,10 @@ var isAcceptRequest = null;
                   isAcceptRequest : isAcceptRequest,
                   friendrequestid: friendrequestid,
                   isMyFriend : isMyFriend,
-                friend_id : getFriendid
+                  friend_id: getFriendid,
+                  follows : folRes
+
+                
                 });
               }
             });
@@ -374,7 +403,9 @@ var isAcceptRequest = null;
               isAcceptRequest: isAcceptRequest,
               friendrequestid: friendrequestid,
               isMyFriend : isMyFriend,
-              friend_id : getFriendid
+              friend_id: getFriendid,
+              follows : folRes
+
             });
           }
         });
@@ -1320,9 +1351,15 @@ route.get('/apps/:id', (req, res)=>{
         operation: "select",
 
         fields: [],
+
+        
       };
 
+      console.log(appsquery)
+
       dbcon.run(appsquery).then(function (results) {
+
+        console.log(results)
         if (results.code == 200) {
           var apps = results.result.rows;
          
