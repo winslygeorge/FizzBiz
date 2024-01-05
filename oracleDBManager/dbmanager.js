@@ -70,7 +70,7 @@ async  run(queryBody){
     
         if(dbcon){
     
-         (await dbcon).close()
+        //  (await dbcon).close()
     
         }
     }
