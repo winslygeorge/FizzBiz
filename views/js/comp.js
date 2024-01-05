@@ -74,7 +74,7 @@ function callJoinDiv(auth){
 
     try{
 
-        window.open('https://www.fizzbiznet.com/login/')
+        window.open('https://www.fizzbiznetwork.com/login/')
 
     }catch(e){
 console.log(e)
@@ -241,7 +241,7 @@ function handleBasic(){
 
             if(proceed){
 
-                window.open("https://www.fizzbiznet.com/AddService?suscription=prenium")
+                window.open("https://www.fizzbiznetwork.com/AddService?suscription=prenium")
             }
         }
     }
@@ -314,7 +314,7 @@ function handleSubDiscSubmission(){
 
             if(proceed){
 
-                window.open("https://www.fizzbiznet.com/AddService?suscription=prenium")
+                window.open("https://www.fizzbiznetwork.com/AddService?suscription=prenium")
             }
         }
     }

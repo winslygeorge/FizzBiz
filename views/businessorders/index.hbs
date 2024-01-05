@@ -75,7 +75,7 @@
 
         <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
 {{#if loggedUser.username}}
-        <a href="http://localhost:3000/?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
+        <a href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
                   <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
 
 {{else}}
@@ -184,7 +184,7 @@
                   <img src="./../images/{{{IMAGE}}}" alt="" width="60px" height="60px">
                 </td>
                 <td >
-                    <button  onclick="handlecheckout({{{ORDERID}}}, {{{APPID}}}, '{{{USERNAME}}}', {{{SERVICEID}}}, '{{{TYPE}}}', '{{{EMAIL}}}', '{{{SERVICENAME}}}', '{{{BUSINESSNAME}}}', '{{{BUSINESSEMAIL}}}', '{{{IMAGE}}}')" style="background-color: green; border-radius: 3%; border: 2px solid green; color: white; padding: 1%;"> <img src="./../images/shopping-cart.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;">Checkout</span></button>
+                    <button  onclick="handlecheckout({{{ORDERID}}}, {{{APPID}}}, '{{{USERNAME}}}', {{{SERVICEID}}}, '{{{TYPE}}}', '{{{EMAIL}}}', '{{{SERVICENAME}}}', '{{{BUSINESSNAME}}}', '{{{BUSINESSEMAIL}}}', '{{{IMAGE}}}', '{{{CATEGORY}}}')" style="background-color: green; border-radius: 3%; border: 2px solid green; color: white; padding: 1%;"> <img src="./../images/shopping-cart.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;">Checkout</span></button>
                 </td>
             </tr>
             {{/each}}

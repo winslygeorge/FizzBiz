@@ -773,7 +773,7 @@ route.post('/fizzbizpostcomment', (req, res)=>{
 
     var email = {
       from: `${comment.username}  <fizzbiznet@gmail.com>`,
-      to: 'fizzbiznet@gmail.com',
+      to: 'business@fizzbiznetwork.com',
       subject: 'Comment for Fizzbiznet',
       template: "comment",
       context: {
