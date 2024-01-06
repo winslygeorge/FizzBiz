@@ -88,11 +88,11 @@ async  run(queryBody){
     
     }finally{
     
-        if(dbcon && dbcon.isHealthy){
+        // if(dbcon && dbcon.isHealthy){
     
-            (await dbcon).close()
+        //     (await dbcon).close()
           
-              }
+        //       }
       
     }
 }
