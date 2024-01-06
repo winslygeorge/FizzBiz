@@ -10,17 +10,25 @@ const QueryGenerator = require('./queryGenerator');
 const { DEFAULT } = require('oracledb');
 
 class HandleQueryRequest{
+
+ getDbConnecting = async()=>{
+
+    return (await dbcon)
+
+    }
 async  run(queryBody){
     const qg = new QueryGenerator();
     try{
 
-       if(dbcon != null && !dbcon.isHealthy()){
+    //     console.log(dbcon?.isHealthy)
 
-          (await dbcon).close()
+    //    if(dbcon != null && !dbcon?.isHealthy){
 
-          dbcon = await oracledb.getConnection(config)
+    //       (await dbcon).close()
 
-        }
+    //       dbcon = await dbcon
+
+    //     }
 
         if(dbcon != null ){
 
@@ -71,6 +79,8 @@ async  run(queryBody){
            }
     
         }
+
+       
     
     }catch(e){
     
@@ -78,11 +88,12 @@ async  run(queryBody){
     
     }finally{
     
-        if(dbcon){
+        // if(dbcon && dbcon.isHealthy){
     
-        //  (await dbcon).close()
-    
-        }
+        //     (await dbcon).close()
+          
+        //       }
+      
     }
 }
 

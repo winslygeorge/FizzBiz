@@ -10,7 +10,6 @@ async function getConnection(){
 
         con   = await dbcon.getConnection(config)
       
-      
           console.log('connection was successful')
 
           return con;
@@ -22,4 +21,14 @@ async function getConnection(){
 return null;
 }
 
-module.exports =getConnection()
+const   getConnectionFromPool =  async ()=> {
+  if (!con) {
+   con = await dbcon.createPool(config);
+
+   console.log('oracle db sever connected')
+   
+  }
+  return con.getConnection()
+ }
+
+module.exports =getConnectionFromPool()
