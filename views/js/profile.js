@@ -331,7 +331,7 @@ function handleEmailBtn(useremail, username) {
         document.getElementById('loader').style.display ="none"
 
       }else if(resq.code == 309){
-        window.location.replace("https://www.fizzbiznet.com/login");
+        window.location.replace("https://www.fizzbiznetwork.com/login");
       } else if (resq.code == 402) {
         
         alert("You currently have no followers to communicate to...");

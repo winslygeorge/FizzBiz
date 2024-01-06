@@ -383,6 +383,8 @@ route.post('/updateaddservice', (req, res) => {
                                         template: "newservice",
                                         context: {
 
+                                            id : newservice.businessid,
+                                            category : fields.cat,
                                             username : getUsername,
 
                                             appname: fields.appname,

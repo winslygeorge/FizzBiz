@@ -951,7 +951,7 @@ route.post("/deletecartorder", isAuth, (req, res) => {
 
             appname: businessname,
 
-            replyto: 'fizzbiznet@gmail.com',
+            replyto: 'business@fizzbiznetwork.com',
 
             content: `Your Order or Service for ${servicename} by ${businessname} has been Cancelled. \n`,
 
@@ -1032,7 +1032,7 @@ route.post("/completecartorder", isAuth, (req, res) => {
 
             appname: businessname,
 
-            replyto: 'fizzbiznet@gmail.com',
+            replyto: 'business@fizzbiznetwork.com',
 
             content: `Your Order or Service for ${servicename} by ${businessname} has been successfully completed. \n If you have 
             not received the order or service please contact us.`,
@@ -1609,6 +1609,7 @@ route.post("/handleorder", isAuth, (req, res) => {
   var orderdetails = {
     orderid: parseInt(clean.CleanData(req.body.orderid)),
 
+
     username: clean.CleanData(req.body.username),
     appid: parseInt(clean.CleanData(req.body.appid)),
 
@@ -1635,9 +1636,13 @@ route.post("/handleorder", isAuth, (req, res) => {
       servicename = clean.CleanData(req.body.servicename),
       serviceImage = clean.CleanData(req.body.serviceimage),
       useremail = clean.CleanData(req.body.email);
+      let cat  =  parseInt(clean.CleanData(req.body.category))
+
   
   
                   var newemail = {
+                    id : orderdetails?.appid,
+                    category : cat,
                     useremail: useremail,
   
                     serviceicon: serviceImage,

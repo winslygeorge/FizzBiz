@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 })
 
-function handlecheckout(id, appid, username, serviceid, type, email, servicename, businessname, businessemail, serviceimage){
+function handlecheckout(id, appid, username, serviceid, type, email, servicename, businessname, businessemail, serviceimage, category){
 
    var datetimeorder =  prompt("Enter Date and Time for Service", "20/01/2019, at 2.00pm")
 
@@ -32,7 +32,7 @@ function handlecheckout(id, appid, username, serviceid, type, email, servicename
 
          if(type === "service"){
 
-          window.open(`http://localhost:3000/?username=${username}&orderid=${id}&appid=${appid}`, '_blank');
+          window.open(`https://bookings.fizzbiznetwork.com?username=${username}&orderid=${id}&appid=${appid}`, '_blank');
 
          }
  
@@ -50,7 +50,7 @@ function handlecheckout(id, appid, username, serviceid, type, email, servicename
    };
    xhttp.open("POST", "/handleorder", true);
    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   xhttp.send("orderid="+id+"&appid="+appid+"&datetime="+datetimeorder+"&venueorder="+venueorder+"&username="+username+"&serviceid="+serviceid+"&email="+email+"&servicename="+servicename+"&businessname="+businessname+"&businessemail="+businessemail+"&serviceimage="+serviceimage);
+   xhttp.send("orderid="+id+"&appid="+appid+"&datetime="+datetimeorder+"&venueorder="+venueorder+"&username="+username+"&serviceid="+serviceid+"&email="+email+"&servicename="+servicename+"&businessname="+businessname+"&businessemail="+businessemail+"&serviceimage="+serviceimage+"&category="+category);
    }else{
 
     alert("Fields were empty...")

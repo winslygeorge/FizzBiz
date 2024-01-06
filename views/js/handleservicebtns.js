@@ -83,7 +83,7 @@ function handleSubRateBtn(loggeduser, id) {
         document.getElementById('loader').style.display ="none"
 
       } else if(resp.code == 309){
-        window.location.replace("https://www.fizzbiznet.com/login");
+        window.location.replace("https://www.fizzbiznetwork.com/login");
       }else {
         alert("error occurred...");
         document.getElementById('loader').style.display ="none"
@@ -160,7 +160,7 @@ function handlecommentbtn(id, username, profileimage) {
         document.getElementById('loader').style.display ="none"
 
       } else if(resq.code == 309){
-        window.location.replace("https://www.fizzbiznet.com/login");
+        window.location.replace("https://www.fizzbiznetwork.com/login");
       }else {
         alert("Error occured...");
 
@@ -213,7 +213,7 @@ function handleEmailBtn(appemail, useremail, username, appname, appid) {
         document.getElementById('loader').style.display ="none"
 
       }else if(resq.code == 309){
-        window.location.replace("https://www.fizzbiznet.com/login");
+        window.location.replace("https://www.fizzbiznetwork.com/login");
       } else if (resq.code == 402) {
         
         alert("You currently have no followers to communicate to...");
@@ -268,7 +268,7 @@ function handleLike(id, appname, appimage, cat) {
 
 
       }else if(resq.code == 309){
-        window.location.replace("https://www.fizzbiznet.com/login");
+        window.location.replace("https://www.fizzbiznetwork.com/login");
       }else{
 
         alert("Error occured...");
@@ -308,7 +308,7 @@ function handleFollow(id, appname, appimage) {
 
 
       }else if(resq.code == 309){
-        window.location.replace("https://www.fizzbiznet.com/login");
+        window.location.replace("https://www.fizzbiznetwork.com/login");
       }else{
 
         alert("Error occured...");

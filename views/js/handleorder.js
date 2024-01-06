@@ -143,7 +143,7 @@ function handlecheckout(id, username, appid, type){
 
         if(type === 'service'){
 
-          window.open(`http://localhost:3000/?username=${username}&appid=${appid}&orderid=${id}`, "_blank")
+          window.open(`https://bookings.fizzbiznetwork.com?username=${username}&appid=${appid}&orderid=${id}`, "_blank")
 
 
         }

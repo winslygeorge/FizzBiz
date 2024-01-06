@@ -15,6 +15,8 @@ if (document.readyState === 'loading') {
 // Listen for the DOMContentLoaded event (fires when the HTML is fully parsed)
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired. HTML is fully parsed.');
+    document.getElementById('loader').style.display ="none"
+
 });
 
 // Listen for the load event (fires when all resources have finished loading)
