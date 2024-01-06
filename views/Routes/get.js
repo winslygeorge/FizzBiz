@@ -580,7 +580,7 @@ route.get("/app/:appname", async (req, res) => {
 
       // let fq = new QueryFunctionData()
 
-     let jsD =  await new QueryFunctionData().queryBusinessData(businessId, cat)
+     let jsD =  await new QueryFunctionData().queryBusinessData(businessId, cat, dbcon.getDbConnecting() )
 
     //  console.log(jsD)
 
