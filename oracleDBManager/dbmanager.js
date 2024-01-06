@@ -3,6 +3,8 @@ const dbcon = require('./dbconnect')
 const oracledb = require('oracledb');
 const { isEmptyObject } = require('jquery');
 
+const config = require('./dbconfig')
+
 const querygenerator = require('./queryGenerator');
 const QueryGenerator = require('./queryGenerator');
 const { DEFAULT } = require('oracledb');
@@ -12,7 +14,15 @@ async  run(queryBody){
     const qg = new QueryGenerator();
     try{
 
-        if(dbcon != null){
+       if(dbcon != null && !dbcon.isHealthy()){
+
+          (await dbcon).close()
+
+          dbcon = await oracledb.getConnection(config)
+
+        }
+
+        if(dbcon != null ){
 
 
            let query;
