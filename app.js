@@ -1,7 +1,7 @@
 const express = require('express')
 
 const config = require('./oracleDBManager/dbconfig')
-const dbconnect = require('./oracleDBManager/dbconnect')
+const {getConnectionFromPool, checkConnectionHealth} = require('./oracleDBManager/dbconnect')
 const app = express()
 
 const session = require('express-session')
@@ -58,7 +58,7 @@ app.listen(8087, (err)=>{
 
 async function setSessionStore(){
 
-    let connect  =  await dbconnect
+    let connect  =  await getConnectionFromPool()
     var oracleStore  = new Store({options}, connect)
 
     app.use((req, res, next) => {
@@ -103,5 +103,23 @@ app.get('/home', isAuth, (req, res )=>{
         console.log(req.session)
         res.render('home/index', {name: "winslow", subjects:["math", "eng", "kiswahili"]})
     })
+
+
+    setInterval(async ()=>{
+
+
+        try {
+            // const connection = await getConnectionFromPool();
+            if (connect) {
+              console.log('Oracle DB connection is alive and healthy');
+              // Optionally, you can perform a simple query to further validate the connection
+              const result = await connect.execute('SELECT 1 FROM DUAL');
+              console.log('Query Result:', result.rows);
+            }
+          } catch (error) {
+            console.error('Error checking connection health:', error);
+          }
+
+    }, 120000)
 
 }

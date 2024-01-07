@@ -7,7 +7,7 @@ const route = express.Router();
 const db = require("./../../oracleDBManager/dbmanager");
 const QueryFunctionData = require("./reduxData/fetchAppData");
 
-const connection = require("./../../oracleDBManager/dbconnect");
+const {getConnectionFromPool, checkConnectionHealth} = require("./../../oracleDBManager/dbconnect");
 const { error } = require("jquery");
 
 const dbcon = new db();

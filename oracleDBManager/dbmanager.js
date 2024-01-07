@@ -1,5 +1,5 @@
 
-const dbcon = require('./dbconnect')
+const {getConnectionFromPool, checkConnectionHealth} = require('./dbconnect')
 const oracledb = require('oracledb');
 const { isEmptyObject } = require('jquery');
 
@@ -13,12 +13,14 @@ class HandleQueryRequest{
 
  getDbConnecting = async()=>{
 
-    return (await dbcon)
+    return (await getConnectionFromPool())
 
     }
 async  run(queryBody){
     const qg = new QueryGenerator();
     try{
+
+        let dbcon = getConnectionFromPool()
 
     //     console.log(dbcon?.isHealthy)
 
