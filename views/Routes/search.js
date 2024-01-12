@@ -136,7 +136,7 @@ console.log(catid, searchid)
       dbcon.run(appsquery).then(function (results) {
 
         console.log(results)
-        if (results.code == 200) {
+        if (results &&  results.code == 200) {
           var apps = results.result.rows;
          
 
@@ -208,7 +208,7 @@ route.get("/search/usersorders/:id", isMyprofile, (req, res) => {
     };
 
     dbcon.run(calloreder).then(async function (results) {
-      if (results.code == 200) {
+      if (results &&  results.code == 200) {
         var orders = results.result.rows;
 
         orders?.map((order)=>{
@@ -257,7 +257,7 @@ route.get("/search/businessorders/:id", isAdmin, (req, res) => {
 
   if (businessappid != null && businessappid != undefined) {
     dbcon.run(selectcheckedorders).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var checkedorders = results.result.rows;
 
         console.log(checkedorders)
@@ -303,7 +303,7 @@ route.get("/search/businesscartorders/:id", isAdmin,(req, res) => {
 
   if (businessappid != null && businessappid != undefined) {
     dbcon.run(selectcartorders).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var checkedorders = results.result.rows;
 
       

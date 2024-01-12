@@ -226,7 +226,7 @@ route.post("/addService", isAuth, (req, res) => {
       ) {
         dbcon.run(bizApp).then(
           function (result) {
-            if (result.code == 200) {
+            if (result &&  result.code == 200) {
               var oldPath = files.businessIcon.path;
 
               var newPath =
@@ -252,7 +252,7 @@ route.post("/addService", isAuth, (req, res) => {
               };
 
               dbcon.run(insertOwner).then(function (results) {
-                if (results.code == 200) {
+                if (results && results.code == 200) {
                   var email = {
                     from: `Fizzbiznet  <fizzbiznet@gmail.com>`,
                     to: req.session.userDetails.email,
@@ -380,16 +380,22 @@ route.post("/saddservice", isbizSet, (req, res) => {
 
       let newservice = {
 
-        created_at : new Date().toISOString(),
-        id: new Date() * Math.round(Math.random() / Math.random()) * 10,
+        
+        id: (new Date() * Math.random() * 10),
 
         servicename: clean.CleanData(fields.serviceName),
+
         serviceicon: serviceIcon,
 
         servicedesc: clean.CleanData(fields.serviceDesc),
         price: (+fields.servicePrice),
 
         businessid: req.session.appid,
+
+        created_at : new Date(),
+
+        type: clean.CleanData(fields.type),
+
         
         tablename: "services",
 
@@ -418,7 +424,7 @@ route.post("/saddservice", isbizSet, (req, res) => {
         newservice.serviceicon != null && newservice.created_at != null
       ) {
         dbcon.run(newservice).then(function (results) {
-          if (results.code == 200) {
+          if (results && results.code == 200) {
             var oldPath = files.serviceIcon.path;
 
             var newPath = path.join(__dirname, "./../images") + "/" + profileIg;
@@ -500,8 +506,8 @@ route.post("/saddlocation", isbizSet, (req, res) => {
         };
 
         dbcon.run(location).then(
-          function (results) {
-            if (results.code == 200) {
+          function ( results) {
+            if (results && results.code == 200) {
               res.render("AddService/location", {
                 newLocation: "New Sub Location was successfully submitted",
               });
@@ -565,7 +571,7 @@ route.post("/addserviceimage", (req, res) => {
         };
 
         dbcon.run(newImage).then(function (results) {
-          if (results.code == 200) {
+          if (results &&  results.code == 200) {
             var oldPath = files.img.path;
 
             var newPath = path.join(__dirname, "./../images") + "/" + profileIg;
@@ -638,7 +644,7 @@ route.post("/addservicevideo", isbizSet, (req, res) => {
         newVideo.id != null
       ) {
         dbcon.run(newVideo).then(function (results) {
-          if (results.code == 200) {
+          if (results &&  results.code == 200) {
             res.render("AddService/videos", {
               newImage: "Video link was submitted sucessfully",
               businessName: req.session.appname,
@@ -700,7 +706,7 @@ route.post("/updateapprate", (req, res) => {
     console.log(startUpdate.ratingno);
 
     dbcon.run(startUpdate).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var ratingquery = {
           tablename: "ratings",
           operation: "select",
@@ -712,7 +718,7 @@ route.post("/updateapprate", (req, res) => {
           wvalue: [startUpdate.businessappid],
         };
         dbcon.run(ratingquery).then(function (results) {
-          if (results.code == 200) {
+          if (results &&  results.code == 200) {
             var totaluser = results.result.rows.length;
 
             var ratings = results.result.rows;
@@ -778,7 +784,7 @@ route.post("/placeorder", (req, res) => {
   };
 
   dbcon.run(orderAppid).then(function (results) {
-    if (results.code == 200) {
+    if (results && results.code == 200) {
       var appid = results.result.rows[0].BUSINESSID;
 
       var ordersdet = {
@@ -814,7 +820,7 @@ route.post("/placeorder", (req, res) => {
         order.username != undefined
       ) {
         dbcon.run(ordersdet).then(function (results) {
-          if (results.code == 200) {
+          if (results &&  results.code == 200) {
             res.send({ code: 200 });
           } else {
             console.log(results.result);
@@ -859,7 +865,7 @@ route.post("/updateorder",isAuth, (req, res) => {
   };
   if (updateorder.val != null && updateorder.val != undefined) {
     dbcon.run(updateorder).then(function (results) {
-      if (results.code == 200) {
+      if (results &&  results.code == 200) {
         res.send({ code: 200, result: quantity });
       } else {
         console.log(results.result);
@@ -889,7 +895,7 @@ route.post("/checkoutorder", isAuth, (req, res) => {
     };
 
     dbcon.run(updatecheckOrder).then(function (results) {
-      if (results.code == 200) {
+      if (results &&  results.code == 200) {
         res.send({ code: 200 });
       } else {
         res.send({ code: 101 });
@@ -913,7 +919,7 @@ route.post("/deleteorder",isAuth, (req, res) => {
     };
 
     dbcon.run(deleteOrder).then(function (results) {
-      if (results.code == 200) {
+      if (results &&  results.code == 200) {
         res.send({ code: 200 });
       } else {
         res.send({ code: 101 });
@@ -940,7 +946,7 @@ route.post("/deletecartorder", isAuth, (req, res) => {
     };
 
     dbcon.run(deleteOrder).then(function (results) {
-      if (results.code == 200) {
+      if (results &&  results.code == 200) {
         var email = {
           from: `Fizzbiznet  <fizzbiznet@gmail.com>`,
           to: useremail,
@@ -1019,7 +1025,7 @@ route.post("/completecartorder", isAuth, (req, res) => {
     };
 
     dbcon.run(deleteOrder).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         // res.send({ code: 200 });
 
         var email = {
@@ -1113,7 +1119,7 @@ route.post("/postcomment", isAuth, (req, res) => {
     commment.businessreviews != ""
   ) {
     dbcon.run(commment).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var commentquery = {
           tablename: "businessreviews",
           operation: "select",
@@ -1126,7 +1132,7 @@ route.post("/postcomment", isAuth, (req, res) => {
         };
 
         dbcon.run(commentquery).then(function (results) {
-          if (results.code == 200) {
+          if (results && results.code == 200) {
             res.send({ code: 200, result: results.result.rows });
           } else {
             console.log(results.result);
@@ -1188,7 +1194,7 @@ route.post("/postemail", isAuth, (req, res) => {
     };
 
     dbcon.run(selectOwner).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         if (results.result.rows.length != 0) {
           console.log("owner found");
           var selectFollowers = {
@@ -1203,7 +1209,7 @@ route.post("/postemail", isAuth, (req, res) => {
           };
 
           dbcon.run(selectFollowers).then(function (results) {
-            if (results.code == 200) {
+            if (results &&  results.code == 200) {
               var followers = results.result.rows;
 
               console.log(followers.length);
@@ -1545,7 +1551,7 @@ route.post("/postlike", (req, res) => {
     if (req?.session?.isAuth === true) {
     dbcon.run(newLike).then(function (results) {
       console.log(results.result)
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         
         res.send({ code: 200, result: "Like successful" });
       } else {
@@ -1587,7 +1593,7 @@ route.post("/postfollow", (req, res) => {
     newLike.businessappid != undefined
   ) {
     dbcon.run(newLike).then(function (results) {
-      if (results.code == 200) {
+      if (results &&  results.code == 200) {
         res.send({ code: 200, result: "Followed successfully" });
       } else {
         res.send({ code: 101, result: "Already Following." });
@@ -1629,7 +1635,7 @@ route.post("/handleorder", isAuth, (req, res) => {
   dbcon.run(orderdetails).then((result)=>{
 
 
-    if(result.code === 200){
+    if(result && result.code === 200){
 
       var appname = clean.CleanData(req.body.businessname),
       appemail = clean.CleanData(req.body.businessemail),
@@ -1727,7 +1733,7 @@ route.post("/handleorder", isAuth, (req, res) => {
                           };
   
                           dbcon.run(delOrder).then(function (results) {
-                            if (results.code == 200) {
+                            if (results && results.code == 200) {
                               // dbcon.run(orderdetails).then(function (results) {  
                               //   if (results.code == 200) {
                               //     res.send({ code: 200, result: "result" });

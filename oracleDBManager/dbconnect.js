@@ -34,7 +34,7 @@ const   getConnectionFromPool =  async ()=> {
 
  const checkConnectionHealth = async () => {
     try {
-      const connection = await getConnectionFromPool();
+      const connection = await getConnection();
       if (connection) {
         console.log('Oracle DB connection is alive and healthy');
         // Optionally, you can perform a simple query to further validate the connection
@@ -47,4 +47,4 @@ const   getConnectionFromPool =  async ()=> {
     }
   };
 
-module.exports ={getConnectionFromPool, checkConnectionHealth}
+module.exports ={getConnection, checkConnectionHealth}

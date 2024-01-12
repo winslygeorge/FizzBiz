@@ -31,7 +31,7 @@ const isAuth = (req, res, next) => {
 
     dbcon.run(userapps).then((feedback)=>{
 
-        if(feedback.code == 200){
+        if(feedback && feedback.code == 200){
 
             
 
@@ -67,7 +67,7 @@ const isAuth = (req, res, next) => {
 
   dbcon.run(sComApps).then((feedback)=>{
 
-      if(feedback.code == 200){
+      if(feedback &&  feedback.code == 200){
 
           
 
@@ -105,7 +105,7 @@ const isAuth = (req, res, next) => {
 
     dbcon.run(selFollowers).then( async (feedback)=>{
 
-        if(feedback.code == 200){
+        if(feedback && feedback.code == 200){
 
             res.send({code : 200})
         }else{
@@ -133,7 +133,7 @@ const isAuth = (req, res, next) => {
 
     dbcon.run(sComApps).then((feedback)=>{
 
-        if(feedback.code == 200){
+        if(feedback && feedback.code == 200){
 
             var compRows = feedback.result.rows;
 
@@ -164,7 +164,7 @@ const isAuth = (req, res, next) => {
 
                      await dbcon.run(selectBusinesses).then(async function(results){
 
-                        if (results.code == 200){
+                        if (results && results.code == 200){
 
                             let businessesComp = results
                                 .result.rows;

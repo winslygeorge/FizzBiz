@@ -95,7 +95,7 @@ route.post('/updateiconimage', isAuth, (req, res) => {
                 }
                 dbcon.run(updateIcon).then(function (results) {
                     
-                    if (results.code == 200) {
+                    if (results && results.code == 200) {
 
 
                         var oldPath = files.profileImage.path
@@ -164,7 +164,7 @@ route.post('/updatemission', isAuth, (req, res) => {
         
         dbcon.run(updateMission).then(function (results) {
             
-            if (results.code == 200) {
+            if (results && results.code == 200) {
                 
                 res.send({code : 200})
 
@@ -193,7 +193,7 @@ route.post('/updateEmail', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200 })
 
@@ -222,7 +222,7 @@ route.post('/updateIntro', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200 })
 
@@ -251,7 +251,7 @@ route.post('/updaterange', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200 })
 
@@ -324,7 +324,8 @@ route.post('/updateaddservice', (req, res) => {
 
                 dbcon.run(newservice).then(function (results) {
 
-                    if (results.code == 200) {
+                    if (results && 
+                        results.code == 200) {
 
                         res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
                        
@@ -360,7 +361,7 @@ route.post('/updateaddservice', (req, res) => {
                         };
 
                         dbcon.run(selectFollowers).then(function (results) {
-                            if (results.code == 200) {
+                            if (results && results.code == 200) {
                                 var followers = results.result.rows;
 
                                 console.log(followers.length);
@@ -497,7 +498,7 @@ route.post('/updateaddlocation', isAuth, (req, res) => {
 
                 dbcon.run(location).then(function (results) {
 
-                    if (results.code == 200) {
+                    if (results && results.code == 200) {
 
                         res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
 
@@ -572,7 +573,7 @@ route.post('/updateaddimage', isAuth, (req, res) => {
 
                 dbcon.run(newImage).then(function (results) {
 
-                    if (results.code == 200) {
+                    if (results && results.code == 200) {
 
                         var oldPath = files.img.path
 
@@ -670,7 +671,7 @@ route.post('/updateaddvideo', isAuth, (req, res) => {
 
                     dbcon.run(newVideo).then(function (results) {
 
-                        if (results.code == 200) {
+                        if (results && results.code == 200) {
 
 
                             res.redirect(`/app/${fields.appname}?id=${fields.appid}&cat=${fields.cat}`)
@@ -723,7 +724,7 @@ route.post('/emailpasswordchangerequest', (req, res) => {
 
     dbcon.run(selectEmail).then(function (results) {
         
-        if (results.code == 200) {
+        if (results && results.code == 200) {
 
             var user = results.result.rows[0]
 
@@ -844,7 +845,7 @@ route.post('/adduserimage', isAuth, (req, res) => {
 
                 dbcon.run(newImage).then(function (results) {
 
-                    if (results.code == 200) {
+                    if (results && results.code == 200) {
 
                         var oldPath = files.img.path
 

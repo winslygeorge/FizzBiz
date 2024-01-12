@@ -1,7 +1,7 @@
 const express = require('express')
 
 const config = require('./oracleDBManager/dbconfig')
-const {getConnectionFromPool, checkConnectionHealth} = require('./oracleDBManager/dbconnect')
+const {getConnection, checkConnectionHealth} = require('./oracleDBManager/dbconnect')
 const app = express()
 
 const session = require('express-session')
@@ -58,7 +58,7 @@ app.listen(8087, (err)=>{
 
 async function setSessionStore(){
 
-    let connect  =  await getConnectionFromPool()
+    let connect  =  await getConnection()
     var oracleStore  = new Store({options}, connect)
 
     app.use((req, res, next) => {

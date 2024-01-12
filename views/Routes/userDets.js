@@ -69,7 +69,7 @@ route.get('/user/gallery/:id', isAuth, async (req, res)=>{
 
     await dbcon.run(selectUserImage).then(async (feedback)=>{
 
-        if(feedback.code == 200){
+        if(feedback && feedback.code == 200){
 
             var images = await feedback.result.rows
 
@@ -89,7 +89,7 @@ route.get('/user/gallery/:id', isAuth, async (req, res)=>{
 
          await dbcon.run(selectComments).then(async (feedback)=>{
 
-                if(feedback.code == 200){
+                if(feedback && feedback.code == 200){
 
                     var commentsCount =  await feedback.result.rows.length
 
@@ -108,7 +108,7 @@ route.get('/user/gallery/:id', isAuth, async (req, res)=>{
 
                   await dbcon.run(imagelikes).then(async (feedback)=>{
 
-                        if(feedback.code == 200){
+                        if(feedback && feedback.code == 200){
 
                             var likesCount = await feedback.result.rows.length
 
@@ -178,7 +178,7 @@ route.post('/post/like/user/image', isAuth, (req, res)=>{
 
   dbcon.run(postLike).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       var selectl = {
         operation: 'select',
@@ -189,7 +189,7 @@ route.post('/post/like/user/image', isAuth, (req, res)=>{
       }
       dbcon.run(selectl).then((feedback)=>{
 
-        if(feedback.code == 200){
+        if(feedback && feedback.code == 200){
 
           var count = feedback.result.rows.length
 
@@ -226,7 +226,7 @@ var imagess = null
 
     
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       var selImages = {
 
@@ -259,7 +259,7 @@ var imagess = null
           var likesC = imageLIkes.length
           var commentsC = imageComments.length
           
-          if(feedback.code == 200){
+          if(feedback && feedback.code == 200){
 
             res.render('user/gallery/specImage', {image : imagess,likesCount : likesC,commentsCount : commentsC,likes : imageLIkes, comments : imageComments, loggedUser : req.session.userDetails})
 
@@ -315,7 +315,7 @@ route.get('/user/businessapps', (req, res)=>{
 
     dbcon.run(selectUserApps).then((feedback) => {
       
-      if (feedback.code === 200) {
+      if (feedback && feedback.code === 200) {
         
         let result = feedback.result.rows
 
