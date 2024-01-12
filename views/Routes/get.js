@@ -59,7 +59,7 @@ const isAdmin = (req, res, next) => {
 
     dbcon.run(selectOwner).then(function (results) {
       
-      if (results.result.rows.length > 0) {
+      if (results && results.result.rows.length > 0) {
         
         next();
       } else {
@@ -147,7 +147,7 @@ route.get('/users/apps', isAuth, (req, res) => {
 
     let results = result.results;
     
-    if (results.code == 200) {
+    if (results && results.code == 200) {
 
       var userapps = results.results.rows;
 
@@ -184,7 +184,7 @@ route.get("/profile/:id", isAuth, (req, res) => {
 
   dbcon.run(checkFriendship).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if( feedback && feedback.code == 200){
 
       if(feedback.result.rows.length > 0){
 
@@ -203,7 +203,7 @@ route.get("/profile/:id", isAuth, (req, res) => {
 
         dbcon.run(checkFriendshipcross).then((feedback)=>{
 
-          if(feedback.code == 200){
+          if(feedback &&  feedback.code == 200){
 
             if(feedback.result.rows.length > 0){
 
@@ -235,7 +235,7 @@ route.get("/profile/:id", isAuth, (req, res) => {
 var isAcceptRequest = null;
     dbcon.run(frq).then((feedback)=>{
 
-      if(feedback.code == 200){
+      if(feedback &&  feedback.code == 200){
 
         if(feedback.result.rows.length > 0){
 
@@ -263,7 +263,7 @@ var isAcceptRequest = null;
     function (results) {
       var profile = results.result.rows[0];
 
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var selectLiked = {
           operation: "select",
           tablename: "applikes",
@@ -275,7 +275,7 @@ var isAcceptRequest = null;
         dbcon.run(selectLiked).then(function (results) {
           var profilelikes = results.result.rows;
 
-          if (results.code == 200) {
+          if (results && results.code == 200) {
             var selectViews = {
               operation: "select",
               tablename: "views",
@@ -285,7 +285,7 @@ var isAcceptRequest = null;
             };
 
             dbcon.run(selectViews).then(function (results) {
-              if (results.code == 200) {
+              if (results && results.code == 200) {
                 var profileviews = results.result.rows;
 
 
@@ -321,7 +321,7 @@ var isAcceptRequest = null;
 
                     dbcon.run(myfriends).then((feedback) => {
 
-                      if (feedback.code == 200) {
+                      if (feedback &&  feedback.code == 200) {
 
 
                         friends += feedback.result.rows.length
@@ -337,7 +337,7 @@ var isAcceptRequest = null;
 
                         dbcon.run(hefriends).then((feedback) => {
 
-                          if (feedback.code == 200) {
+                          if (feedback && feedback.code == 200) {
 
                             friends += feedback.result.rows.length
 
@@ -434,7 +434,7 @@ route.get('/businessdeletecomponents/:id', isAdmin, (req, res) => {
 
     dbcon.run(selectServices).then(function(results){
 
-      if (results.code == 200){
+      if (results && results.code == 200){
 
         services = results.result.rows
         
@@ -449,7 +449,7 @@ route.get('/businessdeletecomponents/:id', isAdmin, (req, res) => {
 
         dbcon.run(selectLocation).then(function (results) {
 
-          if (results.code == 200) {
+          if (results && results.code == 200) {
 
             locations = results.result.rows
 
@@ -464,7 +464,7 @@ route.get('/businessdeletecomponents/:id', isAdmin, (req, res) => {
 
             dbcon.run(selectImages).then(function (results) {
 
-              if (results.code == 200) {
+              if (results && results.code == 200) {
 
                 images = results.result.rows
 
@@ -480,7 +480,7 @@ route.get('/businessdeletecomponents/:id', isAdmin, (req, res) => {
 
                 dbcon.run(selectVideo).then(function (results) {
 
-                  if (results.code == 200) {
+                  if (results && results.code == 200) {
 
                     video = results.result.rows
 
@@ -496,7 +496,7 @@ route.get('/businessdeletecomponents/:id', isAdmin, (req, res) => {
 
                     dbcon.run(selectApp).then(function (results) {
 
-                      if (results.code == 200) {
+                      if (results && results.code == 200) {
 
                         app = results.result.rows[0]
 
@@ -572,7 +572,7 @@ route.get("/app/:appname", async (req, res) => {
     basic ,
     s = null;
 
-    const businessId = parseInt(req.query.id); // Replace with the desired business ID
+    const businessId = req.query.id; // Replace with the desired business ID
     // Replace with the actual business ID
     const businessName = clean.CleanData(req.query.appname);
     const cat = parseInt(req.query.cat);
@@ -582,19 +582,13 @@ route.get("/app/:appname", async (req, res) => {
 
      let jsD =  await new QueryFunctionData().queryBusinessData(businessId, cat, dbcon.getDbConnecting() )
 
-    //  console.log(jsD)
 
-    // res.send(jsD)
+     
 
 
         sus = jsD?.APP[0]?.SUSCRIPTION;
-        videos = jsD?.VIDEOS
-        services = jsD?.SERVICES
-        images = jsD?.IMAGES
+        
         ratings = []
-        reviews = jsD?.REVIEWS
-        related = jsD?.RELATED
-        location = jsD?.LOCATIONS
 
         row = jsD.APP[0]
 
@@ -638,17 +632,11 @@ route.get("/app/:appname", async (req, res) => {
         console.log("rate no : ", ratings)
 
         res.render("serviceApp/index", {
-          comments: reviews,
           ratings: ratings,
           loggedUser: req.session.userDetails,
           social: social,
           row: row,
-          videos: videos,
-          images: images,
-          services: services,
-          location: location,
-          related: related,
-          loggedUser: req.session.userDetails,
+         
           isowner: isOwner,
           gold : gold,
           basic : basic,
@@ -659,6 +647,270 @@ route.get("/app/:appname", async (req, res) => {
 
       })
     
+})
+
+route.get('/get-services/:appid', (req, res)=>{
+
+  const appid = req.params.appid;
+
+  var servicequery = {
+              tablename: "services",
+              operation: "select",
+    
+              fields: [],
+    
+              wfield: ["businessid"],
+    
+              wvalue: [appid],
+            };
+    
+            dbcon.run(servicequery).then(function (results) {
+              if (results && results.code === 200) {
+               let  services = results.result.rows;
+
+                if(services?.length > 0){
+
+                  res.send({code : 200, message: 'Service/Products successfully retrieved.', services})
+
+                }else{
+
+
+                  res.send({code : 201, message: 'No Services/products Found!', services})
+
+
+                }
+
+
+
+              }else{
+
+                res.send({code : 101, message: 'Error fetching service! Kindly try again. \n if the issue , contact support for assistance.'})
+              }
+
+            })
+    
+
+})
+
+route.get('/get-images/:appid', (req, res)=>{
+
+  const appid = req.params.appid;
+
+  var imagequery = {
+                  tablename: "businessimages",
+                  operation: "select",
+    
+                  fields: [],
+    
+                  wfield: ["businessappid"],
+    
+                  wvalue: [appid],
+                };
+    
+    
+            dbcon.run(imagequery).then(function (results) {
+              if (results && results.code === 200) {
+               let  images= results.result.rows;
+
+                if(images?.length > 0){
+
+                  res.send({code : 200, message: 'Images successfully retrieved.', images})
+
+                }else{
+
+
+                  res.send({code : 201, message: 'No images Found!', images})
+
+
+                }
+
+
+
+              }else{
+
+                res.send({code : 101, message: 'Error fetching images! Kindly try again. \n if the issue , contact support for assistance.'})
+              }
+
+            })
+    
+
+})
+
+route.get('/get-videos/:appid', (req, res)=>{
+
+  const appid = req.params.appid;
+
+  var videosquery = {
+                      tablename: "businessvideos",
+                      operation: "select",
+    
+                      fields: [],
+    
+                      wfield: ["businessappid"],
+    
+                      wvalue: [appid],
+                    };
+    
+    
+            dbcon.run(videosquery).then(function (results) {
+              if (results && results.code === 200) {
+               let  videos= results.result.rows;
+
+                if( videos?.length > 0){
+
+                  res.send({code : 200, message: ' videos successfully retrieved.',  videos})
+
+                }else{
+
+
+                  res.send({code : 201, message: 'No  videos Found!',  videos})
+
+
+                }
+
+
+
+              }else{
+
+                res.send({code : 101, message: 'Error fetching  videos! Kindly try again. \n if the issue , contact support for assistance.'})
+              }
+
+            })
+    
+
+})
+
+route.get('/get-locations/:appid', (req, res)=>{
+
+  const appid = req.params.appid;
+
+  var locationquery = {
+        tablename: "locations",
+        operation: "select",
+
+        fields: [],
+
+        wfield: ["businessappid"],
+
+        wvalue: [appid],
+      };
+    
+    
+            dbcon.run(locationquery).then(function (results) {
+              if (results && results.code === 200) {
+               let  videos= results.result.rows;
+
+                if( videos?.length > 0){
+
+                  res.send({code : 200, message: ' Branch Locations successfully retrieved.',  locations : videos})
+
+                }else{
+
+
+                  res.send({code : 201, message: 'No  branch locations Found!',  locations : videos})
+
+
+                }
+
+
+
+              }else{
+
+                res.send({code : 101, message: 'Error fetching  branch location! Kindly try again. \n if the issue , contact support for assistance.'})
+              }
+
+            })
+    
+
+})
+
+
+route.get('/get-reviews/:appid', (req, res)=>{
+
+  const appid = req.params.appid;
+
+  var commentquery = {
+      tablename: "businessreviews",
+      operation: "select",
+
+      fields: [],
+
+      wfield: ["businessappid"],
+
+      wvalue: [appid],
+    };
+    
+    
+            dbcon.run(commentquery).then(function (results) {
+              if (results && results.code === 200) {
+               let  reviews= results.result.rows;
+
+                if( reviews?.length > 0){
+
+                  res.send({code : 200, message: ' Reviews successfully retrieved.',  reviews})
+
+                }else{
+
+
+                  res.send({code : 201, message: 'No  reviews Found!',  reviews})
+
+
+                }
+
+
+
+              }else{
+
+                res.send({code : 101, message: 'Error fetching  reviews! Kindly try again. \n if the issue , contact support for assistance.'})
+              }
+
+            })
+    
+
+})
+
+route.get('/get-related/:appid', (req, res)=>{
+
+  const appid = req.params.appid;
+
+ var relatedquery = {
+            tablename: "businessapp",
+            operation: "select",
+
+            fields: [],
+
+            wfield: ["businesscategory"],
+
+            wvalue: [appid],
+          };
+    
+    
+            dbcon.run(relatedquery).then(function (results) {
+              if (results && results.code === 200) {
+               let  related= results.result.rows;
+
+                if( related?.length > 0){
+
+                  res.send({code : 200, message: ' Related apps successfully retrieved.',  related})
+
+                }else{
+
+
+                  res.send({code : 201, message: 'No  related apps Found!',  related})
+
+
+                }
+
+
+
+              }else{
+
+                res.send({code : 101, message: 'Error fetching  related apps! Kindly try again. \n if the issue , contact support for assistance.'})
+              }
+
+            })
+    
+
 })
 // })
 // route.get("/app/:id", (req, res) => {
@@ -1360,13 +1612,13 @@ route.get('/apps/:id', (req, res)=>{
       dbcon.run(appsquery).then(function (results) {
 
         console.log(results)
-        if (results.code == 200) {
-          var apps = results.result.rows;
+        if (results?.code == 200) {
+          var apps = results?.result?.rows;
          
 
           var appcounter = 0;
 
-          while (appcounter < apps.length) {
+          while (appcounter < apps?.length) {
             var app = apps[appcounter];
 
             if (`${apps[appcounter].BUSINESSCATEGORY}`.startsWith("1")) {
@@ -1405,6 +1657,72 @@ route.get('/apps/:id', (req, res)=>{
 
         }
       })
+
+    }else{
+
+      var appsquery = {
+        tablename: "BUSINESSAPPSTATS",
+        operation: "select",
+
+        fields: [],
+
+        wfield : ['BUSINESSCATEGORY'],
+        wvalue : [catid]
+
+        
+      };
+
+      console.log(appsquery)
+
+      dbcon.run(appsquery).then(function (results) {
+
+        console.log(results)
+        if (results?.code == 200) {
+          var apps = results?.result?.rows;
+         
+
+          var appcounter = 0;
+
+          while (appcounter < apps?.length) {
+            var app = apps[appcounter];
+
+            if (`${apps[appcounter].BUSINESSCATEGORY}`.startsWith("1")) {
+              wholesales.push(app);
+            } else if (`${apps[appcounter].BUSINESSCATEGORY}`.startsWith("2")) {
+              lifestyle.push(app);
+            } else if (`${apps[appcounter].BUSINESSCATEGORY}`.startsWith("3")) {
+              beauty.push(app);
+            } else if (`${apps[appcounter].BUSINESSCATEGORY}`.startsWith("4")) {
+              technology.push(app);
+            } else if (`${apps[appcounter].BUSINESSCATEGORY}`.startsWith("5")) {
+              education.push(app);
+            } else if (`${apps[appcounter].BUSINESSCATEGORY}`.startsWith("6")) {
+              consultancy.push(app);
+            } else {
+              console.log("Category id not defined");
+            }
+
+            appcounter++;
+          }
+
+          var catsapps = {
+            Wholesales: wholesales,
+            Beauty: beauty,
+            Lifestyle: lifestyle,
+            Technology: technology,
+            Education: education,
+            Consultancy: consultancy,
+          };
+
+          res.render("homezapps/index", {
+            loggedUser: req.session.userDetails,
+            appscat: catsapps,
+            apps
+          });
+
+        }
+      })
+
 
     }
 
@@ -1647,7 +1965,7 @@ route.get("/usersorders/:id", isMyprofile, (req, res) => {
     };
 
     dbcon.run(calloreder).then(async function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var orders = results.result.rows;
 
         orders?.map((order)=>{
@@ -1849,7 +2167,7 @@ route.get("/businessorders/:id", isAdmin, (req, res) => {
 
   if (businessappid != null && businessappid != undefined) {
     dbcon.run(selectcheckedorders).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var checkedorders = results.result.rows;
 
         console.log(checkedorders)
@@ -1895,7 +2213,7 @@ route.get("/businesscartorders/:id", isAdmin,(req, res) => {
 
   if (businessappid != null && businessappid != undefined) {
     dbcon.run(selectcartorders).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var checkedorders = results.result.rows;
 
       

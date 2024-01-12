@@ -104,7 +104,7 @@ route.post('/retrieve-schedules',  (req, res) => {
                 
                 dbcon.run(updateevent).then(function (results) {
     
-                    if (results.code == 200) {
+                    if (results && results.code == 200) {
     
                         console.log(results.result)
                     } else {
@@ -136,7 +136,7 @@ route.post('/retrieve-schedules',  (req, res) => {
   
                 dbcon.run(deleteevent).then(function (results) {
     
-                    if (results.code == 200) {
+                    if (results && results.code == 200) {
     
                         console.log(results.result)
                     } else {
@@ -195,7 +195,7 @@ route.post('/retrieve-schedules',  (req, res) => {
                 
               dbcon.run(addScedule).then(function (results) {
     
-                    if (results.code == 200) {
+                    if (results && results.code == 200) {
 
     //                     setTimeout(function(){
 
@@ -289,7 +289,7 @@ route.post('/retrieve-schedules',  (req, res) => {
 
             var  finalRes = []
             
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 finalRes = results.result.rows
 

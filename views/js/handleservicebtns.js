@@ -2,6 +2,224 @@ $(document).ready(function (e) {
   e.preventDefault();
 });
 
+
+
+function fetchServices(id){
+
+  document.getElementById('loader').style.display ="block"
+
+  let serviceMainDiv = document.getElementById('serviceMainCol')
+  serviceMainDiv.innerHTML = ''
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+
+      if (result.code == 200) {
+        document.getElementById('loader').style.display ="none"
+
+        let services = result?.services
+
+        services?.map((service)=>{
+
+          let  serviceDiv = document.createElement('div')
+
+          serviceDiv.setAttribute('class', 'serDivs')
+          serviceDiv.setAttribute('id', `service${service?.SERVICEID}`)
+
+          serviceDiv.innerHTML = `
+            <h3>${service?.SERVICENAME}</h3>
+            <img
+              src="./../images/${service?.SERVICEICON}"
+              alt=""
+              srcset=""
+              style="width: 80%; margin:5px; border-radius: 5px; box-shadow: 2px 2px 2px 2px grey;"
+            />
+            <p>
+              <strong>Description:</strong><br /><br />
+              ${service?.SERVICEDESC}
+            </p>
+
+            <br />
+            <p>
+              <b>${service?.PRICE}
+                .ksh
+                <button
+                  id="addorder"
+                  onclick="handleorderbtn(${service?.ID}, '${service?.TYPE}');"
+                >+</button></b></p>
+
+          </div>
+
+          <div>
+
+      `
+
+      serviceMainDiv.append(serviceDiv)
+
+        })
+
+      } else if(result.code == 201){
+        serviceMainDiv.innerHTML = result?.message
+        document.getElementById('loader').style.display ="none"
+
+      }else {
+        serviceMainDiv.innerHTML = "An Error occurred when fetching service/products"
+        document.getElementById('loader').style.display ="none"
+
+      }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
+    }
+  };
+  xhttp.open("GET", "/get-services/"+id, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
+}
+
+
+function fetchImages(id){
+
+  document.getElementById('loader').style.display ="block"
+
+  let imageMainDiv = document.getElementById('gallerycarosol')
+  imageMainDiv.innerHTML = ''
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+
+      if (result.code == 200) {
+        document.getElementById('loader').style.display ="none"
+
+        let images = result?.images
+
+        images?.map((image)=>{
+
+          let  imageDiv = document.createElement("img")
+
+          imageDiv.setAttribute('alt', 'imageDiv')
+          imageDiv.setAttribute('src', `./../images/${image?.IMAGELINK}`)
+
+          imageDiv.setAttribute('class', 'imagesIng')
+          imageDiv.setAttribute('id', 'img1')
+
+
+      //     imageDiv.innerHTML = `
+         
+      //     <img
+      //       src="./../images/${image?.IMAGELINK}"
+            
+      //       alt=""
+      //       srcset=""
+      //       id="img1"
+
+      //     />
+
+      // `
+      imageMainDiv.append(imageDiv)
+
+        })
+
+      } else if(result.code == 201){
+        imageMainDiv.innerHTML =result?.message
+        document.getElementById('loader').style.display ="none"
+
+      }else {
+        imageMainDiv.innerHTML = "An Error occurred when fetching Images"
+        document.getElementById('loader').style.display ="none"
+
+      }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
+    }
+  };
+  xhttp.open("GET", "/get-images/"+id, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
+}
+
+
+function fetchVideos(id){
+
+  document.getElementById('loader').style.display ="block"
+
+  let imageMainDiv = document.getElementById('videosMainCol')
+
+  imageMainDiv.innerHTML = ''
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+
+      if (result.code == 200) {
+        document.getElementById('loader').style.display ="none"
+
+        let videos = result?.videos
+
+        videos?.map((image)=>{
+
+          let  imageDiv = document.createElement("iframe")
+
+          imageDiv.setAttribute('width', '420')
+          imageDiv.setAttribute('src', `https://www.youtube.com/embed/${image?.BUSINESSVIDEOLINK}`)
+
+          imageDiv.setAttribute('class', 'video')
+          imageDiv.setAttribute('height', '345')
+
+         
+      //     imageDiv.innerHTML = `
+         
+      //     <img
+      //       src="./../images/${image?.IMAGELINK}"
+            
+      //       alt=""
+      //       srcset=""
+      //       id="img1"
+
+      //     />
+
+      // `
+
+      imageMainDiv.append(imageDiv)
+
+        })
+
+      } else if(result.code == 201){
+        imageMainDiv.innerHTML = result?.message
+        document.getElementById('loader').style.display ="none"
+
+      }else {
+        imageMainDiv.innerHTML = "An Error occurred when fetching videos"
+        document.getElementById('loader').style.display ="none"
+
+      }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
+    }
+  };
+  xhttp.open("GET", "/get-videos/"+id, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
+}
+
+function handleRateBtn() {
+  $("#ratediv").fadeToggle();
+}
+
+
 function handleorderbtn(id, type){
 
   document.getElementById('loader').style.display ="block"
@@ -473,6 +691,7 @@ function handleUpdateRange(id) {
   }
 }
 
+
 function handleAddService() {
   $(".addServiceProduct").fadeToggle();
 }
@@ -501,3 +720,236 @@ function handleLoader(){
 
   document.getElementById('loader').style.display = 'block'
 }
+
+
+function fetchReviews(id){
+
+  document.getElementById('loader').style.display ="block"
+
+  let serviceMainDiv = document.getElementById('reviewsSection')
+  serviceMainDiv.innerHTML = ''
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+
+      if (result.code == 200) {
+        document.getElementById('loader').style.display ="none"
+
+        let reviews = result?.reviews
+
+        reviews?.map((review)=>{
+
+          let  serviceDiv = document.createElement('div')
+
+          serviceDiv.setAttribute('class', 'review')
+
+          serviceDiv.innerHTML = `
+     
+            <div class="clientDetail">
+
+              <div class="profileImg">
+                <a href="/profile/${review?.USERNAME}">
+                  <img
+                    src="./../images/${review?.PROFILEIMAGE}"
+                    alt=""
+                    srcset=""
+                    height="49px"
+                    width="20px"
+                  /></a>
+
+              </div>
+
+              <div class="profilename">
+                <h5>${review?.USERNAME}</h5>
+              </div>
+
+            </div>
+
+            <p>${review?.BUSINESSREVIEWS}</p>
+
+      `
+
+      serviceMainDiv.append(serviceDiv)
+
+        })
+
+      } else if(result.code == 201){
+        serviceMainDiv.innerHTML =  '<p style="color: grey;">There are no comments...</p>'
+        document.getElementById('loader').style.display ="none"
+
+      }else {
+        serviceMainDiv.innerHTML = `<p style="color: grey;"> An Error occurred when fetching reviews</p>`
+        document.getElementById('loader').style.display ="none"
+
+      }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
+    }
+  };
+  xhttp.open("GET", "/get-reviews/"+id, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
+}
+
+function fetchRelated(id){
+
+  document.getElementById('loader').style.display ="block"
+
+  let serviceMainDiv = document.getElementById('relatedAppCol')
+
+  serviceMainDiv.innerHTML = ''
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+
+      if (result.code == 200) {
+
+
+
+        document.getElementById('loader').style.display ="none"
+
+        let related = result?.related
+
+        related?.map((app)=>{
+
+          let  serviceDiv = document.createElement('div')
+
+          serviceDiv.setAttribute('class', 'relateddiv')
+
+          serviceDiv.innerHTML = `
+                 <div class="relatedname"> ${app?.BUSINESSNAME}</div>
+            <a
+              href="/app/${app?.BUSINESSNAME}?id=${app?.ID}&cat=${app?.BUSINESSCATEGORY}"
+            ><img src="./../images/${app?.BRANDICON}" alt="" srcset="" /></a>
+
+      `
+   
+
+      serviceMainDiv.append(serviceDiv)
+
+        })
+
+      } else if(result.code == 201){
+        document.getElementById('loader').style.display ="none"
+
+      }else {
+        document.getElementById('loader').style.display ="none"
+
+      }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
+    }
+  };
+  xhttp.open("GET", "/get-related/"+id, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
+}
+
+
+function fetchLocations(id){
+
+  document.getElementById('loader').style.display ="block"
+
+  let serviceMainDiv = document.getElementById('locationAppCol')
+
+  serviceMainDiv.innerHTML = ''
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var result = JSON.parse(this.responseText);
+
+      if (result.code == 200) {
+
+
+
+        document.getElementById('loader').style.display ="none"
+
+        let related = result?.locations
+
+        related?.map((app)=>{
+
+          let  serviceDiv = document.createElement('div')
+
+          serviceDiv.setAttribute('id', 'location')
+
+          serviceDiv.innerHTML = `
+
+            ${app?.CONTINENT}
+            ${app?.COUNTRY}
+            ${app?.TOWNCITY}
+            <br />
+            ${app?.ADDRESS}
+      `
+   
+
+      serviceMainDiv.append(serviceDiv)
+
+        })
+
+      } else if(result.code == 201){
+        document.getElementById('loader').style.display ="none"
+
+      }else {
+        document.getElementById('loader').style.display ="none"
+
+      }
+    }else{
+      // alert("Error occured...");
+
+      //   document.getElementById('loader').style.display ="none"
+    }
+  };
+  xhttp.open("GET", "/get-locations/"+id, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOMContentLoaded event fired. HTML is fully parsed.');
+
+  let location = window.location.href
+
+  if(location.includes('/app/')){
+
+
+    let appid = location.substring(location.indexOf('=')+1, location.indexOf('&'))
+
+    let catid = location.substring(location.lastIndexOf('=')+1)
+
+    fetchReviews(appid)
+    fetchLocations(appid)
+    fetchRelated(catid)
+
+
+  }
+
+});
+
+// window.addEventListener('load', function () {
+//   console.log('load event fired. All resources have finished loading.');
+
+//   document.getElementById('loader').style.display ="none"
+
+//   let location = window.location.href
+
+//   if(location.includes('/app/')){
+
+    
+
+//     let appid = location.substring(location.lastIndexOf('=')+1)
+
+//     this.alert("fetched: " + appid)
+
+//     fetchRelated(appid)
+
+//   }});

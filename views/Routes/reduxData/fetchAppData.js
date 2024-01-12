@@ -13,7 +13,10 @@ class QueryFunctionData {
     try {
       // Get a connection from the database
 
+
       let connect = await dconnect
+
+      console.log("APPID : ", businessId)
   
          // Define the PL/SQL function call
       const plsql = `

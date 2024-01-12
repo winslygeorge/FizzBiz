@@ -92,7 +92,7 @@ route.post("/post/discussion", isAuth, (req, res) => {
     commment.businessreviews != ""
   ) {
     dbcon.run(commment).then(function (results) {
-      if (results.code == 200) {
+      if (results && results.code == 200) {
         var commentquery = {
           tablename: "businessreviews",
           operation: "select",
@@ -105,7 +105,7 @@ route.post("/post/discussion", isAuth, (req, res) => {
         };
 
         dbcon.run(commentquery).then(function (results) {
-          if (results.code == 200) {
+          if (results && results.code == 200) {
             res.send({ code: 200, result: results.result.rows });
           } else {
             console.log(results.result);
@@ -150,7 +150,7 @@ route.post('/post/disc', isAuth, (req, res)=>{
 
   dbcon.run(disc).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       res.send({code : 200})
     }else{
@@ -182,7 +182,7 @@ route.get('/competition/discussions', (req, res)=>{
   dbcon.run(discs).then(async(feedback)=>{
     var discDate = null
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       var result = feedback.result.rows
 
@@ -209,7 +209,7 @@ route.get('/competition/discussions', (req, res)=>{
         await  dbcon.run(discReplies).then((feedback)=>{
         
         
-            if(feedback.code == 200){
+            if(feedback && feedback.code == 200){
         
              repliesCount = feedback.result.rows.length;
 
@@ -349,7 +349,7 @@ route.get('/competition/discussions_subs', (req, res)=>{
           dbcon.run(discReplies).then(async(feedback)=>{
         
         
-            if(feedback.code == 200){
+            if(feedback && feedback.code == 200){
               var subs = feedback.result.rows;
         
              var  repliesCount = feedback.result.rows.length;
@@ -456,7 +456,7 @@ route.post('/post/discsubs', isAuth, (req, res)=>{
 
   dbcon.run(disc).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       res.send({code : 200, subss : disc})
     }else{
@@ -485,7 +485,7 @@ route.get('/friends/:username', (req, res)=>{
 
   dbcon.run(getFriends).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if(feedback &&  feedback.code == 200){
 
       var results = feedback.result.rows
       if(results.length > 0){
@@ -518,7 +518,7 @@ route.post('/post/friendRequest', isAuth, (req, res)=>{
 
   dbcon.run(fr).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       res.send({code : 200})
     }else{
@@ -547,7 +547,7 @@ route.post('/post/acceptfriendRequest', isAuth, (req, res)=>{
 
   dbcon.run(fr).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       var df = {
 
@@ -559,7 +559,7 @@ route.post('/post/acceptfriendRequest', isAuth, (req, res)=>{
 
       dbcon.run(df).then((feedback)=>{
 
-        if(feedback.code == 200){
+        if(feedback && feedback.code == 200){
 
           res.send({code : 200})
 
@@ -594,7 +594,7 @@ route.post('/post/cancelfriend', isAuth, (req, res)=>{
 
   dbcon.run(deleteFriend).then((feedback) => {
 
-    if(feedback.code == 200){
+    if(feedback && feedback.code == 200){
 
       res.send({code : 200})
     }else{
@@ -622,7 +622,8 @@ var crossFriendsList = []
 
   dbcon.run(selectFriends).then((feedback)=>{
 
-    if(feedback.code == 200){
+    if(feedback && 
+      feedback.code == 200){
 
       if(feedback.result.rows.length > 0){
 
@@ -641,7 +642,7 @@ var crossFriendsList = []
 
       dbcon.run(crossFriends).then((feedback)=>{
 
-        if(feedback.code == 200){
+        if(feedback && feedback.code == 200){
 
           if(feedback.result.rows.length > 0){
 

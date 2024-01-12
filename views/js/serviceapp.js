@@ -74,12 +74,35 @@ function carousel() {
        if(document.getElementById('main')!= null) document.getElementById('main').setAttribute('id', 'hmain')
        if(document.getElementById('reel') != null) document.getElementById('reel').setAttribute('id', 'hreel')
        if( document.getElementById('order') != null) document.getElementById('order').setAttribute('id', 'hcontact')
+       if(document.getElementById('showservices') != null) document.getElementById('gallery').setAttribute('id', 'hservices')
+
     }else{
 
         document.getElementById('gallery').setAttribute('id', 'hgallery')
         document.getElementById('hmain').setAttribute('id', 'main')
     }
   }
+
+
+  function handleServices(){
+
+    var galDiv = document.getElementById('hservices')
+
+    if(galDiv != null){
+
+        galDiv.setAttribute('id', 'showservices')
+       if(document.getElementById('main')!= null) document.getElementById('main').setAttribute('id', 'hmain')
+       if(document.getElementById('reel') != null) document.getElementById('reel').setAttribute('id', 'hreel')
+       if( document.getElementById('order') != null) document.getElementById('order').setAttribute('id', 'hcontact')
+       if(document.getElementById('gallery') != null) document.getElementById('gallery').setAttribute('id', 'hgallery')
+
+    }else{
+
+        document.getElementById('showservices').setAttribute('id', 'hservices')
+        document.getElementById('hmain').setAttribute('id', 'main')
+    }
+  }
+
 
   function handleReel(){
 
@@ -93,6 +116,8 @@ function carousel() {
 
         if(document.getElementById('gallery') != null) document.getElementById('gallery').setAttribute('id', 'hgallery')
         if(document.getElementById('order') != null) document.getElementById('order').setAttribute('id', 'hcontact')
+        if(document.getElementById('showservices') != null) document.getElementById('gallery').setAttribute('id', 'hservices')
+
     }else{
 
         document.getElementById('reel').setAttribute('id', 'hreel')
@@ -112,6 +137,8 @@ function carousel() {
 
        if( document.getElementById('reel') != null) document.getElementById('reel').setAttribute('id', 'hreel')
        if( document.getElementById('gallery') != null) document.getElementById('gallery').setAttribute('id', 'hgallery')
+       if(document.getElementById('showservices') != null) document.getElementById('gallery').setAttribute('id', 'hservices')
+
     }else{
 
         document.getElementById('order').setAttribute('id', 'hcontact')
