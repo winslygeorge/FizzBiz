@@ -69,7 +69,7 @@ route.post('/deleteappservice', isAuth, (req, res) => {
 
     dbcon.run(deleteService).then(function (results) {
         
-        if (results.code == 200) {
+        if (results && results.code == 200) {
 
 
             
@@ -99,7 +99,7 @@ route.post('/deleteapplocation', isAuth, (req, res) => {
 
     dbcon.run(deleteService).then(function (results) {
 
-        if (results.code == 200) {
+        if (results && results.code == 200) {
 
 
 
@@ -129,7 +129,7 @@ route.post('/deleteappimage', isAuth, (req, res) => {
 
     dbcon.run(deleteService).then(function (results) {
 
-        if (results.code == 200) {
+        if (results && results.code == 200) {
 
 
 
@@ -160,7 +160,7 @@ route.post('/deleteappvideo', isAuth, (req, res) => {
 
     dbcon.run(deleteService).then(function (results) {
 
-        if (results.code == 200) {
+        if (results && results.code == 200) {
 
 
 
@@ -192,7 +192,7 @@ route.post('/updatetopic', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200 , result : updateMission.shorttopic})
 
@@ -220,7 +220,7 @@ route.post('/updatecontinent', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.continent })
 
@@ -248,7 +248,8 @@ route.post('/updatecountry', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && 
+                results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.country })
 
@@ -276,7 +277,7 @@ route.post('/updatetown', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.towncity })
 
@@ -304,7 +305,7 @@ route.post('/updateaddress', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.address })
 
@@ -332,7 +333,7 @@ route.post('/updatefacebook', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.facebook })
 
@@ -360,7 +361,7 @@ route.post('/updateinstagram', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.instagram })
 
@@ -388,7 +389,7 @@ route.post('/updatetwitter', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.twitter })
 
@@ -417,7 +418,7 @@ route.post('/updateyoutube', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.youtube })
 
@@ -446,7 +447,7 @@ route.post('/updategithub', isAuth, (req, res) => {
 
         dbcon.run(updateMission).then(function (results) {
 
-            if (results.code == 200) {
+            if (results && results.code == 200) {
 
                 res.send({ code: 200, result: updateMission.github })
 

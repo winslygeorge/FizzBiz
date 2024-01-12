@@ -42,7 +42,7 @@ if(req.query.userName.indexOf('@') != -1){
 
 db.run( userCredidentials).then(function(feedback){
 
-    if (feedback.code == 200) {
+    if (feedback && feedback.code == 200) {
         
         if (feedback.result.rows.length == 0) {
 
@@ -132,7 +132,7 @@ route.get('/googleLoginUser', (req, res)=>{
     
     db.run( userCredidentials).then(function(feedback){
     
-        if (feedback.code == 200) {
+        if (feedback && feedback.code == 200) {
             
             if (feedback.result.rows.length == 0) {
 

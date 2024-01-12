@@ -277,7 +277,7 @@ var profileIg = uname+'_'+Date.now()+'_'+Math.round(Math.random()* 1E9)+'.'+prof
     serveRequest.run(inputs).then(function(feedback){
 
         console.log(feedback.result)
-        if(feedback.code == 200){
+        if(feedback &&  feedback.code == 200){
 
             var oldPath = files.profileImage.path
 
@@ -308,7 +308,7 @@ var profileIg = uname+'_'+Date.now()+'_'+Math.round(Math.random()* 1E9)+'.'+prof
 
             serveRequest.run(insertVerification).then(function(results){
 
-                if(results.code  == 200 ){
+                if(results && results.code  == 200 ){
 
 
                      var email = {
@@ -595,7 +595,7 @@ if(codeVer.code != null && codeVer.code != undefined && codeVer.username != null
 
     serveRequest.run(selectUser).then(function(results){
 
-        if(results.code == 200){
+        if(results && results.code == 200){
 
             var storedcode = results.result.rows[0].CODE
 
@@ -612,7 +612,7 @@ if(codeVer.code != null && codeVer.code != undefined && codeVer.username != null
 
               serveRequest.run(updatever).then(function(results){
 
-                if(results.code == 200){
+                if(results && results.code == 200){
 
 
                     var deleteever = {
@@ -730,7 +730,7 @@ route.post('/dbchangepass', (req, res) => {
             
             serveRequest.run(updatepassword).then(function (results) {
 
-                if (results.code == 200) {
+                if (results && results.code == 200) {
 
                     res.redirect('/login')
                 } else {
