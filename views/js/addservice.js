@@ -84,7 +84,7 @@ $('#addS').on('click', function(){
     counterService++;
 
     var sectionDiv =
-      '  <form action="/saddservice" method="post" enctype="multipart/form-data"> <section class="classSection" id="section' +
+      '  <form action="/saddservice" method="post" enctype="multipart/form-data"  onsubmit="handleLoader()"> <section class="classSection" id="section' +
       counterService +
       '"><div class="inp"><label for="companyName">Type</label><br><br> <select name="type" id="type" style="width: 90%; padding : 5px;"><option value="product">Product</option><option value="service">Service</option></select></div><div class="inp"><img src="./../images/businessgazzete.png.jpg" alt="" srcset="" id= "dis" ><br><br><label for="companyIcon">Service Image</label> <br><br> <input type="file" name="serviceIcon" id="serviceIcon" class="inputText" required><br><br></div><div class="inp"><label for="companyName">Service Name</label><br><br><input type="text" name="serviceName" id="serviceName" class="inputText" required></div><div class="inp"><label for="companyName">Service Description</label><br><br><textarea required name="serviceDesc" id="content" class="div-wrapper"   placeholder=""></textarea></div><div class="inp"><label for="companyName">Service Price <br> Enter currency code of your country then the price</label><br><br><input type="text" name="servicePrice" id="" class="inputText" placeholder="Ksh. 0.00"></div> <div   class = "removeSer"  id="remove' +
       counterService +
@@ -113,7 +113,7 @@ $('#addL').on('click', function(){
 
     counnterLocation++;
 
-    var locationDiv = ' <form action="/saddlocation" method="post" enctype="multipart/form-data"><div class="branchLocation" id="branchLocation'+counnterLocation+'"><div class="inp"><label for="companyCountry">Branch Continent location</label><select name="branchContinent" id="" ><option value="Africa">Africa</option><option value="Asia">Asia</option><option value="Europe">Europe</option></select></div><div class="inp"><label for="companyCountry">Branch Country Location</label><input type="text" name="branchHQcountry" id="" class="input" required></div><div class="inp"><label for="companyCountry">Branch Town/City Location</label><input type="text" name="branchHQcity" id="" class="input" required></div><div class="inp"><label for="companyCountry">Branch Address</label><input type="text" name="branchHQaddress" id="" class="input" required></div> <div   class = "removeSer"  id="remove'+counnterLocation+'" onclick="removeLocation('+counnterLocation+');"><a  >Remove Service</a></div>  <div class="next" id="submit"><input type="submit" value="submit" class="btnNext"></div></div> </form>';
+    var locationDiv = ' <form action="/saddlocation" method="post" enctype="multipart/form-data"  onsubmit="handleLoader()"><div class="branchLocation" id="branchLocation'+counnterLocation+'"><div class="inp"><label for="companyCountry">Branch Continent location</label><select name="branchContinent" id="" ><option value="Africa">Africa</option><option value="Asia">Asia</option><option value="Europe">Europe</option></select></div><div class="inp"><label for="companyCountry">Branch Country Location</label><input type="text" name="branchHQcountry" id="" class="input" required></div><div class="inp"><label for="companyCountry">Branch Town/City Location</label><input type="text" name="branchHQcity" id="" class="input" required></div><div class="inp"><label for="companyCountry">Branch Address</label><input type="text" name="branchHQaddress" id="" class="input" required></div> <div   class = "removeSer"  id="remove'+counnterLocation+'" onclick="removeLocation('+counnterLocation+');"><a  >Remove Service</a></div>  <div class="next" id="submit"><input type="submit" value="submit" class="btnNext"></div></div> </form>';
 
    console.log(locationDiv);
     $('.newAddedBranches').append(locationDiv);
@@ -130,7 +130,7 @@ $('#addImg').on('click', function(){
     counnterImg++;
 
 
-    let  imageDiv = `  <form action="/addserviceimage" method="post" enctype="multipart/form-data"><div class="imgThumb" id="img${counnterImg}"><div class="inp"><img src="./../images/businessgazzete.png.jpg" alt="" srcset=""  id="dis${counnterImg}"><br><br><label for="companyImage">Image</label><input type="file" name="img" id="inpImg${counnterImg}" class="input" accept="image/*"  required></div><div class="removeSer"  id="removeImg${counnterImg}" onclick="removeImage(${counnterImg});"><a>Remove Image</a></div> <div class="next" id="submit"><input type="submit" value="submit" class="btnNext"></div></div></form>`;
+    let  imageDiv = `  <form action="/addserviceimage" method="post" enctype="multipart/form-data"  onsubmit="handleLoader()"><div class="imgThumb" id="img${counnterImg}"><div class="inp"><img src="./../images/businessgazzete.png.jpg" alt="" srcset=""  id="dis${counnterImg}"><br><br><label for="companyImage">Image</label><input type="file" name="img" id="inpImg${counnterImg}" class="input" accept="image/*"  required></div><div class="removeSer"  id="removeImg${counnterImg}" onclick="removeImage(${counnterImg});"><a>Remove Image</a></div> <div class="next" id="submit"><input type="submit" value="submit" class="btnNext"></div></div></form>`;
 
     $('.imageThumbnails').append(imageDiv);
 
@@ -153,7 +153,7 @@ $('#addVideo').on('click', function(){
     counnterVid++;
 
 
-    let  reelDiv = `  <form action="/addservicevideo" method="post" enctype="multipart/form-data"><div class="newVideo" id="vid${counnterVid}">
+    let  reelDiv = `  <form action="/addservicevideo" method="post" enctype="multipart/form-data"  onsubmit="handleLoader()"><div class="newVideo" id="vid${counnterVid}">
 
     <div class="inp">
         <label for="companyVideo">Youtube Video Link</label>

@@ -534,6 +534,22 @@ margin-right: 0px;
 
 }
 
+.bigIntroLogo{
+
+    width: 50%;
+    
+    margin:auto;
+
+    display: block;
+}
+
+.formAuth{
+
+    width: 40%;
+    
+    margin:auto;
+}
+
 
 @keyframes slideLeft{
 
@@ -621,6 +637,16 @@ footer{
     @media screen and (max-width: 770px) {
     /* start of medium tablet styles */
 
+    .bigIntroLogo{
+
+        display: none;
+    }
+
+    .formAuth{
+
+        width: 100%;
+    }
+
     .toolbarList{
 
         position: fixed;
@@ -701,6 +727,10 @@ footer{
 
     display: flex;
     border-bottom: 2px solid whitesmoke ;
+    background-color: rgba(85, 84, 84, 0.329);
+    padding: 10px;
+    border-radius: 5px;
+
    
 }
 .tItem{
@@ -711,6 +741,10 @@ footer{
     text-decoration: none;
     color: orangered;
     padding: 1%;
+    background-color: white;
+
+
+    border-radius: 10px;
    
 }
 
@@ -786,3 +820,4 @@ th {
  
  color: #9d5f02;
 }
+
