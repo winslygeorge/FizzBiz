@@ -90,11 +90,18 @@
 
 
     <div class="body">
+        <div id="loader" class="loader-container" style="z-index: 10;">
 
-        <form action="/addService" method="post" enctype="multipart/form-data">
+        <div class="loader"></div>
+      </div>
 
-<div class="form" style="display: block;">
-        <div class="addService" id="basicInfo" style="display: block;">
+                <div class="loginDivB" style="display: flex; width:100%; align-content:space-around;" >
+
+
+        <form action="/addService" method="post" enctype="multipart/form-data" class="formAuth" style="height:80vh; overflow:auto;"  onsubmit="handleLoader()">
+
+<div class="form" style="display: block; overflow:auto;">
+        <div class="addService" id="basicInfo" style="display: block;overflow:auto;">
 
             <p style="color: red;">{{error}}</p>
 
@@ -210,7 +217,7 @@
     </div>
         </div>
 
-        <div class="addService" id="locationInfo" style="display: none;">
+        <div class="addService" id="locationInfo" style="display: none; overflow:auto;">
 
             <caption> <h2>Location Information</h2></caption>
 
@@ -313,6 +320,22 @@
 </div>
 
     </form>
+
+      <div class="bigIntroLogo">
+
+            <img
+            src="./../images/regpostpic3.svg"
+
+
+            alt="logo intro"
+
+            style="width: 100%;"
+            >
+
+
+        </div>
+
+    </div>
 
 
 <footer style="color: aquamarine;">

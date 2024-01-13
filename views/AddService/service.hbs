@@ -91,8 +91,12 @@
 
 
     <div class="body">
+        <div id="loader" class="loader-container" style="z-index: 10;">
 
-        <form action="/addService" method="post" enctype="multipart/form-data">
+        <div class="loader"></div>
+      </div>
+
+        <form action="/addService" method="post" enctype="multipart/form-data"  onsubmit="handleLoader()">
 
 <div class="form">
         <div class="addService" id="servicesInfo" style="display: block;">

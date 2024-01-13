@@ -44,6 +44,7 @@ body{
     display: flex;
     justify-content: space-between;
     margin: 4%;
+    margin-top: 10%;
 }
 
 .orderDetails{

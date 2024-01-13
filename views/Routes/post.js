@@ -107,18 +107,18 @@ uname = newUser.username
 
     //work tel input validation
 
-    if(newUser.workTel.match(/^[+]?[0-9]{1,3}?[0-9]{3}?[0-9]{4,6}/) && newUser.workTel.length >= 9 && newUser.workTel.length <= 14){
+    // if(newUser.workTel.match(/^[+]?[0-9]{1,3}?[0-9]{3}?[0-9]{4,6}/) && newUser.workTel.length >= 9 && newUser.workTel.length <= 14){
 
 
-        wokTel = newUser.workTel
+    //     wokTel = newUser.workTel
 
-    }else{
+    // }else{
 
        
 
-        wokTelErr = "Expected  numbers and + only or you entered an invalid number "
+    //     wokTelErr = "Expected  numbers and + only or you entered an invalid number "
 
-    }
+    // }
 
     // mobile tel validation
 
@@ -134,43 +134,35 @@ uname = newUser.username
 
 // location continet country town validation
 
-if(newUser.continent.match(/^[a-zA-Z0-9\s]+$/)&& newUser.country.match(/^[a-zA-Z0-9\s]+$/)&&newUser.townCity.match(/^[a-zA-Z0-9\s]+$/)){
+// if(newUser.continent.match(/^[a-zA-Z0-9\s]+$/)&& newUser.country.match(/^[a-zA-Z0-9\s]+$/)&&newUser.townCity.match(/^[a-zA-Z0-9\s]+$/)){
 
-                       continent = newUser.continent
-                       country = newUser.country
-                       town = newUser.townCity
-}else{
+//                        continent = newUser.continent
+//                        country = newUser.country
+//                        town = newUser.townCity
+// }else{
 
-    continentErr = "Expected letters space and numbers only on location"
-}
+//     continentErr = "Expected letters space and numbers only on location"
+// }
 
 // Email validation
 
-if(newUser.email.match(newUser.conEmail)){
+// if(newUser.email.match(newUser.conEmail)){
 
-                 email= newUser.email   
+   email= newUser.email   
 
-}else{
+// }else{
 
-    emailErr = "Email and confirm email do not match"
+//     emailErr = "Email and confirm email do not match"
 
-}
+// }
 
 //password Validation
 
 if(newUser.password.match(newUser.conpasswd)){
 
-    if(newUser.password.match(/^.*(?=.{6})(?=.*[0-9])(?=.*[A-Z]).*$/)){
 
      passwd = bycrypt.hashSync(newUser.password,  bycrypt.genSaltSync(10) )
-   
-        
-
-    }else{
-
-passwdErr = "Password must contain at least one capital letter , one digital number and \n it must be at least six characters "
-    }
-
+  
 }else{
 
 passwdErr= "Password do not match"
@@ -267,6 +259,7 @@ var profileIg = uname+'_'+Date.now()+'_'+Math.round(Math.random()* 1E9)+'.'+prof
     agreedtoterms : "true",
     isverified : 0,
     
+    created_at : new Date(),
     
         tablename: "USERS",
         operation : "insert"

@@ -35,7 +35,7 @@ function fetchServices(id){
               src="./../images/${service?.SERVICEICON}"
               alt=""
               srcset=""
-              style="width: 80%; margin:5px; border-radius: 5px; box-shadow: 2px 2px 2px 2px grey;"
+              style="width: 100%; height:250px; margin:5px; border-radius: 5px; box-shadow: 2px 2px 2px 2px grey;"
             />
             <p>
               <strong>Description:</strong><br /><br />
