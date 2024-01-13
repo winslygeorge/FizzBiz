@@ -174,3 +174,7 @@ for (let i = 0; i < forms.length; i++) {
 }
 
  
+function handleLoader(){
+
+    document.getElementById('loader').style.display = 'block'
+  }

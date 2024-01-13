@@ -96,11 +96,16 @@
     
 
 
-    <div class="body">
+    <div class="body" >
 
-        
+        <div id="loader" class="loader-container" style="z-index: 10;">
 
-        <form action="/loginUser" method="get">
+        <div class="loader"></div>
+      </div>
+
+        <div class="loginDivB" style="display: flex; width:100%; align-content:space-around;">
+
+<form action="/loginUser" method="get" class="formAuth"  onsubmit="handleLoader()" >
       
 
 <div class="form">
@@ -154,7 +159,25 @@
 
 </div>
         </form>
-<footer style="color: aquamarine;">
+
+        <div class="bigIntroLogo">
+
+            <img
+            src="./../images/regpostpic3.svg"
+
+
+            alt="logo intro"
+
+            style="width: 100%;"
+            >
+
+
+        </div>
+
+
+        </div>
+
+        <footer style="color: aquamarine;">
     <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
         <tr>
             <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
