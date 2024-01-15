@@ -588,11 +588,11 @@ if(codeVer.code != null && codeVer.code != undefined && codeVer.username != null
 
     serveRequest.run(selectUser).then(function(results){
 
-        if(results && results.code == 200){
+        if(results && results?.code == 200){
 
-            var storedcode = results.result.rows[0].CODE
+            var storedcode = results?.result?.rows[0]?.CODE
 
-            if(storedcode == codeVer.code){
+            if(storedcode == codeVer?.code){
 
               var updatever = {
 
@@ -605,7 +605,7 @@ if(codeVer.code != null && codeVer.code != undefined && codeVer.username != null
 
               serveRequest.run(updatever).then(function(results){
 
-                if(results && results.code == 200){
+                if(results && results?.code == 200){
 
 
                     var deleteever = {
