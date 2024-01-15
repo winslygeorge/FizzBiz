@@ -96,11 +96,8 @@ route.post("/addService", isAuth, (req, res) => {
     if (!err) {
       //business name
 
-      if (fields.businessName.match(/^[a-zA-Z0-9.,!?-_\\\s]+$/)) {
         businessName = clean.CleanData(fields.businessName);
-      } else {
-        businessNameErr = "required letters and numbers only";
-      }
+  
 
       //business mission
 
