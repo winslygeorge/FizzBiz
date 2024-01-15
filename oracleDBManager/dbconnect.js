@@ -4,7 +4,7 @@ const config = require('./dbconfig')
 let con
 
 dbcon.outFormat = dbcon.OUT_FORMAT_OBJECT;
-async function getConnection(){
+async function getConnectionFromPool(){
 
     try{
 
@@ -21,7 +21,7 @@ async function getConnection(){
 return null;
 }
 
-const   getConnectionFromPool =  async ()=> {
+const  getConnection  =  async ()=> {
   if (!con) {
    con = await dbcon.createPool(config);
 
