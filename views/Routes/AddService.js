@@ -104,26 +104,16 @@ route.post("/addService", isAuth, (req, res) => {
 
       //business mission
 
-      if (fields.businessMission.match(/^[a-zA-Z0-9\.\,\!\?\-\_\\\s]+$/)) {
         bizMission = clean.CleanData(fields.businessMission);
-      } else {
-        bizMissionErr = "required letters and numbers only";
-      }
-
+   
       //business introduction
 
-      if (fields.businessIntro.match(/^[a-zA-Z0-9\.\,\!\?\-\_\\\s]+$/)) {
         bizIntro = clean.CleanData(fields.businessIntro);
-      } else {
-        bizIntroErr = "required letters and numbers only";
-      }
+   
       //business topic validation
 
-      if (fields.businessTopic.match(/^[a-zA-Z0-9\.\,\!\?\-\_\\\s]+$/)) {
         bizTopic = clean.CleanData(fields.businessTopic);
-      } else {
-        bizTopicErr = "required letters and numbers only";
-      }
+    
 
       //business category validation
 
