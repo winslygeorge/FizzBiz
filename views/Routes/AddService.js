@@ -96,20 +96,20 @@ route.post("/addService", isAuth, (req, res) => {
     if (!err) {
       //business name
 
-        businessName = clean.CleanData(fields.businessName);
+        businessName = clean.CleanData(fields.businessName).replace('"', "").replace("'", "");
   
 
       //business mission
 
-        bizMission = clean.CleanData(fields.businessMission);
+        bizMission = clean.CleanData(fields.businessMission).replace('"', "").replace("'", "");
    
       //business introduction
 
-        bizIntro = clean.CleanData(fields.businessIntro);
+        bizIntro = clean.CleanData(fields.businessIntro).replace('"', "").replace("'", "");
    
       //business topic validation
 
-        bizTopic = clean.CleanData(fields.businessTopic);
+        bizTopic = clean.CleanData(fields.businessTopic).replace('"', "").replace("'", "");
     
 
       //business category validation
@@ -122,7 +122,7 @@ route.post("/addService", isAuth, (req, res) => {
 
       //business email validation
 
-      bizEmail = clean.CleanData(fields.businessEmail);
+      bizEmail = clean.CleanData(fields.businessEmail).replace('"', "").replace("'", "");
 
       //location validation
 
@@ -132,11 +132,11 @@ route.post("/addService", isAuth, (req, res) => {
         fields.HQcity.match(/^[a-zA-Z0-9\s]+$/) &&
         fields.range.match(/^[a-zA-Z0-9\.\,\!\?\-\_\s]+$/)
       ) {
-        hqContinent = clean.CleanData(fields.continent);
-        hqCountry = clean.CleanData(fields.HQcountry);
-        hqTown = clean.CleanData(fields.HQcity);
-        hqAddress = clean.CleanData(fields.HQaddress);
-        bizRange = clean.CleanData(fields.range);
+        hqContinent = clean.CleanData(fields.continent).replace('"', "").replace("'", "");
+        hqCountry = clean.CleanData(fields.HQcountry).replace('"', "").replace("'", "");
+        hqTown = clean.CleanData(fields.HQcity).replace('"', "").replace("'", "");
+        hqAddress = clean.CleanData(fields.HQaddress).replace('"', "").replace("'", "");
+        bizRange = clean.CleanData(fields.range).replace('"', "").replace("'", "");
       } else {
         hqContinentErr = "Expected letters space and numbers only on location";
       }
@@ -144,7 +144,7 @@ route.post("/addService", isAuth, (req, res) => {
       //brand image validation
 
       if (handleImageUpload(files)) {
-        businessIcon = files.businessIcon.name;
+        businessIcon = clean.CleanData(files.businessIcon.name).replace('"', "").replace("'", "");
       } else {
         businessIconErr = "invalid image type \n Expected .png, .jpg, .jpeg";
       }
@@ -152,16 +152,14 @@ route.post("/addService", isAuth, (req, res) => {
       //handle socila media
 
       var social = {
-        facebook: clean.CleanData(fields.facebook),
-        instagram: clean.CleanData(fields.instagram),
-        twitter: clean.CleanData(fields.twitter),
-        linkedln: clean.CleanData(fields.linkedln),
-        github: clean.CleanData(fields.github),
-        youtube: clean.CleanData(fields.youtube),
+        facebook: clean.CleanData(fields.facebook).replace('"', "").replace("'", ""),
+        instagram: clean.CleanData(fields.instagram).replace('"', "").replace("'", ""),
+        twitter: clean.CleanData(fields.twitter).replace('"', "").replace("'", ""),
+        linkedln: clean.CleanData(fields.linkedln).replace('"', "").replace("'", ""),
+        github: clean.CleanData(fields.github).replace('"', "").replace("'", ""),
+        youtube: clean.CleanData(fields.youtube).replace('"', "").replace("'", ""),
       };
       var profileIg =
-        businessName +
-        "_" +
         Date.now() +
         "_" +
         Math.round(Math.random() * 1e9) +
@@ -370,11 +368,11 @@ route.post("/saddservice", isbizSet, (req, res) => {
         
         id: (new Date() * Math.random() * 10),
 
-        servicename: clean.CleanData(fields.serviceName),
+        servicename: clean.CleanData(fields.serviceName).replace('"', "").replace("'", ""),
 
         serviceicon: serviceIcon,
 
-        servicedesc: clean.CleanData(fields.serviceDesc),
+        servicedesc: clean.CleanData(fields.serviceDesc).replace('"', "").replace("'", ""),
         price: (+fields.servicePrice),
 
         businessid: req.session.appid,
