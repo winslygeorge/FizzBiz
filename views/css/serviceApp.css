@@ -201,15 +201,16 @@ h2{
   width: 95%;
   /* margin:auto; */
   margin-bottom:2px;
-  padding:10px;
+  padding:5px;
   border-radius: 5px;
   background-color:grey;
+  
 
 }
 
 p{
     color: rgb(75, 73, 73);
-    padding: 20px;
+    padding: 10px;
 }
 
 #companyIcon img{

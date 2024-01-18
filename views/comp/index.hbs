@@ -109,7 +109,9 @@
             style=""
           />
           <h4>My Page</h4></a>
-        <a href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}">
+        <a
+          href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+        >
           <img
             class="iconsI"
             src="./../images/schedule.png"
@@ -178,7 +180,7 @@
       <div class="Comp" id="introCompone">
         <div class="Introimage">
 
-          <div class="contIntro">
+          <div>
             <h2
               style="color: aliceblue; background-color:black; padding:5px;border-radius : 2px; margin :auto"
             >Young Hustle Competition: </h2>
@@ -230,15 +232,15 @@
       <div class="Comp" id="tabView">
 
         <button class="tItem" onclick="showLeader()">Leaderboard</button>
-        <a href="#reqComp" class="tItem" onclick="hideLeader()">Requirements</a>
+        {{! <a href="#reqComp" class="tItem" onclick="hideLeader()">Requirements</a>
         <a href="#rulesComp" class="tItem" onclick="hideLeader()">Rules</a>
-        <a href="#schedComp" class="tItem" onclick="hideLeader()">Schedule</a>
+        <a href="#schedComp" class="tItem" onclick="hideLeader()">Schedule</a> }}
         <a
           href="/competition/discussions"
           class="tItem"
           onclick="hideLeader()"
         >Discussions</a>
-        <a href="#prizesComp" class="tItem" onclick="hideLeader()">Prizes</a>
+        {{! <a href="#prizesComp" class="tItem" onclick="hideLeader()">Prizes</a> }}
 
       </div>
 
