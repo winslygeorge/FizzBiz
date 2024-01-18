@@ -124,7 +124,9 @@
             style=""
           />
           <h4>My Page</h4></a>
-        <a href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}">
+        <a
+          href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+        >
           <img
             class="iconsI"
             src="./../images/schedule.png"
@@ -262,19 +264,19 @@
           href="#likeSection"
           onclick="handleUserLikes()"
           class="tItem"
-        >Liked Apps</a>
+        >Liked</a>
         <a
           id="followedTItem"
           href="#viewedSection"
           onclick="handleUserFollows()"
           class="tItem"
-        >Apps you Follow</a>
+        >Followed</a>
         <a
           id="visitedTItem"
           href="#viewedSection"
           onclick="handleUserViewed()"
           class="tItem"
-        >Visited Apps</a>
+        >Visited</a>
 
         <a
           id="contactTItem"
@@ -282,7 +284,6 @@
           class="tItem"
           onclick="handleUserContact();"
         >Contact</a>
-        <a id="eploreTItem" href="/apps/all" class="tItem">Explore</a>
 
       </div>
 
@@ -298,7 +299,9 @@
                 srcset=""
               />
 
-              <h2 style="background-color: white; color:orangered;margin:3px;">{{{row.USERNAME}}}<span>{{{hob}}}</span> </h2>
+              <h2
+                style="background-color: white; color:orangered;margin:3px;"
+              >{{{row.USERNAME}}}<span>{{{hob}}}</span> </h2>
             </div>
 
             {{!-- <div class="sub-column-2" id="mission">

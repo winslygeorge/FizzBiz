@@ -119,9 +119,11 @@ height: fit-content;
     flex-direction: column;
     margin: auto;
     background-color: rgb(44, 3, 3);
-    opacity: 0.85;
+    color: white;
+    font-weight: bold;
     padding: 4px;
     border-radius: 4px;
+    font-size: 1.2em;
 
 }
 .contIntro{
