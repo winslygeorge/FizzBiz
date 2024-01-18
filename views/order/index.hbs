@@ -1,223 +1,383 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Orders</title>
-    <link rel="stylesheet" href="./../css/style.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="./../css/style.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+
     <script src="./../js/main.js"></script>
 
     <script src="./../js/categoryApps.js"></script>
-    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
-    <link rel="stylesheet" href="./../css/order.css">
-    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css" />
+    <link rel="stylesheet" href="./../css/order.css" />
+    <link
+      rel="shortcut icon"
+      href="./../images/networking-100.png"
+      type="image/x-icon"
+    />
 
     <script src="./../js/handleorder.js"></script>
-</head>
-<body>
-    
-    
-    <header class="headerContainer">
-        <div class="container1">
-             <div class="icon" >
+  </head>
+  <body>
 
-                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
-            </div>
+    <header class="headerContainer">
+      <div class="container1">
+        <div class="icon">
+
+          <img
+            src="./../images/FizzBizNet.png"
+            alt=""
+            srcset=""
+            width="100px"
+            height="80px"
+          />
+        </div>
         <div class="appbar">
-           
-            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+
+          <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
         </div>
 
-          
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;"/>
-            
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIconCat"
+            style="width: 60px;"
+          />
+
         </div>
         <div class="profileIcon" style="order: 3; padding: 2%;">
-            <img src="./../images/user.svg" class="menuIcon" style="width: 40px;"/>
+          <img
+            src="./../images/user.svg"
+            class="menuIcon"
+            style="width: 40px;"
+          />
         </div>
-    </div>
-                
-    <div class="menuList">
+      </div>
+
+      <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;"/>
-            
-        </div>
-     
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 60px;"
+          />
+
         </div>
 
+      </div>
 
-       
-       
     </header>
-
 
     <div class="slideExplorenav">
 
-        <div class="sliden">
-            <div class="slidemenu">
-                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
-               
-            </div>
+      <div class="sliden">
+        <div class="slidemenu">
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIconCaton"
+            style="width: 60px;"
+          />
 
-            <div class="slidenHead">
-                <h2>FizzBizNet</h2>
-            </div>
-           
         </div>
 
-        <a href="/suscription/page" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
+        <div class="slidenHead">
+          <h2>FizzBizNet</h2>
+        </div>
 
-        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
-        <a href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
+      </div>
 
-         <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
+      <a href="/suscription/page" id="addService"><img
+          src="./../images/add.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>New Service</h4></a>
 
-        <a href="/apps/all"> <img  class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
+      <a href="/profile/{{{loggedUser.username}}}">
+        <img
+          class="iconsI"
+          src="./../images/customer.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>My Page</h4></a>
+      <a
+        href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+      >
+        <img
+          class="iconsI"
+          src="./../images/schedule.png"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>Calender&Schedule</h4></a>
 
-        <a id="share" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+      <a href="/competition/all">
+        <img
+          class="iconsI"
+          src="./../images/mission.png"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>Competitions&Events</h4></a>
+
+      <a href="/apps/all">
+        <img
+          class="iconsI"
+          src="./../images/home.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>Home</h4></a>
+
+      <a id="share">
+        <img
+          class="iconsI"
+          src="./../images/share (1).svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>Share</h4></a>
     </div>
-   
-    <div class="body">
-        <div class="bodyMain">
-      
 
-        
+    <div class="body">
+      <div class="bodyMain">
 
         <div class="main">
 
-            <div class="levelHead">
-              <div class="searchbox">
+          <div class="levelHead">
 
-                <input type="search" name="search" id="searchbox" placeholder="Search...">
-                <img src="./../images/magnifying-glass.svg" alt="" srcset="" width="30"  class="searchBox">
+            <div class="profileMe">
+              {{#if loggedUser}}
+                <a href="/profile/{{{loggedUser.username}}}">
+                  <h4
+                    style="text-decoration: none; color :aqua"
+                  >{{{loggedUser.username}}} </h4>
+                </a>
+                <img
+                  src="./../images/{{{loggedUser.profileimage}}}"
+                  alt=""
+                  srcset=""
+                  width="40px"
+                  height="40px"
+                />
 
-              </div>
-              <div class="profileMe">
-                  {{#if loggedUser}}
-           <a href="/profile/{{{loggedUser.username}}}" >     <h4 style="text-decoration: none; color :aqua">{{{loggedUser.username}}} </h4> </a>
-                               <img src="./../images/{{{loggedUser.profileimage}}}" alt="" srcset="" width="40px" height="40px">
-
-                 {{else}}
+              {{else}}
                 <h4>Guest</h4>
-                                <img src="./../images/user.svg" alt="" srcset="" width="40px">
+                <img src="./../images/user.svg" alt="" srcset="" width="40px" />
 
-                {{/if}}
-              </div>
+              {{/if}}
             </div>
-<div class="intro">{{{loggedUser.username}}} Orders</div>
+          </div>
+          <div class="intro">{{{loggedUser.username}}} Orders</div>
 
- {{#if error}}
-<span style="color: red;"> Error : {{{error}}}</span>
- {{/if}}
+          {{#if error}}
+            <span style="color: red;"> Error : {{{error}}}</span>
+          {{/if}}
 
-<div class="cartOrders">
+          <div class="cartOrders">
 
-    <div id="loader" class="loader-container">
+            <div id="loader" class="loader-container">
 
-        <div class="loader"></div>
-    </div>
-
-{{#if orders}}
-
-{{#each orders}}
-
-
-    <div class="orderCard" id="id{{{ORDERID}}}">
-
-        <div class="detailsclass">
-
-            <div class="orderImg" style="flex: 1;">
-                <img src="./../images/{{{IMAGE}}}" alt="" sizes="" srcset="">
+              <div class="loader"></div>
             </div>
 
-            <div class="orderDetails" style="flex: 3;">
-                <h3 style="color: purple; font-size: medium;"> <strong> Service/Product Name</strong></h3>
-                <p style="color: green; padding: 2%;">{{{SERVICENAME}}}</p>
+            {{#if orders}}
 
-                <div class="desc" style="height: fit-content;" >
-                     <h3 style="color: purple; font-size: medium;">Company Name</h3> 
-                    <p style="color: grey; padding: 2%;"> <a href="/app/{{{BUSINESSNAME}}}?id={{{BUSINESSID}}}&cat={{{CATEGORY}}}">{{{BUSINESSNAME}}}</a></p>
-                    <h3 style="color: purple; font-size: medium;"><strong>Ksh.<span  id = "priceBrk{{{ORDERID}}}" style="color: grey; padding: 10%;">{{{PRICE}}} * {{{QUANTITY}}} = </span></strong></h3>
-                     <h3 style="color: purple; font-size: medium;"><strong>Ksh.<span  id = "priceBrk{{{ORDERID}}}" style="color: grey; padding: 10%;"> {{{total}}}</span></strong></h3>
+              {{#each orders}}
 
-    
+                <div class="orderCard" id="id{{{ORDERID}}}">
+
+                  <div class="detailsclass">
+
+                    <div class="orderImg" style="flex: 1;">
+                      <img
+                        src="./../images/{{{IMAGE}}}"
+                        alt=""
+                        sizes=""
+                        srcset=""
+                      />
+                    </div>
+
+                    <div class="orderDetails" style="flex: 3;">
+                      <h3 style="color: purple; font-size: medium;">
+                        <strong> Service/Product Name</strong></h3>
+                      <p
+                        style="color: green; padding: 2%;"
+                      >{{{SERVICENAME}}}</p>
+
+                      <div class="desc" style="height: fit-content;">
+                        <h3 style="color: purple; font-size: medium;">Company
+                          Name</h3>
+                        <p style="color: grey; padding: 2%;">
+                          <a
+                            href="/app/{{{BUSINESSNAME}}}?id={{{BUSINESSID}}}&cat={{{CATEGORY}}}"
+                          >{{{BUSINESSNAME}}}</a></p>
+                        <h3 style="color: purple; font-size: medium;"><strong
+                          >Ksh.<span
+                              id="priceBrk{{{ORDERID}}}"
+                              style="color: grey; padding: 10%;"
+                            >{{{PRICE}}}
+                              *
+                              {{{QUANTITY}}}
+                              =
+                            </span></strong></h3>
+                        <h3 style="color: purple; font-size: medium;"><strong
+                          >Ksh.<span
+                              id="priceBrk{{{ORDERID}}}"
+                              style="color: grey; padding: 10%;"
+                            > {{{total}}}</span></strong></h3>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="priceBtn">
+                    {{#if STATUS}}
+                      <button
+                        onclick="handleremoveorder({{{ORDERID}}})"
+                        style="background-color: rgb(186, 11, 11); border-radius: 3%; border: 2px solid rgb(143, 9, 9); color: white; padding: 1%;"
+                      >
+                        <img
+                          src="./../images/delete.svg"
+                          alt=""
+                          srcset=""
+                          style="width: 24px;"
+                        />
+                        <span style="padding: 4%;"> Cancell</span></button>
+                    {{/if}}
+                    <div class="quantiyBtns">
+                      <button
+                        onclick="handleaddorder({{{ORDERID}}}, {{{PRICE}}})"
+                        style="background-color: white; border: 2px solid white; padding: 2px; border-radius: 4px;"
+                      ><img
+                          src="./../images/plus.svg"
+                          alt=""
+                          srcset=""
+                          width="14px"
+                        /></button>
+                      <span style="color: purple;" id="order{{{ORDERID}}}">
+                        {{{QUANTITY}}}</span>
+                      <button
+                        onclick="handleminusorder({{{ORDERID}}}, {{{PRICE}}})"
+                        style="background-color: white; border: 2px solid white; padding: 2px; border-radius: 4px;"
+                      ><img
+                          src="./../images/minus.svg"
+                          alt=""
+                          style="width: 14px;"
+                        /></button>
+                    </div>
+                    {{#if CHECKEDOUT}}
+
+                      <button
+                        id="btncheck{{{ORDERID}}}"
+                        style="background-color: grey; border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;"
+                      >
+                        <img
+                          src="./../images/shopping-cart.svg"
+                          alt=""
+                          srcset=""
+                          style="width: 24px;"
+                        />
+                        <span style="padding: 4%;"> Checkedout</span></button>
+
+                    {{else}}
+                      <button
+                        id="btncheck{{{ORDERID}}}"
+                        onclick="handlecheckout({{{ORDERID}}}, '{{{USERNAME}}}',{{{APPID}}}, '{{{TYPE}}}')"
+                        style="background-color: green; border-radius: 3%; border: 2px solid green; color: white; padding: 1%;"
+                      >
+                        <img
+                          src="./../images/shopping-cart.svg"
+                          alt=""
+                          srcset=""
+                          style="width: 24px;"
+                        />
+                        <span style="padding: 4%;"> Checkout</span></button>
+                    {{/if}}
+                  </div>
+
                 </div>
+              {{/each}}
 
-               
-    
-            </div>
-        </div>
-       
-            <div class="priceBtn">
-                {{#if STATUS}}
-               <button onclick="handleremoveorder({{{ORDERID}}})" style="background-color: rgb(186, 11, 11); border-radius: 3%; border: 2px solid rgb(143, 9, 9); color: white; padding: 1%;"> <img src="./../images/delete.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;"> Cancell</span></button>
-               {{/if}}
-                <div class="quantiyBtns">
-                    <button onclick="handleaddorder({{{ORDERID}}}, {{{PRICE}}})" style="background-color: white; border: 2px solid white; padding: 2px; border-radius: 4px;"><img src="./../images/plus.svg" alt="" srcset="" width="14px"></button>
-                   <span style="color: purple;" id="order{{{ORDERID}}}"> {{{QUANTITY}}}</span>
-                    <button onclick="handleminusorder({{{ORDERID}}}, {{{PRICE}}})" style="background-color: white; border: 2px solid white; padding: 2px; border-radius: 4px;"><img src="./../images/minus.svg" alt="" style="width: 14px;"></button>
-                </div>
-                {{#if CHECKEDOUT}}
+            {{/if}}
 
-                                <button id="btncheck{{{ORDERID}}}" style="background-color: grey; border-radius: 3%; border: 2px solid grey; color: white; padding: 1%;"> <img src="./../images/shopping-cart.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;"> Checkedout</span></button>
-
-
-                {{else}}
-                <button id="btncheck{{{ORDERID}}}" onclick="handlecheckout({{{ORDERID}}}, '{{{USERNAME}}}',{{{APPID}}}, '{{{TYPE}}}')" style="background-color: green; border-radius: 3%; border: 2px solid green; color: white; padding: 1%;"> <img src="./../images/shopping-cart.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;"> Checkout</span></button>
-{{/if}}
-            </div>
-       
-    </div>
-    {{/each}}
-
-    {{/if}}
-
-</div>
+          </div>
 
         </div>
 
-    </div>
-  
+      </div>
 
-<footer style="color: aquamarine;">
-    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-        <tr>
-            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
-            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
-                        alt="" style="width: 20px;"></a></td>
-            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
-                        style="width: 20px;"></a></td>
-        </tr>
-    </table>
-</footer>
+      <footer style="color: aquamarine;">
+        <table
+          width="76%"
+          border="0"
+          align="center"
+          valign="bottom"
+          cellspacing="0"
+          cellpadding="0"
+          style="color: aquamarine;"
+        >
+          <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly
+                created with GeorgosTech.</small></td>
+            <td>
+              <a href="https://twitter.com/GeorgosTechnol1"><img
+                  src="./../images/twitter.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td><a
+                href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"
+              >
+                <img
+                  src="./../images/youtube.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.instagram.com/georgos_tech/"><img
+                  src="./../images/instagram.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.facebook.com/georgos.winslow"><img
+                  src="./../images/facebook.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+          </tr>
+        </table>
+      </footer>
     </div>
 
     <script>
 
-
-var x = 0;
-function scrollNextOnServices(){
-
-
-    console.log($('button').attr('id'));
-
-    x = (x < $('.category').width()-$(document).width()) ? (x+ 200): 0;
-
-    $('.category').css('left', -x+"px");
-    $('.category').css('transition-duration', "1s");
-
-    console.log(x);
-
-
-}
+      var x = 0; function scrollNextOnServices(){
+      console.log($('button').attr('id')); x = (x <
+      $('.category').width()-$(document).width()) ? (x+ 200): 0;
+      $('.category').css('left', -x+"px");
+      $('.category').css('transition-duration', "1s"); console.log(x); }
     </script>
-    </body>
-    </html>
+  </body>
+</html>

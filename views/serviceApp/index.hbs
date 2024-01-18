@@ -45,11 +45,8 @@
           </div>
         </div>
 
-        <div class="menu">
+        <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
 
-          <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
-
-        </div>
         <div class="profileIcon" style="order: 3;">
           {{#if loggedUser}}
             <a href="/profile/{{{loggedUser.username}}}">
@@ -184,19 +181,25 @@
       <div class="column1">
 
         <div class="Comp" id="tabView">
-         <a class="tItem" onclick="handleServices(), fetchServices({{{row.ID}}})">Products/Services</a>
+          <a
+            class="tItem"
+            onclick="handleServices(), fetchServices({{{row.ID}}})"
+          >Prod/Services</a>
 
-
-          <a class="tItem" onclick="handleGallery(), fetchImages({{{row.ID}}})">Galllery</a>
-          <a href="#reqComp" class="tItem" onclick="handleReel(), fetchVideos({{{row.ID}}})">Videos</a>
-          <a href="#rulesComp" class="tItem" onclick="hideLeader()">Blogs</a>
+          <a
+            class="tItem"
+            onclick="handleGallery(), fetchImages({{{row.ID}}})"
+          >Galllery</a>
+          <a
+            href="#reqComp"
+            class="tItem"
+            onclick="handleReel(), fetchVideos({{{row.ID}}})"
+          >Videos</a>
           <a
             href="#schedComp"
             class="tItem"
             onclick="handleContact()"
           >Contact</a>
-          <a href="#prizesComp" class="tItem" onclick="hideLeader()">Prizes</a>
-
         </div>
 
       </div>
@@ -208,10 +211,19 @@
 
       <main class="column1" id="main">
 
-        <div  class="sub-column-1" id="missionSection" style="background-color: rgb(247, 244, 239); border:20px solid rgb(255, 255, 255);">
+        <div
+          class="sub-column-1"
+          id="missionSection"
+          style="background-color: rgb(247, 244, 239); border:20px solid rgb(255, 255, 255);"
+        >
 
           <div class="sub-column-2" id="companyIcon">
-            <img src="./../images/{{{row.BRANDICON}}}" alt="" srcset="" style="height: fit-content;width: 70%;border-radius: 20px;" />
+            <img
+              src="./../images/{{{row.BRANDICON}}}"
+              alt=""
+              srcset=""
+              style="height: fit-content;width: 70%;border-radius: 20px;"
+            />
             {{#if isowner}}
               <br />
               <button class="editBtn" onclick="handleEditIcon()">edit</button>
@@ -257,7 +269,7 @@
 
           <div class="sub-column-2" id="quotes">
 
-            <p style="color:  rgb(75, 73, 73);" >
+            <p style="color:  rgb(75, 73, 73);">
               <button
                 disabled="disabled"
                 style="background-color: white; padding:1%;  border : 2px solid white; border-radius: 4px; font-size: 1rem; color: rgb(75, 73, 73);"
@@ -298,7 +310,7 @@
             </p>
           </div>
 
-              <div class="sub-column-2" id="quotes">
+          <div class="sub-column-2" id="quotes">
             <h3 class="subTitle">Introduction</h3>
             <p>
               {{{row.SHORTINTRO}}}
@@ -380,8 +392,6 @@
 
           {{/if}}
 
-         
-
           <div class="sub-column-2" id="mission">
             <h3 class="subTitle">Mission</h3>
             <p id="missionChanged">{{{row.MISSION}}}</p>
@@ -453,10 +463,14 @@
               </tr>
             </table>
           </div>
-       
+
         </div>
-        
-        <div class="sub-column-1" id="columnLocation" style="background-color: rgb(247, 244, 239); border:20px solid rgb(255, 255, 255);">
+
+        <div
+          class="sub-column-1"
+          id="columnLocation"
+          style="background-color: rgb(247, 244, 239); border:20px solid rgb(255, 255, 255);"
+        >
 
           <div class="sub-column-2" id="locationDiv">
 
@@ -529,7 +543,6 @@
             </p>
 
             <div id="locationAppCol">
-
 
             </div>
 
@@ -672,8 +685,6 @@
               </div>
               <div class="review" id="reviewsSection">
 
-               
-
               </div>
 
             </div>
@@ -691,94 +702,93 @@
         </div>
       </main>
 
-         <div
+      <div
         class="column1"
         id="hservices"
         style="scroll-behavior: smooth; overflow:auto; max-height: 200vh;"
       >
 
-          <h2 class="subTitle">Serices/Products</h2>
+        <h2 class="subTitle">Serices/Products</h2>
 
-          <p>
-            {{#if isowner}}
-              <button
-                style="background-color: green; border:2px solid green; padding:2%; border-radius:4px; color:white;"
-                onclick="handleAddService()"
-              >Add</button>
+        <p>
+          {{#if isowner}}
+            <button
+              style="background-color: green; border:2px solid green; padding:2%; border-radius:4px; color:white;"
+              onclick="handleAddService()"
+            >Add</button>
 
-              <div
-                class="addServiceProduct"
-                style="position: relative; width: 400px;  margin:auto; background-color: black; padding: 4%; z-index: 2; opacity: 0.9; display: none;"
+            <div
+              class="addServiceProduct"
+              style="position: relative; width: 400px;  margin:auto; background-color: black; padding: 4%; z-index: 2; opacity: 0.9; display: none;"
+            >
+              <p style="color: grey;"> AddService</p>
+              <form
+                action="/updateaddservice"
+                method="POST"
+                enctype="multipart/form-data"
+                onsubmit="handleLoader()"
               >
-                <p style="color: grey;"> AddService</p>
-                <form
-                  action="/updateaddservice"
-                  method="POST"
-                  enctype="multipart/form-data"
-                  onsubmit="handleLoader()"
+                <input
+                  type="file"
+                  id="iconImgcng"
+                  name="serviceIcon"
+                  style="background-color: white;"
+                  required
+                /><br /><br />
+                <label for="serviceName">Service Name</label>
+                <br /><br />
+                <input type="text" name="serviceName" id="" required />
+                <br /><br />
+                <label for="serviceName">Service Description</label>
+                <br /><br />
+                <textarea
+                  name="serviceDesc"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  required
+                ></textarea>
+                <br /><br />
+                <label for="serviceName">Service price</label>
+                <br /><br />
+                <input type="text" name="servicePrice" id="" required />
+                <br /><br />
+                <input
+                  type="hidden"
+                  name="appname"
+                  value="{{{row.BUSINESSNAME}}}"
+                />
+                <input type="hidden" name="appid" value="{{{row.ID}}}" />
+                <input
+                  type="hidden"
+                  name="cat"
+                  value="{{{row.BUSINESSCATEGORY}}}"
+                />
+                <label for="type">Choose a car:</label><br /><br />
+
+                <select
+                  name="type"
+                  id="type"
+                  style="width: 90%; padding : 5px;"
                 >
-                  <input
-                    type="file"
-                    id="iconImgcng"
-                    name="serviceIcon"
-                    style="background-color: white;"
-                    required
-                  /><br /><br />
-                  <label for="serviceName">Service Name</label>
-                  <br /><br />
-                  <input type="text" name="serviceName" id="" required />
-                  <br /><br />
-                  <label for="serviceName">Service Description</label>
-                  <br /><br />
-                  <textarea
-                    name="serviceDesc"
-                    id=""
-                    cols="30"
-                    rows="10"
-                    required
-                  ></textarea>
-                  <br /><br />
-                  <label for="serviceName">Service price</label>
-                  <br /><br />
-                  <input type="text" name="servicePrice" id="" required />
-                  <br /><br />
-                  <input
-                    type="hidden"
-                    name="appname"
-                    value="{{{row.BUSINESSNAME}}}"
-                  />
-                  <input type="hidden" name="appid" value="{{{row.ID}}}" />
-                  <input
-                    type="hidden"
-                    name="cat"
-                    value="{{{row.BUSINESSCATEGORY}}}"
-                  />
-                  <label for="type">Choose a car:</label><br /><br />
+                  <option value="product">Product</option>
+                  <option value="service">Service</option>
+                </select>
+                <input
+                  type="submit"
+                  value="submit"
+                  style="width: fit-content; color: white; background-color: green; border: 2px solid green; border-radius: 4px; padding: 2%; margin: 2%; text-decoration: none;"
+                />
+              </form>
+            </div>
 
-                  <select
-                    name="type"
-                    id="type"
-                    style="width: 90%; padding : 5px;"
-                  >
-                    <option value="product">Product</option>
-                    <option value="service">Service</option>
-                  </select>
-                  <input
-                    type="submit"
-                    value="submit"
-                    style="width: fit-content; color: white; background-color: green; border: 2px solid green; border-radius: 4px; padding: 2%; margin: 2%; text-decoration: none;"
-                  />
-                </form>
-              </div>
+          {{/if}}
+        </p>
 
-            {{/if}}
-          </p>
+        <div class="servicesCol" id="serviceMainCol">
 
-          <div class="servicesCol" id="serviceMainCol">
-       
-     
-          </div>
-        </div> 
+        </div>
+      </div>
 
       <div
         class="column1"
@@ -833,7 +843,6 @@
           {{/if}}
         </p>
         <div id="gallerycarosol">
-
 
           <button id="imgBack">
           </button>
@@ -895,7 +904,7 @@
           {{/if}}
         </p>
         <div class="videos" id="videosMainCol">
-         
+
         </div>
       </div>
 
@@ -970,8 +979,6 @@
       <h2>Related</h2>
 
       <div class="relatedApp" id="relatedAppCol">
-
-       
 
       </div>
     </div>

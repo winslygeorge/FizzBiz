@@ -1,216 +1,364 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Business Categories</title>
 
-            <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
+    <script
+      type="text/javascript"
+      src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons"
+      async="async"
+    ></script>
 
-    <link rel="stylesheet" href="./../css/style.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="./../css/style.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+
     <script src="./../js/main.js"></script>
 
     <script src="./../js/categoryApps.js"></script>
-    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
-    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
-</head>
-<body>
-    
-    
-    <header class="headerContainer">
-        <div class="container1">
-             <div class="icon" >
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css" />
+    <link
+      rel="shortcut icon"
+      href="./../images/networking-100.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
 
-                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
-            </div>
+    <header class="headerContainer">
+      <div class="container1">
+        <div class="icon">
+
+          <img
+            src="./../images/FizzBizNet.png"
+            alt=""
+            srcset=""
+            width="100px"
+            height="80px"
+          />
+        </div>
         <div class="appbar">
-           
-            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+
+          <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
         </div>
 
-          
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 40px;"/>
-            
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIconCat"
+            style="width: 40px;"
+          />
+
         </div>
         <div class="profileIcon" style="order: 3; padding: 2%;">
-            <img src="./../images/user.svg" class="menuIcon" style="width: 40px;"/>
+          <img
+            src="./../images/user.svg"
+            class="menuIcon"
+            style="width: 40px;"
+          />
         </div>
-    </div>
-                
-    <div class="menuList">
+      </div>
+
+      <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 40px;"/>
-            
-        </div>
-     
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 40px;"
+          />
+
         </div>
 
+      </div>
 
-       
-       
     </header>
-     <div class="slideExplorenav">
+    <div class="slideExplorenav">
 
-        <div class="sliden">
-            <div class="slidemenu">
-                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 40px;"/>
-               
-            </div>
+      <div class="sliden">
+        <div class="slidemenu">
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIconCaton"
+            style="width: 40px;"
+          />
 
-            <div class="slidenHead">
-                <h2>FizzBizNet</h2>
-            </div>
-           
         </div>
 
-        <a href="/suscription/page" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
-{{#if loggedUser.username}}
+        <div class="slidenHead">
+          <h2>FizzBizNet</h2>
+        </div>
 
-        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
-         <a href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
-                  <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
+      </div>
 
+      <a href="/suscription/page" id="addService"><img
+          src="./../images/add.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>New Service</h4></a>
+      {{#if loggedUser.username}}
 
-{{else}}
+        <a href="/profile/{{{loggedUser.username}}}">
+          <img
+            class="iconsI"
+            src="./../images/customer.svg"
+            alt=""
+            srcset=""
+            width="40px"
+            style=""
+          />
+          <h4>My Page</h4></a>
+        <a
+          href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+        >
+          <img
+            class="iconsI"
+            src="./../images/schedule.png"
+            alt=""
+            srcset=""
+            width="40px"
+            style=""
+          />
+          <h4>Calender&Schedule</h4></a>
+        <a href="/competition/all">
+          <img
+            class="iconsI"
+            src="./../images/mission.png"
+            alt=""
+            srcset=""
+            width="40px"
+            style=""
+          />
+          <h4>Competitions&Events</h4></a>
 
-        <a href="/login"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
-{{/if}}
+      {{else}}
 
-        <a href="/apps/all"> <img  class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
-        <a href="./../logout" class="menuitem"><img   src="./../images/log-out.svg" alt="" srcset="" width="40px" style=""> <h4>SignOut </h4></a>
+        <a href="/login">
+          <img
+            class="iconsI"
+            src="./../images/customer.svg"
+            alt=""
+            srcset=""
+            width="40px"
+            style=""
+          />
+          <h4>My Page</h4></a>
+      {{/if}}
 
-        <a id="share" onclick="openShare()" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+      <a href="/apps/all">
+        <img
+          class="iconsI"
+          src="./../images/home.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>Home</h4></a>
+      <a href="./../logout" class="menuitem"><img
+          src="./../images/log-out.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>SignOut </h4></a>
+
+      <a id="share" onclick="openShare()">
+        <img
+          class="iconsI"
+          src="./../images/share (1).svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>Share</h4></a>
     </div>
-   
+
     <div class="body">
-                <div class="sharethis-inline-share-buttons hsharereviews" id="hsharereviewsDiv" ></div>
+      <div
+        class="sharethis-inline-share-buttons hsharereviews"
+        id="hsharereviewsDiv"
+      ></div>
 
-        <div class="bodyMain">
-      
-
-        
+      <div class="bodyMain">
 
         <div class="main">
 
-            <div class="levelHead">
-              <div class="searchbox">
+          <div class="levelHead">
+            {{! <div class="searchbox">
 
                 <input type="search" name="search" id="searchbox" placeholder="Search...">
                 <img src="./../images/magnifying-glass.svg" alt="" srcset="" width="30" class="searchBox">
 
-              </div>
-              <div class="profileMe">
-                  {{#if loggedUser}}
-           <a href="/profile/{{{loggedUser.username}}}" style="text-decoration: none;">     <h4 style="color: purple;">{{{loggedUser.username}}} </h4> </a>
-                               <img src="./../images/{{{loggedUser.profileimage}}}" alt="" srcset="" height="40px" width="40px" style="border-radius: 100%;">
+              </div> }}
+            <div class="profileMe">
+              {{#if loggedUser}}
+                <a
+                  href="/profile/{{{loggedUser.username}}}"
+                  style="text-decoration: none;"
+                >
+                  <h4 style="color: purple;">{{{loggedUser.username}}} </h4>
+                </a>
+                <img
+                  src="./../images/{{{loggedUser.profileimage}}}"
+                  alt=""
+                  srcset=""
+                  height="40px"
+                  width="40px"
+                  style="border-radius: 100%;"
+                />
 
-                 {{else}}
+              {{else}}
                 <h4>Guest</h4>
-                                <img src="./../images/user.svg" alt="" srcset="" width="40px">
+                <img src="./../images/user.svg" alt="" srcset="" width="40px" />
 
-                {{/if}}
-              </div>
+              {{/if}}
             </div>
-   <div class="intro"><b>Competition/Events Presentations </b></div>
-   {{!-- {{#each appscat }}
+          </div>
+          <div class="intro"><b>Competition/Events Presentations </b></div>
+          {{!-- {{#each appscat }}
    {{#if this}} --}}
 
-    <div class="bidcat">
-        {{!-- {{#if appscat.subtitle}} --}}
-   <div class="subHead"><h4>{{subtitle}}</h4></div> 
+          <div class="bidcat">
+            {{!-- {{#if appscat.subtitle}} --}}
+            <div class="subHead"><h4>{{subtitle}}</h4></div>
 
-        {{!-- {{else}} --}}
-   <div class="subHead"><h4>{{@key}}</h4></div> 
-   {{!-- {{/if}} --}}
-   
-   <div class="category" >
-               {{!-- {{#each this}} --}}
-                <div class="specificApp" style="width: 400px;">
-                    <div class="details">
-                        <img src="./../images/kenya-smes.jpg" alt="" srcset="" class="imgIconCompany" height="40px">
-                        <div class="headingIcon"><h5>Young Hustle Competition</h5></div>
-                    </div>
+            {{!-- {{else}} --}}
+            <div class="subHead"><h4>{{@key}}</h4></div>
+            {{!-- {{/if}} --}}
 
-                    <div class="aLink">
-                    <a href="/competition/page">  
-                            <h5  style="color: white; background-color: #73cb00; padding:10px; border-radius:5px;" > APPLY</h5>
-                    </a> </div>
-                    <img class="appbrandimg" src="./../images/kenya-smes.jpg" alt="" srcset="">
-                    <div class="decApp" style="display: block;font-size 2em;">
-                        <p class="shortDescTitle" style="color: orange;display : block; font-weight: bold;">Young Hustle Competition</p><br>
-                        <p style="color: white;">Young Hustle Competition is the first Fizzbiz network Competition ever. This competition is for those with small businesses who are aspiring to grow their business. The competition is aimed at empowering competitors to be innovative, test and improve their marketing skills and managerial skills.<br>
+            <div class="category">
+              {{!-- {{#each this}} --}}
+              <div class="specificApp" style="width: 400px;">
+                <div class="details">
+                  <img
+                    src="./../images/kenya-smes.jpg"
+                    alt=""
+                    srcset=""
+                    class="imgIconCompany"
+                    height="40px"
+                  />
+                  <div class="headingIcon"><h5>Young Hustle Competition</h5></div>
+                </div>
 
-During the competition, you will be required to grow your business followers, likes , orders and increase the interactions between your services and products with your customers. The competitors with most followers, likes, orders and interactions according to the competition phases rules will be declared winners. Read more about the competition here</p>
-                    </div>
-                    <div class="likes">
-                        <h5>
-                            Price : Ksh. 200, 000
-                        </h5>
-                        <div class="views">
-                            <h5>6 Months</h5>
-                        </div>
+                <div class="aLink">
+                  <a href="/competition/page">
+                    <h5
+                      style="color: white; background-color: #73cb00; padding:10px; border-radius:5px;"
+                    > APPLY</h5>
+                  </a>
+                </div>
+                <img
+                  class="appbrandimg"
+                  src="./../images/kenya-smes.jpg"
+                  alt=""
+                  srcset=""
+                />
+                <div class="decApp" style="display: block;font-size 2em;">
+                  <p
+                    class="shortDescTitle"
+                    style="color: orange;display : block; font-weight: bold;"
+                  >Young Hustle Competition</p><br />
+                  <p style="color: white;">Young Hustle Competition is the first
+                    Fizzbiz network Competition ever. This competition is for
+                    those with small businesses who are aspiring to grow their
+                    business. The competition is aimed at empowering competitors
+                    to be innovative, test and improve their marketing skills
+                    and managerial skills.<br />
 
-                        {{!-- <div class="views">
+                    During the competition, you will be required to grow your
+                    business followers, likes , orders and increase the
+                    interactions between your services and products with your
+                    customers. The competitors with most followers, likes,
+                    orders and interactions according to the competition phases
+                    rules will be declared winners. Read more about the
+                    competition here</p>
+                </div>
+                <div class="likes">
+                  <h5>
+                    Price : Ksh. 200, 000
+                  </h5>
+                  <div class="views">
+                    <h5>6 Months</h5>
+                  </div>
+
+                  {{!-- <div class="views">
                             <h5 onclick="handleLike( {{{ID}}}, '{{{BUSINESSNAME}}}', '{{{BRANDICON}}}')" style="color: white; background-color: #73cb00; padding:10px; border-radius:5px;" >{{{likes}}} Active</h5>
                         </div> --}}
-                    </div>
                 </div>
-{{!-- {{/each}} --}}
-         
+              </div>
+              {{!-- {{/each}} --}}
 
-  
             </div>
 
-         
-
-        </div>
-           {{!-- {{/if}}
+          </div>
+          {{!-- {{/if}}
     {{/each}} --}}
 
         </div>
 
-    </div>
-  
+      </div>
 
-<footer style="color: aquamarine;">
-    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-        <tr>
-            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
-            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
-                        alt="" style="width: 20px;"></a></td>
-            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
-                        style="width: 20px;"></a></td>
-        </tr>
-    </table>
-</footer>
+      <footer style="color: aquamarine;">
+        <table
+          width="76%"
+          border="0"
+          align="center"
+          valign="bottom"
+          cellspacing="0"
+          cellpadding="0"
+          style="color: aquamarine;"
+        >
+          <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly
+                created with GeorgosTech.</small></td>
+            <td>
+              <a href="https://twitter.com/GeorgosTechnol1"><img
+                  src="./../images/twitter.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td><a
+                href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"
+              >
+                <img
+                  src="./../images/youtube.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.instagram.com/georgos_tech/"><img
+                  src="./../images/instagram.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.facebook.com/georgos.winslow"><img
+                  src="./../images/facebook.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+          </tr>
+        </table>
+      </footer>
     </div>
 
     <script>
 
-
-var x = 0;
-function scrollNextOnServices(){
-
-
-    console.log($('button').attr('id'));
-
-    x = (x < $('.category').width()-$(document).width()) ? (x+ 200): 0;
-
-    $('.category').css('left', -x+"px");
-    $('.category').css('transition-duration', "1s");
-
-    console.log(x);
-
-
-}
+      var x = 0; function scrollNextOnServices(){
+      console.log($('button').attr('id')); x = (x <
+      $('.category').width()-$(document).width()) ? (x+ 200): 0;
+      $('.category').css('left', -x+"px");
+      $('.category').css('transition-duration', "1s"); console.log(x); }
     </script>
-    </body>
-    </html>
+  </body>
+</html>

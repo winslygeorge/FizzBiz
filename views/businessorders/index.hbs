@@ -1,237 +1,375 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pending Order</title>
-    <link rel="stylesheet" href="./../css/style.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="./../css/style.css" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+
     <script src="./../js/main.js"></script>
 
     <script src="./../js/categoryApps.js"></script>
-    <link rel="stylesheet" href="./../css/categoriesDisplay.css">
-    <link rel="stylesheet" href="./../css/businessorders.css">
-    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../css/categoriesDisplay.css" />
+    <link rel="stylesheet" href="./../css/businessorders.css" />
+    <link
+      rel="shortcut icon"
+      href="./../images/networking-100.png"
+      type="image/x-icon"
+    />
 
     <script src="./../js/handlebusinessorder.js"></script>
-        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
+    <script
+      type="text/javascript"
+      src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons"
+      async="async"
+    ></script>
 
-</head>
-<body>
-    
-    
+  </head>
+  <body>
+
     <header class="headerContainer">
-        <div class="container1">
-             <div class="icon" >
+      <div class="container1">
+        <div class="icon">
 
-                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
-            </div>
+          <img
+            src="./../images/FizzBizNet.png"
+            alt=""
+            srcset=""
+            width="100px"
+            height="80px"
+          />
+        </div>
         <div class="appbar">
-           
-            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+
+          <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
         </div>
 
-          
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIconCat" style="width: 60px;"/>
-            
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIconCat"
+            style="width: 60px;"
+          />
+
         </div>
         <div class="profileIcon" style="order: 3; padding: 2%;">
-            <img src="./../images/user.svg" class="menuIcon" style="width: 40px;"/>
+          <img
+            src="./../images/user.svg"
+            class="menuIcon"
+            style="width: 40px;"
+          />
         </div>
-    </div>
-                
-    <div class="menuList">
+      </div>
+
+      <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;"/>
-            
-        </div>
-     
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 60px;"
+          />
+
         </div>
 
+      </div>
 
-       
-       
     </header>
-
 
     <div class="slideExplorenav">
 
-        <div class="sliden">
-            <div class="slidemenu">
-                <img src="./../images/icons8-menu (1).svg" class="menuIconCaton" style="width: 60px;"/>
-               
-            </div>
+      <div class="sliden">
+        <div class="slidemenu">
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIconCaton"
+            style="width: 60px;"
+          />
 
-            <div class="slidenHead">
-                <h2>FizzBizNet</h2>
-            </div>
-           
         </div>
 
-        <a href="/suscription/page" id="addService"><img   src="./../images/add.svg" alt="" srcset="" width="40px" style=""> <h4>New Service</h4></a>
+        <div class="slidenHead">
+          <h2>FizzBizNet</h2>
+        </div>
 
-        <a href="/profile/{{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/customer.svg" alt="" srcset="" width="40px" style=""> <h4>My Page</h4></a>
-{{#if loggedUser.username}}
-        <a href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
-                  <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
+      </div>
 
-{{else}}
+      <a href="/suscription/page" id="addService"><img
+          src="./../images/add.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>New Service</h4></a>
 
-{{/if}}
-        <a href="/apps/all"> <img  class="iconsI" src="./../images/home.svg" alt="" srcset="" width="40px" style=""> <h4>Home</h4></a>
+      <a href="/profile/{{{loggedUser.username}}}">
+        <img
+          class="iconsI"
+          src="./../images/customer.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>My Page</h4></a>
+      {{#if loggedUser.username}}
+        <a
+          href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+        >
+          <img
+            class="iconsI"
+            src="./../images/schedule.png"
+            alt=""
+            srcset=""
+            width="40px"
+            style=""
+          />
+          <h4>Calender&Schedule</h4></a>
+        <a href="/competition/all">
+          <img
+            class="iconsI"
+            src="./../images/mission.png"
+            alt=""
+            srcset=""
+            width="40px"
+            style=""
+          />
+          <h4>Competitions&Events</h4></a>
 
-        <a id="share" > <img  class="iconsI" src="./../images/share (1).svg" alt="" srcset="" width="40px" style=""> <h4>Share</h4></a>
+      {{else}}
+
+      {{/if}}
+      <a href="/apps/all">
+        <img
+          class="iconsI"
+          src="./../images/home.svg"
+          alt=""
+          srcset=""
+          width="40px"
+          style=""
+        />
+        <h4>Home</h4></a>
+
     </div>
-   
-    <div class="body">
-        <div class="bodyMain">
-      
 
-        
+    <div class="body">
+      <div class="bodyMain">
 
         <div class="main">
 
-        <div class="levelHead">
-            <div class="searchbox">
-        
-                <input type="search" name="search" id="searchbox" placeholder="Search...">
-                <img src="./../images/magnifying-glass.svg" alt="" srcset="" width="30" class="searchBox">
-        
+          <div class="levelHead">
+            <div
+              class="searchbox"
+              style="width: 60%; height: fit-content; padding: 2%;"
+            >
+
+              <input
+                type="search"
+                name="search"
+                id="searchbox"
+                placeholder="Search..."
+                style="width: 70%;"
+              />
+              <button
+                onclick="searchBusinessApps()"
+                class="searchBox"
+                style="background-color: antiquewhite;  color: grey; font-weight: bold; width: fit-content; padding: 1%;"
+              >
+                search
+              </button>
+
             </div>
             <div class="profileMe">
-                {{#if loggedUser}}
-                <a href="/profile/{{{loggedUser.username}}}" style="text-decoration: none;">
-                    <h4 style="color: aqua;">{{{loggedUser.username}}} </h4>
+              {{#if loggedUser}}
+                <a
+                  href="/profile/{{{loggedUser.username}}}"
+                  style="text-decoration: none;"
+                >
+                  <h4 style="color: aqua;">{{{loggedUser.username}}} </h4>
                 </a>
-                <img src="./../images/{{{loggedUser.profileimage}}}" alt="" srcset="" height="40px" width="40px"
-                    style="border-radius: 100%;">
-        
-                {{else}}
+                <img
+                  src="./../images/{{{loggedUser.profileimage}}}"
+                  alt=""
+                  srcset=""
+                  height="40px"
+                  width="40px"
+                  style="border-radius: 100%;"
+                />
+
+              {{else}}
                 <h4>Guest</h4>
-                <img src="./../images/user.svg" alt="" srcset="" width="40px">
-        
-                {{/if}}
+                <img src="./../images/user.svg" alt="" srcset="" width="40px" />
+
+              {{/if}}
             </div>
+          </div>
+
+          <div
+            class="cartOrders table-container"
+            style="margin: 0%; padding: 0%;"
+          >
+            <div class="intro">Orders</div>
+
+            <div id="loader" class="loader-container">
+
+              <div class="loader"></div>
+            </div>
+
+            <table class="ordertable" style="margin: 1%; padding: 1%;">
+              <thead class="thead">
+
+                <td>
+                  ORDER ID
+                </td>
+                <td>
+                  USERNAME
+                </td>
+                <td>
+                  PHONE NUMBER
+                </td>
+                <td>
+                  EMAIL
+                </td>
+
+                <td>
+                  SERVICE ID
+                </td>
+                <td>
+                  SERVICE NAME
+                </td>
+                <td>
+                  SERVICE IMAGE
+                </td>
+                <td>
+                  HANDLEORDER
+                </td>
+
+              </thead>
+              <tbody class="tablebody">
+                {{#if orders}}
+                  {{#each orders}}
+                    <tr class="tablerow" id="btncheck{{{ORDERID}}}">
+                      <td>
+                        {{{ORDERID}}}
+                      </td>
+                      <td>
+                        <a
+                          href="/profile/{{{USERNAME}}}"
+                          style="text-decoration: none; color: rgb(78, 76, 76);"
+                        > {{{USERNAME}}} </a>
+                      </td>
+                      <td>
+                        <a
+                          href="/profile/{{{USERNAME}}}"
+                          style="text-decoration: none; color: rgb(78, 76, 76);"
+                        > {{{PHONENUMBER}}} </a>
+                      </td>
+                      <td>
+                        <a
+                          href="/profile/{{{USERNAME}}}"
+                          style="text-decoration: none; color: rgb(78, 76, 76);"
+                        > {{{EMAIL}}} </a>
+                      </td>
+                      <td>
+                        <a
+                          href="#"
+                          style="text-decoration: none; color: rgb(78, 76, 76);"
+                        > {{{SERVICEID}}}</a>
+                      </td>
+                      <td>
+                        <a
+                          href="#"
+                          style="text-decoration: none; color: rgb(78, 76, 76);"
+                        > {{{SERVICENAME}}}</a>
+                      </td>
+                      <td>
+                        <img
+                          src="./../images/{{{IMAGE}}}"
+                          alt=""
+                          width="60px"
+                          height="60px"
+                        />
+                      </td>
+                      <td>
+                        <button
+                          onclick="handlecheckout({{{ORDERID}}}, {{{APPID}}}, '{{{USERNAME}}}', {{{SERVICEID}}}, '{{{TYPE}}}', '{{{EMAIL}}}', '{{{SERVICENAME}}}', '{{{BUSINESSNAME}}}', '{{{BUSINESSEMAIL}}}', '{{{IMAGE}}}', '{{{CATEGORY}}}')"
+                          style="background-color: green; border-radius: 3%; border: 2px solid green; color: white; padding: 1%;"
+                        >
+                          <img
+                            src="./../images/shopping-cart.svg"
+                            alt=""
+                            srcset=""
+                            style="width: 24px;"
+                          />
+                          <span style="padding: 4%;">Checkout</span></button>
+                      </td>
+                    </tr>
+                  {{/each}}
+                {{/if}}
+              </tbody>
+            </table>
+          </div>
+
         </div>
-<div class="intro">Orders</div>
 
+      </div>
 
-
-<div class="cartOrders" style="margin: 0%; padding: 0%;">
-
-     <div id="loader" class="loader-container">
-
-        <div class="loader"></div>
-    </div>
-
-    <table class="ordertable table-container" style="margin: 1%; padding: 1%;" >
-        <thead class="thead" >
-            
-                <td >
-                    ORDER ID
-                </td>
-                <td >
-                    USERNAME
-                </td>
-                  <td >
-                   PHONE NUMBER
-                </td>
-                  <td >
-                    EMAIL
-                </td>
-            
-                <td >
-                    SERVICE ID
-                </td>
-                 <td >
-                    SERVICE NAME
-                </td>
-                 <td >
-                    SERVICE IMAGE
-                </td>
-                <td >
-                    HANDLEORDER
-                </td>
-
-          
-        </thead>
-        <tbody class="tablebody">
-            {{#if orders}}
-{{#each orders}}
-            <tr class="tablerow" id="btncheck{{{ORDERID}}}">
-                <td >
-                    {{{ORDERID}}} 
-                </td>
-                <td >
-                   <a href="/profile/{{{USERNAME}}}" style="text-decoration: none; color: rgb(78, 76, 76);"> {{{USERNAME}}} </a>
-                </td>
-                 <td >
-                   <a href="/profile/{{{USERNAME}}}" style="text-decoration: none; color: rgb(78, 76, 76);"> {{{PHONENUMBER}}} </a>
-                </td>
-                 <td >
-                   <a href="/profile/{{{USERNAME}}}" style="text-decoration: none; color: rgb(78, 76, 76);"> {{{EMAIL}}} </a>
-                </td>
-                <td >
-                    <a href="#" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICEID}}}</a>
-                </td>
-                <td >
-                    <a href="#" style="text-decoration: none; color: rgb(78, 76, 76);">  {{{SERVICENAME}}}</a>
-                </td>
-                   <td >
-                  <img src="./../images/{{{IMAGE}}}" alt="" width="60px" height="60px">
-                </td>
-                <td >
-                    <button  onclick="handlecheckout({{{ORDERID}}}, {{{APPID}}}, '{{{USERNAME}}}', {{{SERVICEID}}}, '{{{TYPE}}}', '{{{EMAIL}}}', '{{{SERVICENAME}}}', '{{{BUSINESSNAME}}}', '{{{BUSINESSEMAIL}}}', '{{{IMAGE}}}', '{{{CATEGORY}}}')" style="background-color: green; border-radius: 3%; border: 2px solid green; color: white; padding: 1%;"> <img src="./../images/shopping-cart.svg" alt="" srcset="" style="width: 24px;"> <span style="padding: 4%;">Checkout</span></button>
-                </td>
-            </tr>
-            {{/each}}
-            {{/if}}
-        </tbody>
-    </table>
-</div>
-
-        </div>
-
-    </div>
-  
-<footer style="color: aquamarine;">
-    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-        <tr>
-            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
-            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
-                        alt="" style="width: 20px;"></a></td>
-            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
-                        style="width: 20px;"></a></td>
-        </tr>
-    </table>
-</footer>
+      <footer style="color: aquamarine;">
+        <table
+          width="76%"
+          border="0"
+          align="center"
+          valign="bottom"
+          cellspacing="0"
+          cellpadding="0"
+          style="color: aquamarine;"
+        >
+          <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly
+                created with GeorgosTech.</small></td>
+            <td>
+              <a href="https://twitter.com/GeorgosTechnol1"><img
+                  src="./../images/twitter.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td><a
+                href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"
+              >
+                <img
+                  src="./../images/youtube.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.instagram.com/georgos_tech/"><img
+                  src="./../images/instagram.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.facebook.com/georgos.winslow"><img
+                  src="./../images/facebook.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+          </tr>
+        </table>
+      </footer>
     </div>
 
     <script>
 
-
-var x = 0;
-function scrollNextOnServices(){
-
-
-    console.log($('button').attr('id'));
-
-    x = (x < $('.category').width()-$(document).width()) ? (x+ 200): 0;
-
-    $('.category').css('left', -x+"px");
-    $('.category').css('transition-duration', "1s");
-
-    console.log(x);
-
-
-}
+      var x = 0; function scrollNextOnServices(){
+      console.log($('button').attr('id')); x = (x <
+      $('.category').width()-$(document).width()) ? (x+ 200): 0;
+      $('.category').css('left', -x+"px");
+      $('.category').css('transition-duration', "1s"); console.log(x); }
     </script>
-    </body>
-    </html>
+  </body>
+</html>
