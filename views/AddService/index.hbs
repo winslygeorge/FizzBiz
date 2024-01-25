@@ -1,359 +1,547 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="facebook-domain-verification"
+      content="uc1pb4j8ws1uu02romuapv63ohvxi5"
+    />
+
     <title>Add Service</title>
-    <link rel="stylesheet" href="./../css/style.css">
-   
+    <link rel="stylesheet" href="./../css/style.css" />
+
     <script src="./../js/jquery.js"></script>
     <script src="./../js/main.js"></script>
 
-    <link rel="stylesheet" href="./../css/addservice.css">
+    <link rel="stylesheet" href="./../css/addservice.css" />
     <script src="./../js/addservice.js"></script>
-        <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./../images/networking-100.png"
+      type="image/x-icon"
+    />
 
-</head>
-<body>
-        
-<header class="headerContainer">
-    <div class="container1">
-        
+  </head>
+  <body>
+
+    <header class="headerContainer">
+      <div class="container1">
+
         <div class="appbar">
 
-            <div class="appname">
-                <h1 class="bizTitle">FIZZBIZNET</h1>
-            </div>
+          <div class="appname">
+            <h1 class="bizTitle">FIZZBIZNET</h1>
+          </div>
         </div>
 
-
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 30px;" />
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 30px;"
+          />
 
         </div>
         <div class="profileIcon" style="order: 3; padding: 1%;">
-            {{#if loggedUser}}
-            <a href="/profile/{{{loggedUser.username}}}"> <img class="loggeduserIcon"
-                    src="./../images/{{{loggedUser.profileimage}}}" class="menuIcon" /></a>
+          {{#if loggedUser}}
+            <a href="/profile/{{{loggedUser.username}}}">
+              <img
+                class="loggeduserIcon"
+                src="./../images/{{{loggedUser.profileimage}}}"
+                class="menuIcon"
+              /></a>
 
-            {{else}}
-            <a href="/login"> <img src="./../images/user.svg" class="menuIcon" /></a>
-            {{/if}}
+          {{else}}
+            <a href="/login">
+              <img src="./../images/user.svg" class="menuIcon" /></a>
+          {{/if}}
         </div>
-    </div>
+      </div>
 
-    <div class="menuList">
+      <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 60px;"
+          />
 
         </div>
 
-        <a href="/" class="menuitem"> <img src="./../images/home.svg" alt="" srcset="" width="30px" style="">
-            <h4>Home</h4>
+        <a href="/" class="menuitem">
+          <img
+            src="./../images/home.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>Home</h4>
         </a>
 
-        <a class="menuitem" id="showToolbar" href="/apps/all"> <img src="./../images/customer.svg" alt="" srcset=""
-                width="30px" style="">
-            <h4> Product&Services</h4>
+        <a class="menuitem" id="showToolbar" href="/apps/all">
+          <img
+            src="./../images/customer.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4> Product&Services</h4>
         </a>
-        <a href="/#howItWork" class="menuitem"> <img src="./../images/team.svg" alt="" srcset="" width="30px" style="">
-            <h4>About</h4>
+        <a href="/#howItWork" class="menuitem">
+          <img
+            src="./../images/team.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>About</h4>
         </a>
-          {{#if loggedUser.username}}
-        <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt="" srcset=""
-                width="30px" style="">
+        {{#if loggedUser.username}}
+          <a href="/profile/{{{loggedUser.username}}}" class="menuitem">
+            <img
+              src="./../images/user.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> My Profile</h4>
-        </a>
-        <a href='https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}' class="menuitem"> <img src="./../images/schedule.png" alt="" srcset=""
-                width="30px" style="">
+          </a>
+          <a
+            href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+            class="menuitem"
+          >
+            <img
+              src="./../images/schedule.png"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4>Calender&Schedules</h4>
-        </a>
-             <a href='/competition/all' class="menuitem"> <img src="./../images/mission.png" alt="" srcset=""
-                width="30px" style="">
+          </a>
+          <a href="/competition/all" class="menuitem">
+            <img
+              src="./../images/mission.png"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4>Copetitions&Event</h4>
-        </a>
+          </a>
         {{else}}
-        <a href="/login" class="menuitem"> <img src="./../images/log-in.svg" alt="" srcset="" width="30px" style="">
+          <a href="/login" class="menuitem">
+            <img
+              src="./../images/log-in.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> SignIn </h4>
-        </a>
+          </a>
         {{/if}}
-        <a href="/logout" class="menuitem"><img src="./../images/log-out.svg" alt="" srcset="" width="30px" style="">
-            <h4>SignOut </h4>
+        <a href="/logout" class="menuitem"><img
+            src="./../images/log-out.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>SignOut </h4>
         </a>
-    </div>
+      </div>
 
-
-
-
-</header>
-    
-
+    </header>
 
     <div class="body">
-        <div id="loader" class="loader-container" style="z-index: 10;">
+      <div id="loader" class="loader-container" style="z-index: 10;">
 
         <div class="loader"></div>
       </div>
 
-                <div class="loginDivB" style="display: flex; width:100%; align-content:space-around;" >
+      <div
+        class="loginDivB"
+        style="display: flex; width:100%; align-content:space-around;"
+      >
 
+        <form
+          action="/addService"
+          method="post"
+          enctype="multipart/form-data"
+          class="formAuth"
+          style="height:80vh; overflow:auto;"
+          onsubmit="handleLoader()"
+        >
 
-        <form action="/addService" method="post" enctype="multipart/form-data" class="formAuth" style="height:80vh; overflow:auto;"  onsubmit="handleLoader()">
+          <div class="form" style="display: block; overflow:auto;">
+            <div
+              class="addService"
+              id="basicInfo"
+              style="display: block;overflow:auto;"
+            >
 
-<div class="form" style="display: block; overflow:auto;">
-        <div class="addService" id="basicInfo" style="display: block;overflow:auto;">
+              <p style="color: red;">{{error}}</p>
 
-            <p style="color: red;">{{error}}</p>
+              <caption> <h2>Basic Information</h2></caption>
+              <section>
+                <div class="inp">
+                  <img
+                    src="./../images/businessgazzete.png.jpg"
+                    alt=""
+                    srcset=""
+                    id="icondis"
+                  /><br /><br />
+                  <label for="companyIcon">Business Brand Icon</label>
 
-            <caption> <h2>Basic Information</h2></caption>
-       <section>
-        <div class="inp">
-            <img src="./../images/businessgazzete.png.jpg" alt="" srcset="" id="icondis"><br><br>
-        <label for="companyIcon">Business Brand Icon</label>
+                  <br /><br />
+                  <p style="color: red;">{{businessIconErr}}</p>
+                  <input
+                    type="file"
+                    name="businessIcon"
+                    id="iconInput"
+                    class="inputText"
+                    required
+                  />
+                  <br /><br />
+                </div>
 
-        <br><br>
-        <p style="color: red;">{{businessIconErr}}</p>
-        <input type="file" name="businessIcon" id="iconInput" class="inputText" required>
-        <br><br>
-    </div>
+                <div class="inp">
+                  <p style="color: red;">{{businessNameErr}}</p>
+                  <label for="companyName">Business Name</label>
+                  <br />
+                  <input
+                    type="text"
+                    name="businessName"
+                    id=""
+                    class="inputText"
+                    required
+                    value="{{{businessName}}}"
+                  />
+                </div>
+                <div class="inp">
+                  <p style="color: red;">{{bizMissionErr}}</p>
+                  <label for="companyName">Business Mision</label>
+                  <br /><br />
+                  <input
+                    type="text"
+                    name="businessMission"
+                    id=""
+                    class="inputText"
+                    required
+                    value="{{{businessMission}}}"
+                  />
+                </div>
+                <div class="inp">
+                  <p style="color: red;">{{bizTopicErr}}</p>
+                  <label for="companyName">Business Topic</label>
+                  <br /><br />
+                  <input
+                    type="text"
+                    name="businessTopic"
+                    id=""
+                    class="inputText"
+                    required
+                    value="{{{businessTopic}}}"
+                  />
+                </div>
+                <div class="inp">
+                  <p style="color: red;">{{bizIntroErr}}</p>
+                  <label for="companyName">Business Short Introduction</label>
+                  <br /><br />
 
-    <div class="inp">
-        <p style="color: red;">{{businessNameErr}}</p>
-        <label for="companyName">Business Name</label>
-        <br>
-        <input type="text" name="businessName" id="" class="inputText" required value="{{{businessName}}}">
-    </div>
-    <div class="inp">
-        <p style="color: red;">{{bizMissionErr}}</p>
-        <label for="companyName">Business Mision</label>
-        <br><br>
-        <input type="text" name="businessMission" id="" class="inputText" required value="{{{businessMission}}}">
-    </div>
-    <div class="inp">
-        <p style="color: red;">{{bizTopicErr}}</p>
-        <label for="companyName">Business Topic</label>
-        <br><br>
-        <input type="text" name="businessTopic" id="" class="inputText" required value="{{{businessTopic}}}">
-    </div>
-    <div class="inp">
-        <p style="color: red;">{{bizIntroErr}}</p>
-        <label for="companyName">Business Short Introduction</label>
-        <br><br>
-        
-        <textarea wrap="soft"  rows="5" style="width: 100%;" name="businessIntro" id="" class="inputText" required value="{{{businessIntro}}}"></textarea>
-    </div>
-    <div class="inp">
-        <p style="color: red;">{{bizEmailErr}}</p>
-    <label for="companyEmail">Business Email</label>
-    <br><br>
-    <input type="email" name="businessEmail" id="" class="inputText" autocomplete="email" required value="{{{businessEmail}}}">
-</div>
-    <div class="inp">
-        <p style="color: red;">{{bizCatErr}}</p>
-    <label for="companyName">Business Type</label>
-    <br><br>
+                  <textarea
+                    wrap="soft"
+                    rows="5"
+                    style="width: 100%;"
+                    name="businessIntro"
+                    id=""
+                    class="inputText"
+                    required
+                    value="{{{businessIntro}}}"
+                  ></textarea>
+                </div>
+                <div class="inp">
+                  <p style="color: red;">{{bizEmailErr}}</p>
+                  <label for="companyEmail">Business Email</label>
+                  <br /><br />
+                  <input
+                    type="email"
+                    name="businessEmail"
+                    id=""
+                    class="inputText"
+                    autocomplete="email"
+                    required
+                    value="{{{businessEmail}}}"
+                  />
+                </div>
+                <div class="inp">
+                  <p style="color: red;">{{bizCatErr}}</p>
+                  <label for="companyName">Business Type</label>
+                  <br /><br />
 
-   
-  <div class="checkCategory">
+                  <div class="checkCategory">
 
-    <div class="categoryDiv">
-       <select name="category" id="" >
-           <optgroup label="Wholesales">
-               <option value=101>Online Stores</option>
-               <option value="102">Physical Centers</option>
-           </optgroup>
+                    <div class="categoryDiv">
+                      <select name="category" id="">
+                        <optgroup label="Wholesales">
+                          <option value="101">Online Stores</option>
+                          <option value="102">Physical Centers</option>
+                        </optgroup>
 
-           <optgroup label="LifeStyle">
-               
-                   <option value="301">MakeUp Artist</option>
-                   <option value="303">Accessories</option>
-                   <option value="302">Saloon/Kinyozi</option>
-                   <option value="304">Clothline/Shoes</option>
-             
-               <option value="202">Hotel/Lounge</option>
-               <option value="201">Photography</option>
-               <option value="203">Bars/Liquor Stores</option>
-           </optgroup>
+                        <optgroup label="LifeStyle">
 
-           <optgroup label="Technology">
-               <option value="401">Tech Stores</option>
-           
-               <option value="402">Web Development</option>
+                          <option value="301">MakeUp Artist</option>
+                          <option value="303">Accessories</option>
+                          <option value="302">Saloon/Kinyozi</option>
+                          <option value="304">Clothline/Shoes</option>
 
-               <option value="403">Logo Design</option>
+                          <option value="202">Hotel/Lounge</option>
+                          <option value="201">Photography</option>
+                          <option value="203">Bars/Liquor Stores</option>
+                        </optgroup>
 
-               <option value="404">Graphic Design</option>
+                        <optgroup label="Technology">
+                          <option value="401">Tech Stores</option>
 
-               <option value="405">App Development</option>
+                          <option value="402">Web Development</option>
 
-               <option value="406">Game Development</option>
+                          <option value="403">Logo Design</option>
 
-               <option value="407">Video Editing</option>
+                          <option value="404">Graphic Design</option>
 
-            </optgroup>
+                          <option value="405">App Development</option>
 
-            <optgroup label="Education">
-                <option value="501">Schools</option>
-                <option value="502">Tuitors</option>
-            </optgroup>
-            <optgroup label="Consultancy">
-                <option value="601">Health</option>
-                <option value="602">Information Technology(IT)</option>
-                <option value="603">Law</option>
-                <option value="604">Engineering</option>
-                <option value="605">Architech&Design</option>
-                <option value="606">Others</option>
-            </optgroup>
-       </select>
-<input type="hidden" name="suscription" value="{{{sus}}}">
-  </div>
-</div>
-    </div>
-    
-    </section>
+                          <option value="406">Game Development</option>
 
-    <div class="next" id="locationNext">
-        <a  class="btnNext">Next</a>
-    </div>
-        </div>
+                          <option value="407">Video Editing</option>
 
-        <div class="addService" id="locationInfo" style="display: none; overflow:auto;">
+                        </optgroup>
 
-            <caption> <h2>Location Information</h2></caption>
+                        <optgroup label="Education">
+                          <option value="501">Schools</option>
+                          <option value="502">Tuitors</option>
+                        </optgroup>
+                        <optgroup label="Consultancy">
+                          <option value="601">Health</option>
+                          <option value="602">Information Technology(IT)</option>
+                          <option value="603">Law</option>
+                          <option value="604">Engineering</option>
+                          <option value="605">Architech&Design</option>
+                          <option value="606">Others</option>
+                        </optgroup>
+                      </select>
+                      <input
+                        type="hidden"
+                        name="suscription"
+                        value="{{{sus}}}"
+                      />
+                    </div>
+                  </div>
+                </div>
 
-          <p style="color: red;">{{hqContinentErr}}</p>
+              </section>
 
-            <div class="branchLocation">
+              <div class="next" id="locationNext">
+                <a class="btnNext">Next</a>
+              </div>
+            </div>
+
+            <div
+              class="addService"
+              id="locationInfo"
+              style="display: none; overflow:auto;"
+            >
+
+              <caption> <h2>Location Information</h2></caption>
+
+              <p style="color: red;">{{hqContinentErr}}</p>
+
+              <div class="branchLocation">
 
                 <h3>Headquater's Location Information</h3>
                 <div class="inp">
-                    <label for="companyCountry">Headquater's Continent location</label>
-                <select name="continent" id="" >
+                  <label for="companyCountry">Headquater's Continent location</label>
+                  <select name="continent" id="">
                     <option value="Africa">Africa</option>
-                    
+
                     <option value="Asia">Asia</option>
 
                     <option value="Europe">Europe</option>
 
-                </select>
+                  </select>
                 </div>
                 <div class="inp">
-                    <label for="companyCountry">HQ Country Location</label>
-                    <input type="text" name="HQcountry" id="" class="input" required value="{{{businessCountry}}}">
+                  <label for="companyCountry">HQ Country Location</label>
+                  <input
+                    type="text"
+                    name="HQcountry"
+                    id=""
+                    class="input"
+                    required
+                    value="{{{businessCountry}}}"
+                  />
                 </div>
 
                 <div class="inp">
-                    <label for="companyCountry">HQ Town/City Location</label>
-                    <input type="text" name="HQcity" id="" class="input" required value="{{{businessTown}}}">
+                  <label for="companyCountry">HQ Town/City Location</label>
+                  <input
+                    type="text"
+                    name="HQcity"
+                    id=""
+                    class="input"
+                    required
+                    value="{{{businessTown}}}"
+                  />
                 </div>
 
                 <div class="inp">
-                    <label for="companyCountry">HQ Address</label>
-                    <input type="text" name="HQaddress" id="" class="input" required value="{{{businessAddress}}}">
+                  <label for="companyCountry">HQ Address</label>
+                  <input
+                    type="text"
+                    name="HQaddress"
+                    id=""
+                    class="input"
+                    required
+                    value="{{{businessAddress}}}"
+                  />
                 </div>
+              </div>
+
+              <div class="rangeInfo">
+
+                <div class="rangeIntro">
+                  Enter the range within which your company can provide products
+                  or serivices.
+                  <br />
+                  You can enter range if your company can provide services
+                  within Town / Country/ Region like East Africa or Africa or
+                  even if its is the whole world.
+                </div>
+                <div class="inp">
+                  <p style="color: red;">{{bizRangeErr}}</p>
+                  <label for="companyRange">Range is Within</label>
+                  <input
+                    type="text"
+                    name="range"
+                    id=""
+                    value="{{{businessRange}}}"
+                    class="input"
+                    placeholder="Enter Company Range e.g World or Africa or East Africa or Kenya or Nairobi"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="next" id="socialNext">
+                <a class="btnNext">Next</a>
+              </div>
+
+              <div class="next" id="basicPrevious">
+                <a class="btnNext">previous</a>
+              </div>
             </div>
 
-          
+            <div class="addService" id="socialMedia" style="display: none;">
+              <caption> <h2>Social Media Information(Optional)</h2></caption>
 
-           <div class="rangeInfo">
+              <div class="social">
 
-            <div class="rangeIntro">
-                Enter the range within which your company can provide products or serivices. <br> You can enter range if your company can provide services within Town / Country/ Region like East Africa or Africa or even if its is the whole world.
+                <div class="inp">
+                  <label for="companyCountry">Facebook Link</label>
+                  <input type="url" name="facebook" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Instagram LInk</label>
+                  <input type="url" name="instagram" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Twitter Link</label>
+                  <input type="url" name="twitter" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Github Link</label>
+                  <input type="url" name="github" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Linkedln Link</label>
+                  <input type="url" name="linkedln" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Youtube Channel Link</label>
+                  <input type="url" name="youtube" id="" class="input" />
+                </div>
+              </div>
+
+              <div class="next" id="submit">
+                <input type="submit" value="submit" class="btnNext" />
+              </div>
+
+              <div class="next" id="locationPrevious">
+                <a class="btnNext">previous</a>
+              </div>
             </div>
-            <div class="inp">
-                <p style="color: red;">{{bizRangeErr}}</p>
-                <label for="companyRange">Range is Within</label>
-                <input type="text" name="range" id="" value="{{{businessRange}}}" class="input" placeholder="Enter Company Range e.g World or Africa or East Africa or Kenya or Nairobi" required>
-            </div>
-           </div>
-<div class="next" id="socialNext">
-        <a  class="btnNext">Next</a>
-    </div>
+          </div>
 
+        </form>
 
-    <div class="next" id="basicPrevious">
-        <a  class="btnNext">previous</a>
-    </div>
-        </div>
+        <div class="bigIntroLogo">
 
-
-       
-        <div class="addService" id="socialMedia" style="display: none;">
-            <caption> <h2>Social Media Information(Optional)</h2></caption>
-
-            <div class="social">
-
-                <div class="inp">
-                    <label for="companyCountry">Facebook Link</label>
-                    <input type="url" name="facebook" id="" class="input">
-                </div>
-                <div class="inp">
-                    <label for="companyCountry">Instagram LInk</label>
-                    <input type="url" name="instagram" id="" class="input">
-                </div>
-                <div class="inp">
-                    <label for="companyCountry">Twitter Link</label>
-                    <input type="url" name="twitter" id="" class="input">
-                </div>
-                <div class="inp">
-                    <label for="companyCountry">Github Link</label>
-                    <input type="url" name="github" id="" class="input">
-                </div>
-                <div class="inp">
-                    <label for="companyCountry">Linkedln Link</label>
-                    <input type="url" name="linkedln" id="" class="input">
-                </div>
-                <div class="inp">
-                    <label for="companyCountry">Youtube Channel Link</label>
-                    <input type="url" name="youtube" id="" class="input">
-                </div>
-            </div>
-                  
-            <div class="next" id="submit">
-                <input type="submit" value="submit" class="btnNext">
-            </div>
-
-                <div class="next" id="locationPrevious">
-        <a  class="btnNext">previous</a>
-    </div>
-        </div>
-</div>
-
-    </form>
-
-      <div class="bigIntroLogo">
-
-            <img
+          <img
             src="./../images/regpostpic3.svg"
-
-
             alt="logo intro"
-
             style="width: 100%;"
-            >
-
+          />
 
         </div>
 
-    </div>
+      </div>
 
+      <footer style="color: aquamarine;">
+        <table
+          width="76%"
+          border="0"
+          align="center"
+          valign="bottom"
+          cellspacing="0"
+          cellpadding="0"
+        >
+          <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly
+                created with GeorgosTech.</small></td>
+            <td>
+              <a href="https://twitter.com/GeorgosTechnol1"><img
+                  src="./../images/twitter.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td><a
+                href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"
+              >
+                <img
+                  src="./../images/youtube.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.instagram.com/georgos_tech/"><img
+                  src="./../images/instagram.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.facebook.com/georgos.winslow"><img
+                  src="./../images/facebook.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+          </tr>
+        </table>
+      </footer>
 
-<footer style="color: aquamarine;">
-    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-        <tr>
-            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
-            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
-                        alt="" style="width: 20px;"></a></td>
-            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
-                        style="width: 20px;"></a></td>
-        </tr>
-    </table>
-</footer>
-            
     </div>
-</body>
+  </body>
 </html>

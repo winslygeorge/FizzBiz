@@ -1,142 +1,218 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="facebook-domain-verification"
+      content="uc1pb4j8ws1uu02romuapv63ohvxi5"
+    />
     <title>Add Service: services</title>
-    <link rel="stylesheet" href="./../css/style.css">
-   
+    <link rel="stylesheet" href="./../css/style.css" />
+
     <script src="./../js/jquery.js"></script>
     <script src="./../js/main.js"></script>
 
-    <link rel="stylesheet" href="./../css/addservice.css">
+    <link rel="stylesheet" href="./../css/addservice.css" />
     <script src="./../js/addservice.js"></script>
-</head>
-<body>
-        
+  </head>
+  <body>
+
     <header class="headerContainer">
-        <div class="container1">
-            <div class="icon">
-    
-                <img src="./../images/FizzBizNet.png" alt="" srcset="" width="100px" height="80px">
-            </div>
-            <div class="appbar">
-    
-                <div class="appname">
-                    <h1 class="bizTitle">FIZZBIZNET</h1>
-                </div>
-            </div>
-    
-    
-            <div class="menu">
-                <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
-    
-            </div>
-            <div class="profileIcon" style="order: 3; padding: 2%;">
-                {{#if loggedUser}}
-                <a href="/profile/{{{loggedUser.username}}}"> <img class="loggeduserIcon"
-                        src="./../images/{{{loggedUser.profileimage}}}" class="menuIcon" style="width: 40px;" /></a>
-    
-                {{else}}
-                <a href="/login"> <img src="./../images/user.svg" class="menuIcon" style="width: 40px;" /></a>
-                {{/if}}
-            </div>
+      <div class="container1">
+        <div class="icon">
+
+          <img
+            src="./../images/FizzBizNet.png"
+            alt=""
+            srcset=""
+            width="100px"
+            height="80px"
+          />
         </div>
-    
-        <div class="menuList">
-            <div class="menu">
-                <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
-    
-            </div>
-    
-            <a href="/" class="menuitem"> <img src="./../images/home.svg" alt="" srcset="" width="30px" style="">
-                <h4>Home</h4>
-            </a>
-    
-            <a class="menuitem" id="showToolbar" href="/apps/all"> <img src="./../images/customer.svg" alt="" srcset=""
-                    width="30px" style="">
-                <h4> Product&Services</h4>
-            </a>
-            <a href="/#howItWork" class="menuitem"> <img src="./../images/team.svg" alt="" srcset="" width="30px" style="">
-                <h4>About</h4>
-            </a>
-          {{#if loggedUser.username}}
-        <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt="" srcset=""
-                width="30px" style="">
+        <div class="appbar">
+
+          <div class="appname">
+            <h1 class="bizTitle">FIZZBIZNET</h1>
+          </div>
+        </div>
+
+        <div class="menu">
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 60px;"
+          />
+
+        </div>
+        <div class="profileIcon" style="order: 3; padding: 2%;">
+          {{#if loggedUser}}
+            <a href="/profile/{{{loggedUser.username}}}">
+              <img
+                class="loggeduserIcon"
+                src="./../images/{{{loggedUser.profileimage}}}"
+                class="menuIcon"
+                style="width: 40px;"
+              /></a>
+
+          {{else}}
+            <a href="/login">
+              <img
+                src="./../images/user.svg"
+                class="menuIcon"
+                style="width: 40px;"
+              /></a>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="menuList">
+        <div class="menu">
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 60px;"
+          />
+
+        </div>
+
+        <a href="/" class="menuitem">
+          <img
+            src="./../images/home.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>Home</h4>
+        </a>
+
+        <a class="menuitem" id="showToolbar" href="/apps/all">
+          <img
+            src="./../images/customer.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4> Product&Services</h4>
+        </a>
+        <a href="/#howItWork" class="menuitem">
+          <img
+            src="./../images/team.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>About</h4>
+        </a>
+        {{#if loggedUser.username}}
+          <a href="/profile/{{{loggedUser.username}}}" class="menuitem">
+            <img
+              src="./../images/user.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> My Profile</h4>
-        </a>
-        <a href='https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}' class="menuitem"> <img src="./../images/schedule.png" alt="" srcset=""
-                width="30px" style="">
+          </a>
+          <a
+            href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+            class="menuitem"
+          >
+            <img
+              src="./../images/schedule.png"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4>Calender&Schedules</h4>
-        </a>
-             <a href='/competition/all' class="menuitem"> <img src="./../images/mission.png" alt="" srcset=""
-                width="30px" style="">
+          </a>
+          <a href="/competition/all" class="menuitem">
+            <img
+              src="./../images/mission.png"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4>Competitions&Event</h4>
-        </a>
+          </a>
         {{else}}
-            <a href="/login" class="menuitem"> <img src="./../images/log-in.svg" alt="" srcset="" width="30px" style="">
-                <h4> SignIn </h4>
-            </a>
-            {{/if}}
-            <a href="/logout" class="menuitem"><img src="./../images/log-out.svg" alt="" srcset="" width="30px" style="">
-                <h4>SignOut </h4>
-            </a>
-        </div>
-    
-    
-    
-    
+          <a href="/login" class="menuitem">
+            <img
+              src="./../images/log-in.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
+            <h4> SignIn </h4>
+          </a>
+        {{/if}}
+        <a href="/logout" class="menuitem"><img
+            src="./../images/log-out.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>SignOut </h4>
+        </a>
+      </div>
+
     </header>
-    
-   
 
     <div class="body">
 
-      <div class="loginDivB" style="display: flex; width:100%; align-content:space-around;">
-<div class="formAuth">
-<div class="form">
-        <div class="addService" id="servicesInfo">
+      <div
+        class="loginDivB"
+        style="display: flex; width:100%; align-content:space-around;"
+      >
+        <div class="formAuth">
+          <div class="form">
+            <div class="addService" id="servicesInfo">
 
+              <caption> <h2>Service Information</h2></caption>
+              <div class="section">
+                <div class="serviceInt">
+                  In this section you should add service that you provide to
+                  your customers.
+                  <br />The Image required is the example image of your service
+                  or and example of your finished product.
+                  <br /><br />
+                  <p style="color: red;">
+                    Please make sure to fill all fields.</p>
+                  <br />
+                  <br />
+                  <p style="color: grey;"> {{{newService}}}</p>
+                </div>
+              </div>
+              <div id="addS">
+                <a>Add Service</a>
+              </div>
 
-            <caption> <h2>Service Information</h2></caption>
-            <div class="section">
-     <div class="serviceInt">
-         In this section you should add service that you provide to your customers. <br>The Image required is the example image of your service or and example of your finished product. <br><br>
-        <p style="color: red;"> Please make sure to fill all fields.</p>  
-        <br>
-        <br>
-       <p style="color: grey;"> {{{newService}}}</p> 
+              <div class="next" id="locationNext">
+                <a href="/asublocation" class="btnNext">Next</a>
+              </div>
+
             </div>
-    </div>
-      <div  id="addS">
-        <a  >Add Service</a>
-    </div>
-
-    <div class="next" id="locationNext">
-        <a href="/asublocation" class="btnNext">Next</a>
-    </div>
-       
-
+          </div>
         </div>
-</div>
-</div>
 
-  <div class="bigIntroLogo" style="margin: 0;">
+        <div class="bigIntroLogo" style="margin: 0;">
 
-            <img
+          <img
             src="./../images/succjoinIntro.svg"
-
-
             alt="logo intro"
-
             style="width: 95%;"
-            >
-
+          />
 
         </div>
-        </div>
-        
-        
+      </div>
+
     </div>
-</body>
+  </body>
 </html>

@@ -1,306 +1,497 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="facebook-domain-verification"
+      content="uc1pb4j8ws1uu02romuapv63ohvxi5"
+    />
     <title>Register User</title>
-    <link rel="stylesheet" href="./../css/style.css">
-   
+    <link rel="stylesheet" href="./../css/style.css" />
+
     <script src="./../js/jquery.js"></script>
     <script src="./../js/main.js"></script>
-    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./../images/networking-100.png"
+      type="image/x-icon"
+    />
 
-    <link rel="stylesheet" href="./../css/addservice.css">
+    <link rel="stylesheet" href="./../css/addservice.css" />
     <script src="./../js/addservice.js"></script>
-</head>
-<body>
-        
+  </head>
+  <body>
+
     <header class="headerContainer">
-        <div class="container1">
-             
+      <div class="container1">
+
         <div class="appbar">
-           
-            <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
+
+          <div class="appname"><h1 class="bizTitle">FIZZBIZNET</h1></div>
         </div>
 
-          
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
-            
+          <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
+
         </div>
         <div class="profileIcon" style="order: 3; padding: 1%;">
-            {{#if loggedUser}}
-          <a href="/profile/{{{loggedUser.username}}}"> <img  class="loggeduserIcon" src="./../images/{{{loggedUser.profileimage}}}" class="menuIcon" /></a> 
+          {{#if loggedUser}}
+            <a href="/profile/{{{loggedUser.username}}}">
+              <img
+                class="loggeduserIcon"
+                src="./../images/{{{loggedUser.profileimage}}}"
+                class="menuIcon"
+              /></a>
 
-            {{else}}
-           <a href="/login"> <img src="./../images/user.svg" class="menuIcon" /></a>
-            {{/if}}
+          {{else}}
+            <a href="/login">
+              <img src="./../images/user.svg" class="menuIcon" /></a>
+          {{/if}}
         </div>
-    </div>
-                
-    <div class="menuList">
+      </div>
+
+      <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
-            
+          <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
+
         </div>
-       
-        <a href="/" class="menuitem"> <img   src="./../images/home.svg" alt="" srcset="" width="30px" style=""> <h4>Home</h4></a>
-       
-        <a  class="menuitem" id="showToolbar" href="/apps/all"> <img   src="./../images/customer.svg" alt="" srcset="" width="30px" style=""> <h4> Product&Services</h4></a>
-        <a href="/#howItWork" class="menuitem"> <img   src="./../images/team.svg" alt="" srcset="" width="30px" style=""> <h4>About</h4></a>
+
+        <a href="/" class="menuitem">
+          <img
+            src="./../images/home.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>Home</h4></a>
+
+        <a class="menuitem" id="showToolbar" href="/apps/all">
+          <img
+            src="./../images/customer.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4> Product&Services</h4></a>
+        <a href="/#howItWork" class="menuitem">
+          <img
+            src="./../images/team.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>About</h4></a>
         {{#if loggedUser.username}}
-        <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img    src="./../images/user.svg" alt="" srcset="" width="30px" style=""> <h4> My Profile</h4></a>
-        <a href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"> <img  class="iconsI" src="./../images/schedule.png" alt="" srcset="" width="40px" style=""> <h4>Calender&Schedule</h4></a>
-                  <a href="/competition/all"> <img  class="iconsI" src="./../images/mission.png" alt="" srcset="" width="40px" style=""> <h4>Competitions&Events</h4></a>
+          <a href="/profile/{{{loggedUser.username}}}" class="menuitem">
+            <img
+              src="./../images/user.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
+            <h4> My Profile</h4></a>
+          <a
+            href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+          >
+            <img
+              class="iconsI"
+              src="./../images/schedule.png"
+              alt=""
+              srcset=""
+              width="40px"
+              style=""
+            />
+            <h4>Calender&Schedule</h4></a>
+          <a href="/competition/all">
+            <img
+              class="iconsI"
+              src="./../images/mission.png"
+              alt=""
+              srcset=""
+              width="40px"
+              style=""
+            />
+            <h4>Competitions&Events</h4></a>
 
         {{else}}
-        <a href="/login" class="menuitem"> <img   src="./../images/log-in.svg" alt="" srcset="" width="30px" style=""> <h4> SignIn </h4></a>
+          <a href="/login" class="menuitem">
+            <img
+              src="./../images/log-in.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
+            <h4> SignIn </h4></a>
         {{/if}}
-        <a href="/logout" class="menuitem"><img   src="./../images/log-out.svg" alt="" srcset="" width="30px" style=""> <h4>SignOut </h4></a>
-        </div>
+        <a href="/logout" class="menuitem"><img
+            src="./../images/log-out.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>SignOut </h4></a>
+      </div>
 
-
-       
-       
     </header>
 
-
     <div class="body">
-        <div id="loader" class="loader-container" style="z-index: 10;">
+      <div id="loader" class="loader-container" style="z-index: 10;">
 
         <div class="loader"></div>
       </div>
-        <div class="loginDivB" style="display: flex; width:100%; align-content:space-around;" >
+      <div
+        class="loginDivB"
+        style="display: flex; width:100%; align-content:space-around;"
+      >
 
-        <form action="/add/user" method="post" enctype="multipart/form-data" class="formAuth" style="height:80vh;"  onsubmit="handleLoader()">
+        <form
+          action="/add/user"
+          method="post"
+          enctype="multipart/form-data"
+          class="formAuth"
+          style="height:80vh;"
+          onsubmit="handleLoader()"
+        >
 
-<div class="form" style="height:80vh;overflow:auto;" >
+          <div class="form" style="height:80vh;overflow:auto;">
 
-   
+            <div class="addService" id="socialMedia" style="display: block;">
 
+              <div class="basicInfo">
+                <caption> <h2>Profile Information</h2></caption>
 
-    <div class="addService" id="socialMedia" style="display: block;">
+                <div class="serviceInt">
+                  <p>Note: The fields with the red star
+                    <span class="starErr">*</span>
+                    are required to be filled</p>
+                  <p><span style="color: red;">{{error}}</span></p>
 
+                </div>
+                <section>
+                  <div class="inp">
+                    <img
+                      src="./../images/businessgazzete.png.jpg"
+                      alt=""
+                      srcset=""
+                      id="disIcon"
+                    /><br /><br />
+                    <label for="companyIcon">Profile Image
+                      <span class="starErr">*</span></label>
 
-        <div class="basicInfo">
-            <caption> <h2>Profile Information</h2></caption>
+                    <br /><br />
+                    <p style="color: red;">{{profileError}}</p>
+                    <input
+                      type="file"
+                      name="profileImage"
+                      id="iconInput"
+                      class="inputText"
+                      required="true"
+                    />
+                    <br /><br />
+                  </div>
 
-             <div class="serviceInt">
-                   <p>Note: The fields with the red star <span class="starErr">*</span> are required to be filled</p>
-                   <p><span style="color: red;">{{error}}</span></p>
-            
-     </div>
-       <section>
-        <div class="inp">
-            <img src="./../images/businessgazzete.png.jpg" alt="" srcset="" id="disIcon"><br><br>
-        <label for="companyIcon">Profile Image <span class="starErr">*</span></label>
+                  <div class="inp">
+                    <p style="color: red;">{{fnErr}}</p>
+                    <label for="companyName">First Name
+                      <span class="starErr">*</span></label>
+                    <br />
+                    <input
+                      type="text"
+                      name="firstName"
+                      id=""
+                      class="inputText"
+                      required="true"
+                      value="{{firstName}}"
+                    />
+                  </div>
 
-        <br><br>
-         <p style="color: red;">{{profileError}}</p>
-        <input type="file" name="profileImage" id="iconInput" class="inputText" required="true"  >
-        <br><br>
-    </div>
+                  <div class="inp">
+                    <p style="color: red;">{{lnErr}}</p>
+                    <label for="companyName">Last Name
+                      <span class="starErr">*</span></label>
+                    <br />
+                    <input
+                      type="text"
+                      name="lastName"
+                      id=""
+                      class="inputText"
+                      required="true"
+                      value="{{lastName}}"
+                    />
+                  </div>
+                  <div class="inp">
+                    <p style="color: red;">{{unErr}}</p>
+                    <label for="companyName">User Name
+                      <span class="starErr">*</span></label>
+                    <br /><br />
+                    <input
+                      type="text"
+                      name="userName"
+                      id=""
+                      class="inputText"
+                      required="true"
+                      value="{{userName}}"
+                    />
+                  </div>
 
-    <div class="inp">
-        <p style="color: red;">{{fnErr}}</p>
-        <label for="companyName">First Name <span class="starErr">*</span></label>
-        <br>
-        <input type="text" name="firstName" id="" class="inputText" required="true" value="{{firstName}}">
-    </div>
+                  <div class="inp">
+                    <label for="companyCountry">Date of Birth
+                      <span class="starErr">*</span></label>
+                    <input
+                      type="date"
+                      name="age"
+                      id=""
+                      class="input"
+                      required="true"
+                    />
+                  </div>
 
-    <div class="inp">
-        <p style="color: red;">{{lnErr}}</p>
-        <label for="companyName">Last Name <span class="starErr">*</span></label>
-        <br>
-        <input type="text" name="lastName" id="" class="inputText"  required="true" value="{{lastName}}">
-    </div>
-    <div class="inp">
-        <p style="color: red;">{{unErr}}</p>
-        <label for="companyName">User Name <span class="starErr">*</span></label>
-        <br><br>
-        <input type="text" name="userName" id="" class="inputText"  required="true"  value="{{userName}}">
-    </div>
+                  <div class="inp">
+                    <p style="color: red;">{{emErr}}</p>
+                    <label for="companyEmail">Email
+                      <span class="starErr">*</span></label>
+                    <br /><br />
+                    <input
+                      type="email"
+                      name="userEmail"
+                      id=""
+                      class="inputText"
+                      required="true"
+                      value="{{email}}"
+                    />
+                  </div>
 
-    <div class="inp">
-        <label for="companyCountry">Date of Birth <span class="starErr">*</span></label>
-        <input type="date" name="age" id="" class="input"  required="true" >
-    </div>
-
-    <div class="inp">
-        <p style="color: red;">{{emErr}}</p>
-    <label for="companyEmail">Email <span class="starErr">*</span></label>
-    <br><br>
-    <input type="email" name="userEmail" id="" class="inputText"  required="true" value="{{email}}">
-</div>
-
-{{!-- <div class="inp">
+                  {{!-- <div class="inp">
     <label for="companyEmail">Confirm Email </label>
     <br><br>
     <input type="email" name="conUserEmail" id="" class="inputText"  required="true" value="{{confimEmail}}">
 </div> --}}
 
- <div class="inp">
-     <p style="color: red;">{{passErr}}</p>
-    <label for="companyEmail">Password <span class="starErr">*</span></label>
-    <br><br>
-    <input type="password" name="password" id="" class="inputText"  required="true">
-</div>
+                  <div class="inp">
+                    <p style="color: red;">{{passErr}}</p>
+                    <label for="companyEmail">Password
+                      <span class="starErr">*</span></label>
+                    <br /><br />
+                    <input
+                      type="password"
+                      name="password"
+                      id=""
+                      class="inputText"
+                      required="true"
+                    />
+                  </div>
 
-<div class="inp">
-    <label for="companyEmail">Confirm Password </label>
-    <br><br>
-    <input type="password" name="conUserPasswd" id="" class="inputText"  required="true">
-</div>
-<div class="branchLocation" style="display: none;">
+                  <div class="inp">
+                    <label for="companyEmail">Confirm Password </label>
+                    <br /><br />
+                    <input
+                      type="password"
+                      name="conUserPasswd"
+                      id=""
+                      class="inputText"
+                      required="true"
+                    />
+                  </div>
+                  <div class="branchLocation" style="display: none;">
 
-    <h3>Location Information (Optional)</h3>
-              <p style="color: red;">{{contErr}}</p>
+                    <h3>Location Information (Optional)</h3>
+                    <p style="color: red;">{{contErr}}</p>
 
-    <div class="inp">
+                    <div class="inp">
 
-        <label for="companyCountry">Continent location <span class="starErr">*</span></label>
-    <select name="continent" id=""  >
-        <option value="Africa" >Africa</option>
-        
-        <option value="Asia">Asia</option>
+                      <label for="companyCountry">Continent location
+                        <span class="starErr">*</span></label>
+                      <select name="continent" id="">
+                        <option value="Africa">Africa</option>
 
-        <option value="Europe">Europe</option>
+                        <option value="Asia">Asia</option>
 
-    </select>
-    
-    </div>
+                        <option value="Europe">Europe</option>
 
-  
-    <div class="inp">
+                      </select>
 
-        <label for="companyCountry"> Country Location <span class="starErr">*</span></label>
-        <input type="text" name="country" id="" class="input"   value="{{country}}">
-    </div>
+                    </div>
 
-    <div class="inp">
-        <label for="companyCountry">Town/City Location <span class="starErr">*</span></label>
-        <input type="text" name="city" id="" class="input"   value="{{townCity}}">
-    </div>
+                    <div class="inp">
 
-    <div class="inp">
-        <label for="companyCountry">Address <span class="starErr">*</span></label>
-        <input type="text" name="address" id="" class="input"  value="{{address}}"> 
-    </div>
-</div>
+                      <label for="companyCountry">
+                        Country Location
+                        <span class="starErr">*</span></label>
+                      <input
+                        type="text"
+                        name="country"
+                        id=""
+                        class="input"
+                        value="{{country}}"
+                      />
+                    </div>
 
-<caption> <h2>contact Information</h2></caption>
+                    <div class="inp">
+                      <label for="companyCountry">Town/City Location
+                        <span class="starErr">*</span></label>
+                      <input
+                        type="text"
+                        name="city"
+                        id=""
+                        class="input"
+                        value="{{townCity}}"
+                      />
+                    </div>
 
-<div class="contactInfo">
+                    <div class="inp">
+                      <label for="companyCountry">Address
+                        <span class="starErr">*</span></label>
+                      <input
+                        type="text"
+                        name="address"
+                        id=""
+                        class="input"
+                        value="{{address}}"
+                      />
+                    </div>
+                  </div>
 
-    <div class="inp">
-        <p style="color: red;">{{mobileErr}}</p>
-        <label for="companyCountry">Phone Number <span class="starErr">*</span></label>
-        <input type="tel" name="telno" id="" class="input"  required="true" value="{{mobyTel}}" placeholder="+2547">
-    </div>
-    {{!-- <div class="inp">
+                  <caption> <h2>contact Information</h2></caption>
+
+                  <div class="contactInfo">
+
+                    <div class="inp">
+                      <p style="color: red;">{{mobileErr}}</p>
+                      <label for="companyCountry">Phone Number
+                        <span class="starErr">*</span></label>
+                      <input
+                        type="tel"
+                        name="telno"
+                        id=""
+                        class="input"
+                        required="true"
+                        value="{{mobyTel}}"
+                        placeholder="+2547"
+                      />
+                    </div>
+                    {{!-- <div class="inp">
         <p style="color: red;">{{wokrTelErr}}</p>
         <label for="companyCountry">Work Telephone Number (Optional)</label>
         <input type="tel" name="worktelno" id="" class="input" value="{{wokyTel}}" >
     </div> --}}
-</div>
+                  </div>
 
-    </section>
+                </section>
 
-        </div>
+              </div>
 
-        {{!-- <caption> <h2>Social Media Information(Optional)</h2></caption> --}}
+              {{! <caption> <h2>Social Media Information(Optional)</h2></caption> }}
 
-       
-        <div class="social" style="display:none;">
+              <div class="social" style="display:none;">
 
-            <div class="inp">
-                <label for="companyCountry">Facebook Link</label>
-                <input type="url" name="facebook" id="" class="input">
-            </div>
-            <div class="inp">
-                <label for="companyCountry">Instagram LInk</label>
-                <input type="url" name="instagram" id="" class="input">
-            </div>
-            <div class="inp">
-                <label for="companyCountry">Twitter Link</label>
-                <input type="url" name="twitter" id="" class="input">
-            </div>
-            <div class="inp">
-                <label for="companyCountry">Github Link</label>
-                <input type="url" name="github" id="" class="input">
-            </div>
-            <div class="inp">
-                <label for="companyCountry">Linkedln Link</label>
-                <input type="url" name="linkedln" id="" class="input">
-            </div>
-            <div class="inp">
-                <label for="companyCountry">Youtube Channel Link</label>
-                <input type="url" name="youtubelink" id="" class="input">
-            </div>
+                <div class="inp">
+                  <label for="companyCountry">Facebook Link</label>
+                  <input type="url" name="facebook" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Instagram LInk</label>
+                  <input type="url" name="instagram" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Twitter Link</label>
+                  <input type="url" name="twitter" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Github Link</label>
+                  <input type="url" name="github" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Linkedln Link</label>
+                  <input type="url" name="linkedln" id="" class="input" />
+                </div>
+                <div class="inp">
+                  <label for="companyCountry">Youtube Channel Link</label>
+                  <input type="url" name="youtubelink" id="" class="input" />
+                </div>
 
-            <div class="regQuiz">
-    <p style="color: grey;">If you already have an account with us please <a href="/login"> click here </a>to login</p>
-</div>
-        </div>
-        <div class="next" id="reset">
-            <input type="reset" value="Reset" class="btnNext">
-        </div>
-    
-        <div class="next" id="submit">
-            <input type="submit" value="Submit" class="btnNext">
-        </div>
-</div>
-</div>
+                <div class="regQuiz">
+                  <p style="color: grey;">If you already have an account with us
+                    please
+                    <a href="/login"> click here </a>to login</p>
+                </div>
+              </div>
+              <div class="next" id="reset">
+                <input type="reset" value="Reset" class="btnNext" />
+              </div>
+
+              <div class="next" id="submit">
+                <input type="submit" value="Submit" class="btnNext" />
+              </div>
+            </div>
+          </div>
         </form>
 
-         <div class="bigIntroLogo">
+        <div class="bigIntroLogo">
 
-            <img
+          <img
             src="./../images/regpostpic3.svg"
-
-
             alt="logo intro"
-
             style="width: 100%;"
-            >
-
+          />
 
         </div>
-</div>
+      </div>
 
-    <footer style="color: aquamarine;">
-        <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-            <tr>
-                <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
-                <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
-                            style="width: 20px;"></a></td>
-                <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
-                            alt="" style="width: 20px;"></a></td>
-                <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
-                            style="width: 20px;"></a></td>
-                <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
-                            style="width: 20px;"></a></td>
-            </tr>
+      <footer style="color: aquamarine;">
+        <table
+          width="76%"
+          border="0"
+          align="center"
+          valign="bottom"
+          cellspacing="0"
+          cellpadding="0"
+        >
+          <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly
+                created with GeorgosTech.</small></td>
+            <td>
+              <a href="https://twitter.com/GeorgosTechnol1"><img
+                  src="./../images/twitter.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td><a
+                href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"
+              >
+                <img
+                  src="./../images/youtube.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.instagram.com/georgos_tech/"><img
+                  src="./../images/instagram.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.facebook.com/georgos.winslow"><img
+                  src="./../images/facebook.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+          </tr>
         </table>
-    </footer>
+      </footer>
     </div>
     <script>
 
-        document.getElementById('iconInput').addEventListener('change',  handleFileChange, false)
-
-        function handleFileChange(e){
-
-
-var imgElement = document.getElementById('disIcon')
-
-
-
-    if(!e.target.files.length) return imgElement.src='';
-
-
-    return imgElement.src= URL.createObjectURL(e.target.files.item(0));
-
-}
+      document.getElementById('iconInput').addEventListener('change',
+      handleFileChange, false) function handleFileChange(e){ var imgElement =
+      document.getElementById('disIcon') if(!e.target.files.length) return
+      imgElement.src=''; return imgElement.src=
+      URL.createObjectURL(e.target.files.item(0)); }
     </script>
-    </body>
-    </html>
+  </body>
+</html>

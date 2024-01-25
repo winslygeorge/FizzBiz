@@ -1,164 +1,252 @@
- 
- 
- <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="facebook-domain-verification"
+      content="uc1pb4j8ws1uu02romuapv63ohvxi5"
+    />
     <title>Add Service: videos</title>
-    <link rel="stylesheet" href="./../css/style.css">
-   
+    <link rel="stylesheet" href="./../css/style.css" />
+
     <script src="./../js/jquery.js"></script>
     <script src="./../js/main.js"></script>
 
-    <link rel="stylesheet" href="./../css/addservice.css">
+    <link rel="stylesheet" href="./../css/addservice.css" />
     <script src="./../js/addservice.js"></script>
-        <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./../images/networking-100.png"
+      type="image/x-icon"
+    />
 
-</head>
-<body>
-        
-<header class="headerContainer">
-    <div class="container1">
-       
+  </head>
+  <body>
+
+    <header class="headerContainer">
+      <div class="container1">
+
         <div class="appbar">
 
-            <div class="appname">
-                <h1 class="bizTitle">FIZZBIZNET</h1>
-            </div>
+          <div class="appname">
+            <h1 class="bizTitle">FIZZBIZNET</h1>
+          </div>
         </div>
 
-
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
+          <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
 
         </div>
         <div class="profileIcon" style="order: 3; padding: 1%;">
-            {{#if loggedUser}}
-            <a href="/profile/{{{loggedUser.username}}}"> <img class="loggeduserIcon"
-                    src="./../images/{{{loggedUser.profileimage}}}" class="menuIcon"  /></a>
+          {{#if loggedUser}}
+            <a href="/profile/{{{loggedUser.username}}}">
+              <img
+                class="loggeduserIcon"
+                src="./../images/{{{loggedUser.profileimage}}}"
+                class="menuIcon"
+              /></a>
 
-            {{else}}
-            <a href="/login"> <img src="./../images/user.svg" class="menuIcon" /></a>
-            {{/if}}
+          {{else}}
+            <a href="/login">
+              <img src="./../images/user.svg" class="menuIcon" /></a>
+          {{/if}}
         </div>
-    </div>
+      </div>
 
-    <div class="menuList">
+      <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 60px;"
+          />
 
         </div>
 
-        <a href="/" class="menuitem"> <img src="./../images/home.svg" alt="" srcset="" width="30px" style="">
-            <h4>Home</h4>
+        <a href="/" class="menuitem">
+          <img
+            src="./../images/home.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>Home</h4>
         </a>
 
-        <a class="menuitem" id="showToolbar" href="/apps/all"> <img src="./../images/customer.svg" alt="" srcset=""
-                width="30px" style="">
-            <h4> Product&Services</h4>
+        <a class="menuitem" id="showToolbar" href="/apps/all">
+          <img
+            src="./../images/customer.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4> Product&Services</h4>
         </a>
-        <a href="/#howItWork" class="menuitem"> <img src="./../images/team.svg" alt="" srcset="" width="30px" style="">
-            <h4>About</h4>
+        <a href="/#howItWork" class="menuitem">
+          <img
+            src="./../images/team.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>About</h4>
         </a>
-          {{#if loggedUser.username}}
-        <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt="" srcset=""
-                width="30px" style="">
+        {{#if loggedUser.username}}
+          <a href="/profile/{{{loggedUser.username}}}" class="menuitem">
+            <img
+              src="./../images/user.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> My Profile</h4>
-        </a>
-        <a href='https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}' class="menuitem"> <img src="./../images/schedule.png" alt="" srcset=""
-                width="30px" style="">
+          </a>
+          <a
+            href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}"
+            class="menuitem"
+          >
+            <img
+              src="./../images/schedule.png"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4>Calender&Schedules</h4>
-        </a>
-             <a href='/competition/all' class="menuitem"> <img src="./../images/mission.png" alt="" srcset=""
-                width="30px" style="">
+          </a>
+          <a href="/competition/all" class="menuitem">
+            <img
+              src="./../images/mission.png"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4>Copetitions&Event</h4>
-        </a>
+          </a>
         {{else}}
-        <a href="/login" class="menuitem"> <img src="./../images/log-in.svg" alt="" srcset="" width="30px" style="">
+          <a href="/login" class="menuitem">
+            <img
+              src="./../images/log-in.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> SignIn </h4>
-        </a>
+          </a>
         {{/if}}
-        <a href="/logout" class="menuitem"><img src="./../images/log-out.svg" alt="" srcset="" width="30px" style="">
-            <h4>SignOut </h4>
+        <a href="/logout" class="menuitem"><img
+            src="./../images/log-out.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>SignOut </h4>
         </a>
-    </div>
+      </div>
 
-
-
-
-</header>
-    
-       
-
+    </header>
 
     <div class="body">
-<div id="loader" class="loader-container" style="z-index: 10;">
+      <div id="loader" class="loader-container" style="z-index: 10;">
 
         <div class="loader"></div>
       </div>
-      
-<div class="loginDivB" style="display: flex; width:100%; align-content:space-around;" >
-<div class="formAuth">
-<div class="form">
- 
- <div class="addService" id="reelDiv" style="display: block;">
 
-            <caption> <h2>Reel / Videos</h2></caption>
+      <div
+        class="loginDivB"
+        style="display: flex; width:100%; align-content:space-around;"
+      >
+        <div class="formAuth">
+          <div class="form">
 
-            <div class="rangeIntro">
-                To add videos in your page first you have to upload the video in ur youtube channel, then copy the youtube video link with the video's id and paste it in the input. <br>
+            <div class="addService" id="reelDiv" style="display: block;">
+
+              <caption> <h2>Reel / Videos</h2></caption>
+
+              <div class="rangeIntro">
+                To add videos in your page first you have to upload the video in
+                ur youtube channel, then copy the youtube video link with the
+                video's id and paste it in the input.
+                <br />
                 You can add as many videos as you want.
-                            </div>
+              </div>
 
-            <div class="newVideos">
+              <div class="newVideos">
 
-            </div>
+              </div>
 
-            <div  id="addVideo">
+              <div id="addVideo">
                 <a>Add Video</a>
-            </div>
+              </div>
 
-           
-        
-            <div class="next" id="socialNext">
-                <a  href="/apps/all" class="btnNext">Finish</a>
+              <div class="next" id="socialNext">
+                <a href="/apps/all" class="btnNext">Finish</a>
+              </div>
             </div>
+          </div>
+
         </div>
-</div>
 
-</div>
+        <div class="bigIntroLogo" style="margin: 0;">
 
- <div class="bigIntroLogo" style="margin: 0;">
-
-            <img
+          <img
             src="./../images/succjoinIntro.svg"
-
-
             alt="logo intro"
-
             style="width: 95%;"
-            >
-
-
-        </div>
+          />
 
         </div>
-<footer style="color: aquamarine;">
-    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-        <tr>
-            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
-            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
-                        alt="" style="width: 20px;"></a></td>
-            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
-                        style="width: 20px;"></a></td>
-        </tr>
-    </table>
-</footer>
+
+      </div>
+      <footer style="color: aquamarine;">
+        <table
+          width="76%"
+          border="0"
+          align="center"
+          valign="bottom"
+          cellspacing="0"
+          cellpadding="0"
+        >
+          <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly
+                created with GeorgosTech.</small></td>
+            <td>
+              <a href="https://twitter.com/GeorgosTechnol1"><img
+                  src="./../images/twitter.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td><a
+                href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"
+              >
+                <img
+                  src="./../images/youtube.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.instagram.com/georgos_tech/"><img
+                  src="./../images/instagram.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.facebook.com/georgos.winslow"><img
+                  src="./../images/facebook.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+          </tr>
+        </table>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
