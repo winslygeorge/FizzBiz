@@ -1,232 +1,319 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="495780731430-ohsteuvh7emdvsepbd5kal1f7pmg0obt.apps.googleusercontent.com">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-signin-client_id"
+      content="495780731430-ohsteuvh7emdvsepbd5kal1f7pmg0obt.apps.googleusercontent.com"
+    />
+    <meta
+      name="facebook-domain-verification"
+      content="uc1pb4j8ws1uu02romuapv63ohvxi5"
+    />
     <title>Login</title>
-    <link rel="stylesheet" href="./../css/style.css">
-   
+    <link rel="stylesheet" href="./../css/style.css" />
+
     <script src="./../js/jquery.js"></script>
     <script src="./../js/main.js"></script>
 
-    <link rel="stylesheet" href="./../css/addservice.css">
-    <link rel="shortcut icon" href="./../images/networking-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./../css/addservice.css" />
+    <link
+      rel="shortcut icon"
+      href="./../images/networking-100.png"
+      type="image/x-icon"
+    />
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <script src="./../js/addservice.js"></script>
-</head>
-<body>
-<header class="headerContainer">
-    <div class="container1">
-       
+  </head>
+  <body>
+    <header class="headerContainer">
+      <div class="container1">
+
         <div class="appbar">
 
-            <div class="appname">
-                <h1 class="bizTitle">FIZZBIZ NETWORK</h1>
-            </div>
+          <div class="appname">
+            <h1 class="bizTitle">FIZZBIZ NETWORK</h1>
+          </div>
         </div>
-
 
         <div class="menu">
 
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon"  />
+          <img src="./../images/icons8-menu (1).svg" class="menuIcon" />
 
         </div>
         <div class="profileIcon" style="order: 3; padding: 1%;">
-            {{#if loggedUser}}
-            <a href="/profile/{{{loggedUser.username}}}"> <img src="./../images/{{{loggedUser.profileimage}}}"
-                     /></a>
+          {{#if loggedUser}}
+            <a href="/profile/{{{loggedUser.username}}}">
+              <img src="./../images/{{{loggedUser.profileimage}}}" /></a>
 
-            {{else}}
-            <a href="/login"> <img src="./../images/user.svg" class="menuIcon"  /></a>
+          {{else}}
+            <a href="/login">
+              <img src="./../images/user.svg" class="menuIcon" /></a>
 
-            {{/if}}
+          {{/if}}
         </div>
-    </div>
+      </div>
 
-    <div class="menuList">
+      <div class="menuList">
         <div class="menu">
-            <img src="./../images/icons8-menu (1).svg" class="menuIcon" style="width: 60px;" />
+          <img
+            src="./../images/icons8-menu (1).svg"
+            class="menuIcon"
+            style="width: 60px;"
+          />
 
         </div>
 
-        <a href="/" class="menuitem"> <img src="./../images/home.svg" alt="" srcset="" width="30px" style="">
-            <h4>Home</h4>
+        <a href="/" class="menuitem">
+          <img
+            src="./../images/home.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>Home</h4>
         </a>
 
-        <a class="menuitem" id="showToolbar" href="/apps/all"> <img src="./../images/customer.svg" alt="" srcset=""
-                width="30px" style="">
-            <h4> Product&Services</h4>
+        <a class="menuitem" id="showToolbar" href="/apps/all">
+          <img
+            src="./../images/customer.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4> Product&Services</h4>
         </a>
-        <a href="/#howItWork" class="menuitem"> <img src="./../images/team.svg" alt="" srcset="" width="30px" style="">
-            <h4>About</h4>
+        <a href="/#howItWork" class="menuitem">
+          <img
+            src="./../images/team.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>About</h4>
         </a>
         {{#if loggedUser}}
-        <a href="/profile/{{{loggedUser.username}}}" class="menuitem"> <img src="./../images/user.svg" alt="" srcset=""
-                width="30px" style="">
+          <a href="/profile/{{{loggedUser.username}}}" class="menuitem">
+            <img
+              src="./../images/user.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> My Profile</h4>
-        </a>
-             <a href='/competition/all' class="menuitem"> <img src="./../images/mission.png" alt="" srcset=""
-                width="30px" style="">
+          </a>
+          <a href="/competition/all" class="menuitem">
+            <img
+              src="./../images/mission.png"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4>Copetitions&Event</h4>
-        </a>
+          </a>
         {{else}}
-        <a href="/getagreetoterms" class="menuitem"> <img src="./../images/add (1).svg" alt="" srcset="" width="30px" style="">
+          <a href="/getagreetoterms" class="menuitem">
+            <img
+              src="./../images/add (1).svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> Register</h4>
-        </a>
-        <a href="/login" class="menuitem"> <img src="./../images/log-in.svg" alt="" srcset="" width="30px" style="">
+          </a>
+          <a href="/login" class="menuitem">
+            <img
+              src="./../images/log-in.svg"
+              alt=""
+              srcset=""
+              width="30px"
+              style=""
+            />
             <h4> SignIn </h4>
-        </a>
+          </a>
         {{/if}}
-        <a href="/logout" class="menuitem"><img src="./../images/log-out.svg" alt="" srcset="" width="30px" style="">
-            <h4>SignOut </h4>
+        <a href="/logout" class="menuitem"><img
+            src="./../images/log-out.svg"
+            alt=""
+            srcset=""
+            width="30px"
+            style=""
+          />
+          <h4>SignOut </h4>
         </a>
 
+      </div>
 
-    </div>
+    </header>
 
+    <div class="body">
 
-
-
-</header>
-
-      
-  
-    
-
-
-    <div class="body" >
-
-        <div id="loader" class="loader-container" style="z-index: 10;">
+      <div id="loader" class="loader-container" style="z-index: 10;">
 
         <div class="loader"></div>
       </div>
 
-        <div class="loginDivB" style="display: flex; width:100%; align-content:space-around;">
+      <div
+        class="loginDivB"
+        style="display: flex; width:100%; align-content:space-around;"
+      >
 
-<form action="/loginUser" method="get" class="formAuth"  onsubmit="handleLoader()" >
-      
+        <form
+          action="/loginUser"
+          method="get"
+          class="formAuth"
+          onsubmit="handleLoader()"
+        >
 
-<div class="form">
+          <div class="form">
 
-    
+            <div
+              class="addService"
+              id="socialMedia"
+              style="height: fit-content; display: block;"
+            >
 
+              <div class="basicInfo">
+                <caption> <h2>Login</h2></caption>
+                <div class="serviceInt">
 
-    <div class="addService" id="socialMedia"  style="height: fit-content; display: block;">
-      
-
-        <div class="basicInfo">
-            <caption> <h2>Login</h2></caption>
-            <div class="serviceInt">
-
-                Enter your Login details.
-                <p style="color: red;">The details should be accurate and correct.</p>  
-                {{!-- <p>Or login with google instead:<br><br> 
+                  Enter your Login details.
+                  <p style="color: red;">The details should be accurate and
+                    correct.</p>
+                  {{! <p>Or login with google instead:<br><br> 
                     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                </p> --}}
-                   </div>
-       <section>
+                </p> }}
+                </div>
+                <section>
 
-        <div class="inp">
-            <label for="companyName">Username or Email</label>
-            <br>
-            <input type="text" name="userName" id="" class="inputText" required>
-        </div>
-    
-        <div class="inp">
-            <label for="companyName">Password</label>
-            <br>
-            <input type="password" name="passwd" id="" class="inputText" required>
-        </div>
-        <div class="regQuiz">
-            <p style="color: grey; padding:1%">  <a onclick="handleRecoverPassword()">  Forgot Password ? </a>
-            </p>
-        </div>
-<div class="regQuiz">
-    <p style="color: grey; padding:1%">If you don't have an account with us please <a href="/getagreetoterms"> click here </a>to register</p>
-</div>
-           </section>
-           <div class="next" id="reset">
-            <input type="reset" value="Reset" class="btnNext">
-        </div>
-    
-        <div class="next" id="submit">
-            <input type="submit" value="Submit" class="btnNext">
-        </div>
-        </div>
-    </div>
+                  <div class="inp">
+                    <label for="companyName">Username or Email</label>
+                    <br />
+                    <input
+                      type="text"
+                      name="userName"
+                      id=""
+                      class="inputText"
+                      required
+                    />
+                  </div>
 
-</div>
+                  <div class="inp">
+                    <label for="companyName">Password</label>
+                    <br />
+                    <input
+                      type="password"
+                      name="passwd"
+                      id=""
+                      class="inputText"
+                      required
+                    />
+                  </div>
+                  <div class="regQuiz">
+                    <p style="color: grey; padding:1%">
+                      <a onclick="handleRecoverPassword()">
+                        Forgot Password ?
+                      </a>
+                    </p>
+                  </div>
+                  <div class="regQuiz">
+                    <p style="color: grey; padding:1%">If you don't have an
+                      account with us please
+                      <a href="/getagreetoterms"> click here </a>to register</p>
+                  </div>
+                </section>
+                <div class="next" id="reset">
+                  <input type="reset" value="Reset" class="btnNext" />
+                </div>
+
+                <div class="next" id="submit">
+                  <input type="submit" value="Submit" class="btnNext" />
+                </div>
+              </div>
+            </div>
+
+          </div>
         </form>
 
         <div class="bigIntroLogo">
 
-            <img
+          <img
             src="./../images/regpostpic3.svg"
-
-
             alt="logo intro"
-
             style="width: 100%;"
-            >
-
-
-        </div>
-
+          />
 
         </div>
 
-        <footer style="color: aquamarine;">
-    <table width="76%" border="0" align="center" valign="bottom" cellspacing="0" cellpadding="0">
-        <tr>
-            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly created with GeorgosTech.</small></td>
-            <td> <a href="https://twitter.com/GeorgosTechnol1"><img src="./../images/twitter.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td><a href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"> <img src="./../images/youtube.svg"
-                        alt="" style="width: 20px;"></a></td>
-            <td> <a href="https://www.instagram.com/georgos_tech/"><img src="./../images/instagram.svg" alt=""
-                        style="width: 20px;"></a></td>
-            <td> <a href="https://www.facebook.com/georgos.winslow"><img src="./../images/facebook.svg" alt=""
-                        style="width: 20px;"></a></td>
-        </tr>
-    </table>
-</footer>
+      </div>
+
+      <footer style="color: aquamarine;">
+        <table
+          width="76%"
+          border="0"
+          align="center"
+          valign="bottom"
+          cellspacing="0"
+          cellpadding="0"
+        >
+          <tr>
+            <td id="footer"><small>&copy; 2020 by Winslow Georgos. Proudly
+                created with GeorgosTech.</small></td>
+            <td>
+              <a href="https://twitter.com/GeorgosTechnol1"><img
+                  src="./../images/twitter.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td><a
+                href="https://www.youtube.com/channel/UC3wWQmjAuvUcWIedf959Y0g"
+              >
+                <img
+                  src="./../images/youtube.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.instagram.com/georgos_tech/"><img
+                  src="./../images/instagram.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+            <td>
+              <a href="https://www.facebook.com/georgos.winslow"><img
+                  src="./../images/facebook.svg"
+                  alt=""
+                  style="width: 20px;"
+                /></a></td>
+          </tr>
+        </table>
+      </footer>
     </div>
 
     <script>
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  var email = profile.getEmail() // This is null if the 'email' scope is not present.
-
-   var xhttp = new XMLHttpRequest();
-
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-
-      var resq = JSON.parse(this.responseText);
-
-      if(resq.code == 200){
-       
-        window.location.href = "https://www.fizzbiznetwork.com/apps/all";
-
-      }else if (resq.code == 309){
-        alert ("Email doesn't Exist!!!")
-      } else if (resq.code == 308){
-       window.location.replace("https://www.fizzbiznetwork.com/emailverification");
-      }else {
-        alert ("Login Failed!!!")
-      } 
-    }
-  };
-  xhttp.open("GET", "/googleLoginUser?userName= "+ email, true);
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send();
-}
+      function onSignIn(googleUser) { var profile =
+      googleUser.getBasicProfile(); console.log('ID: ' + profile.getId()); // Do
+      not send to your backend! Use an ID token instead. console.log('Name: ' +
+      profile.getName()); console.log('Image URL: ' + profile.getImageUrl());
+      var email = profile.getEmail() // This is null if the 'email' scope is not
+      present. var xhttp = new XMLHttpRequest(); xhttp.onreadystatechange =
+      function () { if (this.readyState == 4 && this.status == 200) { var resq =
+      JSON.parse(this.responseText); if(resq.code == 200){ window.location.href
+      = "https://www.fizzbiznetwork.com/apps/all"; }else if (resq.code == 309){
+      alert ("Email doesn't Exist!!!") } else if (resq.code == 308){
+      window.location.replace("https://www.fizzbiznetwork.com/emailverification");
+      }else { alert ("Login Failed!!!") } } }; xhttp.open("GET",
+      "/googleLoginUser?userName= "+ email, true);
+      xhttp.setRequestHeader("Content-type",
+      "application/x-www-form-urlencoded"); xhttp.send(); }
     </script>
 
-</body>
+  </body>
 </html>
