@@ -140,7 +140,7 @@
               width="30px"
               style=""
             />
-            <h4>Copetitions&Event</h4>
+            <h4>Competitions&Event</h4>
           </a>
         {{else}}
           <a href="/getagreetoterms" class="menuitem">
@@ -330,11 +330,20 @@
 
           {{#if isowner}}
 
-            <div class="sub-column-2 {{{prenium}}} {{{basic}}}" id="quotes">
+            <div class="sub-column-2 {{{basic}}}" id="quotes">
               <h3 class="subTitle">Admin Handle</h3>
               <p>
                 <a
+                  href="https://vcdx1s8gelezfas-fizzbiznetdb.adb.us-ashburn-1.oraclecloudapps.com/ords/r/fizzbizzanalytics/fizzbizznet-analytics/login"
+                  target="_blank"
+                >
+                  <button
+                    style="background-color: rgb(4, 4, 150); color: white; padding:2%; border: 2px solid rgb(4, 4, 150); border-radius:4px; margin:1%"
+                  >Dashboard</button>
+                </a>
+                <a
                   href="/businessorders/{{{row.ID}}}?appname={{{row.BUSINESSNAME}}}"
+                  target="_blank"
                 >
                   <button
                     style="background-color: orange; color: white; padding:2%; border: 2px solid orange; border-radius:4px; margin:1%"
@@ -342,6 +351,7 @@
                 </a>
                 <a
                   href="/businesscartorders/{{{row.ID}}}?appname={{{row.BUSINESSNAME}}}"
+                  target="_blank"
                 >
                   <button
                     style="background-color: green; color : white; padding:2%; border: 2px solid green; border-radius :4px; margin:1%"
@@ -349,12 +359,17 @@
                 <br />
                 <a
                   href="https://bookings.fizzbiznetwork.com?username={{{loggedUser.username}}}&appid={{{row.ID}}}&role=adminsched"
+                  target="_blank"
                 >
                   <button
                     style="background-color: purple; color : white; padding:2%; border: 2px solid purple; border-radius :4px; margin:1%"
+                    target="_blank"
                   >Calender&Schedules</button>
                 </a>
-                <a href="/businessdeletecomponents/{{{row.ID}}}">
+                <a
+                  href="/businessdeletecomponents/{{{row.ID}}}"
+                  target="_blank"
+                >
                   <button
                     style="background-color: red; color : white; padding:2%; border: 2px solid red; border-radius :4px; margin:1%"
                   >Remove Apps component</button></a>
