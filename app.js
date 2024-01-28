@@ -120,6 +120,6 @@ app.get('/home', isAuth, (req, res )=>{
             console.error('Error checking connection health:', error);
           }
 
-    }, 120000)
+    }, 1800000)
 
 }
