@@ -52,7 +52,7 @@ const isAuth = (req, res, next) => {
   });
 
 
-  route.get("/competition/all", isAuth, (req, res) => {
+  route.get("/competition/all", (req, res) => {
     if(req.session.userDetails != undefined || req.session.userDetails != null){
 
     
