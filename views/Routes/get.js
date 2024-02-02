@@ -2236,7 +2236,15 @@ route.get("/businesscartorders/:id", isAdmin,(req, res) => {
 });
 
 route.get("/emailverification", (req, res) => {
-  res.render("verifyemail/index");
+
+  const code = clean.CleanData(req.query.code)
+  const username = clean.CleanData(req.query.username)
+
+  console.log("verify cred ",code, username)
+
+  res.render("verifyemail/index", {code, username});
+
+
 });
 
 route.get("/emailchangepass/:id", (req, res) => {
