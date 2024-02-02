@@ -62,7 +62,7 @@ const isAuth = (req, res, next) => {
             tablename : "competition",
             fields : [],
             wfield : ['competition_name'],
-            wvalue : ['young hustle competition']
+            wvalue : ['BizBoost Challenge']
         }
 
   dbcon.run(sComApps).then((feedback)=>{
@@ -128,7 +128,7 @@ const isAuth = (req, res, next) => {
         tablename : "competition",
         fields : [],
         wfield : ['competition_name'],
-        wvalue : ['young hustle competition']
+        wvalue : ['BizBoost Challenge']
     }
 
     dbcon.run(sComApps).then((feedback)=>{

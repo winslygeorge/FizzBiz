@@ -247,6 +247,7 @@ route.post("/addService", isAuth, (req, res) => {
                       appname: bizApp.businessname,
                       id: bizApp.id,
                       name: req.session.userDetails.username,
+                      category: bizApp.businesscategory,
                       title: "App created",
                     },
 
@@ -1669,7 +1670,9 @@ route.post("/handleorder", isAuth, (req, res) => {
                       context: {
                         username: newemail.username,
                         appname: newemail.appname,
-                      servicename : servicename,
+                        servicename: servicename,
+                        category: cat,
+                        id : orderdetails?.appid,
                         title: "Order Details Email",
                         datetime: orderdetails.datetimeorder,
                         venue: orderdetails.venue,

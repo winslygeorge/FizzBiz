@@ -325,7 +325,8 @@ function handleSubDiscSubmission(){
 
 //......................./>
 
-function handleViewThread(id, username, userimage, content, age , replies, subject){
+function handleViewThread(id, username, userimage, content, age, replies, subject) {
+    
 
     document.getElementById('loader').style.display ="block"
     if(document.getElementById("showMainDiscs") != null){
@@ -360,7 +361,7 @@ function handleViewThread(id, username, userimage, content, age , replies, subje
      color: #9d5f02;"  placeholder="Comment Here..."> Comment Here...</textarea>
         <input type="hidden" name="username" value="{{{user.username}}}" id="username">
         <input type="hidden" name="userimage" value="{{{user.userimage}}}" id = "userimage">
-        <input type="hidden" id="competition_name" value="young hustle competition">
+        <input type="hidden" id="competition_name" value="BizBoost Challenge">
      
        
 

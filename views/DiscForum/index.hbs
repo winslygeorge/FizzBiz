@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="facebook-domain-verification" content="uc1pb4j8ws1uu02romuapv63ohvxi5" />
-    <title>Young Hustle Competition</title>
+    <title>BizBoost Challenge</title>
 
             <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60292bb6f8ce400012e81636&product=inline-share-buttons" async="async"></script>
 
@@ -293,7 +293,7 @@ text-align: center;
             <textarea required name="content" id="content" class="div-wrapper"   placeholder="Comment Here..."> Comment Here...</textarea>
             <input type="hidden" name="username" value="{{{user.username}}}" id="username">
             <input type="hidden" name="userimage" value="{{{user.userimage}}}" id = "userimage">
-            <input type="hidden" id="competition_name" value="young hustle competition">
+            <input type="hidden" id="competition_name" value="BizBoost Challenge">
          
             <div class="submit-post-wrapper"><input type="submit" class="submit-post"></div>
 
@@ -328,7 +328,7 @@ text-align: center;
                     text-overflow: ellipsis;" >
                        {{{this.CONTENT}}}
                     </p>
-                    <h6> <a href ="#showSubDiscs" onclick="event.preventDefault(); handleViewThread({{{this.ID}}}, `{{{this.USERNAME}}}`, `{{{this.USERIMAGE}}}`, `{{{this.CONTENT}}}`, `{{{this.age}}}`, {{{this.replies}}}, `{{{this.SUBJECT}}}`)"> view more... </a></h6>
+                    <h6> <a  onclick="handleViewThread({{{this.ID}}}, `{{{this.USERNAME}}}`, `{{{this.USERIMAGE}}}`, `{{{this.CONTENT}}}`, `{{{this.age}}}`, {{{this.replies}}}, `{{{this.SUBJECT}}}`)"> view more...</a></h6>
                     <span style="font-size: smaller;"><span class="time">{{{this.age}}}</span>  ago</span> <span style="font-size: smaller; text-align: right; margin-left: 40%;"><span >{{{this.replies}}} </span> replies</span>
                 </div>
             </div>
