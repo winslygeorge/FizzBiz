@@ -173,7 +173,7 @@ route.get('/competition/discussions', (req, res)=>{
     operation:"select",
     fields : [],
     wfield: ["competition_name"],
-    wvalue: ["young hustle competition"],
+    wvalue: ["BizBoost Challenge"],
     orderBy: 'id',
     orderByDirection : 'DESC'
   }
@@ -185,6 +185,8 @@ route.get('/competition/discussions', (req, res)=>{
     if(feedback && feedback.code == 200){
 
       var result = feedback.result.rows
+
+      console.log(result)
 
       if(result.length > 0){
 
@@ -258,11 +260,8 @@ console.log(duration); // Output: "1 years, 9 months, 3 weeks, 4 days, 0 hours, 
           discc.age = duration
           discc.replies = repliesCount;
 
-          console.log(repliesCount)
 
-
-          // console.log(" sec :"+ seconds + " min : " + minutes + " hours : "+ hours +" days : "+ days + " months : "+ months+ " years : "+ year)
-
+          //  console.log(" sec :"+ seconds + " min : " + minutes + " hours : "+ hours +" days : "+ days + " months : "+ months+ " years : "+ year)
           discArray.push(discc)
           
         });
@@ -286,14 +285,14 @@ console.log(duration); // Output: "1 years, 9 months, 3 weeks, 4 days, 0 hours, 
     setTimeout(() => {
           res.render("DiscForum/index", {user : user, isLoggedin: req.session.userDetails.username, discussions: discArray})
 
-    }, 3000)
+    }, 6000)
 
   } else {
     
       setTimeout(() => {
     res.render("DiscForum/index", {discussions: discArray})
 
-    }, 3000)
+    }, 6000)
 
 
   }
@@ -304,7 +303,7 @@ console.log(duration); // Output: "1 years, 9 months, 3 weeks, 4 days, 0 hours, 
            setTimeout(() => {
         res.render("DiscForum/index", {user : user, isLoggedin: req.session.userDetails.username, discussions: discArray})
 
-    }, 3000)
+    }, 6000)
 
 
       }
@@ -314,7 +313,7 @@ console.log(duration); // Output: "1 years, 9 months, 3 weeks, 4 days, 0 hours, 
          setTimeout(() => {
       res.render("DiscForum/index", {user : user, isLoggedin: req.session.userDetails.username, discussions: discArray})
 
-    }, 3000)
+    }, 6000)
 
 
     }
@@ -406,7 +405,7 @@ console.log(duration);
                      setTimeout(() => {
               res.send({code: 200, subDisc : subs})
 
-    }, 3000)
+    }, 6000)
 
 
              }else{
