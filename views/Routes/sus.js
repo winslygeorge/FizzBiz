@@ -54,7 +54,7 @@ const isAuth = (req, res, next) => {
 
 route.get('/suscription/page', isAuth, (req, res)=>{
 
-    res.render('suscriptionPage/index')
+    res.render('suscriptionPage/index', {loggedUser : req.session.userDetails})
     
 })
 
