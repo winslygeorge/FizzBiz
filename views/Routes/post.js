@@ -617,9 +617,77 @@ if(codeVer.code != null && codeVer.code != undefined && codeVer.username != null
                         val : codeVer.username
                       }
 
-                      serveRequest.run(deleteever).then(function(results){
+  serveRequest.run(deleteever).then(function (results) {
+                        
 
-                        res.redirect('/login')
+      // let db =  new oracledb()
+var userCredidentials;
+if(codeVer.username.indexOf('@') != -1){
+
+
+    userCredidentials = {
+
+        tablename : "users",
+    
+        operation : "select",
+    
+        fields : [],
+        wfield : ["email"],
+        wvalue : [clean.CleanData(codeVer.username)]
+    }
+ 
+}else{
+
+    userCredidentials = {
+
+        tablename : "users",
+    
+        operation : "select",
+    
+        fields : [],
+        wfield : ["username"],
+        wvalue : [codeVer.username]
+    }
+
+}
+
+serveRequest.run( userCredidentials).then(function(feedback){
+
+    if (feedback && feedback.code == 200) {
+        
+        if (feedback.result.rows.length == 0) {
+
+            res.redirect('/login')
+            
+        }else{
+
+                    req.session.isAuth = true;
+
+                    req.session.userDetails = {
+                        username: feedback.result.rows[0].USERNAME,
+                        email: feedback.result.rows[0].EMAIL,
+                        profileimage: feedback.result.rows[0].PROFILEIMAGE,
+                    };
+
+          console.log("session :  ===  : ", req.session.userDetails)
+
+                    res.redirect("/suscription/page");
+               
+
+            } 
+    } else {
+      
+
+          res.redirect('/login')
+
+
+        }
+
+       
+
+     
+    })
+
 
                       })
 
