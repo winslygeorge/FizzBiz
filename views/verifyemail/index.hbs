@@ -228,7 +228,17 @@
 
     <div class="body">
 
-      <form action="/verifyemail" method="post">
+      <div id="loader" class="loader-container" style="z-index: 10;">
+
+        <div class="loader"></div>
+      </div>
+
+      <form
+        action="/verifyemail"
+        method="post"
+        class="formAuth"
+        onsubmit="handleLoader()"
+      >
 
         <div class="form">
 

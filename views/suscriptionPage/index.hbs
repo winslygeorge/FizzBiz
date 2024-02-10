@@ -38,7 +38,11 @@
       body{ background-color: white; } .body{ background-color: white; padding:
       0%; margin: 0px; color: rgb(70, 70, 73); } .contDisc{ display: flex;
       overflow-y: auto; } @media(max-width: 770px){ .contDisc{ display: block;
-      overflow-y: auto; } }
+      overflow-y: auto; } } .header-ad { background-color: grey; /* Orangered */
+      color: #fff; padding: 20px; text-align: center; } .header-ad h2 {
+      margin-top: 0; font-size: 28px; } .header-ad p { font-size: 18px; } /*
+      Media query for mobile responsiveness */ @media (max-width: 768px) {
+      .header-ad { background-color: grey; /* Blue */ } }
 
     </style>
   </head>
@@ -153,7 +157,7 @@
 
       {{else}}
 
-        <a href="/login">
+        <a href="/apps/all">
           <img
             class="iconsI"
             src="./../images/customer.svg"
@@ -197,17 +201,46 @@
     </div>
     <div class="body">
 
+      <div class="header-ad">
+        <h2>Create Your Business FizzBiz App Now!</h2>
+        <p>Upgrade to a Premium Plan Subscription and Get a
+          <h3><b>3-Month Trial</b></h3>. Join the BizBoost Challenge for a
+          Chance to Gain Financial Capital!
+        </p>
+        <p>
+          Here is the GUIDE on step by step way to create the app
+          <a
+            href="https://drive.google.com/file/d/1K67QZESq6k0dCXAqRIPeKj4wXwNQEWLA/view?usp=sharing"
+            target="_blank"
+            style="background-color: green; color:white; font-weight:bold; border-radius:5px; padding:2px;"
+          >
+            Click here for HELP document.
+          </a>
+        </p>
+        <p>If your still facing challenges on creating your first Kindly send an
+          email to
+          <a
+            style="background-color: orangered; color:white; font-weight:bold; border-radius:5px; padding:2px;"
+            href="mailto:support@fizzbiznetwork.com"
+          >support@fizzbiznetwork.com</a>
+          or contact us on Phone :
+          <span
+            style="background-color: purple; color:white; font-weight:bold; border-radius:5px; padding:2px;"
+          > <b>+254712190533</b></span>
+        </p>
+      </div>
+
       <div class="searchDiv">
         <h3>Suscription</h3>
         <p>
           Choose your desired plan to get access to our content easily.
         </p>
       </div>
-      <div class="contDisc" style="height:90vh;">
+      <div class="contDisc" style="height:90vh; overflow:auto">
 
         <div
           class="susDiv"
-          style=" background-color: rgb(6, 189, 189); color: white; font-weight:bold; "
+          style=" background-color: rgb(6, 189, 189); color: white; font-weight:bold; height:fit-content"
         >
           <h4 style="border-bottom:1px solid white;padding: 2%;">Basic</h4>
           <p
@@ -228,7 +261,7 @@
         </div>
         <div
           class="susDiv"
-          style=" background-color: rgb(136, 135, 135); color: white; font-weight:bold; "
+          style=" background-color: rgb(136, 135, 135); color: white; font-weight:bold; height:fit-content "
         >
           <h4 style="border-bottom:1px solid white;padding: 2%;">Prenium</h4>
           <p
@@ -258,7 +291,7 @@
         </div>
         <div
           class="susDiv"
-          style=" background-color: goldenrod; color: white; font-weight:bold; "
+          style=" background-color: goldenrod; color: white; font-weight:bold; height:fit-content"
         >
           <h4 style="border-bottom:1px solid white;padding: 2%;">Gold</h4>
           <p
